@@ -64,4 +64,14 @@ public class ItemController {
         itemService.onItem(itemDto);
         return ResponseEntity.ok().body("활성화 완료");
     }
+
+    @PutMapping("/items")
+    public ResponseEntity<String> modifyItem(@RequestBody ItemDto itemDto) throws Exception {
+        // TODO: 2022-05-16 상품 이미지 로직 추가
+        log.info(this.getClass().getName());
+
+        itemService.modifyItem(itemDto);
+
+        return ResponseEntity.ok().body("상품 수정 완료");
+    }
 }
