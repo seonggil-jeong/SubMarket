@@ -17,6 +17,8 @@ public class UserCheckService implements IUserCheckService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     /**<-------------------------->If (UserEntity == null) ==> return 0 </-------------------------->*/
+
+    /**<--------------------------->아이디 중복 확인</---------------------------> */
     @Override
     public boolean checkUserByUserId(String userId) {
         boolean check = false;
@@ -25,6 +27,19 @@ public class UserCheckService implements IUserCheckService {
         if (userEntity == null) { // 중복 X 실행 가능
             check = true;
         }
+        return check;
+    }
+
+    /**<--------------------------->이메일 중복 확인</---------------------------> */
+    @Override
+    public boolean checkUserByUserEmail(String userEmail) {
+        boolean check = false;
+        UserEntity userEntity = userRepository.findByUserEmail(userEmail);
+
+        if (userEntity == null) { // 중복 X 실행 가능
+            check = true;
+        }
+
         return check;
     }
 }
