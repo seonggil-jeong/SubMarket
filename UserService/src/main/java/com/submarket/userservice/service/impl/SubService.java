@@ -25,9 +25,11 @@ public class SubService implements ISubService {
     private final SubRepository subRepository;
     private final UserRepository userRepository;
     private final UserService userService;
+    private final SubCheckService subCheckService;
 
     /** ------------------------- 구독 조회 ------------------------------*/
     @Override
+    @Transactional
     public List<SubEntity> findAllSub(SubDto subDto) throws RuntimeException{
         Optional<UserEntity> user = userRepository.findById(subDto.getUserSeq());
 
@@ -74,6 +76,7 @@ public class SubService implements ISubService {
 
     /** ------------------------- 구독 생성 ------------------------------*/
     @Override
+    @Transactional
     public int createNewSub(SubDto subDto) {
         log.info(this.getClass().getName() + "createNewSub Start!");
 
@@ -97,6 +100,7 @@ public class SubService implements ISubService {
 
     /** ------------------------- 구독 갱신 ------------------------------*/
     @Override
+    @Transactional
     public int updateSub(SubDto subDto) {
         log.info(this.getClass().getName() + ".updateSub Start!");
 
@@ -106,5 +110,24 @@ public class SubService implements ISubService {
 
         log.info(this.getClass().getName() + ".updateSub End!");
         return res;
+    }
+
+    /** ------------------------- 구독 취소 ------------------------------*/
+    @Override
+    @Transactional
+    public int cancelSub(SubDto subDto) throws Exception{
+        log.info(this.getClass().getName() + ".cancelSub Start!");
+        if (subCheckService.SubCheck(subDto.getSubSeq())) {
+
+            // not null 삭제 실행
+            subRepository.deleteById(subDto.getSubSeq());
+
+        } else {
+            log.info("구독 정보 찾기 실패");
+            throw new RuntimeException("구독 정보를 찾을 수 없습니다");
+        }
+
+        log.info(this.getClass().getName() + "cancelSub End!");
+        return 1;
     }
 }

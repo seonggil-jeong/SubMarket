@@ -88,6 +88,25 @@ public class SubController {
         return ResponseEntity.status(HttpStatus.CREATED).body("구독 성공");
     }
 
+    @DeleteMapping("/sub")
+    public String cancelSub(@RequestBody RequestSub requestSub) throws Exception {
+        log.info(this.getClass().getName() + "cancel Sub Start!");
+
+        SubDto subDto = new SubDto();
+
+        subDto.setSubSeq(requestSub.getSubSeq());
+
+        int res = subService.cancelSub(subDto);
+
+
+        log.info(this.getClass().getName() + "cancel Sub End!");
+
+        if (res != 1) {
+            return "구독 취소 실패";
+        }
+        return "구독 취소 성공";
+    }
+
     @PatchMapping("/sub")
     public ResponseEntity<String> updateSub(@RequestBody RequestSub requestSub) throws Exception {
         log.info(this.getClass().getName() + ".updateSub Start!");
