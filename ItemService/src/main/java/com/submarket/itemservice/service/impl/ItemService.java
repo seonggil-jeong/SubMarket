@@ -52,4 +52,41 @@ public class ItemService implements IItemService {
         log.info(this.getClass().getName() + ".saveItem End");
         return 1;
     }
+
+    @Override
+    @Transactional
+    public ItemDto findItemInfo(ItemDto itemDto) throws Exception {
+        log.info(this.getClass().getName() + "findItemInfo Start!");
+
+        int itemSeq = itemDto.getItemSeq();
+
+        log.info("itemSeq : " + itemSeq);
+
+        Optional<ItemEntity> itemEntityOptional = itemRepository.findById(itemSeq);
+
+        ItemDto rDto = ItemMapper.INSTANCE.itemEntityToItemDto(itemEntityOptional.get());
+
+        if (rDto == null) {
+            throw new RuntimeException("상품 정보를 찾을 수 없습니다");
+        }
+
+        log.info(this.getClass().getName() + ".findItemInfo End!");
+        return rDto;
+    }
+
+    @Override
+    public List<ItemDto> findAllItem() throws Exception {
+        log.info(this.getClass().getName() + "findAllItem Start");
+
+        List<ItemDto> itemDtoList = new LinkedList<>();
+        Iterable<ItemEntity> itemEntityList = itemRepository.findAll();
+
+        itemEntityList.forEach(itemEntity -> {
+            itemDtoList.add(ItemMapper.INSTANCE.itemEntityToItemDto(itemEntity));
+        });
+
+        log.info(this.getClass().getName() + "findAllItem End");
+
+        return itemDtoList;
+    }
 }

@@ -8,6 +8,10 @@ import java.util.List;
 public interface IItemService {
     int saveItem(ItemDto itemDto) throws Exception;
 
+    ItemDto findItemInfo(ItemDto itemDto) throws Exception;
+
+    List<ItemDto> findAllItem() throws Exception;
+
 
 
 }
