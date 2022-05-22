@@ -7,6 +7,8 @@ public interface IUserService extends UserDetailsService {
 
     int createUser(UserDto pDTO) throws Exception;
 
+    UserDto getUserInfoByUserEmail(String userEmail);
+
     UserDto getUserDetailsByUserId(String userId);
 
 }
