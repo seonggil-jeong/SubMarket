@@ -17,6 +17,7 @@ public class MailService {
     private final Environment env;
     private final JavaMailSender javaMailSender;
 
+    @Async
     public void sendMail(String mailAddress, String title, String mailMessage) {
         log.info(this.getClass().getName() + ".SendMail Start!");
 
