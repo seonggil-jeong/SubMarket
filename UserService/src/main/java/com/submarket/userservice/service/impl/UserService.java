@@ -51,6 +51,16 @@ public class UserService implements IUserService {
         return 1;
     }
 
+    //####################################### 사용자 정보 조회 By UserEmail #######################################//
+    @Override
+    public UserDto getUserInfoByUserEmail(String userEmail) {
+        UserEntity userEntity = userRepository.findByUserEmail(userEmail);
+
+        UserDto rDTO = UserMapper.INSTANCE.userEntityToUserDto(userEntity);
+
+        return rDTO;
+    }
+
 
 
     //####################################### JWT Don't change #######################################//
