@@ -28,6 +28,7 @@ public class SubService implements ISubService {
 
     /** ------------------------- 구독 조회 ------------------------------*/
     @Override
+    @Transactional
     public List<SubEntity> findAllSub(SubDto subDto) throws RuntimeException{
         Optional<UserEntity> user = userRepository.findById(subDto.getUserSeq());
 
@@ -74,6 +75,7 @@ public class SubService implements ISubService {
 
     /** ------------------------- 구독 생성 ------------------------------*/
     @Override
+    @Transactional
     public int createNewSub(SubDto subDto) {
         log.info(this.getClass().getName() + "createNewSub Start!");
 
@@ -97,6 +99,7 @@ public class SubService implements ISubService {
 
     /** ------------------------- 구독 갱신 ------------------------------*/
     @Override
+    @Transactional
     public int updateSub(SubDto subDto) {
         log.info(this.getClass().getName() + ".updateSub Start!");
 
@@ -106,5 +109,15 @@ public class SubService implements ISubService {
 
         log.info(this.getClass().getName() + ".updateSub End!");
         return res;
+    }
+
+    /** ------------------------- 구독 취소 ------------------------------*/
+    @Override
+    @Transactional
+    public int cancelSub(SubDto subDto) {
+        log.info(this.getClass().getName() + ".cancelSub Start!");
+        subRepository.deleteById(subDto.getSubSeq());
+        log.info(this.getClass().getName() + "cancelSub End!");
+        return 1;
     }
 }
