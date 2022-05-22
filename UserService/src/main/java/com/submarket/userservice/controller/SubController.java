@@ -5,6 +5,8 @@ import com.submarket.userservice.jpa.entity.SubEntity;
 import com.submarket.userservice.mapper.SubMapper;
 import com.submarket.userservice.service.impl.SubService;
 import com.submarket.userservice.vo.RequestSub;
+import com.submarket.userservice.vo.ResponseSub;
+import com.sun.nio.sctp.NotificationHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,53 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SubController {
     private final SubService subService;
+
+    @GetMapping("/sub")
+    public ResponseEntity<Object> findAllSub(@RequestBody RequestSub requestSub) throws Exception {
+        log.info(this.getClass().getName() + ".findSub Start!");
+
+        int userSeq = requestSub.getUserSeq();
+
+        SubDto subDto = new SubDto();
+        subDto.setUserSeq(userSeq);
+        List<SubEntity> subEntityList = subService.findAllSub(subDto);
+
+        if (subEntityList == null) {
+            log.info("SubService Check");
+
+            return ResponseEntity.status(500).body("Service Error");
+        }
+
+        List<SubDto> subDtoList = new ArrayList<>();
+
+        subEntityList.forEach(subEntity -> {
+            subDtoList.add(SubMapper.INSTANCE.subEntityToSubDto(subEntity));
+        });
+
+        return ResponseEntity.ok().body(subEntityList);
+
+
+
+    }
+
+    @GetMapping("/sub/{subSeq}")
+    public ResponseEntity<SubDto> findOneSub(@PathVariable int subSeq) throws Exception {
+        log.info(this.getClass().getName() + ".findOneSub Start!");
+        SubDto pDto = new SubDto();
+
+        pDto.setSubSeq(subSeq);
+
+        SubDto subDto = subService.findOneSub(pDto);
+
+        if (subDto == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+
+        log.info(this.getClass().getName() + ".findOneSub Start!");
+
+        return ResponseEntity.ok().body(subDto);
+    }
 
     @PostMapping("/sub")
     public ResponseEntity<String> createNewSub(@RequestBody RequestSub requestSub) {
