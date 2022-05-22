@@ -42,4 +42,21 @@ public class UserCheckService implements IUserCheckService {
 
         return check;
     }
+
+    /** <------------------------->비밀번호 일치 여부 확인</-------------------------> */
+    @Override
+    public boolean isTruePassword(String userId, String userPassword) throws Exception {
+        log.info("--------------> " + this.getClass().getName() + "isTruePassword Start!");
+
+        UserEntity userEntity = userRepository.findByUserId(userId);
+        // 사용자 ID를 가지고 정보 불러오기
+        if (userEntity != null) { // 비밀번호 일치 실행 가능
+            log.info("Find User True");
+            boolean check = passwordEncoder.matches(userPassword, userEntity.getUserPassword());
+            // 사용자가 보낸 이전 Password 와 DB에 저장된 Password 를 비교
+            return check;
+        } else {
+            return false;
+        }
+    }
 }
