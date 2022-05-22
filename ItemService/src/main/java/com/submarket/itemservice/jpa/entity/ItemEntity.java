@@ -49,5 +49,9 @@ public class ItemEntity {
     @JsonIgnore
     private GroupEntity group;
 
+    @OneToMany(mappedBy = "item")
+    @JsonIgnore
+    private List<ItemReviewEntity> reviews;
+
     // TODO: 2022/05/11 Img 등록 추가
 }
