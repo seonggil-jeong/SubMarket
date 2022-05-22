@@ -14,5 +14,5 @@ public interface ISubService {
 
     int updateSub(SubDto subDto);
 
-    int cancelSub(SubDto subDto);
+    int cancelSub(SubDto subDto) throws Exception;
 }

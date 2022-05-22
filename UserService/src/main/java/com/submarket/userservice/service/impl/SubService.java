@@ -25,6 +25,7 @@ public class SubService implements ISubService {
     private final SubRepository subRepository;
     private final UserRepository userRepository;
     private final UserService userService;
+    private final SubCheckService subCheckService;
 
     /** ------------------------- 구독 조회 ------------------------------*/
     @Override
@@ -114,9 +115,18 @@ public class SubService implements ISubService {
     /** ------------------------- 구독 취소 ------------------------------*/
     @Override
     @Transactional
-    public int cancelSub(SubDto subDto) {
+    public int cancelSub(SubDto subDto) throws Exception{
         log.info(this.getClass().getName() + ".cancelSub Start!");
-        subRepository.deleteById(subDto.getSubSeq());
+        if (subCheckService.SubCheck(subDto.getSubSeq())) {
+
+            // not null 삭제 실행
+            subRepository.deleteById(subDto.getSubSeq());
+
+        } else {
+            log.info("구독 정보 찾기 실패");
+            throw new RuntimeException("구독 정보를 찾을 수 없습니다");
+        }
+
         log.info(this.getClass().getName() + "cancelSub End!");
         return 1;
     }
