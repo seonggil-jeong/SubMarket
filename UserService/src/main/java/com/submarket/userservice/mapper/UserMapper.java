@@ -2,6 +2,7 @@ package com.submarket.userservice.mapper;
 
 import com.submarket.userservice.dto.UserDto;
 import com.submarket.userservice.jpa.entity.UserEntity;
+import com.submarket.userservice.vo.RequestUser;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -18,5 +19,7 @@ public interface UserMapper{
     UserEntity userDtoToUserEntity(UserDto userDto);
 
     UserDto userEntityToUserDto(UserEntity userEntity);
+
+    UserDto RequestUserToUserDto(RequestUser requestUser);
 
 }

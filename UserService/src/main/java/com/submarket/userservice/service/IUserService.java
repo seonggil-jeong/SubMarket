@@ -11,4 +11,6 @@ public interface IUserService extends UserDetailsService {
 
     UserDto getUserDetailsByUserId(String userId);
 
+    int changeUserPassword(UserDto pDTO, String newPassword) throws Exception;
+
 }
