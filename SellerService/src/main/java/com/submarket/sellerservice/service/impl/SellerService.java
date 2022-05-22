@@ -57,6 +57,29 @@ public class SellerService implements ISellerService {
         return 1;
     }
 
+    @Override
+    public int deleteSeller(SellerDto SellerDto) throws Exception {
+        log.info(this.getClass().getName() + ".deleteSeller Start!");
+
+        if (sellerCheckService.checkSellerBySellerPassword(SellerDto)) {
+            // 일치한다면 진행
+            SellerEntity sellerEntity = sellerRepository.findBySellerId(SellerDto.getSellerId());
+
+            if (sellerEntity.getSellerStatus() == 1) {
+                // 활성화 되어 있다면 탈퇴, Exception
+                sellerRepository.changeSellerStatus(sellerEntity.getSellerSeq());
+            } else {
+                throw new RuntimeException("이미 탈퇴한 회원입니다");
+            }
+        } else {
+            throw new UsernameNotFoundException("비밀번호 불일치");
+        }
+
+
+        log.info(this.getClass().getName() + ".deleteSeller End!");
+        return 1;
+    }
+
 
 
 
