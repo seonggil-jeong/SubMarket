@@ -22,7 +22,40 @@ import java.util.Optional;
 @Slf4j
 public class SellerService implements ISellerService {
     private final SellerRepository sellerRepository;
+    private final SellerCheckService sellerCheckService;
     private final BCryptPasswordEncoder passwordEncoder;
+
+    /** 사업자 회원가입 */
+    @Override
+    public int createSeller(SellerDto SellerDto) throws Exception {
+        log.info(this.getClass().getName() + ".createSeller Start!");
+        String sellerId = SellerDto.getSellerId();
+        String sellerEmail = SellerDto.getSellerEmail();
+        String businessId = SellerDto.getBusinessId();
+
+        if (sellerCheckService.checkSellerBySellerId(sellerId)) {
+            if (sellerCheckService.checkSellerBySellerEmail(sellerEmail)) {
+                if (sellerCheckService.checkSellerByBusinessId(businessId)) {
+                    // All pass, 회원가입 로직 실행
+                    SellerDto.setSellerEncPassword(passwordEncoder.encode(SellerDto.getSellerPassword()));
+                    SellerDto.setSellerStatus(1);
+                    SellerEntity sellerEntity = SellerMapper.INSTANCE.SellerDtoToSellerEntity(SellerDto);
+                    sellerRepository.save(sellerEntity);
+
+// TODO: 2022/05/12 Exception 변경
+                } else {
+                    throw new RuntimeException("사업자 번호 중복");
+                }
+            } else {
+                throw new RuntimeException("이메일 중복");
+            }
+        } else {
+            throw new RuntimeException("아이디 중복");
+        }
+        log.info(this.getClass().getName() + ".createSeller End!");
+
+        return 1;
+    }
 
 
 
