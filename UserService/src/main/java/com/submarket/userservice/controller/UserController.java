@@ -1,16 +1,17 @@
 package com.submarket.userservice.controller;
 
 import com.submarket.userservice.dto.UserDto;
+import com.submarket.userservice.mapper.UserMapper;
 import com.submarket.userservice.service.impl.UserCheckService;
 import com.submarket.userservice.service.impl.UserService;
+import com.submarket.userservice.vo.RequestChangePassword;
+import com.submarket.userservice.vo.RequestUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -19,6 +20,54 @@ public class UserController {
     private final UserService userService;
     private final UserCheckService userCheckService;
     private final Environment env;
+
+    /**<---------------------->회원가입</---------------------->*/
+    @PostMapping("/users")
+    public ResponseEntity<String> createUser(@RequestBody RequestUser requestUser) throws Exception {
+        log.info("-------------->  " + this.getClass().getName() + ".createUser Start!");
+        int res = 0;
+
+        UserDto pDTO = UserMapper.INSTANCE.RequestUserToUserDto(requestUser);
+
+        res = userService.createUser(pDTO);
+
+        if (res == 0) { /** 아이디 중복 발생 */
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("아이디 또는 이메일을 확인해주세요."); // 충돌 발생
+        }
+
+        log.info("-------------->  " + this.getClass().getName() + ".createUser End!");
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
+    }
+
+    /**<------------------------>아이디 중복 확인</------------------------>*/
+    @GetMapping("/users/check-id/{userId}")
+    public ResponseEntity<String> checkUserById(@PathVariable String userId) throws Exception {
+        log.info("-------------------- > " + this.getClass().getName() + "checkId Start!");
+        boolean checkId = userCheckService.checkUserByUserId(userId);
+
+        if (checkId) {
+            log.info("-------------------- > " + this.getClass().getName() + "checkId End!");
+            return ResponseEntity.status(HttpStatus.OK).body("사용가능한 아이디 입니다");
+        }
+        log.info("아이디 중복 발생");
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("아이디 중복 입니다");
+    }
+
+    /**<------------------------>이메일 중복 확인</------------------------>*/
+    @GetMapping("/users/check-email/{userEmail}")
+    public ResponseEntity<String> checkUserByEmail(@PathVariable String userEmail) throws Exception {
+        log.info("-------------------- > " + this.getClass().getSimpleName() + "checkEmail Start!");
+        boolean checkEmail = userCheckService.checkUserByUserEmail(userEmail);
+
+        if (checkEmail) {
+            log.info("-------------------- > " + this.getClass().getName() + "checkEmail End!");
+            return ResponseEntity.status(HttpStatus.OK).body("사용가능한 이메일 입니다.");
+
+        }
+        log.info("이메일 중복 발생");
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("이메일 중복 입니다");
+    }
 
 
     /**<------------------------>아이디 찾기 with UserEmail </------------------------>
@@ -36,5 +85,22 @@ public class UserController {
         userId = rDTO.getUserId().replaceAll("(?<=.{4}).", "*");
         log.info("-------------------- > " + this.getClass().getName() + "findUserId End!");
         return ResponseEntity.status(HttpStatus.OK).body(userId);
+    }
+
+    /**<------------------------>비밀번호 변경</------------------------>*/
+    @PostMapping("/users/changePassword")
+    public ResponseEntity<String> changePassword(@RequestBody RequestChangePassword request) throws Exception {
+
+        UserDto pDTO = new UserDto();
+        pDTO.setUserId(request.getUserId());
+        pDTO.setUserPassword(request.getOldPassword());
+
+        int check = userService.changeUserPassword(pDTO, request.getNewPassword());
+
+        if (check == 1) { // 변경 성공
+            return ResponseEntity.status(HttpStatus.OK).body("비밀번호 변경 성공");
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이전 비밀번호를 확인해 주세요");
+
     }
 }

@@ -61,6 +61,30 @@ public class UserService implements IUserService {
         return rDTO;
     }
 
+    @Override
+    public int changeUserPassword(UserDto pDTO, String newPassword) throws Exception {
+        log.info(this.getClass().getName() + "changeUserPassword Start!");
+        String userId = pDTO.getUserId();
+        String userPassword = pDTO.getUserPassword();
+
+        // 비밀번호가 일치하는지 확인
+        boolean checkPassword = userCheckService.isTruePassword(userId, userPassword);
+
+        // 만약 비밀번호가 일치한다면
+        if (checkPassword) {
+            log.info("비밀번호 일치");
+            userRepository.changeUserPassword(passwordEncoder.encode(newPassword), pDTO.getUserSeq());
+
+            log.info(this.getClass().getName() + "changeUserPassword End!");
+            return 1; // 성공
+        }
+        log.info(this.getClass().getName() + "changeUserPassword End!");
+        return 0; // 실패
+
+
+
+    }
+
 
 
     //####################################### JWT Don't change #######################################//
