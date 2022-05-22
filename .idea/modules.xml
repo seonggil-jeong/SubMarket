@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ApiGateway/ApiGateway.iml" filepath="$PROJECT_DIR$/ApiGateway/ApiGateway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DiscoveryService/DiscoveryService.iml" filepath="$PROJECT_DIR$/DiscoveryService/DiscoveryService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ItemService/ItemService.iml" filepath="$PROJECT_DIR$/ItemService/ItemService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/OrderService/OrderService.iml" filepath="$PROJECT_DIR$/OrderService/OrderService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SellerService/SellerService.iml" filepath="$PROJECT_DIR$/SellerService/SellerService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/UserService/UserService.iml" filepath="$PROJECT_DIR$/UserService/UserService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ApiGateway/apigateway.iml" filepath="$PROJECT_DIR$/ApiGateway/apigateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DiscoveryService/discoveryservice.iml" filepath="$PROJECT_DIR$/DiscoveryService/discoveryservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ItemService/itemservice.iml" filepath="$PROJECT_DIR$/ItemService/itemservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OrderService/orderservice.iml" filepath="$PROJECT_DIR$/OrderService/orderservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SellerService/sellerservice.iml" filepath="$PROJECT_DIR$/SellerService/sellerservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserService/userservice.iml" filepath="$PROJECT_DIR$/UserService/userservice.iml" />
     </modules>
   </component>
 </project>
