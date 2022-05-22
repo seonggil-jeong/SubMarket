@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ISubService {
     int createNewSub(SubDto subDto);
+
+    int updateSub(SubDto subDto);
 }

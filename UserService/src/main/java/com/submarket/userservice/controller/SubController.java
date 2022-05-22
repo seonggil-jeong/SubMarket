@@ -38,4 +38,22 @@ public class SubController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body("구독 성공");
     }
+
+    @PatchMapping("/sub")
+    public ResponseEntity<String> updateSub(@RequestBody RequestSub requestSub) throws Exception {
+        log.info(this.getClass().getName() + ".updateSub Start!");
+        SubDto subDto = new SubDto();
+        subDto.setSubSeq(requestSub.getSubSeq());
+
+        int res = subService.updateSub(subDto);
+
+        if (res != 1) {
+            return ResponseEntity.ok("갱신 실패");
+        }
+
+        log.info(this.getClass().getName() + "updateSub End!");
+        return ResponseEntity.ok("갱신 완료");
+
+
+    }
 }
