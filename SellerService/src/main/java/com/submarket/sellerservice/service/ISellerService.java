@@ -7,6 +7,7 @@ public interface ISellerService extends UserDetailsService {
 
     int createSeller(SellerDto sellerDTO) throws Exception;
 
+    int deleteSeller(SellerDto sellerDTO) throws Exception;
 
     SellerDto getSellerDetailsByUserId(String sellerId);
 

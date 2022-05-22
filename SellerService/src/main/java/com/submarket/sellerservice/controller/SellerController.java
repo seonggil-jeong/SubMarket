@@ -36,5 +36,19 @@ public class SellerController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("회원가입 실패");
         }
     }
+    @PostMapping("/sellers/drop")
+    public ResponseEntity<String> deleteSeller(@RequestBody RequestSellerInfo requestSellerInfo) throws Exception {
+        log.info(this.getClass().getName() + ".deleteSeller Start!");
+        SellerDto SellerDto = new SellerDto();
+
+        SellerDto.setSellerId(requestSellerInfo.getSellerId());
+        SellerDto.setSellerPassword(requestSellerInfo.getSellerPassword());
+        sellerService.deleteSeller(SellerDto);
+
+        log.info(this.getClass().getName() + ".deleteSeller End!");
+
+
+        return ResponseEntity.status(HttpStatus.OK).body("회원 탈퇴 완료");
+    }
 }
 
