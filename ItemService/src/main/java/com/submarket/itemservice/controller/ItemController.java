@@ -6,9 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +44,24 @@ public class ItemController {
 
         log.info(this.getClass().getName() + ".findOneItem End!");
         return ResponseEntity.ok().body(itemDto);
+    }
+
+    @DeleteMapping("/items/{itemSeq}")
+    public ResponseEntity<String> offItem(@PathVariable int itemSeq) throws Exception {
+        // TODO: 2022/05/16 비활성화, 사업자 인증
+        ItemDto itemDto = new ItemDto();
+        itemDto.setItemSeq(itemSeq);
+
+        itemService.offItem(itemDto);
+        return ResponseEntity.ok().body("비활성화 완료");
+    }
+
+    @PatchMapping("/items/{itemSeq}")
+    public ResponseEntity<String> onItem(@PathVariable int itemSeq) throws Exception {
+        ItemDto itemDto = new ItemDto();
+        itemDto.setItemSeq(itemSeq);
+
+        itemService.onItem(itemDto);
+        return ResponseEntity.ok().body("활성화 완료");
     }
 }
