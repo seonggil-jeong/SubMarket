@@ -7,8 +7,13 @@ import com.submarket.userservice.mapper.UserMapper;
 import com.submarket.userservice.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 
 @Service("UserService")
@@ -40,5 +45,37 @@ public class UserService implements IUserService {
         }
         log.info("-------------->  " + this.getClass().getName() + ".createUser End !");
         return 1;
+    }
+
+
+
+    //####################################### JWT Don't change #######################################//
+    @Override
+    public UserDto getUserDetailsByUserId(String userId) {
+        UserEntity rEntity = userRepository.findByUserId(userId);
+
+        if (rEntity == null) {
+            throw new UsernameNotFoundException(userId);
+        }
+
+        UserDto rDTO = new UserDto();
+        rDTO.setUserId(rEntity.getUserId());
+        rDTO.setUserPassword(rEntity.getUserPassword());
+
+        return rDTO;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+        log.info("username : " + userId);
+        UserEntity rEntity = userRepository.findByUserId(userId);
+
+        if (rEntity == null) {
+            throw new UsernameNotFoundException(userId);
+        }
+
+        return new User(rEntity.getUserId(), rEntity.getUserPassword(),
+                true, true, true, true,
+                new ArrayList<>());
     }
 }
