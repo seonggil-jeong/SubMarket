@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,52 @@ public class SubService implements ISubService {
     private final SubRepository subRepository;
     private final UserRepository userRepository;
     private final UserService userService;
+
+    /** ------------------------- 구독 조회 ------------------------------*/
+    @Override
+    public List<SubEntity> findAllSub(SubDto subDto) throws RuntimeException{
+        Optional<UserEntity> user = userRepository.findById(subDto.getUserSeq());
+
+        if (user == null) {
+            log.info("User 정보 없음");
+            throw new EntityNotFoundException("User Entity Not Found");
+        }
+        Iterable<SubEntity> subEntityIterable = subRepository.findByUser(user.get());
+
+        log.info(this.getClass().getName() + ". find Sub Info");
+
+        List<SubEntity> subEntityList = new ArrayList<>();
+
+        subEntityIterable.forEach(e -> {
+            subEntityList.add(e);
+        });
+        return subEntityList;
+    }
+
+
+    @Override // 구독 상세 조회
+    @Transactional
+    public SubDto findOneSub(SubDto subDto) throws Exception {
+        log.info(this.getClass().getName() + "findOne Sub Start!");
+        int subSeq = subDto.getSubSeq();
+        SubDto pDto = new SubDto();
+
+        Optional<SubEntity> subEntityOptional = subRepository.findById(subSeq);
+
+        SubEntity subEntity = subEntityOptional.get();
+        log.info("subSeq : " + subEntity.getSubSeq());
+        log.info("itemSeq : " + subEntity.getItemSeq());
+        log.info("subDate : " + subEntity.getSubDate());
+        log.info("subCount : " + subEntity.getSubCount());
+
+        if (subEntity == null) {
+            throw new RuntimeException("SubEntity Null");
+        }
+        pDto = SubMapper.INSTANCE.subEntityToSubDto(subEntity);
+
+
+        return pDto;
+    }
 
     /** ------------------------- 구독 생성 ------------------------------*/
     @Override
