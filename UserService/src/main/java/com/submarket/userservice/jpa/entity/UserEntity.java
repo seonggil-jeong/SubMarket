@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -47,5 +48,5 @@ public class UserEntity {
     private String userAddress2;
 
     @OneToMany(mappedBy = "user")
-    private List<SubEntity> subEntityList;
+    private List<SubEntity> subEntityList = new ArrayList<>();
 }
