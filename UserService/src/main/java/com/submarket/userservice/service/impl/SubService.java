@@ -25,6 +25,27 @@ public class SubService implements ISubService {
     private final UserRepository userRepository;
     private final UserService userService;
 
+    /** ------------------------- 구독 조회 ------------------------------*/
+    @Override
+    public List<SubEntity> findAllSub(SubDto subDto) throws RuntimeException{
+        Optional<UserEntity> user = userRepository.findById(subDto.getUserSeq());
+
+        if (user == null) {
+            log.info("User 정보 없음");
+            throw new EntityNotFoundException("User Entity Not Found");
+        }
+        Iterable<SubEntity> subEntityIterable = subRepository.findByUser(user.get());
+
+        log.info(this.getClass().getName() + ". find Sub Info");
+
+        List<SubEntity> subEntityList = new ArrayList<>();
+
+        subEntityIterable.forEach(e -> {
+            subEntityList.add(e);
+        });
+        return subEntityList;
+    }
+
     /** ------------------------- 구독 생성 ------------------------------*/
     @Override
     public int createNewSub(SubDto subDto) {
