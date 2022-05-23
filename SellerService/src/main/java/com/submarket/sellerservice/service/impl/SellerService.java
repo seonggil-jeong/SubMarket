@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -98,6 +99,27 @@ public class SellerService implements ISellerService {
         SellerDto rDto = SellerMapper.INSTANCE.sellerEntityToSellerDto(sellerEntity);
 
         return rDto;
+    }
+
+    @Override
+    @Transactional // 비밀번호 변경
+    public int changePassword(String oldPassword, String newPassword, String sellerId) throws Exception {
+        log.info(this.getClass().getName() + ".changePassword Start!");
+        int res = 0;
+        SellerEntity sellerEntity = sellerRepository.findBySellerId(sellerId);
+        SellerDto sellerDto = new SellerDto();
+        // 인코딩된 Password
+        sellerDto.setSellerId(sellerId);
+        sellerDto.setSellerPassword(oldPassword);
+
+        if (sellerCheckService.checkSellerBySellerPassword(sellerDto)) {
+            // 비밀번호가 일치한다면 변경 실행
+            sellerRepository.changeSellerPassword(passwordEncoder.encode(newPassword), sellerId);
+            res = 1;
+        }
+
+        log.info(this.getClass().getName() + ".changePassword End!");
+        return res;
     }
 
     //####################################### JWT Don't change #######################################//
