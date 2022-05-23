@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @Slf4j
 @RequiredArgsConstructor
@@ -36,4 +39,18 @@ public class GroupController {
         return ResponseEntity.ok().body(groupDto);
 
     }
+
+    @GetMapping("/group") // Group List 조회
+    public ResponseEntity<List<GroupDto>> findGroupList() throws Exception {
+        log.info(this.getClass().getName() + ".findGroupList Start!");
+
+        List<GroupDto> groupDtoList = new ArrayList<>();
+
+        groupDtoList = groupService.findGroupList();
+
+        log.info(this.getClass().getName() + ".findGroupList End!");
+
+        return ResponseEntity.ok().body(groupDtoList);
+    }
+
 }
