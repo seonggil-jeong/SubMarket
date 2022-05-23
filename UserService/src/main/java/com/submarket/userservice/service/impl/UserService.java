@@ -110,7 +110,7 @@ public class UserService implements IUserService {
     public UserDto getUserDetailsByUserId(String userId) {
         UserEntity rEntity = userRepository.findByUserId(userId);
 
-        if (rEntity == null) {
+        if (rEntity == null || rEntity.getUserStatus() == 0) {
             throw new UsernameNotFoundException(userId);
         }
 
@@ -126,7 +126,8 @@ public class UserService implements IUserService {
         log.info("username : " + userId);
         UserEntity rEntity = userRepository.findByUserId(userId);
 
-        if (rEntity == null) {
+        if (rEntity == null || rEntity.getUserStatus() == 0) {
+            // 사용자 정보가 없거나 탈퇴한 사용자라면 (401)
             throw new UsernameNotFoundException(userId);
         }
 
