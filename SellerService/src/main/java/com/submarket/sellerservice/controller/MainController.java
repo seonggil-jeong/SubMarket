@@ -34,32 +34,5 @@ public class MainController {
                 + ", token secret : " + env.getProperty("token.secret")
                 + ", token expiration time : " + env.getProperty("token.expiration_time");
     }
-
-    @GetMapping("/test")
-    public BusinessIdApiDto test() throws Exception {
-        RestTemplate restTemplate = new RestTemplate();
-        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory()); // no body
-        String url = "https://api.odcloud.kr/api/nts-businessman/v1/status";
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", env.getProperty("businessId"));
-
-        List<String> bNoList = new LinkedList<>();
-        bNoList.add("00000000");
-
-        Map<String, Object> body = new HashMap<>();
-        body.put("b_no", bNoList);
-
-        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(body, headers);
-
-
-        ResponseEntity<BusinessIdApiDto> response = restTemplate.exchange(url, HttpMethod.POST, entity, BusinessIdApiDto.class);
-
-
-
-        return response.getBody();
-
-
-    }
 }
 

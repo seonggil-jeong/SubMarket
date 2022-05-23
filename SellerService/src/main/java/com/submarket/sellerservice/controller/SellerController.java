@@ -2,6 +2,7 @@ package com.submarket.sellerservice.controller;
 
 import com.submarket.sellerservice.dto.SellerDto;
 import com.submarket.sellerservice.mapper.SellerMapper;
+import com.submarket.sellerservice.service.impl.SellerCheckService;
 import com.submarket.sellerservice.service.impl.SellerService;
 import com.submarket.sellerservice.util.TokenUtil;
 import com.submarket.sellerservice.vo.RequestChangePassword;
@@ -9,10 +10,16 @@ import com.submarket.sellerservice.vo.RequestSellerInfo;
 import com.submarket.sellerservice.vo.ResponseSellerInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 public class SellerController {
     private final SellerService sellerService;
     private final TokenUtil tokenUtil;
+    private final SellerCheckService sellerCheckService;
 
     @PostMapping("/sellers")
     public ResponseEntity<String> createSeller(@RequestBody RequestSellerInfo sellerInfo) throws Exception {
@@ -78,7 +86,7 @@ public class SellerController {
 
     @PatchMapping("/sellers/change-password")
     public ResponseEntity<String> changePassword(@RequestHeader HttpHeaders headers, @RequestBody RequestChangePassword
-                                                 requestChangePassword) throws Exception {
+            requestChangePassword) throws Exception {
         log.info(this.getClass().getName() + ".changePassword Start!");
         int res = 0;
         String sellerId = tokenUtil.getUserIdByToken(headers);
@@ -96,5 +104,15 @@ public class SellerController {
         return ResponseEntity.ok().body("비밀번호 변경 성공");
     }
 
+    // 사업자 번호 유효성 검사
+    @GetMapping("/seller/business/{businessId}")
+    public ResponseEntity<Map<String, Object>> checkBusinessId(@PathVariable String businessId) throws Exception {
+        log.info(this.getClass().getName() + ".checkBusinessId Start!");
+
+        Map<String, Object> taxType = sellerCheckService.checkBusinessId(businessId);
+
+        log.info(this.getClass().getName() + ".checkBusinessId End!");
+        return ResponseEntity.ok().body(taxType);
+    }
 }
 
