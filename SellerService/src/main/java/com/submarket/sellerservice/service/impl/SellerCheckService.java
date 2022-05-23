@@ -57,8 +57,12 @@ public class SellerCheckService implements ISellerCheckService {
         String sellerId = SellerDto.getSellerId();
 
         SellerEntity sellerEntity = sellerRepository.findBySellerId(sellerId);
+        boolean checkPassword = passwordEncoder.matches(sellerPassword, sellerEntity.getSellerPassword());
 
+        if (checkPassword == false) {
+            throw new RuntimeException("비밀번호가 일치하지 않습니다");
+        }
         // 비밀번호가 일치하면 True
-        return passwordEncoder.matches(sellerPassword, sellerEntity.getSellerPassword());
+        return true;
     }
 }
