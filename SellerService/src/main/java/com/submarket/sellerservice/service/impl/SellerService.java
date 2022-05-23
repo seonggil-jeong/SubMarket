@@ -81,7 +81,24 @@ public class SellerService implements ISellerService {
     }
 
 
+    @Override
+    public SellerDto getSellerInfoBySellerEmail(SellerDto sellerDto) throws Exception {
+        log.info(this.getClass().getName() + ".getSellerInfoBySellerEmail Start !");
+        String sellerEmail = sellerDto.getSellerEmail();
 
+        log.info("sellerEmail : " + sellerEmail);
+
+        SellerEntity sellerEntity = sellerRepository.findBySellerEmail(sellerEmail);
+
+        if (sellerEntity == null) {
+            throw new RuntimeException("사용자 정보를 찾을 수 없습니다");
+        }
+
+        log.info(this.getClass().getName() + ".getSellerInfoBySellerEmail End !");
+        SellerDto rDto = SellerMapper.INSTANCE.sellerEntityToSellerDto(sellerEntity);
+
+        return rDto;
+    }
 
     //####################################### JWT Don't change #######################################//
     @Override
