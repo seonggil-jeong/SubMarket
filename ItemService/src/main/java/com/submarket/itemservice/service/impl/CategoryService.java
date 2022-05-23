@@ -25,10 +25,16 @@ public class CategoryService implements ICategoryService {
     public CategoryDto findCategory(CategoryDto categoryDto) throws Exception {
         log.info(this.getClass().getName() + ".findCategory Start");
         int categorySeq = categoryDto.getCategorySeq();
+        CategoryDto rDto = new CategoryDto();
 
         Optional<CategoryEntity> categoryEntityOptional = categoryRepository.findById(categorySeq);
 
-        CategoryDto rDto = CategoryMapper.INSTANCE.categoryEntityToCategoryDto(categoryEntityOptional.get());
+        if (categoryEntityOptional.isPresent()) {
+            rDto = CategoryMapper.INSTANCE.categoryEntityToCategoryDto(categoryEntityOptional.get());
+        } else {
+            throw new RuntimeException("Category 정보를 찾을 수 없습니다");
+        }
+
 
         log.info(this.getClass().getName() + ".findCategory End");
         return rDto;
