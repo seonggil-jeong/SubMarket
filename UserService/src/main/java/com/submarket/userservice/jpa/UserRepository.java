@@ -28,8 +28,8 @@ public interface UserRepository extends CrudRepository<UserEntity, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE user_info SET user_status = 0 WHERE user_seq = :userSeq", nativeQuery = true)
-    void deleteUserInfo(@Param("userSeq") int userSeq);
+    @Query(value = "UPDATE user_info SET user_status = 0 WHERE user_id = :userId", nativeQuery = true)
+    void deleteUserInfo(@Param("userId") String userId);
 
 
 

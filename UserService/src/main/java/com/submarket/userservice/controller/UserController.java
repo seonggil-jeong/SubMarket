@@ -4,11 +4,13 @@ import com.submarket.userservice.dto.UserDto;
 import com.submarket.userservice.mapper.UserMapper;
 import com.submarket.userservice.service.impl.UserCheckService;
 import com.submarket.userservice.service.impl.UserService;
+import com.submarket.userservice.util.TokenUtil;
 import com.submarket.userservice.vo.RequestChangePassword;
 import com.submarket.userservice.vo.RequestUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,7 @@ public class UserController {
     private final UserService userService;
     private final UserCheckService userCheckService;
     private final Environment env;
+    private final TokenUtil tokenUtil;
 
     /**<---------------------->회원가입</---------------------->*/
     @PostMapping("/users")
@@ -105,15 +108,18 @@ public class UserController {
     }
 
     @DeleteMapping("/user")
-    public ResponseEntity<String> deleteUser(@RequestBody RequestUser requestUser) throws Exception {
+    public ResponseEntity<String> deleteUser(@RequestHeader HttpHeaders headers, @RequestBody RequestUser requestUser) throws Exception {
         /**
          * 비밀번호가 일치한다면
          * 사용자 Status 0으로 변경
          */
         log.info(this.getClass().getName() + ".deleteUser Start!");
+
+        // GetUserId from Token
+        String userId = tokenUtil.getUserIdByToken(headers);
         UserDto pDto = new UserDto();
         pDto.setUserPassword(requestUser.getUserPassword());
-        pDto.setUserId(requestUser.getUserId());
+        pDto.setUserId(userId);
 
         // TODO: 2022-05-23 요청
         userService.deleteUser(pDto);

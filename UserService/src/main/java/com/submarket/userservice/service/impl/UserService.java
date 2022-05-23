@@ -93,8 +93,7 @@ public class UserService implements IUserService {
         // 비밀번호 일치 확인
         if (userCheckService.isTruePassword(userDto.getUserId(), userDto.getUserPassword())) {
             // 비밀번호가 일치한다면
-            int userSeq = 38;
-            userRepository.deleteUserInfo(userSeq);
+            userRepository.deleteUserInfo(userDto.getUserId());
         } else {
             throw new RuntimeException("사용자 비밀번호가 일치하지 않습니다");
         }
