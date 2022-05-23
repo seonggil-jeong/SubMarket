@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 
 
@@ -85,7 +86,24 @@ public class UserService implements IUserService {
 
     }
 
+    @Override
+    @Transactional
+    public int deleteUser(UserDto userDto) throws Exception {
+        log.info(this.getClass().getName() + ".deleteUser Start!");
+        // 비밀번호 일치 확인
+        if (userCheckService.isTruePassword(userDto.getUserId(), userDto.getUserPassword())) {
+            // 비밀번호가 일치한다면
+            int userSeq = 38;
+            userRepository.deleteUserInfo(userSeq);
+        } else {
+            throw new RuntimeException("사용자 비밀번호가 일치하지 않습니다");
+        }
 
+
+        log.info(this.getClass().getName() + ".deleteUser End!");
+
+        return 0;
+    }
 
     //####################################### JWT Don't change #######################################//
     @Override

@@ -103,4 +103,23 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이전 비밀번호를 확인해 주세요");
 
     }
+
+    @DeleteMapping("/user")
+    public ResponseEntity<String> deleteUser(@RequestBody RequestUser requestUser) throws Exception {
+        /**
+         * 비밀번호가 일치한다면
+         * 사용자 Status 0으로 변경
+         */
+        log.info(this.getClass().getName() + ".deleteUser Start!");
+        UserDto pDto = new UserDto();
+        pDto.setUserPassword(requestUser.getUserPassword());
+        pDto.setUserId(requestUser.getUserId());
+
+        // TODO: 2022-05-23 요청
+        userService.deleteUser(pDto);
+
+        log.info(this.getClass().getName() + ".deleteUser Start!");
+
+        return null;
+    }
 }
