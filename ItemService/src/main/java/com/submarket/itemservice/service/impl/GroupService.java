@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service(value = "GroupService")
@@ -35,5 +37,24 @@ public class GroupService implements IGroupService {
 
                 log.info(this.getClass().getName() + ".findItemInfoByGroup End!");
         return rDto;
+    }
+
+    @Override // Group List 조회
+    @Transactional
+    public List<GroupDto> findGroupList() throws Exception {
+        log.info(this.getClass().getName() + "findGroupList Start!");
+        List<GroupDto> groupDtoList = new ArrayList<>();
+        Iterable<GroupEntity> groupEntityIterable = groupRepository.findAll();
+
+
+        groupEntityIterable.forEach(groupEntity -> {
+            groupDtoList.add(GroupMapper.INSTANCE.groupEntityToGroupDto(groupEntity));
+        });
+
+        log.info("groupList Size : " + groupDtoList.size());
+        log.info(this.getClass().getName() + "findGroupList End!");
+
+
+        return groupDtoList;
     }
 }
