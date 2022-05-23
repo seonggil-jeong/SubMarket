@@ -13,5 +13,6 @@ public interface ISellerService extends UserDetailsService {
 
     SellerDto getSellerDetailsByUserId(String sellerId);
 
+    int changePassword(String oldPassword, String newPassword, String sellerId) throws Exception;
 
 }
