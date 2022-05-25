@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -19,16 +21,28 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping("/category")
-    public ResponseEntity<List<CategoryDto>> findAllCategory() throws Exception {
+    public ResponseEntity<Map<String, Object>> findAllCategory() throws Exception {
         log.info(this.getClass().getName() + ">findAllCategory Start!");
-        List<CategoryDto> categoryDtoList = new ArrayList<>();
+        Map<String, Object> rMap = new HashMap<>();
 
-        categoryDtoList = categoryService.findAllCategory();
+        List<CategoryDto> categoryDtoList = categoryService.findAllCategory();
+
+        // Front  를 위해 Return Type 튜닝
+        Map<String, String> header = new HashMap<>();
+        header.put("status", "1");
+        header.put("resultCode", "200");
+
+        Map<String, Object> body = new HashMap<>();
+        body.put("categorys", categoryDtoList);
+        Map<String, Object> entity = new HashMap<>();
+        entity.put("header", header);
+        entity.put("body", body);
+        rMap.put("response", entity);
 
 
         log.info(this.getClass().getName() + ">findAllCategory End!");
 
-        return ResponseEntity.ok().body(categoryDtoList);
+        return ResponseEntity.ok().body(rMap);
     }
 
     @GetMapping("/category/{categorySeq}")
