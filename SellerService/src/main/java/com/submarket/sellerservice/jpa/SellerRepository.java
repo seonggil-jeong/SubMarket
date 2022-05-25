@@ -24,4 +24,10 @@ public interface SellerRepository extends CrudRepository<SellerEntity, Integer> 
     @Modifying
     @Query(value = "UPDATE seller_info SET seller_password = :sellerPassword WHERE seller_id = :sellerId", nativeQuery = true)
     void changeSellerPassword(@Param("sellerPassword") String sellerPassword, @Param("sellerId") String sellerId);
+
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE seller_info SET seller_home = :sellerHome, seller_address = :sellerAddress, seller_address2 = :sellerAddress2 WHERE seller_id = :sellerId", nativeQuery = true)
+    void modifySellerInfo(@Param("sellerHome") String sellerHome, @Param("sellerAddress") String sellerAddress,
+                          @Param("sellerAddress2") String sellerAddress2, @Param("sellerId") String sellerId);
 }

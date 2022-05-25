@@ -16,10 +16,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionContext;
+import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -44,6 +44,26 @@ public class SellerController {
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("회원가입 실패");
         }
+    }
+
+    @PatchMapping("/sellers")
+    public ResponseEntity<String> modifySellerInfo(@RequestBody SellerDto sellerDto,
+                                                   @RequestHeader HttpHeaders headers) throws Exception {
+        log.info(this.getClass().getName() + ".modifySellerInfo Start!");
+
+        String sellerId = tokenUtil.getUserIdByToken(headers);
+        sellerDto.setSellerId(sellerId);
+
+        int res = sellerService.modifySellerInfo(sellerDto);
+
+        if (res == 1) {
+            log.info("수정 완료");
+            return ResponseEntity.ok().body("수정 성공");
+        }
+
+        log.info("수정 실패");
+        log.info(this.getClass().getName() + ".modifySellerInfo End!");
+        return ResponseEntity.ok().body("수정 실패 (500)");
     }
 
     @PostMapping("/sellers/drop")

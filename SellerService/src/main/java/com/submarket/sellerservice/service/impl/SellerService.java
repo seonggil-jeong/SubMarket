@@ -6,6 +6,7 @@ import com.submarket.sellerservice.jpa.SellerRepository;
 import com.submarket.sellerservice.jpa.entity.SellerEntity;
 import com.submarket.sellerservice.mapper.SellerMapper;
 import com.submarket.sellerservice.service.ISellerService;
+import com.submarket.sellerservice.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.User;
@@ -120,6 +121,21 @@ public class SellerService implements ISellerService {
 
         log.info(this.getClass().getName() + ".changePassword End!");
         return res;
+    }
+
+    @Override
+    @Transactional
+    public int modifySellerInfo(SellerDto sellerDto) throws Exception {
+        log.info(this.getClass().getName() + ".modifySellerInfo Start!");
+        String sellerId = CmmUtil.nvl(sellerDto.getSellerId());
+        String sellerHome = CmmUtil.nvl(sellerDto.getSellerHome());
+        String sellerAddress = CmmUtil.nvl(sellerDto.getSellerAddress());
+        String sellerAddress2 = CmmUtil.nvl(sellerDto.getSellerAddress2());
+
+        sellerRepository.modifySellerInfo(sellerHome, sellerAddress, sellerAddress2, sellerId);
+
+        log.info(this.getClass().getName() + ".modifySellerInfo End!");
+        return 1;
     }
 
     //####################################### JWT Don't change #######################################//
