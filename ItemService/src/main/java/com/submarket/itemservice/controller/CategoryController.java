@@ -23,26 +23,18 @@ public class CategoryController {
     @GetMapping("/category")
     public ResponseEntity<Map<String, Object>> findAllCategory() throws Exception {
         log.info(this.getClass().getName() + ">findAllCategory Start!");
-        Map<String, Object> rMap = new HashMap<>();
+        Map<String, Object> returnMap = new HashMap<>();
 
         List<CategoryDto> categoryDtoList = categoryService.findAllCategory();
 
         // Front  를 위해 Return Type 튜닝
-        Map<String, String> header = new HashMap<>();
-        header.put("status", "1");
-        header.put("resultCode", "200");
 
-        Map<String, Object> body = new HashMap<>();
-        body.put("categorys", categoryDtoList);
-        Map<String, Object> entity = new HashMap<>();
-        entity.put("header", header);
-        entity.put("body", body);
-        rMap.put("response", entity);
+        returnMap.put("response", categoryDtoList);
 
 
         log.info(this.getClass().getName() + ">findAllCategory End!");
 
-        return ResponseEntity.ok().body(rMap);
+        return ResponseEntity.ok().body(returnMap);
     }
 
     @GetMapping("/category/{categorySeq}")
