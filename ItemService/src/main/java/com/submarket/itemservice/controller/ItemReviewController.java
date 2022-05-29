@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Slf4j
@@ -62,14 +64,19 @@ public class ItemReviewController {
     }
 
     @GetMapping("/item/{itemSeq}/review")
-    public ResponseEntity<List<ItemReviewDto>> findItemReviewInItem(@PathVariable int itemSeq) throws Exception {
+    public ResponseEntity<Map<String, Object>> findItemReviewInItem(@PathVariable int itemSeq) throws Exception {
         log.info(this.getClass().getName() + "findItemReviewInItem Start!");
+
+        Map<String, Object> rMap = new HashMap<>();
 
         List<ItemReviewDto> itemReviewDtoList = itemReviewService.findAllReviewInItem(itemSeq);
 
+
+        rMap.put("response", itemReviewDtoList);
+
         log.info(this.getClass().getName() + "findItemReviewInItem End!");
 
-        return ResponseEntity.ok().body(itemReviewDtoList);
+        return ResponseEntity.ok().body(rMap);
     }
 
 }
