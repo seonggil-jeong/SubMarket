@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,18 +22,18 @@ public class CategoryController {
     @GetMapping("/category")
     public ResponseEntity<Map<String, Object>> findAllCategory() throws Exception {
         log.info(this.getClass().getName() + ">findAllCategory Start!");
-        Map<String, Object> returnMap = new HashMap<>();
+        Map<String, Object> rMap = new HashMap<>();
 
         List<CategoryDto> categoryDtoList = categoryService.findAllCategory();
 
         // Front  를 위해 Return Type 튜닝
 
-        returnMap.put("response", categoryDtoList);
+        rMap.put("response", categoryDtoList);
 
 
         log.info(this.getClass().getName() + ">findAllCategory End!");
 
-        return ResponseEntity.ok().body(returnMap);
+        return ResponseEntity.ok().body(rMap);
     }
 
     @GetMapping("/category/{categorySeq}")
