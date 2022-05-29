@@ -62,6 +62,21 @@ public class UserService implements IUserService {
         return rDTO;
     }
 
+    //####################################### 사용자 정보 조회 By UserId #######################################//
+    @Override
+    @Transactional
+    public UserDto getUserInfoByUserId(String userId) {
+        log.info(this.getClass().getName() + ".getUserInfoByUser Start!");
+
+        UserEntity userEntity = userRepository.findByUserId(userId);
+
+        UserDto userDto = UserMapper.INSTANCE.userEntityToUserDto(userEntity);
+
+        log.info(this.getClass().getName() + ".getUserInfoByUser End!");
+
+        return userDto;
+    }
+
     @Override
     public int changeUserPassword(UserDto pDTO, String newPassword) throws Exception {
         log.info(this.getClass().getName() + "changeUserPassword Start!");
