@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Slf4j
@@ -18,13 +20,16 @@ public class ItemController {
 
     // TODO: 2022/05/16 로직 추가
     @GetMapping("/items")
-    public ResponseEntity<List<ItemDto>> findAllItem() throws Exception {
+    public ResponseEntity<Map<String, Object>> findAllItem() throws Exception {
         log.info(this.getClass().getName() + ".findAllItem Start");
+        Map<String, Object> rMap = new HashMap<>();
 
         List<ItemDto> itemDtoList = itemService.findAllItem();
 
+        rMap.put("response", itemDtoList);
+
         log.info(this.getClass().getName() + ".findAllItem End");
-        return ResponseEntity.ok().body(itemDtoList);
+        return ResponseEntity.ok().body(rMap);
     }
 
     @GetMapping("/items/{itemSeq}")

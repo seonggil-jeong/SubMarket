@@ -31,13 +31,13 @@ public class SubService implements ISubService {
     @Override
     @Transactional
     public List<SubEntity> findAllSub(SubDto subDto) throws RuntimeException{
-        Optional<UserEntity> user = userRepository.findById(subDto.getUserSeq());
+        UserEntity user = userRepository.findByUserId(subDto.getUserId());
 
         if (user == null) {
             log.info("User 정보 없음");
             throw new EntityNotFoundException("User Entity Not Found");
         }
-        Iterable<SubEntity> subEntityIterable = subRepository.findByUser(user.get());
+        Iterable<SubEntity> subEntityIterable = subRepository.findByUser(user);
 
         log.info(this.getClass().getName() + ". find Sub Info");
 
@@ -81,7 +81,7 @@ public class SubService implements ISubService {
         log.info(this.getClass().getName() + "createNewSub Start!");
 
         int res = 0;
-        subDto.setUser(userRepository.findByUserId("dataofsg02")); // 수정 필요
+        subDto.setUser(userRepository.findByUserId(subDto.getUserId())); // 수정 필요
         subDto.setSubDate(DateUtil.getDateTime("dd"));
         subDto.setSubCount(1);
         log.info("itemSeq : " + subDto.getItemSeq());
