@@ -26,4 +26,7 @@ public class OrderController {
         log.info(this.getClass().getName() + ".insertOrder End!");
         return ResponseEntity.status(HttpStatus.CREATED).body("주문 생성 완료");
     }
+
+    // TODO: 2022/05/29 사용자 주문 조회
+    // TODO: 2022/05/29 사업자 주문 조회
 }
