@@ -7,6 +7,7 @@ import com.submarket.userservice.service.impl.UserService;
 import com.submarket.userservice.util.TokenUtil;
 import com.submarket.userservice.vo.RequestChangePassword;
 import com.submarket.userservice.vo.RequestUser;
+import com.submarket.userservice.vo.ResponseUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
@@ -41,6 +42,22 @@ public class UserController {
         log.info("-------------->  " + this.getClass().getName() + ".createUser End!");
 
         return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<ResponseUser> getUserInfo(@RequestHeader HttpHeaders headers) throws Exception {
+        // 사용자 토큰을 사용하여 사용자 정보 조회
+        String userId = tokenUtil.getUserIdByToken(headers);
+
+        if (userId.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+        UserDto userDto = userService.getUserInfoByUserId(userId);
+
+        ResponseUser responseUser = UserMapper.INSTANCE.UserDtoToResponseUser(userDto);
+
+        return ResponseEntity.ok().body(responseUser);
     }
 
     /**<------------------------>아이디 중복 확인</------------------------>*/
