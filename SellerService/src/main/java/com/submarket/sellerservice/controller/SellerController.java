@@ -29,6 +29,32 @@ public class SellerController {
     private final TokenUtil tokenUtil;
     private final SellerCheckService sellerCheckService;
 
+
+    @GetMapping("/seller")
+    public ResponseEntity<ResponseSellerInfo> getSellerInfo(@RequestHeader HttpHeaders headers) throws Exception {
+        log.info(this.getClass().getName() + ".getSellerInfo Start!");
+        SellerDto pDto = new SellerDto();
+
+        String sellerId = tokenUtil.getUserIdByToken(headers);
+        pDto.setSellerId(sellerId);
+
+        SellerDto sellerDto = sellerService.getSellerInfoBySellerId(pDto);
+
+        log.info("seller Service End!");
+
+        ResponseSellerInfo sellerInfo = SellerMapper.INSTANCE.SellerDtoToResponseSellerInfo(sellerDto);
+
+        if (sellerInfo == null) {
+            log.info(this.getClass().getName() + "userToken");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+
+        log.info(this.getClass().getName() + ".getSellerInfo End!");
+
+        return ResponseEntity.ok().body(sellerInfo);
+    }
+
     @PostMapping("/sellers")
     public ResponseEntity<String> createSeller(@RequestBody RequestSellerInfo sellerInfo) throws Exception {
         log.info(this.getClass().getName() + ".createSeller Start!");

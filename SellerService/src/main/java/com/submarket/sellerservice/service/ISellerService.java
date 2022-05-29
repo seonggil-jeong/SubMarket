@@ -11,6 +11,8 @@ public interface ISellerService extends UserDetailsService {
 
     SellerDto getSellerInfoBySellerEmail(SellerDto sellerDto) throws Exception;
 
+    SellerDto getSellerInfoBySellerId(SellerDto sellerDto) throws Exception;
+
     SellerDto getSellerDetailsByUserId(String sellerId);
 
     int changePassword(String oldPassword, String newPassword, String sellerId) throws Exception;

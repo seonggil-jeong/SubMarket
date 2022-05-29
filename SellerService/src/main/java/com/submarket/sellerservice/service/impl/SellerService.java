@@ -103,6 +103,21 @@ public class SellerService implements ISellerService {
     }
 
     @Override
+    public SellerDto getSellerInfoBySellerId(SellerDto sellerDto) throws Exception {
+        log.info(this.getClass().getName() + "getSellerInfoBySellerId Start!");
+        String sellerId = sellerDto.getSellerId();
+
+        SellerEntity sellerEntity = sellerRepository.findBySellerId(sellerId);
+
+        SellerDto rDto = SellerMapper.INSTANCE.sellerEntityToSellerDto(sellerEntity);
+
+
+        log.info(this.getClass().getName() + "getSellerInfoBySellerId End!");
+
+        return rDto;
+    }
+
+    @Override
     @Transactional // 비밀번호 변경
     public int changePassword(String oldPassword, String newPassword, String sellerId) throws Exception {
         log.info(this.getClass().getName() + ".changePassword Start!");
