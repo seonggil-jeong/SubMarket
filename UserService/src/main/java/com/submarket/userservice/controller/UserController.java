@@ -113,10 +113,13 @@ public class UserController {
 
     /**<------------------------>비밀번호 변경</------------------------>*/
     @PostMapping("/users/changePassword")
-    public ResponseEntity<String> changePassword(@RequestBody RequestChangePassword request) throws Exception {
+    public ResponseEntity<String> changePassword(@RequestHeader HttpHeaders headers,
+                                                 @RequestBody RequestChangePassword request) throws Exception {
+        String userId = tokenUtil.getUserIdByToken(headers);
 
+        log.info("userId : " + userId);
         UserDto pDTO = new UserDto();
-        pDTO.setUserId(request.getUserId());
+        pDTO.setUserId(userId);
         pDTO.setUserPassword(request.getOldPassword());
 
         int check = userService.changeUserPassword(pDTO, request.getNewPassword());

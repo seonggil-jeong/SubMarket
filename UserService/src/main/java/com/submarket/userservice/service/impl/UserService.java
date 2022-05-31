@@ -90,7 +90,7 @@ public class UserService implements IUserService {
         // 만약 비밀번호가 일치한다면
         if (checkPassword) {
             log.info("비밀번호 일치");
-            userRepository.changeUserPassword(passwordEncoder.encode(newPassword), pDTO.getUserSeq());
+            userRepository.changeUserPassword(passwordEncoder.encode(newPassword), pDTO.getUserId());
 
             log.info(this.getClass().getName() + "changeUserPassword End!");
             return 1; // 성공
