@@ -128,11 +128,12 @@ public class UserController {
 
     }
 
-    @PatchMapping("/user")
+    @PostMapping("/user/modify")
     public ResponseEntity<String> modifyUserInfo(@RequestHeader HttpHeaders headers, @RequestBody UserDto body)
         throws Exception {
         log.info(this.getClass().getName() + ".modifyUserInfo Start!");
         String userId = tokenUtil.getUserIdByToken(headers);
+        log.info("userEmail in Controller : " + body.getUserEmail());
 
         body.setUserId(userId);
 
