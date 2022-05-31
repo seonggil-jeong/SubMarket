@@ -21,8 +21,8 @@ public interface UserRepository extends CrudRepository<UserEntity, Integer> {
     // 비밀번호 변경
     @Transactional
     @Modifying
-    @Query(value = "UPDATE user_info set user_password = :password WHERE user_seq = :userSeq", nativeQuery = true)
-    void changeUserPassword(@Param("password") String password, @Param("userSeq") int userSeq);
+    @Query(value = "UPDATE user_info set user_password = :password WHERE user_id = :userId", nativeQuery = true)
+    void changeUserPassword(@Param("password") String password, @Param("userId") String userId);
 
     // 사용자 status 변경 (회원탈퇴)
 
