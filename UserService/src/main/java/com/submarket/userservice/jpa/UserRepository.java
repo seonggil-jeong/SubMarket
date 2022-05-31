@@ -31,6 +31,11 @@ public interface UserRepository extends CrudRepository<UserEntity, Integer> {
     @Query(value = "UPDATE user_info SET user_status = 0 WHERE user_id = :userId", nativeQuery = true)
     void deleteUserInfo(@Param("userId") String userId);
 
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE user_info SET user_email = :userEmail, user_address = :userAddress, user_address2 = :userAddress2, user_pn = :userPn, user_age = :userAge WHERE user_id = :userId", nativeQuery = true)
+    void modifyUserInfo(@Param("userEmail") String userEmail, @Param("userAddress") String userAddress
+            , @Param("userAddress2") String userAddress2,@Param("userPn") String userPn, @Param("userAge") String userAge, @Param("userId") String userId);
 
 
 }

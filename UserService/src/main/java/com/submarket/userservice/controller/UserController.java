@@ -16,6 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -46,6 +48,7 @@ public class UserController {
 
     @GetMapping("/user")
     public ResponseEntity<ResponseUser> getUserInfo(@RequestHeader HttpHeaders headers) throws Exception {
+        log.info(this.getClass().getName() + "getUserInfo Start!");
         // 사용자 토큰을 사용하여 사용자 정보 조회
         String userId = tokenUtil.getUserIdByToken(headers);
 
@@ -57,6 +60,7 @@ public class UserController {
 
         ResponseUser responseUser = UserMapper.INSTANCE.UserDtoToResponseUser(userDto);
 
+        log.info(this.getClass().getName() + "getUserInfo End!");
         return ResponseEntity.ok().body(responseUser);
     }
 
@@ -122,6 +126,22 @@ public class UserController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이전 비밀번호를 확인해 주세요");
 
+    }
+
+    @PatchMapping("/user")
+    public ResponseEntity<String> modifyUserInfo(@RequestHeader HttpHeaders headers, @RequestBody UserDto body)
+        throws Exception {
+        log.info(this.getClass().getName() + ".modifyUserInfo Start!");
+        String userId = tokenUtil.getUserIdByToken(headers);
+
+        body.setUserId(userId);
+
+        int res = userService.modifyUserInfo(body);
+        if (res == 1) {
+            return ResponseEntity.ok().body("변경 성공");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Server Error");
+        }
     }
 
     @DeleteMapping("/user")
