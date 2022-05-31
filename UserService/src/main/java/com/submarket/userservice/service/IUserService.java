@@ -17,6 +17,8 @@ public interface IUserService extends UserDetailsService {
 
     UserDto getUserInfoByUserId(String userId);
 
+    int modifyUserInfo(UserDto userDto) throws Exception;
+
 
 
 }

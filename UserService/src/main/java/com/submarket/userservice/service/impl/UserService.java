@@ -5,6 +5,7 @@ import com.submarket.userservice.jpa.UserRepository;
 import com.submarket.userservice.jpa.entity.UserEntity;
 import com.submarket.userservice.mapper.UserMapper;
 import com.submarket.userservice.service.IUserService;
+import com.submarket.userservice.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.User;
@@ -117,6 +118,26 @@ public class UserService implements IUserService {
         log.info(this.getClass().getName() + ".deleteUser End!");
 
         return 0;
+    }
+
+    @Override // 사용자 정보 수정
+    @Transactional
+    public int modifyUserInfo(UserDto userDto) throws Exception {
+        log.info(this.getClass().getName() + ".modifyUserInfo Start!");
+        String userEmail = CmmUtil.nvl(userDto.getUserEmail());
+        String userAddress = CmmUtil.nvl(userDto.getUserAddress());
+        String userAddress2 = CmmUtil.nvl(userDto.getUserAddress2());
+        String userId = CmmUtil.nvl(userDto.getUserId());
+        String userAge = CmmUtil.nvl(userDto.getUserAge());
+        String userPn = CmmUtil.nvl(userDto.getUserPn());
+
+        log.info("userId : " + userId);
+        log.info("userEmail : " + userEmail);
+
+        userRepository.modifyUserInfo(userEmail, userAddress, userAddress2,userPn, userAge, userId);
+
+        log.info(this.getClass().getName() + ".modifyUserInfo End!");
+        return 1;
     }
 
     //####################################### JWT Don't change #######################################//
