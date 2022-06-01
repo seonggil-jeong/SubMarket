@@ -8,6 +8,7 @@ import com.submarket.itemservice.jpa.entity.ItemReviewEntity;
 import com.submarket.itemservice.mapper.ItemMapper;
 import com.submarket.itemservice.mapper.ItemReviewMapper;
 import com.submarket.itemservice.service.IItemReviewService;
+import com.submarket.itemservice.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -92,5 +93,23 @@ public class ItemReviewService implements IItemReviewService {
             reviewDtoList.add(ItemReviewMapper.INSTANCE.itemReviewEntityToItemDto(itemReviewEntity));
         });
         return reviewDtoList;
+    }
+
+    @Override
+    @Transactional
+    public List<ItemReviewDto> findAllReviewByUserId(String userId) throws Exception {
+        log.info(this.getClass().getName() + ".findAllReviewByUserId Start!");
+        List<ItemReviewDto> itemReviewDtoList = new LinkedList<>();
+
+        List<ItemReviewEntity> itemReviewEntityList = new LinkedList<>();
+
+        itemReviewEntityList = itemReviewRepository.findAllByUserId(CmmUtil.nvl(userId));
+
+        itemReviewEntityList.forEach(e -> {
+            itemReviewDtoList.add(ItemReviewMapper.INSTANCE.itemReviewEntityToItemDto(e));
+        });
+
+        log.info(this.getClass().getName() + ".findAllReviewByUserId End!");
+        return itemReviewDtoList;
     }
 }

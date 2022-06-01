@@ -2,13 +2,17 @@ package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.ItemReviewDto;
 import com.submarket.itemservice.service.impl.ItemReviewService;
+import com.submarket.itemservice.util.CmmUtil;
+import com.submarket.itemservice.util.TokenUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +21,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ItemReviewController {
     private final ItemReviewService itemReviewService;
+    private final TokenUtil tokenUtil;
 
     @PostMapping("/item/{itemSeq}/review")
     public ResponseEntity<String> saveReview(@RequestBody ItemReviewDto itemReviewDto, @PathVariable int itemSeq) throws Exception {
@@ -75,6 +80,24 @@ public class ItemReviewController {
         rMap.put("response", itemReviewDtoList);
 
         log.info(this.getClass().getName() + "findItemReviewInItem End!");
+
+        return ResponseEntity.ok().body(rMap);
+    }
+
+    @GetMapping("/item/review")
+    public ResponseEntity<Map<String, Object>> findReviewByUserId(@RequestHeader HttpHeaders headers) throws Exception {
+        String userId = CmmUtil.nvl(tokenUtil.getUserIdByToken(headers));
+
+        Map<String, Object> rMap = new HashMap<>();
+
+        List<ItemReviewDto> itemReviewDtoList = itemReviewService.findAllReviewByUserId(userId);
+
+        if (itemReviewDtoList == null) {
+            itemReviewDtoList = new LinkedList<ItemReviewDto>();
+        }
+
+        rMap.put("response", itemReviewDtoList);
+
 
         return ResponseEntity.ok().body(rMap);
     }
