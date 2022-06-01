@@ -24,7 +24,7 @@ public class ItemEntity {
     private Integer itemSeq;
 
     @Column(nullable = false)
-    private Integer sellerSeq;
+    private String sellerId;
 
     @Column(length = 300, nullable = false)
     private String itemTitle;
@@ -54,4 +54,5 @@ public class ItemEntity {
     private List<ItemReviewEntity> reviews;
 
     // TODO: 2022/05/11 Img 등록 추가
+    private String imagePath;
 }

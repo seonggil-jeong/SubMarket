@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ItemReviewDto {
     private Integer reviewSeq;
-    private int userSeq;
+    private String userId;
     private int reviewStar;
     private String reviewContents;
     private String reviewDate;

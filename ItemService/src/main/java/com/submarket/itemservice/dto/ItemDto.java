@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ItemDto {
     private int itemSeq;
-    private int sellerSeq;
+    private String sellerId;
     private String itemTitle;
     private String itemContents;
 
@@ -21,6 +21,7 @@ public class ItemDto {
     private CategoryEntity category;
 
     private int itemStatus; // 활성화
+    private String imagePath;
 
     // TODO: 2022/05/11 FK 설정
 }
