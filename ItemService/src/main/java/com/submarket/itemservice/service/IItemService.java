@@ -18,6 +18,8 @@ public interface IItemService {
 
     int modifyItem(ItemDto itemDto) throws Exception;
 
+    List<ItemDto> findItemBySellerId(String sellerId) throws Exception;
+
 
 
 }

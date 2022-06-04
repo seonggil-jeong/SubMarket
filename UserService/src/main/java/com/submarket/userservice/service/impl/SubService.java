@@ -11,6 +11,7 @@ import com.submarket.userservice.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpStatusCodeException;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
@@ -129,5 +130,27 @@ public class SubService implements ISubService {
 
         log.info(this.getClass().getName() + "cancelSub End!");
         return 1;
+    }
+
+    @Override
+    public int findSubCount(List<Integer> itemSeqList) throws Exception {
+        log.info(this.getClass().getName() + "findSubCount");
+        int count = 0;
+        try {
+            for (Integer itemSeq : itemSeqList) {
+                List<SubEntity> subEntityList = subRepository.findAllByItemSeq(itemSeq);
+                count += subEntityList.size();
+            }
+
+        } catch (HttpStatusCodeException statusCodeException) {
+            int code = statusCodeException.getRawStatusCode();
+            log.info( code + "HttpStatusCodeException : " + statusCodeException);
+
+        } catch (Exception e) {
+            log.info("Exception : " + e);
+
+        } finally {
+            return count;
+        }
     }
 }

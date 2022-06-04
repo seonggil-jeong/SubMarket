@@ -14,7 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -129,5 +131,17 @@ public class SubController {
         return ResponseEntity.ok("갱신 완료");
 
 
+    }
+
+    @GetMapping("/seller/sub")
+    public ResponseEntity<Integer> findSubCount(@RequestBody Map<String, Object> request)  throws Exception {
+        // Seller 가 보유하고 있는 상품의 SeqList 를 넘겨주면 총 구독 수를 표시
+        log.info(this.getClass().getName() + "findSubCount");
+        List<Integer> itemSeqList = new LinkedList<>();
+        itemSeqList = (List<Integer>) request.get("itemSeqList");
+
+        int count = subService.findSubCount(itemSeqList);
+
+        return ResponseEntity.status(HttpStatus.OK).body(count);
     }
 }

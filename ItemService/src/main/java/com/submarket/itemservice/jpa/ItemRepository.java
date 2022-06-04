@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -16,6 +17,9 @@ public interface ItemRepository extends CrudRepository<ItemEntity, Integer> {
     @Override
     @Transactional
     Optional<ItemEntity> findById(Integer integer);
+
+    @Transactional
+    List<ItemEntity> findAllBySellerId(String sellerId);
 
     @Modifying
     @Transactional
