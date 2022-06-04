@@ -56,7 +56,6 @@ public class ItemEntity {
     private GroupEntity group;
 
     @OneToMany(mappedBy = "item")
-    @JsonIgnore
     private List<ItemReviewEntity> reviews;
 
 }
