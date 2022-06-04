@@ -41,6 +41,12 @@ public class ItemEntity {
     @Column(nullable = false)
     private int itemStatus;
 
+    @Column(nullable = false, length = 300) // Main 이미지는 Null 일 수 없음
+    private String mainImagePath;
+
+    @Column(nullable = true, length = 300)
+    private String subImagePath;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JsonIgnore
     private CategoryEntity category;
@@ -53,6 +59,4 @@ public class ItemEntity {
     @JsonIgnore
     private List<ItemReviewEntity> reviews;
 
-    // TODO: 2022/05/11 Img 등록 추가
-    private String imagePath;
 }

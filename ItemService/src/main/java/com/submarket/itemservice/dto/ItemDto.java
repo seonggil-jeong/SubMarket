@@ -4,6 +4,7 @@ import com.submarket.itemservice.jpa.entity.CategoryEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +22,12 @@ public class ItemDto {
     private CategoryEntity category;
 
     private int itemStatus; // 활성화
-    private String imagePath;
+
+    private String mainImagePath; // DB에 저장되어 있는 이미지 정보
+    private String subImagePath;
+
+    private MultipartFile mainImage; // Front 에서 넘어온 이미지
+    private MultipartFile subImage; // Image 2
 
     // TODO: 2022/05/11 FK 설정
 }

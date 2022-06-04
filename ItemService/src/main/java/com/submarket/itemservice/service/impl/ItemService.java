@@ -28,6 +28,7 @@ public class ItemService implements IItemService {
     private final ItemRepository itemRepository;
     private final GroupRepository groupRepository;
     private final CategoryService categoryService;
+    private final S3Service s3Service;
 
     @Override
     @Transactional
@@ -45,9 +46,21 @@ public class ItemService implements IItemService {
         itemDto.setCategory(categoryEntity);
         itemDto.setItemStatus(1);
 
+        // 상품 이미지 등록 S3 Service (File, dirName) return : S3 Image Path
+        /** Main Image 는 항상 NotNull */
+        String mainImagePath = s3Service.uploadImageInS3(itemDto.getMainImage(), "images");
+        String subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
+
+        itemDto.setSubImagePath(subImagePath);
+        itemDto.setMainImagePath(mainImagePath);
+
+        // 이미지 정보가 없다면 Exception -> return "/" (기본 Image Path)
+
         log.info("" + itemDto.getCategory());
         ItemEntity itemEntity = ItemMapper.INSTANCE.itemDtoToItemEntity(itemDto);
         itemRepository.save(itemEntity);
+
+
 
         log.info(this.getClass().getName() + ".saveItem End");
         return 1;

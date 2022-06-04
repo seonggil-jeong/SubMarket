@@ -1,5 +1,6 @@
 package com.submarket.itemservice.controller;
 
+import com.submarket.itemservice.dto.ItemDto;
 import com.submarket.itemservice.jpa.CategoryRepository;
 import com.submarket.itemservice.jpa.ItemRepository;
 import com.submarket.itemservice.jpa.ItemReviewRepository;
@@ -38,11 +39,4 @@ public class MainController {
                 + ", token expiration time : " + env.getProperty("token.expiration_time");
     }
 
-    @PostMapping("/images")
-    public String upload(@RequestParam("images") MultipartFile multipartFile) throws IOException {
-
-        String rStr = s3Service.uploadImageInS3(multipartFile, "static");
-
-        return rStr;
-    }
 }
