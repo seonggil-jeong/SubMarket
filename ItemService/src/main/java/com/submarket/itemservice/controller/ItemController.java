@@ -6,6 +6,7 @@ import com.submarket.itemservice.util.CmmUtil;
 import com.submarket.itemservice.util.TokenUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,10 @@ public class ItemController {
 
     @PostMapping("/items")
     public ResponseEntity<String> saveItem(@RequestHeader HttpHeaders headers, @RequestBody ItemDto itemDto) throws Exception {
+        log.info(this.getClass().getName() + ".saveItem Start!");
+
         String sellerId = CmmUtil.nvl(tokenUtil.getUserIdByToken(headers));
+        itemDto.setSellerId(sellerId);
 
         if (itemDto == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("상품 정보 오류");
