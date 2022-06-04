@@ -41,9 +41,7 @@ public class S3Service implements IS3Service {
             File uploadFile = uploadInLocal(multipartFile) // 파일 변환할 수 없으면 에러
                     .orElseThrow(() -> new IllegalArgumentException("error: MultipartFile -> File convert fail"));
 
-            uploadInS3(uploadFile, dirName);
-
-            rPath = env.getProperty("s3.bucket") + "/" + dirName + "/" + multipartFile.getOriginalFilename();
+            rPath = uploadInS3(uploadFile, dirName);
             // 파일 저장 후 파일 Path return
 
         } catch (HttpStatusCodeException statusCodeException) {
@@ -61,6 +59,7 @@ public class S3Service implements IS3Service {
         } catch (Exception exception) {
             log.info("Exception : " + exception);
             rPath = "/";
+
         } finally {
 
             return rPath;
@@ -70,7 +69,7 @@ public class S3Service implements IS3Service {
 
     private String uploadInS3(File uploadFile, String dirName) {
 
-        String fileName = dirName + "/" + uploadFile.getName();   // S3에 저장된 파일 이름
+        String fileName = dirName + "/" +  UUID.randomUUID() + uploadFile.getName();   // S3에 저장된 파일 이름
         String uploadImageUrl = putS3(uploadFile, fileName); // s3로 업로드
         removeFileInLocal(uploadFile);
         return uploadImageUrl;
