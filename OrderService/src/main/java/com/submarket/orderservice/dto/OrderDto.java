@@ -11,8 +11,8 @@ public class OrderDto {
 
     private String orderId;
     private int itemSeq;
-    private int userSeq;
-    private int sellerSeq;
+    private String userId;
+    private String sellerId;
 
     private String orderDate;
 }

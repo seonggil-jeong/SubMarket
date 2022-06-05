@@ -6,6 +6,7 @@ import com.submarket.sellerservice.jpa.SellerRepository;
 import com.submarket.sellerservice.jpa.entity.SellerEntity;
 import com.submarket.sellerservice.mapper.SellerMapper;
 import com.submarket.sellerservice.service.ISellerService;
+import com.submarket.sellerservice.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.User;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -81,7 +83,75 @@ public class SellerService implements ISellerService {
     }
 
 
+    @Override
+    public SellerDto getSellerInfoBySellerEmail(SellerDto sellerDto) throws Exception {
+        log.info(this.getClass().getName() + ".getSellerInfoBySellerEmail Start !");
+        String sellerEmail = sellerDto.getSellerEmail();
 
+        log.info("sellerEmail : " + sellerEmail);
+
+        SellerEntity sellerEntity = sellerRepository.findBySellerEmail(sellerEmail);
+
+        if (sellerEntity == null) {
+            throw new RuntimeException("사용자 정보를 찾을 수 없습니다");
+        }
+
+        log.info(this.getClass().getName() + ".getSellerInfoBySellerEmail End !");
+        SellerDto rDto = SellerMapper.INSTANCE.sellerEntityToSellerDto(sellerEntity);
+
+        return rDto;
+    }
+
+    @Override
+    public SellerDto getSellerInfoBySellerId(SellerDto sellerDto) throws Exception {
+        log.info(this.getClass().getName() + "getSellerInfoBySellerId Start!");
+        String sellerId = sellerDto.getSellerId();
+
+        SellerEntity sellerEntity = sellerRepository.findBySellerId(sellerId);
+
+        SellerDto rDto = SellerMapper.INSTANCE.sellerEntityToSellerDto(sellerEntity);
+
+
+        log.info(this.getClass().getName() + "getSellerInfoBySellerId End!");
+
+        return rDto;
+    }
+
+    @Override
+    @Transactional // 비밀번호 변경
+    public int changePassword(String oldPassword, String newPassword, String sellerId) throws Exception {
+        log.info(this.getClass().getName() + ".changePassword Start!");
+        int res = 0;
+        SellerEntity sellerEntity = sellerRepository.findBySellerId(sellerId);
+        SellerDto sellerDto = new SellerDto();
+        // 인코딩된 Password
+        sellerDto.setSellerId(sellerId);
+        sellerDto.setSellerPassword(oldPassword);
+
+        if (sellerCheckService.checkSellerBySellerPassword(sellerDto)) {
+            // 비밀번호가 일치한다면 변경 실행
+            sellerRepository.changeSellerPassword(passwordEncoder.encode(newPassword), sellerId);
+            res = 1;
+        }
+
+        log.info(this.getClass().getName() + ".changePassword End!");
+        return res;
+    }
+
+    @Override
+    @Transactional
+    public int modifySellerInfo(SellerDto sellerDto) throws Exception {
+        log.info(this.getClass().getName() + ".modifySellerInfo Start!");
+        String sellerId = CmmUtil.nvl(sellerDto.getSellerId());
+        String sellerHome = CmmUtil.nvl(sellerDto.getSellerHome());
+        String sellerAddress = CmmUtil.nvl(sellerDto.getSellerAddress());
+        String sellerAddress2 = CmmUtil.nvl(sellerDto.getSellerAddress2());
+
+        sellerRepository.modifySellerInfo(sellerHome, sellerAddress, sellerAddress2, sellerId);
+
+        log.info(this.getClass().getName() + ".modifySellerInfo End!");
+        return 1;
+    }
 
     //####################################### JWT Don't change #######################################//
     @Override

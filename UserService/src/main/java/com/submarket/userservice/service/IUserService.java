@@ -9,8 +9,16 @@ public interface IUserService extends UserDetailsService {
 
     UserDto getUserInfoByUserEmail(String userEmail);
 
+    int changeUserPassword(UserDto pDTO, String newPassword) throws Exception;
+
+    int deleteUser(UserDto userDto) throws Exception;
+
     UserDto getUserDetailsByUserId(String userId);
 
-    int changeUserPassword(UserDto pDTO, String newPassword) throws Exception;
+    UserDto getUserInfoByUserId(String userId);
+
+    int modifyUserInfo(UserDto userDto) throws Exception;
+
+
 
 }

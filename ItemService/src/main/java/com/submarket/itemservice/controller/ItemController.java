@@ -2,29 +2,59 @@ package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.ItemDto;
 import com.submarket.itemservice.service.impl.ItemService;
+import com.submarket.itemservice.util.CmmUtil;
+import com.submarket.itemservice.util.TokenUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.omg.CosNaming.NamingContextPackage.NotFound;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Slf4j
 @RequiredArgsConstructor
 public class ItemController {
     private final ItemService itemService;
+    private final TokenUtil tokenUtil;
 
     // TODO: 2022/05/16 로직 추가
+
+    @PostMapping("/items")
+    public ResponseEntity<String> saveItem(@RequestHeader HttpHeaders headers, @RequestBody ItemDto itemDto) throws Exception {
+        log.info(this.getClass().getName() + ".saveItem Start!");
+
+        String sellerId = CmmUtil.nvl(tokenUtil.getUserIdByToken(headers));
+        itemDto.setSellerId(sellerId);
+
+        if (itemDto == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("상품 정보 오류");
+        }
+        int res = itemService.saveItem(itemDto);
+
+        if (res == 0) {
+            ResponseEntity.status(500).body("ServerError");
+        }
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("상품 등록 완료");
+    }
+
     @GetMapping("/items")
-    public ResponseEntity<List<ItemDto>> findAllItem() throws Exception {
+    public ResponseEntity<Map<String, Object>> findAllItem() throws Exception {
         log.info(this.getClass().getName() + ".findAllItem Start");
+        Map<String, Object> rMap = new HashMap<>();
 
         List<ItemDto> itemDtoList = itemService.findAllItem();
 
+        rMap.put("response", itemDtoList);
+
         log.info(this.getClass().getName() + ".findAllItem End");
-        return ResponseEntity.ok().body(itemDtoList);
+        return ResponseEntity.ok().body(rMap);
     }
 
     @GetMapping("/items/{itemSeq}")
@@ -46,7 +76,7 @@ public class ItemController {
         return ResponseEntity.ok().body(itemDto);
     }
 
-    @DeleteMapping("/items/{itemSeq}")
+    @PostMapping("/items/{itemSeq}/off")
     public ResponseEntity<String> offItem(@PathVariable int itemSeq) throws Exception {
         // TODO: 2022/05/16 비활성화, 사업자 인증
         ItemDto itemDto = new ItemDto();
@@ -56,7 +86,7 @@ public class ItemController {
         return ResponseEntity.ok().body("비활성화 완료");
     }
 
-    @PatchMapping("/items/{itemSeq}")
+    @PostMapping("/items/{itemSeq}/on")
     public ResponseEntity<String> onItem(@PathVariable int itemSeq) throws Exception {
         ItemDto itemDto = new ItemDto();
         itemDto.setItemSeq(itemSeq);
@@ -65,7 +95,7 @@ public class ItemController {
         return ResponseEntity.ok().body("활성화 완료");
     }
 
-    @PutMapping("/items")
+    @PostMapping("/items/modify")
     public ResponseEntity<String> modifyItem(@RequestBody ItemDto itemDto) throws Exception {
         // TODO: 2022-05-16 상품 이미지 로직 추가
         log.info(this.getClass().getName());

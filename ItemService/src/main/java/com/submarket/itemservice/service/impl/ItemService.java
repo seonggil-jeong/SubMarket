@@ -15,6 +15,7 @@ import com.submarket.itemservice.service.IItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpStatusCodeException;
 
 import javax.transaction.Transactional;
 import java.util.LinkedList;
@@ -28,6 +29,7 @@ public class ItemService implements IItemService {
     private final ItemRepository itemRepository;
     private final GroupRepository groupRepository;
     private final CategoryService categoryService;
+    private final S3Service s3Service;
 
     @Override
     @Transactional
@@ -45,9 +47,21 @@ public class ItemService implements IItemService {
         itemDto.setCategory(categoryEntity);
         itemDto.setItemStatus(1);
 
+        // 상품 이미지 등록 S3 Service (File, dirName) return : S3 Image Path
+        /** Main Image 는 항상 NotNull */
+        String mainImagePath = s3Service.uploadImageInS3(itemDto.getMainImage(), "images");
+        String subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
+
+        itemDto.setSubImagePath(subImagePath);
+        itemDto.setMainImagePath(mainImagePath);
+
+        // 이미지 정보가 없다면 Exception -> return "/" (기본 Image Path)
+
         log.info("" + itemDto.getCategory());
         ItemEntity itemEntity = ItemMapper.INSTANCE.itemDtoToItemEntity(itemDto);
         itemRepository.save(itemEntity);
+
+
 
         log.info(this.getClass().getName() + ".saveItem End");
         return 1;
@@ -116,5 +130,39 @@ public class ItemService implements IItemService {
         itemRepository.modifyItem(itemDto.getItemSeq(), itemDto.getItemContents(), itemDto.getItemPrice(),
                 itemDto.getItemCount(), itemDto.getItemTitle());
         return 1;
+    }
+
+    @Override
+    @Transactional
+    public List<ItemDto> findItemBySellerId(String sellerId) throws Exception {
+        // Seller 등록한 상품 조회
+        log.info(this.getClass().getName() + "findItemBySellerId Start!");
+
+        List<ItemDto> itemDtoList = new LinkedList<>();
+        try {
+            List<ItemEntity> itemEntityList = itemRepository.findAllBySellerId(sellerId);
+
+            log.info("Repository End");
+            List<ItemDto> finalItemDtoList = itemDtoList;
+            itemEntityList.forEach(item -> {
+                finalItemDtoList.add(ItemMapper.INSTANCE.itemEntityToItemDto(item));
+            });
+
+            itemDtoList = finalItemDtoList;
+
+
+        } catch (HttpStatusCodeException statusCodeException) {
+            int code = statusCodeException.getRawStatusCode();
+            log.info(code + "(HttpStatusCodeException) : " + statusCodeException);
+            itemDtoList = new LinkedList<>();
+
+        } catch (Exception e) {
+            log.info("Exception : " + e);
+            itemDtoList = new LinkedList<>();
+        } finally {
+            log.info(this.getClass().getName() + "findItemBySellerId End!");
+            return itemDtoList;
+
+        }
     }
 }

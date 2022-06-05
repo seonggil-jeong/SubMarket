@@ -26,4 +26,7 @@ public interface SubRepository extends CrudRepository<SubEntity, Integer> {
     @Transactional
     @Query(value = "SELECT * FROM sub_info WHERE sub_date = :subDate", nativeQuery = true)
     Iterable<SubEntity> findUpdateSub(String subDate);
+
+    @Transactional
+    List<SubEntity> findAllByItemSeq(Integer itemSeq);
 }

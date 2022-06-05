@@ -12,4 +12,6 @@ public interface IItemReviewService {
     int deleteReview(ItemReviewDto itemReviewDto) throws Exception;
 
     List<ItemReviewDto> findAllReviewInItem(int itemSeq) throws Exception;
+
+    List<ItemReviewDto> findAllReviewByUserId(String userId) throws Exception;
 }

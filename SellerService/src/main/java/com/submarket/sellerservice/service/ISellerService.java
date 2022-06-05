@@ -9,6 +9,14 @@ public interface ISellerService extends UserDetailsService {
 
     int deleteSeller(SellerDto sellerDTO) throws Exception;
 
+    SellerDto getSellerInfoBySellerEmail(SellerDto sellerDto) throws Exception;
+
+    SellerDto getSellerInfoBySellerId(SellerDto sellerDto) throws Exception;
+
     SellerDto getSellerDetailsByUserId(String sellerId);
+
+    int changePassword(String oldPassword, String newPassword, String sellerId) throws Exception;
+
+    int modifySellerInfo(SellerDto sellerDto) throws Exception;
 
 }

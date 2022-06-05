@@ -14,6 +14,5 @@ public class SubDto {
     private String subDate;
     private int subCount;
     private UserEntity user;
-
-    private int userSeq;
+    private String userId;
 }

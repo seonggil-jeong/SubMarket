@@ -22,7 +22,7 @@ public class ItemReviewEntity {
     private Integer reviewSeq;
 
     @Column(nullable = false)
-    private int userSeq;
+    private String userId;
 
     @Column(nullable = false)
     private int reviewStar;

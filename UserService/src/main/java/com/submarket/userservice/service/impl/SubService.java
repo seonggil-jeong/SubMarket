@@ -11,6 +11,7 @@ import com.submarket.userservice.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpStatusCodeException;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
@@ -31,13 +32,13 @@ public class SubService implements ISubService {
     @Override
     @Transactional
     public List<SubEntity> findAllSub(SubDto subDto) throws RuntimeException{
-        Optional<UserEntity> user = userRepository.findById(subDto.getUserSeq());
+        UserEntity user = userRepository.findByUserId(subDto.getUserId());
 
         if (user == null) {
             log.info("User 정보 없음");
             throw new EntityNotFoundException("User Entity Not Found");
         }
-        Iterable<SubEntity> subEntityIterable = subRepository.findByUser(user.get());
+        Iterable<SubEntity> subEntityIterable = subRepository.findByUser(user);
 
         log.info(this.getClass().getName() + ". find Sub Info");
 
@@ -81,7 +82,7 @@ public class SubService implements ISubService {
         log.info(this.getClass().getName() + "createNewSub Start!");
 
         int res = 0;
-        subDto.setUser(userRepository.findByUserId("dataofsg02")); // 수정 필요
+        subDto.setUser(userRepository.findByUserId(subDto.getUserId())); // 수정 필요
         subDto.setSubDate(DateUtil.getDateTime("dd"));
         subDto.setSubCount(1);
         log.info("itemSeq : " + subDto.getItemSeq());
@@ -129,5 +130,27 @@ public class SubService implements ISubService {
 
         log.info(this.getClass().getName() + "cancelSub End!");
         return 1;
+    }
+
+    @Override
+    public int findSubCount(List<Integer> itemSeqList) throws Exception {
+        log.info(this.getClass().getName() + "findSubCount");
+        int count = 0;
+        try {
+            for (Integer itemSeq : itemSeqList) {
+                List<SubEntity> subEntityList = subRepository.findAllByItemSeq(itemSeq);
+                count += subEntityList.size();
+            }
+
+        } catch (HttpStatusCodeException statusCodeException) {
+            int code = statusCodeException.getRawStatusCode();
+            log.info( code + "HttpStatusCodeException : " + statusCodeException);
+
+        } catch (Exception e) {
+            log.info("Exception : " + e);
+
+        } finally {
+            return count;
+        }
     }
 }

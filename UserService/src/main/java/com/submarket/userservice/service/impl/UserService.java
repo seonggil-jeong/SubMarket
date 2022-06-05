@@ -5,6 +5,7 @@ import com.submarket.userservice.jpa.UserRepository;
 import com.submarket.userservice.jpa.entity.UserEntity;
 import com.submarket.userservice.mapper.UserMapper;
 import com.submarket.userservice.service.IUserService;
+import com.submarket.userservice.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.User;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 
 
@@ -61,6 +63,21 @@ public class UserService implements IUserService {
         return rDTO;
     }
 
+    //####################################### 사용자 정보 조회 By UserId #######################################//
+    @Override
+    @Transactional
+    public UserDto getUserInfoByUserId(String userId) {
+        log.info(this.getClass().getName() + ".getUserInfoByUser Start!");
+
+        UserEntity userEntity = userRepository.findByUserId(userId);
+
+        UserDto userDto = UserMapper.INSTANCE.userEntityToUserDto(userEntity);
+
+        log.info(this.getClass().getName() + ".getUserInfoByUser End!");
+
+        return userDto;
+    }
+
     @Override
     public int changeUserPassword(UserDto pDTO, String newPassword) throws Exception {
         log.info(this.getClass().getName() + "changeUserPassword Start!");
@@ -73,7 +90,7 @@ public class UserService implements IUserService {
         // 만약 비밀번호가 일치한다면
         if (checkPassword) {
             log.info("비밀번호 일치");
-            userRepository.changeUserPassword(passwordEncoder.encode(newPassword), pDTO.getUserSeq());
+            userRepository.changeUserPassword(passwordEncoder.encode(newPassword), pDTO.getUserId());
 
             log.info(this.getClass().getName() + "changeUserPassword End!");
             return 1; // 성공
@@ -85,14 +102,50 @@ public class UserService implements IUserService {
 
     }
 
+    @Override
+    @Transactional
+    public int deleteUser(UserDto userDto) throws Exception {
+        log.info(this.getClass().getName() + ".deleteUser Start!");
+        // 비밀번호 일치 확인
+        if (userCheckService.isTruePassword(userDto.getUserId(), userDto.getUserPassword())) {
+            // 비밀번호가 일치한다면
+            userRepository.deleteUserInfo(userDto.getUserId());
+        } else {
+            throw new RuntimeException("사용자 비밀번호가 일치하지 않습니다");
+        }
 
+
+        log.info(this.getClass().getName() + ".deleteUser End!");
+
+        return 0;
+    }
+
+    @Override // 사용자 정보 수정
+    @Transactional
+    public int modifyUserInfo(UserDto userDto) throws Exception {
+        log.info(this.getClass().getName() + ".modifyUserInfo Start!");
+        String userEmail = CmmUtil.nvl(userDto.getUserEmail());
+        String userAddress = CmmUtil.nvl(userDto.getUserAddress());
+        String userAddress2 = CmmUtil.nvl(userDto.getUserAddress2());
+        String userId = CmmUtil.nvl(userDto.getUserId());
+        String userAge = CmmUtil.nvl(userDto.getUserAge());
+        String userPn = CmmUtil.nvl(userDto.getUserPn());
+
+        log.info("userId : " + userId);
+        log.info("userEmail : " + userEmail);
+
+        userRepository.modifyUserInfo(userEmail, userAddress, userAddress2,userPn, userAge, userId);
+
+        log.info(this.getClass().getName() + ".modifyUserInfo End!");
+        return 1;
+    }
 
     //####################################### JWT Don't change #######################################//
     @Override
     public UserDto getUserDetailsByUserId(String userId) {
         UserEntity rEntity = userRepository.findByUserId(userId);
 
-        if (rEntity == null) {
+        if (rEntity == null || rEntity.getUserStatus() == 0) {
             throw new UsernameNotFoundException(userId);
         }
 
@@ -108,7 +161,8 @@ public class UserService implements IUserService {
         log.info("username : " + userId);
         UserEntity rEntity = userRepository.findByUserId(userId);
 
-        if (rEntity == null) {
+        if (rEntity == null || rEntity.getUserStatus() == 0) {
+            // 사용자 정보가 없거나 탈퇴한 사용자라면 (401)
             throw new UsernameNotFoundException(userId);
         }
 

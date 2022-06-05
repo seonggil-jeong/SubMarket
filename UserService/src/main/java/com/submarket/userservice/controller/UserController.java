@@ -4,14 +4,19 @@ import com.submarket.userservice.dto.UserDto;
 import com.submarket.userservice.mapper.UserMapper;
 import com.submarket.userservice.service.impl.UserCheckService;
 import com.submarket.userservice.service.impl.UserService;
+import com.submarket.userservice.util.TokenUtil;
 import com.submarket.userservice.vo.RequestChangePassword;
 import com.submarket.userservice.vo.RequestUser;
+import com.submarket.userservice.vo.ResponseUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -20,6 +25,7 @@ public class UserController {
     private final UserService userService;
     private final UserCheckService userCheckService;
     private final Environment env;
+    private final TokenUtil tokenUtil;
 
     /**<---------------------->회원가입</---------------------->*/
     @PostMapping("/users")
@@ -38,6 +44,24 @@ public class UserController {
         log.info("-------------->  " + this.getClass().getName() + ".createUser End!");
 
         return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<ResponseUser> getUserInfo(@RequestHeader HttpHeaders headers) throws Exception {
+        log.info(this.getClass().getName() + "getUserInfo Start!");
+        // 사용자 토큰을 사용하여 사용자 정보 조회
+        String userId = tokenUtil.getUserIdByToken(headers);
+
+        if (userId.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+
+        UserDto userDto = userService.getUserInfoByUserId(userId);
+
+        ResponseUser responseUser = UserMapper.INSTANCE.UserDtoToResponseUser(userDto);
+
+        log.info(this.getClass().getName() + "getUserInfo End!");
+        return ResponseEntity.ok().body(responseUser);
     }
 
     /**<------------------------>아이디 중복 확인</------------------------>*/
@@ -89,10 +113,13 @@ public class UserController {
 
     /**<------------------------>비밀번호 변경</------------------------>*/
     @PostMapping("/users/changePassword")
-    public ResponseEntity<String> changePassword(@RequestBody RequestChangePassword request) throws Exception {
+    public ResponseEntity<String> changePassword(@RequestHeader HttpHeaders headers,
+                                                 @RequestBody RequestChangePassword request) throws Exception {
+        String userId = tokenUtil.getUserIdByToken(headers);
 
+        log.info("userId : " + userId);
         UserDto pDTO = new UserDto();
-        pDTO.setUserId(request.getUserId());
+        pDTO.setUserId(userId);
         pDTO.setUserPassword(request.getOldPassword());
 
         int check = userService.changeUserPassword(pDTO, request.getNewPassword());
@@ -102,5 +129,44 @@ public class UserController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이전 비밀번호를 확인해 주세요");
 
+    }
+
+    @PostMapping("/user/modify")
+    public ResponseEntity<String> modifyUserInfo(@RequestHeader HttpHeaders headers, @RequestBody UserDto body)
+        throws Exception {
+        log.info(this.getClass().getName() + ".modifyUserInfo Start!");
+        String userId = tokenUtil.getUserIdByToken(headers);
+        log.info("userEmail in Controller : " + body.getUserEmail());
+
+        body.setUserId(userId);
+
+        int res = userService.modifyUserInfo(body);
+        if (res == 1) {
+            return ResponseEntity.ok().body("변경 성공");
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Server Error");
+        }
+    }
+
+    @DeleteMapping("/user")
+    public ResponseEntity<String> deleteUser(@RequestHeader HttpHeaders headers, @RequestBody RequestUser requestUser) throws Exception {
+        /**
+         * 비밀번호가 일치한다면
+         * 사용자 Status 0으로 변경
+         */
+        log.info(this.getClass().getName() + ".deleteUser Start!");
+
+        // GetUserId from Token
+        String userId = tokenUtil.getUserIdByToken(headers);
+        UserDto pDto = new UserDto();
+        pDto.setUserPassword(requestUser.getUserPassword());
+        pDto.setUserId(userId);
+
+        // TODO: 2022-05-23 요청
+        userService.deleteUser(pDto);
+
+        log.info(this.getClass().getName() + ".deleteUser Start!");
+
+        return null;
     }
 }

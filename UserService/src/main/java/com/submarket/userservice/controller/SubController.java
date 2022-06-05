@@ -4,17 +4,19 @@ import com.submarket.userservice.dto.SubDto;
 import com.submarket.userservice.jpa.entity.SubEntity;
 import com.submarket.userservice.mapper.SubMapper;
 import com.submarket.userservice.service.impl.SubService;
+import com.submarket.userservice.util.TokenUtil;
 import com.submarket.userservice.vo.RequestSub;
-import com.submarket.userservice.vo.ResponseSub;
-import com.sun.nio.sctp.NotificationHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -22,15 +24,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SubController {
     private final SubService subService;
+    private final TokenUtil tokenUtil;
 
     @GetMapping("/sub")
-    public ResponseEntity<Object> findAllSub(@RequestBody RequestSub requestSub) throws Exception {
+    public ResponseEntity<Object> findAllSub(@RequestHeader HttpHeaders headers) throws Exception {
         log.info(this.getClass().getName() + ".findSub Start!");
 
-        int userSeq = requestSub.getUserSeq();
+        String userId = tokenUtil.getUserIdByToken(headers);
+
 
         SubDto subDto = new SubDto();
-        subDto.setUserSeq(userSeq);
+        subDto.setUserId(userId);
         List<SubEntity> subEntityList = subService.findAllSub(subDto);
 
         if (subEntityList == null) {
@@ -71,11 +75,15 @@ public class SubController {
     }
 
     @PostMapping("/sub")
-    public ResponseEntity<String> createNewSub(@RequestBody RequestSub requestSub) {
+    public ResponseEntity<String> createNewSub(@RequestHeader HttpHeaders headers,
+                                               @RequestBody RequestSub requestSub) {
         log.info(this.getClass().getName() + ".createNewSub Start!");
 
         SubDto subDto = new SubDto();
+        String userId = tokenUtil.getUserIdByToken(headers);
+
         subDto.setItemSeq(requestSub.getItemSeq());
+        subDto.setUserId(userId);
 
         int res = subService.createNewSub(subDto);
 
@@ -123,5 +131,17 @@ public class SubController {
         return ResponseEntity.ok("갱신 완료");
 
 
+    }
+
+    @GetMapping("/seller/sub")
+    public ResponseEntity<Integer> findSubCount(@RequestBody Map<String, Object> request)  throws Exception {
+        // Seller 가 보유하고 있는 상품의 SeqList 를 넘겨주면 총 구독 수를 표시
+        log.info(this.getClass().getName() + "findSubCount");
+        List<Integer> itemSeqList = new LinkedList<>();
+        itemSeqList = (List<Integer>) request.get("itemSeqList");
+
+        int count = subService.findSubCount(itemSeqList);
+
+        return ResponseEntity.status(HttpStatus.OK).body(count);
     }
 }
