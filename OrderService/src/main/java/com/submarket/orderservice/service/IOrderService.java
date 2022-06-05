@@ -7,4 +7,6 @@ import java.util.List;
 public interface IOrderService {
 
     int insertOrder(OrderDto orderDto) throws Exception;
+
+    List<OrderDto> findAllOrderByUserId(String userId) throws Exception;
 }

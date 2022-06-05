@@ -30,4 +30,17 @@ public class OrderService implements IOrderService {
         log.info(this.getClass().getName() + "insertOrder End!");
         return res;
     }
+
+    @Override
+    public List<OrderDto> findAllOrderByUserId(String userId) throws Exception {
+        log.info(this.getClass().getName() + ".findAllOrderByUserId Start!");
+        String colNm = "OrderService";
+
+        List<OrderDto> orderDtoList = orderMapper.findOrderInfoByUserId(userId, colNm);
+
+
+        log.info(this.getClass().getName() + ".findAllOrderByUserId Start!");
+
+        return orderDtoList;
+    }
 }

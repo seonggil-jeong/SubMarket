@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class OrderDto {
 
     private String orderId;
-    private int itemSeq;
+    private String itemSeq;
     private String userId;
     private String sellerId;
 

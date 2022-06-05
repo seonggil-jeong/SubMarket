@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @Slf4j
@@ -27,6 +29,21 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.CREATED).body("주문 생성 완료");
     }
 
-    // TODO: 2022/05/29 사용자 주문 조회
+    @GetMapping("/order/user/{userId}")
+    public ResponseEntity<Map<String, Object>> findOrderInfoByUserId(@PathVariable String userId) throws Exception {
+        log.info(this.getClass().getName() + ".findOrderInfoByUserId Start!");
+        Map<String, Object> rMap = new HashMap<>();
+
+        List<OrderDto> orderDtoList = orderService.findAllOrderByUserId(userId);
+
+        rMap.put("response", orderDtoList);
+
+
+        log.info(this.getClass().getName() + ".findOrderInfoByUserId End!");
+
+
+        return ResponseEntity.status(HttpStatus.OK).body(rMap);
+    }
+
     // TODO: 2022/05/29 사업자 주문 조회
 }
