@@ -78,25 +78,32 @@ public class SubService implements ISubService {
     /** ------------------------- 구독 생성 ------------------------------*/
     @Override
     @Transactional
-    public int createNewSub(SubDto subDto) {
+    public int createNewSub(SubDto subDto) throws Exception{
         log.info(this.getClass().getName() + "createNewSub Start!");
 
         int res = 0;
-        subDto.setUser(userRepository.findByUserId(subDto.getUserId())); // 수정 필요
+        subDto.setUser(userRepository.findByUserId(subDto.getUserId()));
+
+        // Default Setting
         subDto.setSubDate(DateUtil.getDateTime("dd"));
         subDto.setSubCount(1);
+
         log.info("itemSeq : " + subDto.getItemSeq());
 
-        SubEntity subEntity = SubMapper.INSTANCE.subDtoToSubEntity(subDto);
-
-        log.info("subEntity (itemSeq) : " + subEntity.getItemSeq());
-        subRepository.save(subEntity);
-
-        res = 1;
+        // 이미 구독 여부 확인
+        if (subCheckService.checkHasSubByItemSeqAndUserId(subDto.getItemSeq(), subDto.getUserId())) {
+            SubEntity subEntity = SubMapper.INSTANCE.subDtoToSubEntity(subDto);
+            log.info("subEntity (itemSeq) : " + subEntity.getItemSeq());
+            subRepository.save(subEntity);
+            res = 1;
+        } else {
+            res = 2; // 중복  = 2
+        }
 
         log.info(this.getClass().getName() + "createNewSub End");
 
         return res;
+
     }
 
     /** ------------------------- 구독 갱신 ------------------------------*/

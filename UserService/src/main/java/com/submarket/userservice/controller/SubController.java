@@ -76,16 +76,19 @@ public class SubController {
 
     @PostMapping("/sub")
     public ResponseEntity<String> createNewSub(@RequestHeader HttpHeaders headers,
-                                               @RequestBody RequestSub requestSub) {
+                                               @RequestBody SubDto subDto) throws Exception{
         log.info(this.getClass().getName() + ".createNewSub Start!");
 
-        SubDto subDto = new SubDto();
         String userId = tokenUtil.getUserIdByToken(headers);
 
-        subDto.setItemSeq(requestSub.getItemSeq());
         subDto.setUserId(userId);
 
+
         int res = subService.createNewSub(subDto);
+
+        if (res == 2) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("중복된 구독");
+        }
 
         if (res != 1) {
             return ResponseEntity.status(500).body("오류");
