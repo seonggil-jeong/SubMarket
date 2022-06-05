@@ -118,6 +118,12 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
+        <!-- Actuator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <!-- S3 -->
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-aws -->
         <dependency>
