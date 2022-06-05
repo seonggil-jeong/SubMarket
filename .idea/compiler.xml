@@ -8,16 +8,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="apigateway" />
-        <module name="discoveryservice" />
-        <module name="itemservice" />
+        <module name="ConfigService" />
         <module name="sellerservice" />
         <module name="userservice" />
+        <module name="discoveryservice" />
+        <module name="itemservice" />
+        <module name="configservice" />
         <module name="orderservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="apigateway" target="1.8" />
       <module name="ApiGateway" target="1.8" />
+      <module name="apigateway" target="1.8" />
+      <module name="ConfigService" target="1.8" />
+      <module name="configservice" target="1.8" />
       <module name="discoveryservice" target="1.8" />
       <module name="DiscoveryService" target="1.8" />
       <module name="ItemService" target="1.8" />
@@ -33,12 +37,14 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ApiGateway" options="-parameters" />
+      <module name="ConfigService" options="-parameters" />
       <module name="DiscoveryService" options="-parameters" />
       <module name="ItemService" options="-parameters" />
       <module name="OrderService" options="-parameters" />
       <module name="SellerService" options="-parameters" />
       <module name="UserService" options="-parameters" />
       <module name="apigateway" options="-parameters" />
+      <module name="configservice" options="-parameters" />
       <module name="discoveryservice" options="-parameters" />
       <module name="itemservice" options="-parameters" />
       <module name="orderservice" options="-parameters" />

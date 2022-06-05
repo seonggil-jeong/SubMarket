@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/ApiGateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ApiGateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ConfigService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DiscoveryService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/DiscoveryService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ItemService/src/main/java" charset="UTF-8" />
