@@ -10,7 +10,7 @@ public interface ISubService {
 
     SubDto findOneSub(SubDto subDto) throws Exception;
 
-    int createNewSub(SubDto subDto);
+    int createNewSub(SubDto subDto) throws Exception;
 
     int updateSub(SubDto subDto);
 
