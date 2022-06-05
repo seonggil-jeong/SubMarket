@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "itemInfo")
-@JsonIgnoreProperties({"category", "group"})
+@JsonIgnoreProperties({"category", "group", "reviews"})
 public class ItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,6 +56,7 @@ public class ItemEntity {
     private GroupEntity group;
 
     @OneToMany(mappedBy = "item")
+    @JsonIgnore
     private List<ItemReviewEntity> reviews;
 
 }

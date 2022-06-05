@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +26,8 @@ public class ItemController {
 
     // TODO: 2022/05/16 로직 추가
 
-    @PostMapping("/items")
-    public ResponseEntity<String> saveItem(@RequestHeader HttpHeaders headers, @RequestBody ItemDto itemDto) throws Exception {
+    @PostMapping(value = "/items", consumes = MediaType.ALL_VALUE)
+    public ResponseEntity<String> saveItem(@RequestHeader HttpHeaders headers, ItemDto itemDto) throws Exception {
         log.info(this.getClass().getName() + ".saveItem Start!");
 
         String sellerId = CmmUtil.nvl(tokenUtil.getUserIdByToken(headers));
