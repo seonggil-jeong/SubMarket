@@ -43,4 +43,18 @@ public class OrderService implements IOrderService {
 
         return orderDtoList;
     }
+
+    @Override
+    public List<OrderDto> findAllOrderBySellerId(String sellerId) throws Exception {
+        log.info(this.getClass().getName() + ".findAllOrderBySellerId Start!");
+        String colNm = "OrderService";
+
+        List<OrderDto> orderDtoList = orderMapper.findOrderInfoBySellerId(sellerId, colNm);
+
+
+        log.info(this.getClass().getName() + ".findAllOrderBySellerId Start!");
+
+        return orderDtoList;
+
+    }
 }

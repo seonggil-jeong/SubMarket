@@ -89,4 +89,55 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
             return orderDtoList;
         }
     }
+
+    @Override
+    public List<OrderDto> findOrderInfoBySellerId(String sellerId, String colNm) throws Exception {
+        log.info(this.getClass().getName() + ".findOrderInfoByUserId Start!");
+        List<OrderDto> orderDtoList = new LinkedList<>();
+        try {
+            MongoCollection<Document> col = mongodb.getCollection(colNm);
+
+            Document query = new Document();
+            query.append("sellerId", sellerId);
+
+            Document projection = new Document();
+
+            projection.append("orderId", "$orderId");
+            projection.append("orderDate", "$orderDate");
+            projection.append("itemSeq", "$itemSeq");
+            projection.append("userId", "$userId");
+            projection.append("_id", 0);
+
+            FindIterable<Document> rs = col.find(query).projection(projection);
+
+            for (Document doc : rs) {
+                if (doc == null) {
+                    doc = new Document();
+                }
+
+                String orderId = CmmUtil.nvl(doc.getString("orderId"));
+                String orderDate = CmmUtil.nvl(doc.getString("orderDate"));
+                String itemSeq = CmmUtil.nvl(doc.getString("itemSeq"));
+                String userId = CmmUtil.nvl(doc.getString("userId"));
+
+                OrderDto orderDto = new OrderDto();
+
+                orderDto.setOrderId(orderId);
+                orderDto.setOrderDate(orderDate);
+                orderDto.setItemSeq(itemSeq);
+                orderDto.setSellerId(sellerId);
+
+                orderDtoList.add(orderDto);
+            }
+        } catch (HttpStatusCodeException statusCodeException) {
+            int code = statusCodeException.getRawStatusCode();
+            log.info(code + "(HttpStatusCodeException) : " + statusCodeException);
+            orderDtoList = new LinkedList<>();
+        } catch (Exception e) {
+            log.info("Exception : " + e);
+            orderDtoList = new LinkedList<>();
+        } finally {
+            return orderDtoList;
+        }
+    }
 }

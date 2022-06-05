@@ -45,5 +45,21 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(rMap);
     }
 
-    // TODO: 2022/05/29 사업자 주문 조회
+    @GetMapping("/order/seller/{sellerId}")
+    public ResponseEntity<Map<String, Object>> findOrderInfoBySellerId(@PathVariable String sellerId)
+        throws Exception {
+        log.info(this.getClass().getName() + ".findOrderInfoBySellerId Start!");
+
+        Map<String, Object> rMap = new HashMap<>();
+
+        List<OrderDto> orderDtoList = orderService.findAllOrderBySellerId(sellerId);
+
+        rMap.put("response", orderDtoList);
+
+
+        log.info(this.getClass().getName() + ".findOrderInfoBySellerId End!");
+
+
+        return ResponseEntity.status(HttpStatus.OK).body(rMap);
+    }
 }
