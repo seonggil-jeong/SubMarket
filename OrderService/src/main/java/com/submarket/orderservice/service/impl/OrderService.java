@@ -57,4 +57,17 @@ public class OrderService implements IOrderService {
         return orderDtoList;
 
     }
+
+    @Override
+    public OrderDto findOneOrderByOrderId(String orderId) throws Exception {
+        log.info(this.getClass().getName() + ".findOneOrderByOrderId Start!");
+        String colNm = "OrderService";
+
+        OrderDto orderDto = orderMapper.findOrderInfoByOrderId(orderId, colNm);
+
+
+        log.info(this.getClass().getName() + ".findOneOrderByOrderId Start!");
+
+        return orderDto;
+    }
 }

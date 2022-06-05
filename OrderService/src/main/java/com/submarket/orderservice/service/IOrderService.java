@@ -11,4 +11,6 @@ public interface IOrderService {
     List<OrderDto> findAllOrderByUserId(String userId) throws Exception;
 
     List<OrderDto> findAllOrderBySellerId(String sellerId) throws Exception;
+
+    OrderDto findOneOrderByOrderId(String orderId) throws Exception;
 }
