@@ -59,7 +59,7 @@ public class ItemController {
     }
 
     @GetMapping("/items/{itemSeq}")
-    public ResponseEntity<Object> findOneItem(@PathVariable int itemSeq) throws Exception {
+    public ResponseEntity<ItemDto> findOneItem(@PathVariable int itemSeq) throws Exception {
         log.info(this.getClass().getName() + ".findOneItem Start! (itemSeq : " + itemSeq + ")");
 
         ItemDto pDto = new ItemDto();
@@ -67,11 +67,6 @@ public class ItemController {
 
         // 상품 정보 가져오기
         ItemDto itemDto = itemService.findItemInfo(pDto);
-
-        if (itemDto.equals(null)) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("상품 정보를 찾을 수 없습니다");
-        }
-
 
         log.info(this.getClass().getName() + ".findOneItem End!");
         return ResponseEntity.ok().body(itemDto);
