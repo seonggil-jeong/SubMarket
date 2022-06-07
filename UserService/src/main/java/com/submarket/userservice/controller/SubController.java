@@ -13,10 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @RestController
@@ -27,8 +24,10 @@ public class SubController {
     private final TokenUtil tokenUtil;
 
     @GetMapping("/sub")
-    public ResponseEntity<Object> findAllSub(@RequestHeader HttpHeaders headers) throws Exception {
+    public ResponseEntity<Map<String, Object>> findAllSub(@RequestHeader HttpHeaders headers) throws Exception {
         log.info(this.getClass().getName() + ".findSub Start!");
+
+        Map<String, Object> rMap = new HashMap<>();
 
         String userId = tokenUtil.getUserIdByToken(headers);
 
@@ -37,19 +36,15 @@ public class SubController {
         subDto.setUserId(userId);
         List<SubEntity> subEntityList = subService.findAllSub(subDto);
 
-        if (subEntityList == null) {
-            log.info("SubService Check");
-
-            return ResponseEntity.status(500).body("Service Error");
-        }
-
         List<SubDto> subDtoList = new ArrayList<>();
 
         subEntityList.forEach(subEntity -> {
             subDtoList.add(SubMapper.INSTANCE.subEntityToSubDto(subEntity));
         });
 
-        return ResponseEntity.ok().body(subEntityList);
+        rMap.put("response", subDtoList);
+
+        return ResponseEntity.ok().body(rMap);
 
 
 
