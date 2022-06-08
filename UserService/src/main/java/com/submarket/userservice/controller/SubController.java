@@ -94,7 +94,7 @@ public class SubController {
         return ResponseEntity.status(HttpStatus.CREATED).body("구독 성공");
     }
 
-    @DeleteMapping("/sub")
+    @PostMapping("/sub/delete")
     public String cancelSub(@RequestBody RequestSub requestSub) throws Exception {
         log.info(this.getClass().getName() + "cancel Sub Start!");
 
@@ -113,7 +113,7 @@ public class SubController {
         return "구독 취소 성공";
     }
 
-    @PatchMapping("/sub")
+    @PostMapping("/sub/update")
     public ResponseEntity<String> updateSub(@RequestBody RequestSub requestSub) throws Exception {
         log.info(this.getClass().getName() + ".updateSub Start!");
         SubDto subDto = new SubDto();
