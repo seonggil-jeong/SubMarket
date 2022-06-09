@@ -19,6 +19,8 @@ public interface IUserService extends UserDetailsService {
 
     int modifyUserInfo(UserDto userDto) throws Exception;
 
+    int changeUserPasswordNoAuthorization(String userId, String newPassword) throws Exception;
+
 
 
 }
