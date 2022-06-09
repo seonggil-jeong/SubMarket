@@ -103,6 +103,20 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public int changeUserPasswordNoAuthorization(String userId, String newPassword) throws Exception {
+        log.info(this.getClass().getName() + "changeUserPasswordNoAuthorization Start!");
+
+        userRepository.changeUserPassword(passwordEncoder.encode(newPassword), userId);
+
+        log.info(this.getClass().getName() + "changeUserPasswordNoAuthorization End!");
+
+        return 1;
+
+
+
+    }
+
+    @Override
     @Transactional
     public int deleteUser(UserDto userDto) throws Exception {
         log.info(this.getClass().getName() + ".deleteUser Start!");
