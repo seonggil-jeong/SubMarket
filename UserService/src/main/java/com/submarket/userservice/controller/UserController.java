@@ -2,30 +2,36 @@ package com.submarket.userservice.controller;
 
 import com.submarket.userservice.dto.UserDto;
 import com.submarket.userservice.mapper.UserMapper;
+import com.submarket.userservice.service.impl.MailService;
 import com.submarket.userservice.service.impl.UserCheckService;
 import com.submarket.userservice.service.impl.UserService;
+import com.submarket.userservice.util.CmmUtil;
 import com.submarket.userservice.util.TokenUtil;
 import com.submarket.userservice.vo.RequestChangePassword;
 import com.submarket.userservice.vo.RequestUser;
 import com.submarket.userservice.vo.ResponseUser;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.springframework.core.env.Environment;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.UUID;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-public class UserController {
+public class    UserController {
     private final UserService userService;
     private final UserCheckService userCheckService;
     private final Environment env;
     private final TokenUtil tokenUtil;
+    private final MailService mailService;
 
     /**<---------------------->회원가입</---------------------->*/
     @PostMapping("/users")
@@ -146,6 +152,36 @@ public class UserController {
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Server Error");
         }
+    }
+
+    @PostMapping("/user/fix/find-password")
+    public ResponseEntity<String> findPassword(@RequestBody UserDto userDto) throws Exception {
+        log.info(this.getClass().getName() + ".findPassword Start");
+        String userId = CmmUtil.nvl(userDto.getUserId());
+        String userEmail = CmmUtil.nvl(userDto.getUserEmail());
+        if (!userCheckService.checkUserByUserId(userId)) {
+            // 아이디가 중복 = DB 에 있음
+            UserDto checkDto = userService.getUserInfoByUserId(userId);
+            if (checkDto.getUserEmail().equals(userEmail)) {
+                // Id로 조회한 Email in DB 값과 넘어온 값이 같으면 Mail 전송
+
+
+                String exPassword = String.valueOf(UUID.randomUUID());
+                userService.changeUserPasswordNoAuthorization(userId, exPassword);
+
+                mailService.sendMail(userDto.getUserEmail(), "비밀번호 변경", "임시 비밀번호 : " + exPassword + "입니다.");
+
+
+            } else {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이메일 정보를 확인해 주세요");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("아이디와 일치하는 정보가 없습니다");
+        }
+
+        log.info(this.getClass().getName() + ".findPassword End");
+
+        return ResponseEntity.ok().body(userEmail + "로 임시 비밀번호를 발송 했습니다");
     }
 
     @DeleteMapping("/user")
