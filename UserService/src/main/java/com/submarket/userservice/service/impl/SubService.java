@@ -27,6 +27,7 @@ public class SubService implements ISubService {
     private final UserRepository userRepository;
     private final UserService userService;
     private final SubCheckService subCheckService;
+    private final MailService mailService;
 
     /** ------------------------- 구독 조회 ------------------------------*/
     @Override
@@ -95,6 +96,7 @@ public class SubService implements ISubService {
             SubEntity subEntity = SubMapper.INSTANCE.subDtoToSubEntity(subDto);
             log.info("subEntity (itemSeq) : " + subEntity.getItemSeq());
             subRepository.save(subEntity);
+            mailService.sendMail(subDto.getUser().getUserEmail(), "구독 성공", subDto.getUser().getUserName() + "님 구독이 완료 됐습니다!!");
             res = 1;
         } else {
             res = 2; // 중복  = 2
