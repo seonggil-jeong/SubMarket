@@ -67,13 +67,17 @@ public class SellerController {
         if (res == 1) {
             // 회원가입 성공
             return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
+        } else if (res == 2) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("중복된 이메일 입니다");
+        } else if (res == 3) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("중복된 아이디 입니다");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("회원가입 실패");
         }
     }
 
-    @PatchMapping("/sellers")
-    public ResponseEntity<String> modifySellerInfo(@RequestBody SellerDto sellerDto,
+    @PostMapping("/sellers/modify")
+    public ResponseEntity<String> modifySellerInfo(@RequestBody  SellerDto sellerDto,
                                                    @RequestHeader HttpHeaders headers) throws Exception {
         log.info(this.getClass().getName() + ".modifySellerInfo Start!");
 

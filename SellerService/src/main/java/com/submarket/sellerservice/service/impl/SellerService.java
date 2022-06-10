@@ -49,10 +49,10 @@ public class SellerService implements ISellerService {
                     throw new RuntimeException("사업자 번호 중복");
                 }
             } else {
-                throw new RuntimeException("이메일 중복");
+                return 2;
             }
         } else {
-            throw new RuntimeException("아이디 중복");
+            return 3;
         }
         log.info(this.getClass().getName() + ".createSeller End!");
 

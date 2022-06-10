@@ -39,12 +39,17 @@ public class    UserController {
         log.info("-------------->  " + this.getClass().getName() + ".createUser Start!");
         int res = 0;
 
+        if (!userCheckService.checkUserByUserId(requestUser.getUserId())) {
+            // 아이디 중복
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("중복된 아이디 입니다.");
+        }
+
         UserDto pDTO = UserMapper.INSTANCE.RequestUserToUserDto(requestUser);
 
         res = userService.createUser(pDTO);
 
         if (res == 0) { /** 아이디 중복 발생 */
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("아이디 또는 이메일을 확인해주세요."); // 충돌 발생
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("중복된 이메일 입니다"); // 충돌 발생
         }
 
         log.info("-------------->  " + this.getClass().getName() + ".createUser End!");
