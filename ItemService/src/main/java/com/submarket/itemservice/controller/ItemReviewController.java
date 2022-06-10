@@ -1,6 +1,7 @@
 package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.ItemReviewDto;
+import com.submarket.itemservice.service.impl.ItemReviewCheckService;
 import com.submarket.itemservice.service.impl.ItemReviewService;
 import com.submarket.itemservice.util.CmmUtil;
 import com.submarket.itemservice.util.DateUtil;
@@ -23,13 +24,12 @@ import java.util.Map;
 public class ItemReviewController {
     private final ItemReviewService itemReviewService;
     private final TokenUtil tokenUtil;
+    private final ItemReviewCheckService itemReviewCheckService;
 
     @PostMapping("/item/{itemSeq}/review")
     public ResponseEntity<String> saveReview(@RequestHeader HttpHeaders headers,
                                              @RequestBody ItemReviewDto itemReviewDto, @PathVariable int itemSeq) throws Exception {
         log.info(this.getClass().getName() + ".saveReview Start!");
-        // TODO: 2022-05-16 사용자가 이미 작성한 리뷰가 있는지 확인 with UserSeq
-
         String userId = CmmUtil.nvl(tokenUtil.getUserIdByToken(headers));
         itemReviewDto.setUserId(userId);
         itemReviewDto.setReviewDate(DateUtil.getDateTime("yyyyMMdd"));
@@ -37,8 +37,12 @@ public class ItemReviewController {
         if (itemReviewDto.equals(null)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("리뷰 정보를 입력해주세요");
         }
+        if (itemReviewCheckService.canCreateReview(itemReviewDto, itemSeq)) {
+            int res = itemReviewService.saveReview(itemReviewDto, itemSeq);
 
-        int res = itemReviewService.saveReview(itemReviewDto, itemSeq);
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이미 작성한 리뷰가 있습니다");
+        }
 
 
         log.info(this.getClass().getName() + ".saveReview End!");
