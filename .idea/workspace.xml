@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="bugfix : findItemInfoByCategorySeq">
-      <change afterPath="$PROJECT_DIR$/FlaskService/prophet.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlaskService/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlaskService/.idea/FlaskService.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/.idea/FlaskService.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlaskService/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlaskService/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/app.py" afterDir="false" />
-    </list>
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="bugfix : findItemInfoByCategorySeq" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -293,6 +287,7 @@
       <workItem from="1654924035624" duration="216000" />
       <workItem from="1654925953174" duration="343000" />
       <workItem from="1654930070161" duration="167000" />
+      <workItem from="1654930849008" duration="5000" />
     </task>
     <task id="LOCAL-00031" summary="[#26] feature : 상품 수정">
       <created>1653210119600</created>
