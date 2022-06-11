@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework.cloud:spring-cloud-function-context:3.2.5-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-function-context/3.2.5-SNAPSHOT/spring-cloud-function-context-3.2.5-20220527.072308-57.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-function-context/3.2.5-SNAPSHOT/spring-cloud-function-context-3.2.5-20220527.072308-57-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-function-context/3.2.5-SNAPSHOT/spring-cloud-function-context-3.2.5-20220527.072308-57-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
