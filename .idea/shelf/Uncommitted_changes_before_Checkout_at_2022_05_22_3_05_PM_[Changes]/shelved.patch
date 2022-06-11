@@ -1,0 +1,32 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/UserService/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/ApiGateway/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/DiscoveryService/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/ItemService/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/OrderService/pom.xml\" />\n        <option value=\"$PROJECT_DIR$/SellerService/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_17\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/out\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"jpab\" />\n  </component>\n</project>
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -1,21 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="MavenProjectsManager">
+-    <option name="originalFiles">
+-      <list>
+-        <option value="$PROJECT_DIR$/UserService/pom.xml" />
+-        <option value="$PROJECT_DIR$/ApiGateway/pom.xml" />
+-        <option value="$PROJECT_DIR$/DiscoveryService/pom.xml" />
+-        <option value="$PROJECT_DIR$/ItemService/pom.xml" />
+-        <option value="$PROJECT_DIR$/OrderService/pom.xml" />
+-        <option value="$PROJECT_DIR$/SellerService/pom.xml" />
+-      </list>
+-    </option>
+-  </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+-  <component name="ProjectType">
+-    <option name="id" value="jpab" />
+-  </component>
+ </project>
+\ No newline at end of file
