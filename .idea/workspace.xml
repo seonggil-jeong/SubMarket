@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="bugfix : findItemInfoByCategorySeq" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="bugfix : findItemInfoByCategorySeq">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlaskService/prophet.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/prophet.ipynb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,12 +62,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1654435194" />
+                    <option name="branchName" value="feature/#118" />
+                    <option name="lastUsedInstant" value="1654934499" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="bugfix/#21" />
-                    <option name="lastUsedInstant" value="1654420739" />
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1654933179" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -110,7 +115,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mariadb&#10;mongo" />
+    <property name="DatabaseDriversLRU" value="mongo&#10;mariadb" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelOrder2" value="2" />
@@ -288,6 +293,7 @@
       <workItem from="1654925953174" duration="343000" />
       <workItem from="1654930070161" duration="167000" />
       <workItem from="1654930849008" duration="5000" />
+      <workItem from="1654932297624" duration="1786000" />
     </task>
     <task id="LOCAL-00031" summary="[#26] feature : 상품 수정">
       <created>1653210119600</created>
