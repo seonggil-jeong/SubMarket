@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b653b56-1df1-41b1-8364-cd88cf3775ee" name="Changes" comment="[#126] setting : Prophet">
-      <change beforePath="$PROJECT_DIR$/../.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="4b653b56-1df1-41b1-8364-cd88cf3775ee" name="Changes" comment="[#118] feature : 매출액 분석 함수">
+      <change afterPath="$PROJECT_DIR$/seller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prophet.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/prophet.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +98,7 @@
       <option name="targetType" value="PATH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="/usr/local/bin/python3.8" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -120,6 +120,7 @@
       <workItem from="1654925874867" duration="489000" />
       <workItem from="1654926369874" duration="3262000" />
       <workItem from="1654931217576" duration="963000" />
+      <workItem from="1655002955848" duration="1046000" />
     </task>
     <task id="LOCAL-00001" summary="[#126] setting : Prophet">
       <created>1654930805732</created>
@@ -128,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654930805732</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[#118] feature : 매출액 분석 함수">
+      <created>1654936047035</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654936047035</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,9 +155,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[#126] setting : Prophet" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#126] setting : Prophet" />
+    <MESSAGE value="[#118] feature : 매출액 분석 함수" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#118] feature : 매출액 분석 함수" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/FlaskService$FlaskService.coverage" NAME="FlaskService Coverage Results" MODIFIED="1654932331095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FlaskService$FlaskService.coverage" NAME="FlaskService Coverage Results" MODIFIED="1655004000022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/FlaskService$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1654936401726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="bugfix : findItemInfoByCategorySeq">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FlaskService/seller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlaskService/prophet.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/prophet.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlaskService/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +292,7 @@
       <workItem from="1654925953174" duration="343000" />
       <workItem from="1654930070161" duration="167000" />
       <workItem from="1654930849008" duration="5000" />
-      <workItem from="1654932297624" duration="1786000" />
+      <workItem from="1654932297624" duration="2385000" />
     </task>
     <task id="LOCAL-00031" summary="[#26] feature : 상품 수정">
       <created>1653210119600</created>
