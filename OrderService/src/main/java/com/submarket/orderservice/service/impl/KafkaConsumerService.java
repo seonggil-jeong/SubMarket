@@ -19,7 +19,7 @@ import java.util.Map;
 public class KafkaConsumerService implements IKafkaConsumerService {
     private final OrderService orderService;
 
-    @KafkaListener(topics = "sub")
+    @KafkaListener(topics = "order")
     @Override
     public void kafkaCreateOrder(String kafkaMessage) throws Exception {
         log.info(this.getClass().getName() + ".kafkaCreateOrder Start!");

@@ -26,7 +26,7 @@ public class KafkaConsumerService implements IKafkaConsumerService {
      * if there is new Topic --> update DB or something
      */
 
-    @KafkaListener(topics = "sub") // Topic Name
+    @KafkaListener(topics = "item") // Topic Name
     @Override
     @Transactional
     public void reduceItemCount(String kafkaMessage) {

@@ -34,7 +34,8 @@ public class KafkaProducerService implements IKafkaProducerService {
             ex.printStackTrace();
         }
 
-        kafkaTemplate.send("sub", kafkaMessage);
+        kafkaTemplate.send("item", kafkaMessage);
+        kafkaTemplate.send("order", kafkaMessage);
         log.info(this.getClass().getName() + ".createNewSub End!");
     }
 }

@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#129] feature : 상품 주문 시 주문 생성">
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#129] fix : JPA 수정">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/KafkaProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/KafkaProducerService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +176,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ApiGatewayApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -296,14 +299,7 @@
       <workItem from="1654930070161" duration="167000" />
       <workItem from="1654930849008" duration="5000" />
       <workItem from="1654932297624" duration="2385000" />
-      <workItem from="1655027313945" duration="4961000" />
-    </task>
-    <task id="LOCAL-00033" summary="[#34] feature : JPA Setting">
-      <created>1653210572329</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1653210572329</updated>
+      <workItem from="1655027313945" duration="6485000" />
     </task>
     <task id="LOCAL-00034" summary="[#34] feature : dto Setting">
       <created>1653210619694</created>
@@ -641,7 +637,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655032075359</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="[#129] fix : JPA 수정">
+      <created>1655032484330</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1655032484330</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -689,7 +692,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#107] feature : 사용자 Token으로 리뷰 조회" />
     <MESSAGE value="[#106] refactor : 사용자 리뷰 생성" />
     <MESSAGE value="[#106] refactor : itemService/review" />
     <MESSAGE value="[#106] refactor : itemService/item" />
@@ -714,7 +716,8 @@
     <MESSAGE value="bugfix : findItemInfoByCategorySeq" />
     <MESSAGE value="[#129] feature : 상품 주문 시 수량 감소" />
     <MESSAGE value="[#129] feature : 상품 주문 시 주문 생성" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#129] feature : 상품 주문 시 주문 생성" />
+    <MESSAGE value="[#129] fix : JPA 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#129] fix : JPA 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -726,5 +729,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="itemEntityOptional" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
