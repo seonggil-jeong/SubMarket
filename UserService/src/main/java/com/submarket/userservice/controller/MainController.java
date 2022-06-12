@@ -41,9 +41,6 @@ public class MainController {
     @GetMapping("/test")
     @Transactional
     public UserDto test() throws Exception {
-        SubDto subDto = new SubDto();
-        subDto.setItemSeq(30);
-        kafkaProducerService.send("example-item-topic", subDto);
 
         return null;
     }

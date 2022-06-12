@@ -1,4 +1,4 @@
-package com.submarket.itemservice.coinfig;
+package com.submarket.orderservice.config;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
