@@ -40,6 +40,6 @@ public interface ItemRepository extends CrudRepository<ItemEntity, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE item_info SET item_count = item_count - 1 WHERE itemSeq = :itemSeq", nativeQuery = true)
+    @Query(value = "UPDATE item_info SET item_count = item_count - 1 WHERE item_seq = :itemSeq", nativeQuery = true)
     void reduceItemCount(@Param("itemSeq") int itemSeq);
 }

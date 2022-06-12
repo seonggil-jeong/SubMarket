@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#129] feature : 상품 주문 시 수량 감소">
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/IKafkaConsumerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#129] feature : 상품 주문 시 주문 생성">
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/dto/OrderDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/impl/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/impl/OrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/MainController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -305,14 +296,7 @@
       <workItem from="1654930070161" duration="167000" />
       <workItem from="1654930849008" duration="5000" />
       <workItem from="1654932297624" duration="2385000" />
-      <workItem from="1655027313945" duration="4661000" />
-    </task>
-    <task id="LOCAL-00032" summary="[#33] feature : 상품 리뷰 (생성, 조회, 수정, 삭제)">
-      <created>1653210406672</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1653210406672</updated>
+      <workItem from="1655027313945" duration="4961000" />
     </task>
     <task id="LOCAL-00033" summary="[#34] feature : JPA Setting">
       <created>1653210572329</created>
@@ -650,7 +634,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655028818147</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="[#129] feature : 상품 주문 시 주문 생성">
+      <created>1655032075359</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1655032075359</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,7 +689,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#106] refactor : saveReview" />
     <MESSAGE value="[#107] feature : 사용자 Token으로 리뷰 조회" />
     <MESSAGE value="[#106] refactor : 사용자 리뷰 생성" />
     <MESSAGE value="[#106] refactor : itemService/review" />
@@ -723,6 +713,18 @@
     <MESSAGE value="[#21] bugfix : 중복 구독 (createNewSub)" />
     <MESSAGE value="bugfix : findItemInfoByCategorySeq" />
     <MESSAGE value="[#129] feature : 상품 주문 시 수량 감소" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#129] feature : 상품 주문 시 수량 감소" />
+    <MESSAGE value="[#129] feature : 상품 주문 시 주문 생성" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#129] feature : 상품 주문 시 주문 생성" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
