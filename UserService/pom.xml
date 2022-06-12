@@ -175,6 +175,7 @@
             <artifactId>spring-kafka</artifactId>
         </dependency>
 
+
     </dependencies>
     <dependencyManagement>
         <dependencies>

@@ -100,7 +100,8 @@ public class SubService implements ISubService {
             mailService.sendMail(subDto.getUser().getUserEmail(), "구독 성공", subDto.getUser().getUserName() + "님 구독이 완료 됐습니다!!");
 
             // kafka (구독 성공 시 Item Count - 1)
-            kafkaProducerService.send("kafkaTest", subDto);
+
+            kafkaProducerService.createNewSub(subDto);
 
             res = 1;
         } else {
