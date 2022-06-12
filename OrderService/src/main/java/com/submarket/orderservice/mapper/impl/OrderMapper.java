@@ -65,7 +65,7 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
 
                 String orderId = CmmUtil.nvl(doc.getString("orderId"));
                 String orderDate = CmmUtil.nvl(doc.getString("orderDate"));
-                String itemSeq = CmmUtil.nvl(doc.getString("itemSeq"));
+                int itemSeq = doc.getInteger("itemSeq");
                 String sellerId = CmmUtil.nvl(doc.getString("sellerId"));
 
                 OrderDto orderDto = new OrderDto();
@@ -116,7 +116,7 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
 
                 String orderId = CmmUtil.nvl(doc.getString("orderId"));
                 String orderDate = CmmUtil.nvl(doc.getString("orderDate"));
-                String itemSeq = CmmUtil.nvl(doc.getString("itemSeq"));
+                int itemSeq = doc.getInteger("itemSeq");
                 String userId = CmmUtil.nvl(doc.getString("userId"));
 
                 OrderDto orderDto = new OrderDto();
@@ -169,7 +169,7 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
 
                 String rOrderId = CmmUtil.nvl(doc.getString("orderId"));
                 String orderDate = CmmUtil.nvl(doc.getString("orderDate"));
-                String itemSeq = CmmUtil.nvl(doc.getString("itemSeq"));
+                int itemSeq = doc.getInteger("itemSeq");
                 String userId = CmmUtil.nvl(doc.getString("userId"));
                 String sellerId = CmmUtil.nvl(doc.getString("sellerId"));
 
