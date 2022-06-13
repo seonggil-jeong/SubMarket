@@ -29,6 +29,7 @@ public class SellerService implements ISellerService {
 
     /** 사업자 회원가입 */
     @Override
+    @Transactional
     public int createSeller(SellerDto SellerDto) throws Exception {
         log.info(this.getClass().getName() + ".createSeller Start!");
         String sellerId = SellerDto.getSellerId();
@@ -44,7 +45,6 @@ public class SellerService implements ISellerService {
                     SellerEntity sellerEntity = SellerMapper.INSTANCE.SellerDtoToSellerEntity(SellerDto);
                     sellerRepository.save(sellerEntity);
 
-// TODO: 2022/05/12 Exception 변경
                 } else {
                     throw new RuntimeException("사업자 번호 중복");
                 }
@@ -60,6 +60,7 @@ public class SellerService implements ISellerService {
     }
 
     @Override
+    @Transactional
     public int deleteSeller(SellerDto SellerDto) throws Exception {
         log.info(this.getClass().getName() + ".deleteSeller Start!");
 
@@ -84,6 +85,7 @@ public class SellerService implements ISellerService {
 
 
     @Override
+    @Transactional
     public SellerDto getSellerInfoBySellerEmail(SellerDto sellerDto) throws Exception {
         log.info(this.getClass().getName() + ".getSellerInfoBySellerEmail Start !");
         String sellerEmail = sellerDto.getSellerEmail();
@@ -103,6 +105,7 @@ public class SellerService implements ISellerService {
     }
 
     @Override
+    @Transactional
     public SellerDto getSellerInfoBySellerId(SellerDto sellerDto) throws Exception {
         log.info(this.getClass().getName() + "getSellerInfoBySellerId Start!");
         String sellerId = sellerDto.getSellerId();
@@ -155,6 +158,7 @@ public class SellerService implements ISellerService {
 
     //####################################### JWT Don't change #######################################//
     @Override
+    @Transactional
     public SellerDto getSellerDetailsByUserId(String sellerId) {
         SellerEntity rEntity = sellerRepository.findBySellerId(sellerId);
 
@@ -172,6 +176,7 @@ public class SellerService implements ISellerService {
     }
 
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String sellerId) throws UsernameNotFoundException {
         log.info("sellerName : " + sellerId);
         SellerEntity rEntity = sellerRepository.findBySellerId(sellerId);
