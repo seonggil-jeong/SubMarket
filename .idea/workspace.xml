@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#129] fix : Topic Name 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce.xml" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="RabbitMq &amp; Config">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/dto/OrderDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/impl/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/impl/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/config/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/config/KafkaProducerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/dto/SubDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/dto/SubDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,16 +65,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="feature/#118" />
+                    <option name="lastUsedInstant" value="1655131112" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="develop" />
                     <option name="lastUsedInstant" value="1655034141" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="feature/#129" />
-                    <option name="lastUsedInstant" value="1655027657" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="feature/#118" />
-                    <option name="lastUsedInstant" value="1655017141" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -149,11 +148,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/OrderService/src/main/resources" />
       <recent name="$PROJECT_DIR$/ApiGateway/src/main/resources" />
       <recent name="$PROJECT_DIR$/ItemService/src/main/resources" />
       <recent name="$PROJECT_DIR$/SellerService/src/main/resources" />
       <recent name="$PROJECT_DIR$/UserService/src/main/resources" />
-      <recent name="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -300,14 +299,7 @@
       <workItem from="1654930849008" duration="5000" />
       <workItem from="1654932297624" duration="2385000" />
       <workItem from="1655027313945" duration="6485000" />
-      <workItem from="1655125865406" duration="4422000" />
-    </task>
-    <task id="LOCAL-00034" summary="[#34] feature : dto Setting">
-      <created>1653210619694</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1653210619694</updated>
+      <workItem from="1655125865406" duration="7467000" />
     </task>
     <task id="LOCAL-00035" summary="[#34] feature : mapper, vo Setting">
       <created>1653210712310</created>
@@ -645,7 +637,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655032484330</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="RabbitMq &amp; Config">
+      <created>1655130587093</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1655130587093</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -698,7 +697,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#106] refactor : 사용자 리뷰 생성" />
     <MESSAGE value="[#106] refactor : itemService/review" />
     <MESSAGE value="[#106] refactor : itemService/item" />
     <MESSAGE value="[#91] refactor : S3 Upload 수정" />
@@ -723,7 +721,8 @@
     <MESSAGE value="[#129] feature : 상품 주문 시 수량 감소" />
     <MESSAGE value="[#129] feature : 상품 주문 시 주문 생성" />
     <MESSAGE value="[#129] fix : JPA 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#129] fix : JPA 수정" />
+    <MESSAGE value="RabbitMq &amp; Config" />
+    <option name="LAST_COMMIT_MESSAGE" value="RabbitMq &amp; Config" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

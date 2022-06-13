@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.submarket.orderservice.dto.OrderDto;
 import com.submarket.orderservice.service.IKafkaConsumerService;
+import com.submarket.orderservice.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -37,8 +38,12 @@ public class KafkaConsumerService implements IKafkaConsumerService {
 
         }
         OrderDto orderDto = new OrderDto();
+
         orderDto.setUserId(String.valueOf(map.get("userId")));
         orderDto.setItemSeq(Integer.parseInt(String.valueOf(map.get("itemSeq"))));
+        orderDto.setSellerId(String.valueOf(map.get("sellerId")));
+        orderDto.setUserAddress(String.valueOf(map.get("userAddress")));
+        orderDto.setUserAddress2(CmmUtil.nvl(String.valueOf(map.get("userAddress2"))));
 
         orderService.insertOrder(orderDto);
 

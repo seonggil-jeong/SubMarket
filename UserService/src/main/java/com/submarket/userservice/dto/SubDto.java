@@ -15,4 +15,10 @@ public class SubDto {
     private int subCount;
     private UserEntity user;
     private String userId;
+
+
+    // Kafka Setting
+    private String sellerId;
+    private String userAddress;
+    private String userAddress2;
 }

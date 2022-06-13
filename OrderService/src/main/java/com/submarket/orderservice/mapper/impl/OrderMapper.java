@@ -54,6 +54,9 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
             projection.append("orderDate", "$orderDate");
             projection.append("itemSeq", "$itemSeq");
             projection.append("sellerId", "$sellerId");
+            projection.append("userAddress", "$userAddress");
+            projection.append("userAddress2", "$userAddress2");
+            projection.append("orderDateDetails", "$orderDateDetails");
             projection.append("_id", 0);
 
             FindIterable<Document> rs = col.find(query).projection(projection);
@@ -67,6 +70,9 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
                 String orderDate = CmmUtil.nvl(doc.getString("orderDate"));
                 int itemSeq = doc.getInteger("itemSeq");
                 String sellerId = CmmUtil.nvl(doc.getString("sellerId"));
+                String userAddress = CmmUtil.nvl(doc.getString("userAddress"));
+                String userAddress2 = CmmUtil.nvl(doc.getString("userAddress2"));
+                String orderDateDetails = CmmUtil.nvl(doc.getString("orderDateDetails"));
 
                 OrderDto orderDto = new OrderDto();
 
@@ -74,6 +80,9 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
                 orderDto.setOrderDate(orderDate);
                 orderDto.setItemSeq(itemSeq);
                 orderDto.setSellerId(sellerId);
+                orderDto.setUserAddress(userAddress);
+                orderDto.setUserAddress2(userAddress2);
+                orderDto.setOrderDateDetails(orderDateDetails);
 
                 orderDtoList.add(orderDto);
             }
@@ -105,6 +114,10 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
             projection.append("orderDate", "$orderDate");
             projection.append("itemSeq", "$itemSeq");
             projection.append("userId", "$userId");
+            projection.append("userAddress", "$userAddress");
+            projection.append("userAddress2", "$userAddress2");
+            projection.append("orderDateDetails", "$orderDateDetails");
+
             projection.append("_id", 0);
 
             FindIterable<Document> rs = col.find(query).projection(projection);
@@ -118,6 +131,9 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
                 String orderDate = CmmUtil.nvl(doc.getString("orderDate"));
                 int itemSeq = doc.getInteger("itemSeq");
                 String userId = CmmUtil.nvl(doc.getString("userId"));
+                String userAddress = CmmUtil.nvl(doc.getString("userAddress"));
+                String userAddress2 = CmmUtil.nvl(doc.getString("userAddress2"));
+                String orderDateDetails = CmmUtil.nvl(doc.getString("orderDateDetails"));
 
                 OrderDto orderDto = new OrderDto();
 
@@ -125,7 +141,9 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
                 orderDto.setOrderDate(orderDate);
                 orderDto.setItemSeq(itemSeq);
                 orderDto.setSellerId(sellerId);
-
+                orderDto.setUserAddress(userAddress);
+                orderDto.setUserAddress2(userAddress2);
+                orderDto.setOrderDateDetails(orderDateDetails);
                 orderDtoList.add(orderDto);
             }
         } catch (HttpStatusCodeException statusCodeException) {
@@ -157,6 +175,9 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
             projection.append("itemSeq", "$itemSeq");
             projection.append("userId", "$userId");
             projection.append("sellerId", "$sellerId");
+            projection.append("userAddress", "$userAddress");
+            projection.append("userAddress2", "$userAddress2");
+            projection.append("orderDateDetails", "$orderDateDetails");
             projection.append("_id", 0);
 
             FindIterable<Document> rs = col.find(query).projection(projection);
@@ -172,12 +193,19 @@ public class OrderMapper extends AbstractMongoDBComon implements IOrderMapper {
                 int itemSeq = doc.getInteger("itemSeq");
                 String userId = CmmUtil.nvl(doc.getString("userId"));
                 String sellerId = CmmUtil.nvl(doc.getString("sellerId"));
+                String userAddress = CmmUtil.nvl(doc.getString("userAddress"));
+                String userAddress2 = CmmUtil.nvl(doc.getString("userAddress2"));
+                String orderDateDetails = CmmUtil.nvl(doc.getString("orderDateDetails"));
+
 
                 orderDto.setOrderId(rOrderId);
                 orderDto.setOrderDate(orderDate);
                 orderDto.setItemSeq(itemSeq);
                 orderDto.setSellerId(sellerId);
                 orderDto.setUserId(userId);
+                orderDto.setUserAddress(userAddress);
+                orderDto.setUserAddress2(userAddress2);
+                orderDto.setOrderDateDetails(orderDateDetails);
 
             }
         } catch (HttpStatusCodeException statusCodeException) {

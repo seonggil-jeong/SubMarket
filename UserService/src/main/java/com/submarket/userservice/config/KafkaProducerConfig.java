@@ -18,7 +18,6 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class KafkaProducerConfig {
     private final Environment env;
-    // TODO: 2022/06/12 IP ConfigService 이용하기
     @Bean
     public ProducerFactory<String, String> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();

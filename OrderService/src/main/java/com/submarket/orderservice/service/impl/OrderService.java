@@ -3,6 +3,8 @@ package com.submarket.orderservice.service.impl;
 import com.submarket.orderservice.dto.OrderDto;
 import com.submarket.orderservice.mapper.impl.OrderMapper;
 import com.submarket.orderservice.service.IOrderService;
+import com.submarket.orderservice.util.DateUtil;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,8 @@ public class OrderService implements IOrderService {
         log.info(this.getClass().getName() + ".insertOrder Start!");
 
         orderDto.setOrderId(String.valueOf(UUID.randomUUID()));
-        orderDto.setOrderDate(String.valueOf(new Date()));
+        orderDto.setOrderDateDetails(String.valueOf(new Date()));
+        orderDto.setOrderDate(DateUtil.getDateTime("yyyyMM"));
 
         String colNm = "OrderService";
         int res = orderMapper.insertOrder(orderDto, colNm);
