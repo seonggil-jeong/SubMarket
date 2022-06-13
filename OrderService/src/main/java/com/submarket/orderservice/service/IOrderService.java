@@ -13,4 +13,6 @@ public interface IOrderService {
     List<OrderDto> findAllOrderBySellerId(String sellerId) throws Exception;
 
     OrderDto findOneOrderByOrderId(String orderId) throws Exception;
+
+    int totalPriceByItemSeq(OrderDto orderDto, int itemPrice) throws Exception;
 }
