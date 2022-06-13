@@ -21,9 +21,6 @@ public interface ItemRepository extends CrudRepository<ItemEntity, Integer> {
     @Transactional
     List<ItemEntity> findAllBySellerId(String sellerId);
 
-    @Transactional
-    List<ItemEntity> findAllOrder();
-
     @Modifying
     @Transactional
     @Query(value = "UPDATE item_info SET item_status = 0 WHERE item_seq = :itemSeq", nativeQuery = true)

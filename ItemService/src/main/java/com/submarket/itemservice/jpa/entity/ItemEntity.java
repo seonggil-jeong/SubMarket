@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "itemInfo")
-@JsonIgnoreProperties({"category", "group", "reviews"})
+@JsonIgnoreProperties({"category", "reviews"})
 public class ItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,9 +63,6 @@ public class ItemEntity {
     @JsonIgnore
     private CategoryEntity category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
-    private GroupEntity group;
 
     @OneToMany(mappedBy = "item")
     @JsonIgnore

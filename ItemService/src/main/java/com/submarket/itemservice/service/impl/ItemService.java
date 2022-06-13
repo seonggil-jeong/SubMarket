@@ -1,15 +1,11 @@
 package com.submarket.itemservice.service.impl;
 
 import com.submarket.itemservice.dto.CategoryDto;
-import com.submarket.itemservice.dto.GroupDto;
 import com.submarket.itemservice.dto.ItemDto;
-import com.submarket.itemservice.jpa.GroupRepository;
 import com.submarket.itemservice.jpa.ItemRepository;
 import com.submarket.itemservice.jpa.entity.CategoryEntity;
-import com.submarket.itemservice.jpa.entity.GroupEntity;
 import com.submarket.itemservice.jpa.entity.ItemEntity;
 import com.submarket.itemservice.mapper.CategoryMapper;
-import com.submarket.itemservice.mapper.GroupMapper;
 import com.submarket.itemservice.mapper.ItemMapper;
 import com.submarket.itemservice.service.IItemService;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +23,6 @@ import java.util.Optional;
 @Service("ItemService")
 public class ItemService implements IItemService {
     private final ItemRepository itemRepository;
-    private final GroupRepository groupRepository;
     private final CategoryService categoryService;
     private final S3Service s3Service;
 
