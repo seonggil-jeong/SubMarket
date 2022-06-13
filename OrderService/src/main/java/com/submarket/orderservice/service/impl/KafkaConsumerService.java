@@ -9,6 +9,7 @@ import com.submarket.orderservice.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class KafkaConsumerService implements IKafkaConsumerService {
     private final OrderService orderService;
+    private final KafkaTemplate kafkaTemplate;
 
     @KafkaListener(topics = "sub")
     @Override
@@ -48,5 +50,26 @@ public class KafkaConsumerService implements IKafkaConsumerService {
         orderService.insertOrder(orderDto);
 
         log.info(this.getClass().getName() + ".kafkaCreateOrder Start!");
+    }
+    
+    @KafkaListener(topics = "sales")
+    @Override
+    public void kafkaGetItemInfoFromItemService(String kafkaMessage) throws Exception {
+        log.info(this.getClass().getName() + ".kafkaGetItemInfoFromItemService Start!");
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> map = new HashMap<>();
+
+        try {
+            map = mapper.readValue(kafkaMessage, new TypeReference<Map<String, Object>>() {
+            });
+        } catch (JsonProcessingException exception) {
+            log.info("JsonProcessingException : " + exception);
+            exception.printStackTrace();
+        }
+
+        // TODO: 2022/06/14 date and value return to sellerService
+        kafkaTemplate.send("order", kafkaMessage);
+
+        log.info(this.getClass().getName() + ".kafkaGetItemInfoFromItemService End!");
     }
 }
