@@ -38,6 +38,18 @@ public class ItemEntity {
     @Column(nullable = false)
     private int itemCount;
 
+    @Column(length = 300)
+    private int readCount20;
+
+    @Column(length = 300)
+    private int readCount30;
+
+    @Column(length = 300)
+    private int readCount40;
+
+    @Column(length = 300)
+    private int readCountOther;
+
     @Column(nullable = false)
     private int itemStatus;
 

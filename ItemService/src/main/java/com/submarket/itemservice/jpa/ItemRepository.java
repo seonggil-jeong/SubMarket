@@ -21,6 +21,9 @@ public interface ItemRepository extends CrudRepository<ItemEntity, Integer> {
     @Transactional
     List<ItemEntity> findAllBySellerId(String sellerId);
 
+    @Transactional
+    List<ItemEntity> findAllOrder();
+
     @Modifying
     @Transactional
     @Query(value = "UPDATE item_info SET item_status = 0 WHERE item_seq = :itemSeq", nativeQuery = true)
@@ -47,4 +50,24 @@ public interface ItemRepository extends CrudRepository<ItemEntity, Integer> {
     @Transactional
     @Query(value = "UPDATE item_info SET item_count = item_count + 1 WHERE item_seq = :itemSeq", nativeQuery = true)
     void increaseItemCount(@Param("itemSeq") int itemSeq);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE item_info SET read_count20 = read_count20 + 1 WHERE item_seq = :itemSeq", nativeQuery = true)
+    void increaseReadCount20(@Param("itemSeq") int itemSeq);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE item_info SET read_count30 = read_count30 + 1 WHERE item_seq = :itemSeq", nativeQuery = true)
+    void increaseReadCount30(@Param("itemSeq") int itemSeq);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE item_info SET read_count40 = read_count40 + 1 WHERE item_seq = :itemSeq", nativeQuery = true)
+    void increaseReadCount40(@Param("itemSeq") int itemSeq);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE item_info SET read_count_other = read_count_other + 1 WHERE item_seq = :itemSeq", nativeQuery = true)
+    void increaseReadCountOther(@Param("itemSeq") int itemSeq);
 }

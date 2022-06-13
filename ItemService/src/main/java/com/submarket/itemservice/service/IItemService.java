@@ -20,6 +20,8 @@ public interface IItemService {
 
     List<ItemDto> findItemBySellerId(String sellerId) throws Exception;
 
+    void upCount(int itemSeq, int userAge) throws Exception;
+
 
 
 }

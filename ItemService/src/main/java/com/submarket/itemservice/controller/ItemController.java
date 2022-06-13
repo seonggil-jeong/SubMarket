@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,5 +100,14 @@ public class ItemController {
         itemService.modifyItem(itemDto);
 
         return ResponseEntity.ok().body("상품 수정 완료");
+    }
+
+    @PostMapping("/items/{itemSeq}/up")
+    public void upCount(@PathVariable int itemSeq, @RequestBody Map<String, Object> request) throws Exception {
+        int userAge = Integer.parseInt(String.valueOf(request.get("userAge")));
+        log.info(this.getClass().getName() + ".upCount Start!");
+        itemService.upCount(itemSeq, userAge);
+
+        log.info(this.getClass().getName() + ".upCount End!");
     }
 }

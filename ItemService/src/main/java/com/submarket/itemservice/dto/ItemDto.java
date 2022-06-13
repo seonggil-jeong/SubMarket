@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.Column;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,6 +24,11 @@ public class ItemDto {
     private CategoryEntity category;
 
     private int itemStatus; // 활성화
+
+    private int readCount20;
+    private int readCount30;
+    private int readCount40;
+    private int readCountOther;
 
     private String mainImagePath; // DB에 저장되어 있는 이미지 정보
     private String subImagePath;
