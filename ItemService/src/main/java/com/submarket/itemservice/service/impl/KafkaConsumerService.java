@@ -52,4 +52,30 @@ public class KafkaConsumerService implements IKafkaConsumerService {
         }
     }
 
+    @KafkaListener(topics = "sub-cancel")
+    @Override
+    @Transactional
+    public void increaseItemCount(String kafkaMessage) throws Exception {
+        log.info(this.getClass().getName() + ".cancelSub Start!");
+
+        Map<String, Object> map = new HashMap<>();
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            map = mapper.readValue(kafkaMessage, new TypeReference<Map<String, Object>>() {
+            });
+
+        } catch (JsonProcessingException exception) {
+            log.info("JsonProcessingException : " + exception);
+            exception.printStackTrace();
+
+        }
+
+        int itemSeq = Integer.parseInt(String.valueOf(map.get("itemSeq")));
+        itemRepository.increaseItemCount(itemSeq);
+
+
+        log.info(this.getClass().getName() + ".cancelSub End!");
+    }
+
 }

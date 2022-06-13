@@ -37,4 +37,24 @@ public class KafkaProducerService implements IKafkaProducerService {
         kafkaTemplate.send("sub", kafkaMessage);
         log.info(this.getClass().getName() + ".createNewSub End!");
     }
+
+    @Override
+    public void cancelSub(SubDto subDto) throws Exception {
+        log.info(this.getClass().getName() + ".cancelSub Start!");
+        ObjectMapper mapper = new ObjectMapper();
+        String kafkaMessage = "";
+
+        try {
+            kafkaMessage = mapper.writeValueAsString(subDto);
+
+        } catch (JsonProcessingException exception) {
+            log.info("JsonProcessingException : " + exception);
+            exception.printStackTrace();
+
+        }
+
+        kafkaTemplate.send("sub-cancel", kafkaMessage);
+
+        log.info(this.getClass().getName() + ".cancelSub End!");
+    }
 }
