@@ -2,10 +2,7 @@ package com.submarket.sellerservice.jpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "salesInfo")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

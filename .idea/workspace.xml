@@ -4,17 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#118] refactor : OrderService 저장 Type 수정">
-      <change afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/SalesDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/SalesRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SalesEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/mapper/SalesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce.xml" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#118] refactor : kafka Setting">
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/coinfig/AsyncConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/SchedulerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/IKafkaProducerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaProducerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/SellerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/SellerDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/SellerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/SellerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SellerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SellerEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/SellerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/SellerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/IOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/IOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/impl/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/impl/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/IOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/SalesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/SalesRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SalesEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SalesEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/ISalesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/ISalesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/KafkaConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/SalesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/SalesService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,11 +170,11 @@
       <recent name="com.submarket.sellerservice.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.submarket.sellerservice.dto" />
-      <recent name="com.submarket.orderservice.config" />
+      <recent name="com.submarket.orderservice.dto" />
       <recent name="com.submarket.itemservice.coinfig" />
-      <recent name="com.submarket.orderservice.security" />
-      <recent name="com.submarket.userservice.vo" />
+      <recent name="com.submarket.itemservice.service.impl" />
+      <recent name="com.submarket.sellerservice.service" />
+      <recent name="com.submarket.sellerservice.service.impl" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -178,7 +184,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.SellerServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ItemServiceApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -302,21 +308,7 @@
       <workItem from="1654930849008" duration="5000" />
       <workItem from="1654932297624" duration="2385000" />
       <workItem from="1655027313945" duration="6485000" />
-      <workItem from="1655125865406" duration="8679000" />
-    </task>
-    <task id="LOCAL-00036" summary="[#70] feature : JWT 로그인">
-      <created>1653211162621</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1653211162621</updated>
-    </task>
-    <task id="LOCAL-00037" summary="[#35] feature : Seller 중복 확인 (Id, Email, businessId)">
-      <created>1653211544973</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1653211544973</updated>
+      <workItem from="1655125865406" duration="15518000" />
     </task>
     <task id="LOCAL-00038" summary="[#36] feature : Seller 회원가입">
       <created>1653211762576</created>
@@ -647,7 +639,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655133667571</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="[#118] refactor : SellerService Sales Table 추가">
+      <created>1655135239672</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1655135239672</updated>
+    </task>
+    <task id="LOCAL-00086" summary="[#118] refactor : kafka Setting">
+      <created>1655137557459</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1655137557459</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -700,8 +706,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#106] refactor : itemService/item" />
-    <MESSAGE value="[#91] refactor : S3 Upload 수정" />
     <MESSAGE value="[#91] refactor : 상품 등록 시 이미지 추가" />
     <MESSAGE value="[#105] feature : Seller가 등록한 모든 상품 조회" />
     <MESSAGE value="[#105] feature : 활성화된 구독 수 조회" />
@@ -725,18 +729,11 @@
     <MESSAGE value="[#129] fix : JPA 수정" />
     <MESSAGE value="RabbitMq &amp; Config" />
     <MESSAGE value="[#118] refactor : OrderService 저장 Type 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#118] refactor : OrderService 저장 Type 수정" />
+    <MESSAGE value="[#118] refactor : SellerService Sales Table 추가" />
+    <MESSAGE value="[#118] refactor : kafka Setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#118] refactor : kafka Setting" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="itemEntityOptional" />

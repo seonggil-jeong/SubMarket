@@ -73,4 +73,21 @@ public class OrderService implements IOrderService {
 
         return orderDto;
     }
+
+    @Override
+    public int totalPriceByItemSeq(OrderDto orderDto, int itemPrice) throws Exception {
+        int totalPrice = 0;
+        log.info(this.getClass().getName() + ".totalPriceByItemSeq Start!");
+        int itemSeq = orderDto.getItemSeq();
+
+        log.info("itemSeq : " + itemSeq);
+
+        String colNm = "OrderService";
+        List<OrderDto> orderDtoList = orderMapper.findOrderInfoByItemSeq(itemSeq, colNm);
+
+        if (orderDtoList.size() > 0) {
+            totalPrice += orderDtoList.size() * itemPrice;
+        }
+        return totalPrice;
+    }
 }

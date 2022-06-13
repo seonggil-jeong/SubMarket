@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.submarket.orderservice.dto.OrderDto;
 import com.submarket.orderservice.service.IKafkaConsumerService;
 import com.submarket.orderservice.util.CmmUtil;
+import com.submarket.orderservice.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -20,7 +21,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class KafkaConsumerService implements IKafkaConsumerService {
     private final OrderService orderService;
-    private final KafkaTemplate kafkaTemplate;
+    private final KafkaProducerService kafkaProducerService;
 
     @KafkaListener(topics = "sub")
     @Override
@@ -66,9 +67,20 @@ public class KafkaConsumerService implements IKafkaConsumerService {
             log.info("JsonProcessingException : " + exception);
             exception.printStackTrace();
         }
+        int itemPrice = Integer.parseInt(String.valueOf(map.get("itemPrice")));
+        int itemSeq = Integer.parseInt(String.valueOf(map.get("itemSeq")));
+        String sellerId = String.valueOf(map.get("sellerId"));
 
-        // TODO: 2022/06/14 date and value return to sellerService
-        kafkaTemplate.send("order", kafkaMessage);
+        log.info("itemPrice : " + itemPrice);
+
+        OrderDto orderDto = new OrderDto();
+        orderDto.setItemSeq(itemSeq);
+
+        int totalPrice = orderService.totalPriceByItemSeq(orderDto, itemPrice);
+        String date = DateUtil.getDateTime("yyyyMM");
+
+        kafkaProducerService.kafkaSendPriceToSellerService(totalPrice, date, sellerId);
+
 
         log.info(this.getClass().getName() + ".kafkaGetItemInfoFromItemService End!");
     }

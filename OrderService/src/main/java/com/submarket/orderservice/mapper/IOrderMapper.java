@@ -13,4 +13,6 @@ public interface IOrderMapper {
     List<OrderDto> findOrderInfoBySellerId(String sellerId, String colNm) throws Exception;
 
     OrderDto findOrderInfoByOrderId(String orderId, String colNm) throws Exception;
+
+    List<OrderDto> findOrderInfoByItemSeq(int itemSeq, String colNm) throws Exception;
 }
