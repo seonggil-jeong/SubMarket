@@ -29,7 +29,7 @@ public class KafkaConsumerConfig {
         Map<String, Object> properties = new HashMap<>();
 
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, env.getProperty("kafka.ip")); // ip Address
-        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "consumerGroupId"); // Group 으로 묶기
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, "consumerOrder"); // Group 으로 묶기
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class); // topic Type (Key)
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class); // topic Type (Value)
 
