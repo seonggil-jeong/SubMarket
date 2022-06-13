@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#116] feature : 상품 조회 수 증가">
-      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#129] fix : Topic Name 수정">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/GroupController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/GroupDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/GroupRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/GroupEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/GroupMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IGroupService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/GroupService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,12 +62,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feature/#116" />
-                    <option name="lastUsedInstant" value="1655103832" />
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1655034141" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1655103781" />
+                    <option name="branchName" value="feature/#129" />
+                    <option name="lastUsedInstant" value="1655027657" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/#118" />
+                    <option name="lastUsedInstant" value="1655017141" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -140,7 +133,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ApiGateway/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/OrderService/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -149,7 +142,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="aws" />
+    <property name="settings.editor.selected.configurable" value="bigdataide_conn_settings" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -183,7 +176,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ItemServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ConfigServiceApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -254,10 +247,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.ApiGatewayApplication" />
-      <item itemvalue="Spring Boot.ItemServiceApplication" />
       <item itemvalue="Spring Boot.UserServiceApplication" />
+      <item itemvalue="Spring Boot.ApiGatewayApplication" />
       <item itemvalue="Spring Boot.DiscoveryServiceApplication" />
+      <item itemvalue="Spring Boot.ItemServiceApplication" />
       <item itemvalue="Spring Boot.OrderServiceApplication" />
       <item itemvalue="Spring Boot.SellerServiceApplication" />
       <item itemvalue="Spring Boot.ConfigServiceApplication" />
@@ -307,7 +300,35 @@
       <workItem from="1654930849008" duration="5000" />
       <workItem from="1654932297624" duration="2385000" />
       <workItem from="1655027313945" duration="6485000" />
-      <workItem from="1655106873338" duration="3270000" />
+      <workItem from="1655125865406" duration="4422000" />
+    </task>
+    <task id="LOCAL-00034" summary="[#34] feature : dto Setting">
+      <created>1653210619694</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1653210619694</updated>
+    </task>
+    <task id="LOCAL-00035" summary="[#34] feature : mapper, vo Setting">
+      <created>1653210712310</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1653210712310</updated>
+    </task>
+    <task id="LOCAL-00036" summary="[#70] feature : JWT 로그인">
+      <created>1653211162621</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1653211162621</updated>
+    </task>
+    <task id="LOCAL-00037" summary="[#35] feature : Seller 중복 확인 (Id, Email, businessId)">
+      <created>1653211544973</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1653211544973</updated>
     </task>
     <task id="LOCAL-00038" summary="[#36] feature : Seller 회원가입">
       <created>1653211762576</created>
@@ -624,35 +645,7 @@
       <option name="project" value="LOCAL" />
       <updated>1655032484330</updated>
     </task>
-    <task id="LOCAL-00083" summary="[#129] fix : Kafka 수정">
-      <created>1655090114790</created>
-      <option name="number" value="00083" />
-      <option name="presentableId" value="LOCAL-00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1655090114791</updated>
-    </task>
-    <task id="LOCAL-00084" summary="return Type">
-      <created>1655097579665</created>
-      <option name="number" value="00084" />
-      <option name="presentableId" value="LOCAL-00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1655097579665</updated>
-    </task>
-    <task id="LOCAL-00085" summary="월 매출 조회">
-      <created>1655102146453</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1655102146453</updated>
-    </task>
-    <task id="LOCAL-00086" summary="[#116] feature : 상품 조회 수 증가">
-      <created>1655105770518</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1655105770518</updated>
-    </task>
-    <option name="localTasksCounter" value="87" />
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -673,6 +666,11 @@
         <entry key="Branch">
           <value>
             <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="feature/#118" />
+                </option>
+              </RecentGroup>
               <RecentGroup>
                 <option name="FILTER_VALUES">
                   <option value="origin/develop" />
@@ -700,6 +698,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="[#106] refactor : 사용자 리뷰 생성" />
+    <MESSAGE value="[#106] refactor : itemService/review" />
+    <MESSAGE value="[#106] refactor : itemService/item" />
+    <MESSAGE value="[#91] refactor : S3 Upload 수정" />
+    <MESSAGE value="[#91] refactor : 상품 등록 시 이미지 추가" />
     <MESSAGE value="[#105] feature : Seller가 등록한 모든 상품 조회" />
     <MESSAGE value="[#105] feature : 활성화된 구독 수 조회" />
     <MESSAGE value="OrderDto 수정" />
@@ -720,11 +723,22 @@
     <MESSAGE value="[#129] feature : 상품 주문 시 수량 감소" />
     <MESSAGE value="[#129] feature : 상품 주문 시 주문 생성" />
     <MESSAGE value="[#129] fix : JPA 수정" />
-    <MESSAGE value="fix : Kafka 수정" />
-    <MESSAGE value="fix : Kafka 상품 주문 취소 시 수량 증가" />
-    <MESSAGE value="return Type" />
-    <MESSAGE value="월 매출 조회" />
-    <MESSAGE value="[#116] feature : 상품 조회 수 증가" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#116] feature : 상품 조회 수 증가" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#129] fix : JPA 수정" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="itemEntityOptional" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
