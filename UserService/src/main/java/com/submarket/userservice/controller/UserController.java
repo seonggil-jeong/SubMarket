@@ -189,7 +189,7 @@ public class    UserController {
         return ResponseEntity.ok().body(userEmail + "로 임시 비밀번호를 발송 했습니다");
     }
 
-    @DeleteMapping("/user")
+    @PostMapping("/user/delete")
     public ResponseEntity<String> deleteUser(@RequestHeader HttpHeaders headers, @RequestBody RequestUser requestUser) throws Exception {
         /**
          * 비밀번호가 일치한다면
@@ -203,11 +203,10 @@ public class    UserController {
         pDto.setUserPassword(requestUser.getUserPassword());
         pDto.setUserId(userId);
 
-        // TODO: 2022-05-23 요청
         userService.deleteUser(pDto);
 
         log.info(this.getClass().getName() + ".deleteUser Start!");
 
-        return null;
+        return ResponseEntity.ok().body("회원탈퇴 완료");
     }
 }
