@@ -1,15 +1,11 @@
 package com.submarket.itemservice.service.impl;
 
 import com.submarket.itemservice.dto.CategoryDto;
-import com.submarket.itemservice.dto.GroupDto;
 import com.submarket.itemservice.dto.ItemDto;
-import com.submarket.itemservice.jpa.GroupRepository;
 import com.submarket.itemservice.jpa.ItemRepository;
 import com.submarket.itemservice.jpa.entity.CategoryEntity;
-import com.submarket.itemservice.jpa.entity.GroupEntity;
 import com.submarket.itemservice.jpa.entity.ItemEntity;
 import com.submarket.itemservice.mapper.CategoryMapper;
-import com.submarket.itemservice.mapper.GroupMapper;
 import com.submarket.itemservice.mapper.ItemMapper;
 import com.submarket.itemservice.service.IItemService;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +23,6 @@ import java.util.Optional;
 @Service("ItemService")
 public class ItemService implements IItemService {
     private final ItemRepository itemRepository;
-    private final GroupRepository groupRepository;
     private final CategoryService categoryService;
     private final S3Service s3Service;
 
@@ -40,17 +35,25 @@ public class ItemService implements IItemService {
         categoryDto.setCategorySeq(itemDto.getCategorySeq());
 
         CategoryDto rDto = categoryService.findCategory(categoryDto);
+        String subImagePath = "/";
 
         log.info("categoryName : " + rDto.getCategoryName());
         CategoryEntity categoryEntity = CategoryMapper.INSTANCE.categoryDtoToCategoryEntity(rDto);
 
         itemDto.setCategory(categoryEntity);
+
         itemDto.setItemStatus(1);
+        itemDto.setReadCount20(0);
+        itemDto.setReadCount30(0);
+        itemDto.setReadCount40(0);
+        itemDto.setReadCountOther(0);
 
         // 상품 이미지 등록 S3 Service (File, dirName) return : S3 Image Path
         /** Main Image 는 항상 NotNull */
         String mainImagePath = s3Service.uploadImageInS3(itemDto.getMainImage(), "images");
-        String subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
+        if (! itemDto.getSubImage().isEmpty()) {
+        subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
+        }
 
         itemDto.setSubImagePath(subImagePath);
         itemDto.setMainImagePath(mainImagePath);
@@ -164,5 +167,24 @@ public class ItemService implements IItemService {
             return itemDtoList;
 
         }
+    }
+
+    @Override
+    @Transactional
+    public void upCount(int itemSeq, int userAge) throws Exception {
+        // 조회수 증가
+        log.info("userAge : " + userAge);
+        if (userAge > 0 && userAge <= 29) {
+            itemRepository.increaseReadCount20(itemSeq);
+
+        } else if (userAge >= 30 && userAge <= 39) {
+            itemRepository.increaseReadCount30(itemSeq);
+        } else if (userAge >= 40 && userAge <= 49) {
+            itemRepository.increaseReadCount40(itemSeq);
+        } else {
+            itemRepository.increaseReadCountOther(itemSeq);
+        }
+
+        log.info(this.getClass().getName() + "upCount End");
     }
 }

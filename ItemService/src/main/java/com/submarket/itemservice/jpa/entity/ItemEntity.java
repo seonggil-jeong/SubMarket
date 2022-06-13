@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "itemInfo")
-@JsonIgnoreProperties({"category", "group", "reviews"})
+@JsonIgnoreProperties({"category", "reviews"})
 public class ItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +38,18 @@ public class ItemEntity {
     @Column(nullable = false)
     private int itemCount;
 
+    @Column(length = 300)
+    private int readCount20;
+
+    @Column(length = 300)
+    private int readCount30;
+
+    @Column(length = 300)
+    private int readCount40;
+
+    @Column(length = 300)
+    private int readCountOther;
+
     @Column(nullable = false)
     private int itemStatus;
 
@@ -51,9 +63,6 @@ public class ItemEntity {
     @JsonIgnore
     private CategoryEntity category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
-    private GroupEntity group;
 
     @OneToMany(mappedBy = "item")
     @JsonIgnore
