@@ -135,8 +135,13 @@ public class SubService implements ISubService {
         log.info(this.getClass().getName() + ".cancelSub Start!");
         if (subCheckService.SubCheck(subDto.getSubSeq())) {
 
+            Optional<SubEntity> subEntity = subRepository.findById(subDto.getSubSeq());
+            subDto.setItemSeq(subEntity.get().getItemSeq());
+
             // not null 삭제 실행
             subRepository.deleteById(subDto.getSubSeq());
+
+            kafkaProducerService.cancelSub(subDto);
 
         } else {
             log.info("구독 정보 찾기 실패");
