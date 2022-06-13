@@ -142,4 +142,15 @@ public class SubController {
 
         return ResponseEntity.status(HttpStatus.OK).body(count);
     }
+
+    @GetMapping("/seller/sub/{itemSeq}")
+    public ResponseEntity<Integer> findOneSubCount(@PathVariable int itemSeq) throws Exception {
+        log.info(this.getClass().getName() + "findOneSubCount Start!");
+
+        int count = subService.findOneSubCount(itemSeq);
+
+        log.info(this.getClass().getName() + "findOneSubCount End!");
+
+        return ResponseEntity.ok().body(count);
+    }
 }

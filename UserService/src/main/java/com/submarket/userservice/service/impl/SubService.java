@@ -173,4 +173,19 @@ public class SubService implements ISubService {
             return count;
         }
     }
+
+    @Override
+    public int findOneSubCount(int itemSeq) throws Exception {
+        log.info(this.getClass().getName() + ".findOneSubCount Start!");
+        int res = 0;
+
+        List<SubEntity> subEntityList = subRepository.findAllByItemSeq(itemSeq);
+
+        if (subEntityList.size() > 0) {
+            res += subEntityList.size();
+        }
+
+        log.info(this.getClass().getName() + ".findOneSubCount End!");
+        return res;
+    }
 }

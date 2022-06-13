@@ -17,4 +17,6 @@ public interface ISubService {
     int cancelSub(SubDto subDto) throws Exception;
 
     int findSubCount(List<Integer> itemSeqList) throws Exception;
+
+    int findOneSubCount(int itemSeq) throws Exception;
 }
