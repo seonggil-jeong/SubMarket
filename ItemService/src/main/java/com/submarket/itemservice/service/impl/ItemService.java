@@ -10,6 +10,7 @@ import com.submarket.itemservice.mapper.ItemMapper;
 import com.submarket.itemservice.service.IItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 
@@ -171,20 +172,45 @@ public class ItemService implements IItemService {
 
     @Override
     @Transactional
+    @Async
     public void upCount(int itemSeq, int userAge) throws Exception {
         // 조회수 증가
-        log.info("userAge : " + userAge);
-        if (userAge > 0 && userAge <= 29) {
+        int cUserAge = 0;
+        cUserAge += userAge;
+        log.info("userAge : " + cUserAge);
+        if (cUserAge > 0 && cUserAge <= 29) {
             itemRepository.increaseReadCount20(itemSeq);
 
-        } else if (userAge >= 30 && userAge <= 39) {
+        } else if (cUserAge >= 30 && cUserAge <= 39) {
             itemRepository.increaseReadCount30(itemSeq);
-        } else if (userAge >= 40 && userAge <= 49) {
+        } else if (cUserAge >= 40 && cUserAge <= 49) {
             itemRepository.increaseReadCount40(itemSeq);
         } else {
             itemRepository.increaseReadCountOther(itemSeq);
         }
 
         log.info(this.getClass().getName() + "upCount End");
+    }
+
+    @Override
+    @Transactional
+    @Async
+    public void upCountCustom(int itemSeq, int userAge, int readValue) throws Exception {
+        log.info(this.getClass().getName() + "upCountCustom Start!");
+
+        if (userAge > 0 && userAge <= 29) {
+            itemRepository.increaseCustomReadCount20(itemSeq, readValue);
+
+        } else if (userAge >= 30 && userAge <= 39) {
+            itemRepository.increaseCustomReadCount30(itemSeq, readValue);
+        } else if (userAge >= 40 && userAge <= 49) {
+            itemRepository.increaseCustomReadCount40(itemSeq, readValue);
+        } else {
+            itemRepository.increaseCustomReadCountOther(itemSeq, readValue);
+        }
+
+
+        log.info(this.getClass().getName() + "upCountCustom End!");
+
     }
 }

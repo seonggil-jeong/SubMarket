@@ -39,10 +39,6 @@ public class SchedulerService {
         subEntityIterable.forEach(subEntity -> {
             subDto.setSubSeq(subEntity.getSubSeq());
 
-
-            // TODO: 2022/05/11 결제 추가 And [#22] Order request
-
-
             // 구독 업데이트
             subService.updateSub(subDto);
         });

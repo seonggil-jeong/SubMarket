@@ -67,4 +67,24 @@ public interface ItemRepository extends CrudRepository<ItemEntity, Integer> {
     @Transactional
     @Query(value = "UPDATE item_info SET read_count_other = read_count_other + 1 WHERE item_seq = :itemSeq", nativeQuery = true)
     void increaseReadCountOther(@Param("itemSeq") int itemSeq);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE item_info SET read_count20 = read_count20 + :readValue WHERE item_seq = :itemSeq", nativeQuery = true)
+    void increaseCustomReadCount20(@Param("itemSeq") int itemSeq, @Param("readValue") int readValue);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE item_info SET read_count30 = read_count30 + :readValue WHERE item_seq = :itemSeq", nativeQuery = true)
+    void increaseCustomReadCount30(@Param("itemSeq") int itemSeq, @Param("readValue") int readValue);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE item_info SET read_count40 = read_count40 + :readValue WHERE item_seq = :itemSeq", nativeQuery = true)
+    void increaseCustomReadCount40(@Param("itemSeq") int itemSeq, @Param("readValue") int readValue);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE item_info SET read_count_other = read_count_other + :readValue WHERE item_seq = :itemSeq", nativeQuery = true)
+    void increaseCustomReadCountOther(@Param("itemSeq") int itemSeq, @Param("readValue") int readValue);
 }

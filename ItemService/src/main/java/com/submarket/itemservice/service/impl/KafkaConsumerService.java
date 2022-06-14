@@ -29,7 +29,7 @@ public class KafkaConsumerService implements IKafkaConsumerService {
     @KafkaListener(topics = "sub") // Topic Name
     @Override
     @Transactional
-    public void reduceItemCount(String kafkaMessage) {
+    public void reduceItemCount(String kafkaMessage) throws Exception{
         // 값은 String 으로 직렬화 하여 넘어옴, Map (JSON) 형식으로 변환해서 사용해야 함
         log.info(this.getClass().getName() + ".reduceItemCount Start");
 
@@ -45,10 +45,12 @@ public class KafkaConsumerService implements IKafkaConsumerService {
         }
 
         int itemSeq = Integer.parseInt(String.valueOf(map.get("itemSeq")));
+        int userAge = Integer.parseInt(String.valueOf(map.get("userAge")));
 
         Optional<ItemEntity> itemEntityOptional = itemRepository.findById(itemSeq);
         if (itemEntityOptional.isPresent()) {
             itemRepository.reduceItemCount(itemSeq);
+            itemService.upCountCustom(itemSeq, userAge, 30); // 구독 시 ReadCount += 30
         }
     }
 

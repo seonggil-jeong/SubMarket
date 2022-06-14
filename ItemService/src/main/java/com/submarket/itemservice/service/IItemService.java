@@ -21,6 +21,8 @@ public interface IItemService {
 
     void upCount(int itemSeq, int userAge) throws Exception;
 
+    void upCountCustom(int itemSeq, int userAge, int readValue) throws Exception;
+
 
 
 }

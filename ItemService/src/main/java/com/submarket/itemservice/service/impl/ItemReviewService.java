@@ -29,6 +29,8 @@ public class ItemReviewService implements IItemReviewService {
         log.info(this.getClass().getName() + ".saveReview Start!");
         ItemDto itemDto = new ItemDto();
         itemDto.setItemSeq(itemSeq);
+
+        int userAge = Integer.parseInt(itemReviewDto.getUserAge());
         // TODO: 2022-05-16 사용자는 하나의 상품에 하나의 리뷰만 가능하기 때문에 확인 로직, 사용자가 상품을 구독중인지 확인 로직
 
         ItemDto items = itemService.findItemInfo(itemDto);
@@ -38,6 +40,8 @@ public class ItemReviewService implements IItemReviewService {
 
         ItemReviewEntity itemReviewEntity;
         itemReviewEntity = ItemReviewMapper.INSTANCE.itemReviewDtoToItemEntity(itemReviewDto);
+
+        itemService.upCountCustom(itemSeq, userAge, itemReviewDto.getReviewStar()); // readCount += Review Star
 
         itemReviewRepository.save(itemReviewEntity);
 

@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#118] refactor : kafka Setting">
-      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/coinfig/AsyncConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/SchedulerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/IKafkaProducerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaProducerService.java" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#117] fix : read_count_other 증가 변경">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/IOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/IOrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/impl/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/mapper/impl/OrderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/IOrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/SalesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/SalesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SalesEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SalesEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/ISalesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/ISalesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/KafkaConsumerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/SalesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/SalesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/#118" />
+        <entry key="$PROJECT_DIR$" value="feature/#61" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,12 +61,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feature/#118" />
-                    <option name="lastUsedInstant" value="1655131112" />
+                    <option name="branchName" value="feature/#117" />
+                    <option name="lastUsedInstant" value="1655168917" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1655034141" />
+                    <option name="lastUsedInstant" value="1655168797" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -141,7 +128,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/OrderService/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ApiGateway/src/main/resources" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -157,24 +144,31 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/OrderService/src/main/resources" />
       <recent name="$PROJECT_DIR$/ApiGateway/src/main/resources" />
       <recent name="$PROJECT_DIR$/ItemService/src/main/resources" />
       <recent name="$PROJECT_DIR$/SellerService/src/main/resources" />
       <recent name="$PROJECT_DIR$/UserService/src/main/resources" />
+      <recent name="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\SpringBootWorks\SubMarketWithGit\UserService\src\main\resources" />
+      <recent name="C:\SpringBootWorks\SubMarketWithGit\SellerService\src\main\resources" />
+      <recent name="C:\SpringBootWorks\SubMarketWithGit\OrderService\src\main\resources" />
+      <recent name="C:\SpringBootWorks\SubMarketWithGit\ItemService\src\main\resources" />
+      <recent name="C:\SpringBootWorks\SubMarketWithGit\ConfigService\src\main\resources" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.submarket.sellerservice.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.submarket.orderservice.dto" />
+      <recent name="com.submarket.orderservice.config" />
       <recent name="com.submarket.itemservice.coinfig" />
-      <recent name="com.submarket.itemservice.service.impl" />
-      <recent name="com.submarket.sellerservice.service" />
-      <recent name="com.submarket.sellerservice.service.impl" />
+      <recent name="com.submarket.orderservice.security" />
+      <recent name="com.submarket.userservice.vo" />
+      <recent name="com.submarket.userservice.controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -184,7 +178,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ItemServiceApplication">
+  <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -255,10 +249,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Spring Boot.UserServiceApplication" />
       <item itemvalue="Spring Boot.ApiGatewayApplication" />
-      <item itemvalue="Spring Boot.DiscoveryServiceApplication" />
       <item itemvalue="Spring Boot.ItemServiceApplication" />
+      <item itemvalue="Spring Boot.UserServiceApplication" />
+      <item itemvalue="Spring Boot.DiscoveryServiceApplication" />
       <item itemvalue="Spring Boot.OrderServiceApplication" />
       <item itemvalue="Spring Boot.SellerServiceApplication" />
       <item itemvalue="Spring Boot.ConfigServiceApplication" />
@@ -308,21 +302,8 @@
       <workItem from="1654930849008" duration="5000" />
       <workItem from="1654932297624" duration="2385000" />
       <workItem from="1655027313945" duration="6485000" />
-      <workItem from="1655125865406" duration="15518000" />
-    </task>
-    <task id="LOCAL-00038" summary="[#36] feature : Seller 회원가입">
-      <created>1653211762576</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1653211762576</updated>
-    </task>
-    <task id="LOCAL-00039" summary="[#41] feature : Seller 탈퇴">
-      <created>1653212120205</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1653212120205</updated>
+      <workItem from="1655106873338" duration="3270000" />
+      <workItem from="1655164653622" duration="8252000" />
     </task>
     <task id="LOCAL-00040" summary="v0.0.2 (2022-05-22) Test">
       <created>1653212990534</created>
@@ -625,35 +606,49 @@
       <option name="project" value="LOCAL" />
       <updated>1655032484330</updated>
     </task>
-    <task id="LOCAL-00083" summary="RabbitMq &amp; Config">
-      <created>1655130587093</created>
+    <task id="LOCAL-00083" summary="[#129] fix : Kafka 수정">
+      <created>1655090114790</created>
       <option name="number" value="00083" />
       <option name="presentableId" value="LOCAL-00083" />
       <option name="project" value="LOCAL" />
-      <updated>1655130587093</updated>
+      <updated>1655090114791</updated>
     </task>
-    <task id="LOCAL-00084" summary="[#118] refactor : OrderService 저장 Type 수정">
-      <created>1655133667571</created>
+    <task id="LOCAL-00084" summary="return Type">
+      <created>1655097579665</created>
       <option name="number" value="00084" />
       <option name="presentableId" value="LOCAL-00084" />
       <option name="project" value="LOCAL" />
-      <updated>1655133667571</updated>
+      <updated>1655097579665</updated>
     </task>
-    <task id="LOCAL-00085" summary="[#118] refactor : SellerService Sales Table 추가">
-      <created>1655135239672</created>
+    <task id="LOCAL-00085" summary="월 매출 조회">
+      <created>1655102146453</created>
       <option name="number" value="00085" />
       <option name="presentableId" value="LOCAL-00085" />
       <option name="project" value="LOCAL" />
-      <updated>1655135239672</updated>
+      <updated>1655102146453</updated>
     </task>
-    <task id="LOCAL-00086" summary="[#118] refactor : kafka Setting">
-      <created>1655137557459</created>
+    <task id="LOCAL-00086" summary="[#116] feature : 상품 조회 수 증가">
+      <created>1655105770518</created>
       <option name="number" value="00086" />
       <option name="presentableId" value="LOCAL-00086" />
       <option name="project" value="LOCAL" />
-      <updated>1655137557459</updated>
+      <updated>1655105770518</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="[#117] feature : 구독 정보 가공">
+      <created>1655170275465</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1655170275465</updated>
+    </task>
+    <task id="LOCAL-00088" summary="[#117] fix : read_count_other 증가 변경">
+      <created>1655171853916</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1655171853916</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,11 +669,6 @@
         <entry key="Branch">
           <value>
             <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="feature/#118" />
-                </option>
-              </RecentGroup>
               <RecentGroup>
                 <option name="FILTER_VALUES">
                   <option value="origin/develop" />
@@ -706,9 +696,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#91] refactor : 상품 등록 시 이미지 추가" />
-    <MESSAGE value="[#105] feature : Seller가 등록한 모든 상품 조회" />
-    <MESSAGE value="[#105] feature : 활성화된 구독 수 조회" />
     <MESSAGE value="OrderDto 수정" />
     <MESSAGE value="[#78] feature : Add Spring Cloud Config" />
     <MESSAGE value="[#78] feature : Add Actuator" />
@@ -727,17 +714,13 @@
     <MESSAGE value="[#129] feature : 상품 주문 시 수량 감소" />
     <MESSAGE value="[#129] feature : 상품 주문 시 주문 생성" />
     <MESSAGE value="[#129] fix : JPA 수정" />
-    <MESSAGE value="RabbitMq &amp; Config" />
-    <MESSAGE value="[#118] refactor : OrderService 저장 Type 수정" />
-    <MESSAGE value="[#118] refactor : SellerService Sales Table 추가" />
-    <MESSAGE value="[#118] refactor : kafka Setting" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#118] refactor : kafka Setting" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="itemEntityOptional" />
-      </configuration>
-    </watches-manager>
+    <MESSAGE value="fix : Kafka 수정" />
+    <MESSAGE value="fix : Kafka 상품 주문 취소 시 수량 증가" />
+    <MESSAGE value="return Type" />
+    <MESSAGE value="월 매출 조회" />
+    <MESSAGE value="[#116] feature : 상품 조회 수 증가" />
+    <MESSAGE value="[#117] feature : 구독 정보 가공" />
+    <MESSAGE value="[#117] fix : read_count_other 증가 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#117] fix : read_count_other 증가 변경" />
   </component>
 </project>
