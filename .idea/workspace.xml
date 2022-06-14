@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#137] feature : 매출 정보 조회">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlaskService/.idea/FlaskService.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/.idea/FlaskService.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlaskService/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/#117" />
+        <entry key="$PROJECT_DIR$" value="feature/#137" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,12 +62,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feature/#137" />
-                    <option name="lastUsedInstant" value="1655177369" />
+                    <option name="branchName" value="feature/#138" />
+                    <option name="lastUsedInstant" value="1655191438" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1655173481" />
+                    <option name="lastUsedInstant" value="1655190556" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/#137" />
+                    <option name="lastUsedInstant" value="1655190547" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -258,6 +260,8 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="HTTP Request.SellerService | #1" />
+      <item itemvalue="HTTP Request.UserService | #1" />
       <item itemvalue="Spring Boot.ApiGatewayApplication" />
       <item itemvalue="Spring Boot.ItemServiceApplication" />
       <item itemvalue="Spring Boot.UserServiceApplication" />
@@ -265,13 +269,14 @@
       <item itemvalue="Spring Boot.OrderServiceApplication" />
       <item itemvalue="Spring Boot.SellerServiceApplication" />
       <item itemvalue="Spring Boot.ConfigServiceApplication" />
-      <item itemvalue="HTTP Request.SellerService | #1" />
-      <item itemvalue="HTTP Request.UserService | #1" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="HTTP Request.UserService | #1" />
         <item itemvalue="HTTP Request.SellerService | #1" />
+        <item itemvalue="HTTP Request.UserService | #1" />
+        <item itemvalue="HTTP Request.SellerService | #1" />
+        <item itemvalue="HTTP Request.UserService | #1" />
       </list>
     </recent_temporary>
   </component>
