@@ -2,6 +2,7 @@ package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.ItemDto;
 import com.submarket.itemservice.service.impl.ItemService;
+import com.submarket.itemservice.service.impl.S3Service;
 import com.submarket.itemservice.util.CmmUtil;
 import com.submarket.itemservice.util.TokenUtil;
 import lombok.RequiredArgsConstructor;
@@ -75,7 +76,6 @@ public class ItemController {
 
     @PostMapping("/items/{itemSeq}/off")
     public ResponseEntity<String> offItem(@PathVariable int itemSeq) throws Exception {
-        // TODO: 2022/05/16 비활성화, 사업자 인증
         ItemDto itemDto = new ItemDto();
         itemDto.setItemSeq(itemSeq);
 
@@ -92,10 +92,10 @@ public class ItemController {
         return ResponseEntity.ok().body("활성화 완료");
     }
 
-    @PostMapping("/items/modify")
-    public ResponseEntity<String> modifyItem(@RequestBody ItemDto itemDto) throws Exception {
-        // TODO: 2022-05-16 상품 이미지 로직 추가
-        log.info(this.getClass().getName());
+    @PostMapping(value = "/items/modify/{itemSeq}", consumes = MediaType.ALL_VALUE)
+    public ResponseEntity<String> modifyItem(ItemDto itemDto, @PathVariable int itemSeq) throws Exception {
+        log.info(this.getClass().getName() + ".modifyItem Start!");
+        itemDto.setItemSeq(itemSeq);
 
         itemService.modifyItem(itemDto);
 
