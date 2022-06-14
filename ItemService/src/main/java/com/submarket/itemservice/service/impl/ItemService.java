@@ -2,6 +2,7 @@ package com.submarket.itemservice.service.impl;
 
 import com.submarket.itemservice.dto.CategoryDto;
 import com.submarket.itemservice.dto.ItemDto;
+import com.submarket.itemservice.jpa.CategoryRepository;
 import com.submarket.itemservice.jpa.ItemRepository;
 import com.submarket.itemservice.jpa.entity.CategoryEntity;
 import com.submarket.itemservice.jpa.entity.ItemEntity;
@@ -26,6 +27,7 @@ public class ItemService implements IItemService {
     private final ItemRepository itemRepository;
     private final CategoryService categoryService;
     private final S3Service s3Service;
+    private final CategoryRepository categoryRepository;
 
     @Override
     @Transactional
@@ -134,9 +136,34 @@ public class ItemService implements IItemService {
     @Override
     @Transactional
     public int modifyItem(ItemDto itemDto) throws Exception {
+        log.info(this.getClass().getName() + ".modifyItem Start!");
+        int itemSeq = itemDto.getItemSeq();
 
-        itemRepository.modifyItem(itemDto.getItemSeq(), itemDto.getItemContents(), itemDto.getItemPrice(),
-                itemDto.getItemCount(), itemDto.getItemTitle());
+        Optional<ItemEntity> itemEntityOptional = itemRepository.findById(itemSeq);
+        ItemEntity itemEntity = itemEntityOptional.get();
+
+
+        if (itemDto.getMainImage() != null) {
+            String mainImagePath = s3Service.uploadImageInS3(itemDto.getMainImage(), "images");
+            itemEntity.setMainImagePath(mainImagePath);
+        }
+
+        if (itemDto.getSubImage() != null) {
+            String subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
+            itemEntity.setSubImagePath(subImagePath);
+        }
+
+        Optional<CategoryEntity> category = categoryRepository.findById(itemDto.getCategorySeq());
+
+        itemEntity.setItemTitle(itemDto.getItemTitle());
+        itemEntity.setItemPrice(itemDto.getItemPrice());
+        itemEntity.setItemCount(itemDto.getItemCount());
+        itemEntity.setItemContents(itemDto.getItemContents());
+        itemEntity.setCategory(category.get());
+
+        itemRepository.save(itemEntity);
+
+        log.info(this.getClass().getName() + ".modifyItem End!");
         return 1;
     }
 
