@@ -10,6 +10,7 @@ import com.submarket.itemservice.mapper.ItemMapper;
 import com.submarket.itemservice.service.IItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 
@@ -171,6 +172,7 @@ public class ItemService implements IItemService {
 
     @Override
     @Transactional
+    @Async
     public void upCount(int itemSeq, int userAge) throws Exception {
         // 조회수 증가
         int cUserAge = 0;
@@ -192,6 +194,7 @@ public class ItemService implements IItemService {
 
     @Override
     @Transactional
+    @Async
     public void upCountCustom(int itemSeq, int userAge, int readValue) throws Exception {
         log.info(this.getClass().getName() + "upCountCustom Start!");
 
