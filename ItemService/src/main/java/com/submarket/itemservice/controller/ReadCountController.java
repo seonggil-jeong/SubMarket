@@ -52,7 +52,7 @@ public class ReadCountController {
         return ResponseEntity.status(HttpStatus.OK).body(rMap);
     }
 
-    @PostMapping("/item/{itemSeq}/countUp/{userAge}")
+    @GetMapping("/item/{itemSeq}/countUp/{userAge}")
     public ResponseEntity<String> itemCountUp(@PathVariable int itemSeq, @PathVariable int userAge) throws Exception {
         log.info(this.getClass().getName() + ".itemCountUp Start");
         itemService.upCount(itemSeq, userAge);

@@ -173,13 +173,15 @@ public class ItemService implements IItemService {
     @Transactional
     public void upCount(int itemSeq, int userAge) throws Exception {
         // 조회수 증가
-        log.info("userAge : " + userAge);
-        if (userAge > 0 && userAge <= 29) {
+        int cUserAge = 0;
+        cUserAge += userAge;
+        log.info("userAge : " + cUserAge);
+        if (cUserAge > 0 && cUserAge <= 29) {
             itemRepository.increaseReadCount20(itemSeq);
 
-        } else if (userAge >= 30 && userAge <= 39) {
+        } else if (cUserAge >= 30 && cUserAge <= 39) {
             itemRepository.increaseReadCount30(itemSeq);
-        } else if (userAge >= 40 && userAge <= 49) {
+        } else if (cUserAge >= 40 && cUserAge <= 49) {
             itemRepository.increaseReadCount40(itemSeq);
         } else {
             itemRepository.increaseReadCountOther(itemSeq);

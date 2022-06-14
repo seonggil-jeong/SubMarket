@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#116] feature : 상품 조회 수로 정렬된 ItemList Return">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_06_13_10_12_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_06_13_10_12_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#117] feature : 구독 정보 가공">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/dto/SubDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/dto/SubDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/SchedulerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/SchedulerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/SubService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/SubService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,12 +180,6 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="SellerService | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/SellerService.http" requestIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="UserService | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/UserService.http" requestIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -269,15 +257,7 @@
       <item itemvalue="Spring Boot.OrderServiceApplication" />
       <item itemvalue="Spring Boot.SellerServiceApplication" />
       <item itemvalue="Spring Boot.ConfigServiceApplication" />
-      <item itemvalue="HTTP Request.SellerService | #1" />
-      <item itemvalue="HTTP Request.UserService | #1" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="HTTP Request.UserService | #1" />
-        <item itemvalue="HTTP Request.SellerService | #1" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -324,14 +304,7 @@
       <workItem from="1654932297624" duration="2385000" />
       <workItem from="1655027313945" duration="6485000" />
       <workItem from="1655106873338" duration="3270000" />
-      <workItem from="1655164653622" duration="5384000" />
-    </task>
-    <task id="LOCAL-00038" summary="[#36] feature : Seller 회원가입">
-      <created>1653211762576</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1653211762576</updated>
+      <workItem from="1655164653622" duration="6804000" />
     </task>
     <task id="LOCAL-00039" summary="[#41] feature : Seller 탈퇴">
       <created>1653212120205</created>
@@ -669,7 +642,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655105770518</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="[#117] feature : 구독 정보 가공">
+      <created>1655170275465</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1655170275465</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -717,7 +697,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#105] feature : Seller가 등록한 모든 상품 조회" />
     <MESSAGE value="[#105] feature : 활성화된 구독 수 조회" />
     <MESSAGE value="OrderDto 수정" />
     <MESSAGE value="[#78] feature : Add Spring Cloud Config" />
@@ -742,6 +721,7 @@
     <MESSAGE value="return Type" />
     <MESSAGE value="월 매출 조회" />
     <MESSAGE value="[#116] feature : 상품 조회 수 증가" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#116] feature : 상품 조회 수 증가" />
+    <MESSAGE value="[#117] feature : 구독 정보 가공" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#117] feature : 구독 정보 가공" />
   </component>
 </project>
