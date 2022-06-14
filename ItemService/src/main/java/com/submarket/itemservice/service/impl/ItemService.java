@@ -49,10 +49,14 @@ public class ItemService implements IItemService {
         itemDto.setReadCount40(0);
         itemDto.setReadCountOther(0);
 
+        log.info("MainImageSize : " + itemDto.getMainImage().getSize());
+
+
         // 상품 이미지 등록 S3 Service (File, dirName) return : S3 Image Path
         /** Main Image 는 항상 NotNull */
         String mainImagePath = s3Service.uploadImageInS3(itemDto.getMainImage(), "images");
-        if (! itemDto.getSubImage().isEmpty()) {
+
+        if (itemDto.getSubImage() != null) {
         subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
         }
 

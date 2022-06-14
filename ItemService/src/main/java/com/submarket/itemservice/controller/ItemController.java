@@ -75,7 +75,6 @@ public class ItemController {
 
     @PostMapping("/items/{itemSeq}/off")
     public ResponseEntity<String> offItem(@PathVariable int itemSeq) throws Exception {
-        // TODO: 2022/05/16 비활성화, 사업자 인증
         ItemDto itemDto = new ItemDto();
         itemDto.setItemSeq(itemSeq);
 
