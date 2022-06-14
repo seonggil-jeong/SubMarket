@@ -7,6 +7,7 @@ import com.submarket.userservice.jpa.entity.SubEntity;
 import com.submarket.userservice.jpa.entity.UserEntity;
 import com.submarket.userservice.mapper.SubMapper;
 import com.submarket.userservice.service.ISubService;
+import com.submarket.userservice.util.CmmUtil;
 import com.submarket.userservice.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -84,11 +85,13 @@ public class SubService implements ISubService {
         log.info(this.getClass().getName() + "createNewSub Start!");
 
         int res = 0;
-        subDto.setUser(userRepository.findByUserId(subDto.getUserId()));
+        UserEntity user = userRepository.findByUserId(subDto.getUserId());
+        subDto.setUser(user);
 
         // Default Setting
         subDto.setSubDate(DateUtil.getDateTime("dd"));
         subDto.setSubCount(1);
+        subDto.setUserAge(CmmUtil.nvl(user.getUserAge()));
 
         log.info("itemSeq : " + subDto.getItemSeq());
 

@@ -187,4 +187,25 @@ public class ItemService implements IItemService {
 
         log.info(this.getClass().getName() + "upCount End");
     }
+
+    @Override
+    @Transactional
+    public void upCountCustom(int itemSeq, int userAge, int readValue) throws Exception {
+        log.info(this.getClass().getName() + "upCountCustom Start!");
+
+        if (userAge > 0 && userAge <= 29) {
+            itemRepository.increaseCustomReadCount20(itemSeq, readValue);
+
+        } else if (userAge >= 30 && userAge <= 39) {
+            itemRepository.increaseCustomReadCount30(itemSeq, readValue);
+        } else if (userAge >= 40 && userAge <= 49) {
+            itemRepository.increaseCustomReadCount40(itemSeq, readValue);
+        } else {
+            itemRepository.increaseCustomReadCountOther(itemSeq, readValue);
+        }
+
+
+        log.info(this.getClass().getName() + "upCountCustom End!");
+
+    }
 }

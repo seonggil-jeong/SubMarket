@@ -21,4 +21,5 @@ public class SubDto {
     private String sellerId;
     private String userAddress;
     private String userAddress2;
+    private String userAge;
 }

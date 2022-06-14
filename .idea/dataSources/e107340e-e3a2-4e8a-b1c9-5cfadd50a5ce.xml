@@ -1119,440 +1119,417 @@
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb3_general_ci</CollationName>
     </table>
-    <table id="338" parent="324" name="group_info">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb3_general_ci</CollationName>
-    </table>
-    <table id="339" parent="324" name="item_info">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb3_general_ci</CollationName>
-    </table>
-    <table id="340" parent="324" name="item_review_info">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb3_general_ci</CollationName>
-    </table>
-    <table id="341" parent="326" name="sales_info">
+    <table id="338" parent="324" name="item_info">
       <Engine>InnoDB</Engine>
       <CollationName>latin1_swedish_ci</CollationName>
     </table>
-    <table id="342" parent="326" name="seller_info">
-      <Engine>InnoDB</Engine>
-      <CollationName>utf8mb3_general_ci</CollationName>
-    </table>
-    <table id="343" parent="327" name="sub_info">
+    <table id="339" parent="324" name="item_review_info">
       <Engine>InnoDB</Engine>
       <CollationName>latin1_swedish_ci</CollationName>
     </table>
-    <table id="344" parent="327" name="user_info">
+    <table id="340" parent="326" name="sales_info">
+      <Engine>InnoDB</Engine>
+      <CollationName>latin1_swedish_ci</CollationName>
+    </table>
+    <table id="341" parent="326" name="seller_info">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb3_general_ci</CollationName>
     </table>
-    <column id="345" parent="337" name="category_seq">
+    <table id="342" parent="327" name="sub_info">
+      <Engine>InnoDB</Engine>
+      <CollationName>latin1_swedish_ci</CollationName>
+    </table>
+    <table id="343" parent="327" name="user_info">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb3_general_ci</CollationName>
+    </table>
+    <column id="344" parent="337" name="category_seq">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="346" parent="337" name="category_name">
+    <column id="345" parent="337" name="category_name">
       <DataType>varchar(300)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <key id="347" parent="337" name="PRIMARY">
+    <key id="346" parent="337" name="PRIMARY">
       <ColNames>category_seq</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="348" parent="338" name="group_seq">
+    <column id="347" parent="338" name="item_seq">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="349" parent="338" name="group_name">
-      <DataType>varchar(300)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-    </column>
-    <key id="350" parent="338" name="PRIMARY">
-      <ColNames>group_seq</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-    </key>
-    <column id="351" parent="339" name="item_seq">
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="352" parent="339" name="item_contents">
+    <column id="348" parent="338" name="item_contents">
       <DataType>varchar(2000)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="353" parent="339" name="item_count">
+    <column id="349" parent="338" name="item_count">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="354" parent="339" name="item_price">
+    <column id="350" parent="338" name="item_price">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="355" parent="339" name="item_status">
+    <column id="351" parent="338" name="item_status">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="356" parent="339" name="item_title">
+    <column id="352" parent="338" name="item_title">
       <DataType>varchar(300)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="357" parent="339" name="category_category_seq">
-      <DataType>int(11)|0s</DataType>
+    <column id="353" parent="338" name="main_image_path">
+      <DataType>varchar(300)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="358" parent="339" name="group_group_seq">
+    <column id="354" parent="338" name="read_count20">
       <DataType>int(11)|0s</DataType>
       <Position>8</Position>
     </column>
-    <column id="359" parent="339" name="seller_id">
-      <DataType>varchar(255)|0s</DataType>
-      <NotNull>1</NotNull>
+    <column id="355" parent="338" name="read_count30">
+      <DataType>int(11)|0s</DataType>
       <Position>9</Position>
     </column>
-    <column id="360" parent="339" name="image_path">
-      <DataType>varchar(255)|0s</DataType>
+    <column id="356" parent="338" name="read_count40">
+      <DataType>int(11)|0s</DataType>
       <Position>10</Position>
     </column>
-    <column id="361" parent="339" name="main_image_path">
-      <DataType>varchar(300)|0s</DataType>
-      <NotNull>1</NotNull>
+    <column id="357" parent="338" name="read_count_other">
+      <DataType>int(11)|0s</DataType>
       <Position>11</Position>
     </column>
-    <column id="362" parent="339" name="sub_image_path">
-      <DataType>varchar(300)|0s</DataType>
+    <column id="358" parent="338" name="seller_id">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>12</Position>
     </column>
-    <foreign-key id="363" parent="339" name="FKltx39fpk96nsxpbtv2cpdnbsb">
+    <column id="359" parent="338" name="sub_image_path">
+      <DataType>varchar(300)|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <column id="360" parent="338" name="category_category_seq">
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>14</Position>
+    </column>
+    <foreign-key id="361" parent="338" name="FKltx39fpk96nsxpbtv2cpdnbsb">
       <ColNames>category_category_seq</ColNames>
       <RefColNames>category_seq</RefColNames>
       <RefTableName>category_info</RefTableName>
     </foreign-key>
-    <foreign-key id="364" parent="339" name="FKqfmppfb8f1xwhp0knut54gnkn">
-      <ColNames>group_group_seq</ColNames>
-      <RefColNames>group_seq</RefColNames>
-      <RefTableName>group_info</RefTableName>
-    </foreign-key>
-    <index id="365" parent="339" name="FKltx39fpk96nsxpbtv2cpdnbsb">
+    <index id="362" parent="338" name="FKltx39fpk96nsxpbtv2cpdnbsb">
       <ColNames>category_category_seq</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="366" parent="339" name="FKqfmppfb8f1xwhp0knut54gnkn">
-      <ColNames>group_group_seq</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="367" parent="339" name="PRIMARY">
+    <key id="363" parent="338" name="PRIMARY">
       <ColNames>item_seq</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="368" parent="340" name="review_seq">
+    <column id="364" parent="339" name="review_seq">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="369" parent="340" name="review_contents">
+    <column id="365" parent="339" name="review_contents">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <CollationName>latin1_swedish_ci</CollationName>
     </column>
-    <column id="370" parent="340" name="review_date">
+    <column id="366" parent="339" name="review_date">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <CollationName>latin1_swedish_ci</CollationName>
     </column>
-    <column id="371" parent="340" name="review_star">
+    <column id="367" parent="339" name="review_star">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="372" parent="340" name="item_item_seq">
-      <DataType>int(11)|0s</DataType>
+    <column id="368" parent="339" name="user_id">
+      <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="373" parent="340" name="user_id">
-      <DataType>varchar(255)|0s</DataType>
+    <column id="369" parent="339" name="item_item_seq">
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
-      <CollationName>latin1_swedish_ci</CollationName>
     </column>
-    <foreign-key id="374" parent="340" name="FK9tht2fx08btorme6yisu3u3bt">
+    <foreign-key id="370" parent="339" name="FK9tht2fx08btorme6yisu3u3bt">
       <ColNames>item_item_seq</ColNames>
       <RefColNames>item_seq</RefColNames>
       <RefTableName>item_info</RefTableName>
     </foreign-key>
-    <index id="375" parent="340" name="FK9tht2fx08btorme6yisu3u3bt">
+    <index id="371" parent="339" name="FK9tht2fx08btorme6yisu3u3bt">
       <ColNames>item_item_seq</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="376" parent="340" name="PRIMARY">
+    <key id="372" parent="339" name="PRIMARY">
       <ColNames>review_seq</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="377" parent="341" name="sales_seq">
+    <column id="373" parent="340" name="sales_seq">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="378" parent="341" name="date">
+    <column id="374" parent="340" name="date">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="379" parent="341" name="value">
+    <column id="375" parent="340" name="value">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="380" parent="341" name="seller_seller_seq">
+    <column id="376" parent="340" name="seller_seller_seq">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <foreign-key id="381" parent="341" name="FKmrkq71rsy93do30rb3mrgfp4i">
+    <foreign-key id="377" parent="340" name="FKmrkq71rsy93do30rb3mrgfp4i">
       <ColNames>seller_seller_seq</ColNames>
       <RefColNames>seller_seq</RefColNames>
       <RefTableName>seller_info</RefTableName>
     </foreign-key>
-    <index id="382" parent="341" name="FKmrkq71rsy93do30rb3mrgfp4i">
+    <index id="378" parent="340" name="FKmrkq71rsy93do30rb3mrgfp4i">
       <ColNames>seller_seller_seq</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="383" parent="341" name="PRIMARY">
+    <key id="379" parent="340" name="PRIMARY">
       <ColNames>sales_seq</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="384" parent="342" name="seller_seq">
+    <column id="380" parent="341" name="seller_seq">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="385" parent="342" name="business_id">
+    <column id="381" parent="341" name="business_id">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="386" parent="342" name="seller_address">
+    <column id="382" parent="341" name="seller_address">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="387" parent="342" name="seller_address2">
+    <column id="383" parent="341" name="seller_address2">
       <DataType>varchar(150)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="388" parent="342" name="seller_email">
+    <column id="384" parent="341" name="seller_email">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="389" parent="342" name="seller_home">
+    <column id="385" parent="341" name="seller_home">
       <DataType>varchar(100)|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="390" parent="342" name="seller_id">
+    <column id="386" parent="341" name="seller_id">
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="391" parent="342" name="seller_name">
+    <column id="387" parent="341" name="seller_name">
       <DataType>varchar(30)|0s</DataType>
       <Position>8</Position>
     </column>
-    <column id="392" parent="342" name="seller_password">
+    <column id="388" parent="341" name="seller_password">
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
-    <column id="393" parent="342" name="seller_pn">
+    <column id="389" parent="341" name="seller_pn">
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>10</Position>
     </column>
-    <column id="394" parent="342" name="seller_status">
+    <column id="390" parent="341" name="seller_status">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>11</Position>
     </column>
-    <index id="395" parent="342" name="UK_a2gs552onfudv5clwutu5i13t">
+    <index id="391" parent="341" name="UK_a2gs552onfudv5clwutu5i13t">
       <ColNames>business_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="396" parent="342" name="UK_cemygy44q52qh3nw9fsj26869">
+    <index id="392" parent="341" name="UK_cemygy44q52qh3nw9fsj26869">
       <ColNames>seller_email</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="397" parent="342" name="UK_ki008jyvgk7s96ef1f1x812xj">
+    <index id="393" parent="341" name="UK_ki008jyvgk7s96ef1f1x812xj">
       <ColNames>seller_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="398" parent="342" name="UK_k16rdvcdf4a1wemlfcasa89x2">
+    <index id="394" parent="341" name="UK_k16rdvcdf4a1wemlfcasa89x2">
       <ColNames>seller_password</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="399" parent="342" name="PRIMARY">
+    <key id="395" parent="341" name="PRIMARY">
       <ColNames>seller_seq</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="400" parent="342" name="UK_a2gs552onfudv5clwutu5i13t">
+    <key id="396" parent="341" name="UK_a2gs552onfudv5clwutu5i13t">
       <ColNames>business_id</ColNames>
       <UnderlyingIndexName>UK_a2gs552onfudv5clwutu5i13t</UnderlyingIndexName>
     </key>
-    <key id="401" parent="342" name="UK_cemygy44q52qh3nw9fsj26869">
+    <key id="397" parent="341" name="UK_cemygy44q52qh3nw9fsj26869">
       <ColNames>seller_email</ColNames>
       <UnderlyingIndexName>UK_cemygy44q52qh3nw9fsj26869</UnderlyingIndexName>
     </key>
-    <key id="402" parent="342" name="UK_ki008jyvgk7s96ef1f1x812xj">
+    <key id="398" parent="341" name="UK_ki008jyvgk7s96ef1f1x812xj">
       <ColNames>seller_id</ColNames>
       <UnderlyingIndexName>UK_ki008jyvgk7s96ef1f1x812xj</UnderlyingIndexName>
     </key>
-    <key id="403" parent="342" name="UK_k16rdvcdf4a1wemlfcasa89x2">
+    <key id="399" parent="341" name="UK_k16rdvcdf4a1wemlfcasa89x2">
       <ColNames>seller_password</ColNames>
       <UnderlyingIndexName>UK_k16rdvcdf4a1wemlfcasa89x2</UnderlyingIndexName>
     </key>
-    <column id="404" parent="343" name="sub_seq">
+    <column id="400" parent="342" name="sub_seq">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="405" parent="343" name="item_seq">
+    <column id="401" parent="342" name="item_seq">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="406" parent="343" name="sub_count">
+    <column id="402" parent="342" name="sub_count">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="407" parent="343" name="sub_date">
+    <column id="403" parent="342" name="sub_date">
       <DataType>varchar(255)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="408" parent="343" name="user_user_seq">
+    <column id="404" parent="342" name="user_user_seq">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <foreign-key id="409" parent="343" name="FK16sllpap51amq3q3p6e74ldum">
+    <foreign-key id="405" parent="342" name="FK16sllpap51amq3q3p6e74ldum">
       <ColNames>user_user_seq</ColNames>
       <RefColNames>user_seq</RefColNames>
       <RefTableName>user_info</RefTableName>
     </foreign-key>
-    <index id="410" parent="343" name="FK16sllpap51amq3q3p6e74ldum">
+    <index id="406" parent="342" name="FK16sllpap51amq3q3p6e74ldum">
       <ColNames>user_user_seq</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="411" parent="343" name="PRIMARY">
+    <key id="407" parent="342" name="PRIMARY">
       <ColNames>sub_seq</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="412" parent="344" name="user_seq">
+    <column id="408" parent="343" name="user_seq">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="413" parent="344" name="user_address">
+    <column id="409" parent="343" name="user_address">
       <DataType>varchar(70)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="414" parent="344" name="user_address2">
+    <column id="410" parent="343" name="user_address2">
       <DataType>varchar(80)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="415" parent="344" name="user_age">
+    <column id="411" parent="343" name="user_age">
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="416" parent="344" name="user_email">
+    <column id="412" parent="343" name="user_email">
       <DataType>varchar(60)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="417" parent="344" name="user_id">
+    <column id="413" parent="343" name="user_id">
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="418" parent="344" name="user_name">
+    <column id="414" parent="343" name="user_name">
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="419" parent="344" name="user_password">
+    <column id="415" parent="343" name="user_password">
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <column id="420" parent="344" name="user_pn">
+    <column id="416" parent="343" name="user_pn">
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
-    <column id="421" parent="344" name="user_status">
+    <column id="417" parent="343" name="user_status">
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>10</Position>
     </column>
-    <index id="422" parent="344" name="UK_1d7p0xy0h7loanh4paykfxtna">
+    <index id="418" parent="343" name="UK_1d7p0xy0h7loanh4paykfxtna">
       <ColNames>user_email</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="423" parent="344" name="UK_hixwjgx0ynne0cq4tqvoawoda">
+    <index id="419" parent="343" name="UK_hixwjgx0ynne0cq4tqvoawoda">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="424" parent="344" name="UK_1sqo8e94i5iwt4st4g9arc2nu">
+    <index id="420" parent="343" name="UK_1sqo8e94i5iwt4st4g9arc2nu">
       <ColNames>user_password</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="425" parent="344" name="PRIMARY">
+    <key id="421" parent="343" name="PRIMARY">
       <ColNames>user_seq</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="426" parent="344" name="UK_1d7p0xy0h7loanh4paykfxtna">
+    <key id="422" parent="343" name="UK_1d7p0xy0h7loanh4paykfxtna">
       <ColNames>user_email</ColNames>
       <UnderlyingIndexName>UK_1d7p0xy0h7loanh4paykfxtna</UnderlyingIndexName>
     </key>
-    <key id="427" parent="344" name="UK_hixwjgx0ynne0cq4tqvoawoda">
+    <key id="423" parent="343" name="UK_hixwjgx0ynne0cq4tqvoawoda">
       <ColNames>user_id</ColNames>
       <UnderlyingIndexName>UK_hixwjgx0ynne0cq4tqvoawoda</UnderlyingIndexName>
     </key>
-    <key id="428" parent="344" name="UK_1sqo8e94i5iwt4st4g9arc2nu">
+    <key id="424" parent="343" name="UK_1sqo8e94i5iwt4st4g9arc2nu">
       <ColNames>user_password</ColNames>
       <UnderlyingIndexName>UK_1sqo8e94i5iwt4st4g9arc2nu</UnderlyingIndexName>
     </key>
