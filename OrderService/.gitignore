@@ -33,5 +33,4 @@ build/
 .vscode/
 
 /src/main/resources/application.yml
-
-../.idea
+/src/main/resources/bootstrap.yml

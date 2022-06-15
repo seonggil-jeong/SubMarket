@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -48,5 +50,8 @@ public class SellerEntity {
 
     @Column(nullable = false, length = 10) // 사업자 활성화 상태 (1 : on , 0 : off)
     private int sellerStatus;
+
+    @OneToMany(mappedBy = "seller")
+    private List<SalesEntity> salesEntityList = new ArrayList<>();
 
 }

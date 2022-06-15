@@ -14,5 +14,9 @@ public class OrderDto {
     private String userId;
     private String sellerId;
 
+    private String userAddress;
+    private String userAddress2;
+
+    private String orderDateDetails;
     private String orderDate;
 }

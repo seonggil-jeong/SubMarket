@@ -29,4 +29,7 @@ public interface SubRepository extends CrudRepository<SubEntity, Integer> {
 
     @Transactional
     List<SubEntity> findAllByItemSeq(Integer itemSeq);
+
+    @Transactional
+    SubEntity findByItemSeqAndUser(Integer itemSeq, UserEntity user);
 }

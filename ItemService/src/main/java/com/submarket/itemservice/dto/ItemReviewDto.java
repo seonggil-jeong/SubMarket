@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class ItemReviewDto {
     private Integer reviewSeq;
     private String userId;
+    private String userAge;
     private int reviewStar;
     private String reviewContents;
     private String reviewDate;

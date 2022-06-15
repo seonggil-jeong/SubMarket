@@ -7,6 +7,7 @@ import com.submarket.userservice.jpa.entity.SubEntity;
 import com.submarket.userservice.jpa.entity.UserEntity;
 import com.submarket.userservice.mapper.SubMapper;
 import com.submarket.userservice.service.ISubService;
+import com.submarket.userservice.util.CmmUtil;
 import com.submarket.userservice.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,8 @@ public class SubService implements ISubService {
     private final UserRepository userRepository;
     private final UserService userService;
     private final SubCheckService subCheckService;
+    private final MailService mailService;
+    private final KafkaProducerService kafkaProducerService;
 
     /** ------------------------- 구독 조회 ------------------------------*/
     @Override
@@ -78,25 +81,40 @@ public class SubService implements ISubService {
     /** ------------------------- 구독 생성 ------------------------------*/
     @Override
     @Transactional
-    public int createNewSub(SubDto subDto) {
+    public int createNewSub(SubDto subDto) throws Exception{
         log.info(this.getClass().getName() + "createNewSub Start!");
 
         int res = 0;
-        subDto.setUser(userRepository.findByUserId(subDto.getUserId())); // 수정 필요
+        UserEntity user = userRepository.findByUserId(subDto.getUserId());
+        subDto.setUser(user);
+
+        // Default Setting
         subDto.setSubDate(DateUtil.getDateTime("dd"));
         subDto.setSubCount(1);
+        subDto.setUserAge(CmmUtil.nvl(user.getUserAge()));
+
         log.info("itemSeq : " + subDto.getItemSeq());
 
-        SubEntity subEntity = SubMapper.INSTANCE.subDtoToSubEntity(subDto);
+        // 이미 구독 여부 확인
+        if (subCheckService.checkHasSubByItemSeqAndUserId(subDto.getItemSeq(), subDto.getUserId())) {
+            SubEntity subEntity = SubMapper.INSTANCE.subDtoToSubEntity(subDto);
+            log.info("subEntity (itemSeq) : " + subEntity.getItemSeq());
+            subRepository.save(subEntity);
+            mailService.sendMail(subDto.getUser().getUserEmail(), "구독 성공", subDto.getUser().getUserName() + "님 구독이 완료 됐습니다!!");
 
-        log.info("subEntity (itemSeq) : " + subEntity.getItemSeq());
-        subRepository.save(subEntity);
+            // kafka (구독 성공 시 Item Count - 1)
 
-        res = 1;
+            kafkaProducerService.createNewSub(subDto);
+
+            res = 1;
+        } else {
+            res = 2; // 중복  = 2
+        }
 
         log.info(this.getClass().getName() + "createNewSub End");
 
         return res;
+
     }
 
     /** ------------------------- 구독 갱신 ------------------------------*/
@@ -120,8 +138,13 @@ public class SubService implements ISubService {
         log.info(this.getClass().getName() + ".cancelSub Start!");
         if (subCheckService.SubCheck(subDto.getSubSeq())) {
 
+            Optional<SubEntity> subEntity = subRepository.findById(subDto.getSubSeq());
+            subDto.setItemSeq(subEntity.get().getItemSeq());
+
             // not null 삭제 실행
             subRepository.deleteById(subDto.getSubSeq());
+
+            kafkaProducerService.cancelSub(subDto);
 
         } else {
             log.info("구독 정보 찾기 실패");
@@ -152,5 +175,20 @@ public class SubService implements ISubService {
         } finally {
             return count;
         }
+    }
+
+    @Override
+    public int findOneSubCount(int itemSeq) throws Exception {
+        log.info(this.getClass().getName() + ".findOneSubCount Start!");
+        int res = 0;
+
+        List<SubEntity> subEntityList = subRepository.findAllByItemSeq(itemSeq);
+
+        if (subEntityList.size() > 0) {
+            res += subEntityList.size();
+        }
+
+        log.info(this.getClass().getName() + ".findOneSubCount End!");
+        return res;
     }
 }

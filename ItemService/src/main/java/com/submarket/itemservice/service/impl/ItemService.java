@@ -1,19 +1,17 @@
 package com.submarket.itemservice.service.impl;
 
 import com.submarket.itemservice.dto.CategoryDto;
-import com.submarket.itemservice.dto.GroupDto;
 import com.submarket.itemservice.dto.ItemDto;
-import com.submarket.itemservice.jpa.GroupRepository;
+import com.submarket.itemservice.jpa.CategoryRepository;
 import com.submarket.itemservice.jpa.ItemRepository;
 import com.submarket.itemservice.jpa.entity.CategoryEntity;
-import com.submarket.itemservice.jpa.entity.GroupEntity;
 import com.submarket.itemservice.jpa.entity.ItemEntity;
 import com.submarket.itemservice.mapper.CategoryMapper;
-import com.submarket.itemservice.mapper.GroupMapper;
 import com.submarket.itemservice.mapper.ItemMapper;
 import com.submarket.itemservice.service.IItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 
@@ -27,9 +25,9 @@ import java.util.Optional;
 @Service("ItemService")
 public class ItemService implements IItemService {
     private final ItemRepository itemRepository;
-    private final GroupRepository groupRepository;
     private final CategoryService categoryService;
     private final S3Service s3Service;
+    private final CategoryRepository categoryRepository;
 
     @Override
     @Transactional
@@ -40,17 +38,29 @@ public class ItemService implements IItemService {
         categoryDto.setCategorySeq(itemDto.getCategorySeq());
 
         CategoryDto rDto = categoryService.findCategory(categoryDto);
+        String subImagePath = "/";
 
         log.info("categoryName : " + rDto.getCategoryName());
         CategoryEntity categoryEntity = CategoryMapper.INSTANCE.categoryDtoToCategoryEntity(rDto);
 
         itemDto.setCategory(categoryEntity);
+
         itemDto.setItemStatus(1);
+        itemDto.setReadCount20(0);
+        itemDto.setReadCount30(0);
+        itemDto.setReadCount40(0);
+        itemDto.setReadCountOther(0);
+
+        log.info("MainImageSize : " + itemDto.getMainImage().getSize());
+
 
         // 상품 이미지 등록 S3 Service (File, dirName) return : S3 Image Path
         /** Main Image 는 항상 NotNull */
         String mainImagePath = s3Service.uploadImageInS3(itemDto.getMainImage(), "images");
-        String subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
+
+        if (itemDto.getSubImage() != null) {
+        subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
+        }
 
         itemDto.setSubImagePath(subImagePath);
         itemDto.setMainImagePath(mainImagePath);
@@ -126,9 +136,34 @@ public class ItemService implements IItemService {
     @Override
     @Transactional
     public int modifyItem(ItemDto itemDto) throws Exception {
+        log.info(this.getClass().getName() + ".modifyItem Start!");
+        int itemSeq = itemDto.getItemSeq();
 
-        itemRepository.modifyItem(itemDto.getItemSeq(), itemDto.getItemContents(), itemDto.getItemPrice(),
-                itemDto.getItemCount(), itemDto.getItemTitle());
+        Optional<ItemEntity> itemEntityOptional = itemRepository.findById(itemSeq);
+        ItemEntity itemEntity = itemEntityOptional.get();
+
+
+        if (itemDto.getMainImage() != null) {
+            String mainImagePath = s3Service.uploadImageInS3(itemDto.getMainImage(), "images");
+            itemEntity.setMainImagePath(mainImagePath);
+        }
+
+        if (itemDto.getSubImage() != null) {
+            String subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
+            itemEntity.setSubImagePath(subImagePath);
+        }
+
+        Optional<CategoryEntity> category = categoryRepository.findById(itemDto.getCategorySeq());
+
+        itemEntity.setItemTitle(itemDto.getItemTitle());
+        itemEntity.setItemPrice(itemDto.getItemPrice());
+        itemEntity.setItemCount(itemDto.getItemCount());
+        itemEntity.setItemContents(itemDto.getItemContents());
+        itemEntity.setCategory(category.get());
+
+        itemRepository.save(itemEntity);
+
+        log.info(this.getClass().getName() + ".modifyItem End!");
         return 1;
     }
 
@@ -164,5 +199,49 @@ public class ItemService implements IItemService {
             return itemDtoList;
 
         }
+    }
+
+    @Override
+    @Transactional
+    @Async
+    public void upCount(int itemSeq, int userAge) throws Exception {
+        // 조회수 증가
+        int cUserAge = 0;
+        cUserAge += userAge;
+        log.info("userAge : " + cUserAge);
+        if (cUserAge > 0 && cUserAge <= 29) {
+            itemRepository.increaseReadCount20(itemSeq);
+
+        } else if (cUserAge >= 30 && cUserAge <= 39) {
+            itemRepository.increaseReadCount30(itemSeq);
+        } else if (cUserAge >= 40 && cUserAge <= 49) {
+            itemRepository.increaseReadCount40(itemSeq);
+        } else {
+            itemRepository.increaseReadCountOther(itemSeq);
+        }
+
+        log.info(this.getClass().getName() + "upCount End");
+    }
+
+    @Override
+    @Transactional
+    @Async
+    public void upCountCustom(int itemSeq, int userAge, int readValue) throws Exception {
+        log.info(this.getClass().getName() + "upCountCustom Start!");
+
+        if (userAge > 0 && userAge <= 29) {
+            itemRepository.increaseCustomReadCount20(itemSeq, readValue);
+
+        } else if (userAge >= 30 && userAge <= 39) {
+            itemRepository.increaseCustomReadCount30(itemSeq, readValue);
+        } else if (userAge >= 40 && userAge <= 49) {
+            itemRepository.increaseCustomReadCount40(itemSeq, readValue);
+        } else {
+            itemRepository.increaseCustomReadCountOther(itemSeq, readValue);
+        }
+
+
+        log.info(this.getClass().getName() + "upCountCustom End!");
+
     }
 }

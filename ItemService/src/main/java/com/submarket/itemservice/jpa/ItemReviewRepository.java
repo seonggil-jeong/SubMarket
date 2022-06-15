@@ -20,6 +20,9 @@ public interface ItemReviewRepository extends CrudRepository<ItemReviewEntity, I
     Optional<ItemReviewEntity> findById(Integer integer);
 
     @Transactional
+    Optional<ItemReviewEntity> findByUserIdAndItem(String userId, ItemEntity item);
+
+    @Transactional
     List<ItemReviewEntity> findByItem(ItemEntity item);
 
     @Transactional

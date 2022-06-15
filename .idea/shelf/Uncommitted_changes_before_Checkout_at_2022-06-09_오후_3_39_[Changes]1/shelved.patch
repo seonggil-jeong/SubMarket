@@ -1,0 +1,27 @@
+Index: FlaskService/app.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from flask import Flask\r\nimport pandas as pd\r\nimport py_eureka_client.eureka_client as eureka_client\r\n# pip install py-eureka-client\r\n\r\nrest_port = 5000\r\neureka_client.init(eureka_server=\"http://localhost:8761/eureka\",\r\n                   app_name=\"flask-service\",\r\n                   instance_ip=\"192.168.170.169\",\r\n                   instance_port=rest_port)\r\napp = Flask(__name__)\r\n\r\n\r\n@app.route('/')\r\ndef hello_world():  # put application's code here\r\n    return 'Hello World!'\r\n\r\n\r\nif __name__ == '__main__':\r\n    app.run()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/FlaskService/app.py b/FlaskService/app.py
+--- a/FlaskService/app.py	
++++ b/FlaskService/app.py	
+@@ -1,13 +1,15 @@
+ from flask import Flask
+ import pandas as pd
++import numpy as np
+ import py_eureka_client.eureka_client as eureka_client
+ # pip install py-eureka-client
+ 
+ rest_port = 5000
+-eureka_client.init(eureka_server="http://localhost:8761/eureka",
++client = eureka_client(eureka_server="http://localhost:8761/eureka",
+                    app_name="flask-service",
+                    instance_ip="192.168.170.169",
+                    instance_port=rest_port)
++
+ app = Flask(__name__)
+ 
+ 

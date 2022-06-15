@@ -6,6 +6,7 @@ import com.submarket.itemservice.jpa.ItemRepository;
 import com.submarket.itemservice.jpa.ItemReviewRepository;
 import com.submarket.itemservice.service.impl.ItemService;
 import com.submarket.itemservice.service.impl.S3Service;
+import com.submarket.itemservice.service.impl.SchedulerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
@@ -28,6 +29,7 @@ public class MainController {
     private final ItemRepository itemRepository;
     private final ItemReviewRepository itemReviewRepository;
     private final S3Service s3Service;
+    private final SchedulerService schedulerService;
 
     @GetMapping("/health")
     public String health() {
@@ -37,6 +39,11 @@ public class MainController {
                 + ", port(server.port) : " + env.getProperty("server.port")
                 + ", token secret : " + env.getProperty("token.secret")
                 + ", token expiration time : " + env.getProperty("token.expiration_time");
+    }
+
+    @GetMapping("/test")
+    public void test() throws Exception{
+        schedulerService.createSellerTotalSales();
     }
 
 }

@@ -13,10 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @RestController
@@ -27,8 +24,10 @@ public class SubController {
     private final TokenUtil tokenUtil;
 
     @GetMapping("/sub")
-    public ResponseEntity<Object> findAllSub(@RequestHeader HttpHeaders headers) throws Exception {
+    public ResponseEntity<Map<String, Object>> findAllSub(@RequestHeader HttpHeaders headers) throws Exception {
         log.info(this.getClass().getName() + ".findSub Start!");
+
+        Map<String, Object> rMap = new HashMap<>();
 
         String userId = tokenUtil.getUserIdByToken(headers);
 
@@ -37,19 +36,15 @@ public class SubController {
         subDto.setUserId(userId);
         List<SubEntity> subEntityList = subService.findAllSub(subDto);
 
-        if (subEntityList == null) {
-            log.info("SubService Check");
-
-            return ResponseEntity.status(500).body("Service Error");
-        }
-
         List<SubDto> subDtoList = new ArrayList<>();
 
         subEntityList.forEach(subEntity -> {
             subDtoList.add(SubMapper.INSTANCE.subEntityToSubDto(subEntity));
         });
 
-        return ResponseEntity.ok().body(subEntityList);
+        rMap.put("response", subDtoList);
+
+        return ResponseEntity.ok().body(rMap);
 
 
 
@@ -76,16 +71,19 @@ public class SubController {
 
     @PostMapping("/sub")
     public ResponseEntity<String> createNewSub(@RequestHeader HttpHeaders headers,
-                                               @RequestBody RequestSub requestSub) {
+                                               @RequestBody SubDto subDto) throws Exception{
         log.info(this.getClass().getName() + ".createNewSub Start!");
 
-        SubDto subDto = new SubDto();
         String userId = tokenUtil.getUserIdByToken(headers);
 
-        subDto.setItemSeq(requestSub.getItemSeq());
         subDto.setUserId(userId);
 
+
         int res = subService.createNewSub(subDto);
+
+        if (res == 2) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("중복된 구독");
+        }
 
         if (res != 1) {
             return ResponseEntity.status(500).body("오류");
@@ -96,7 +94,7 @@ public class SubController {
         return ResponseEntity.status(HttpStatus.CREATED).body("구독 성공");
     }
 
-    @DeleteMapping("/sub")
+    @PostMapping("/sub/delete")
     public String cancelSub(@RequestBody RequestSub requestSub) throws Exception {
         log.info(this.getClass().getName() + "cancel Sub Start!");
 
@@ -115,7 +113,7 @@ public class SubController {
         return "구독 취소 성공";
     }
 
-    @PatchMapping("/sub")
+    @PostMapping("/sub/update")
     public ResponseEntity<String> updateSub(@RequestBody RequestSub requestSub) throws Exception {
         log.info(this.getClass().getName() + ".updateSub Start!");
         SubDto subDto = new SubDto();
@@ -143,5 +141,16 @@ public class SubController {
         int count = subService.findSubCount(itemSeqList);
 
         return ResponseEntity.status(HttpStatus.OK).body(count);
+    }
+
+    @GetMapping("/seller/sub/{itemSeq}")
+    public ResponseEntity<Integer> findOneSubCount(@PathVariable int itemSeq) throws Exception {
+        log.info(this.getClass().getName() + "findOneSubCount Start!");
+
+        int count = subService.findOneSubCount(itemSeq);
+
+        log.info(this.getClass().getName() + "findOneSubCount End!");
+
+        return ResponseEntity.ok().body(count);
     }
 }

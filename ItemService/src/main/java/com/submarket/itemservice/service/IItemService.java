@@ -1,6 +1,5 @@
 package com.submarket.itemservice.service;
 
-import com.submarket.itemservice.dto.GroupDto;
 import com.submarket.itemservice.dto.ItemDto;
 
 import java.util.List;
@@ -19,6 +18,10 @@ public interface IItemService {
     int modifyItem(ItemDto itemDto) throws Exception;
 
     List<ItemDto> findItemBySellerId(String sellerId) throws Exception;
+
+    void upCount(int itemSeq, int userAge) throws Exception;
+
+    void upCountCustom(int itemSeq, int userAge, int readValue) throws Exception;
 
 
 

@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.submarket</groupId>
     <artifactId>itemservice</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>ItemService</name>
     <description>ItemService</description>
     <properties>
@@ -136,6 +136,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-aws</artifactId>
             <version>2.0.1.RELEASE</version>
+        </dependency>
+
+        <!-- Kafka -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
