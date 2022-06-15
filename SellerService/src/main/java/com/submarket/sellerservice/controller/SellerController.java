@@ -60,7 +60,6 @@ public class SellerController {
         log.info(this.getClass().getName() + ".createSeller Start!");
 
         SellerDto SellerDto = SellerMapper.INSTANCE.requestSellerInfoToSellerDto(sellerInfo);
-        log.info("sellerPassword : " + SellerDto.getSellerPassword());
 
         int res = sellerService.createSeller(SellerDto);
 
