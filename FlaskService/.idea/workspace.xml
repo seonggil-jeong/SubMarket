@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b653b56-1df1-41b1-8364-cd88cf3775ee" name="Changes" comment="[#118] feature : 매출액 분석 함수">
-      <change beforePath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__11_24__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__11_24__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__4_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__4_08__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__11_24__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__11_24__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ApiGateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ApiGateway/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ConfigService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ConfigService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DiscoveryService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DiscoveryService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prophet.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../SellerService/src/main/java/com/submarket/sellerservice/controller/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SellerService/src/main/java/com/submarket/sellerservice/controller/SellerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +59,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1655264977" />
+                    <option name="lastUsedInstant" value="1655266105" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/#141" />
+                    <option name="lastUsedInstant" value="1655265204" />
                   </RecentBranch>
                 </list>
               </option>
@@ -126,7 +126,8 @@
       <workItem from="1655002955848" duration="1046000" />
       <workItem from="1655180663702" duration="31000" />
       <workItem from="1655180701959" duration="882000" />
-      <workItem from="1655264303506" duration="671000" />
+      <workItem from="1655264303506" duration="1266000" />
+      <workItem from="1655270849487" duration="23000" />
     </task>
     <task id="LOCAL-00001" summary="[#126] setting : Prophet">
       <created>1654930805732</created>
