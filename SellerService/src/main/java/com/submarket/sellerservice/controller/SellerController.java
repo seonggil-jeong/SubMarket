@@ -97,11 +97,14 @@ public class SellerController {
     }
 
     @PostMapping("/sellers/drop")
-    public ResponseEntity<String> deleteSeller(@RequestBody RequestSellerInfo requestSellerInfo) throws Exception {
+    public ResponseEntity<String> deleteSeller(@RequestHeader HttpHeaders headers,
+                                               @RequestBody RequestSellerInfo requestSellerInfo) throws Exception {
         log.info(this.getClass().getName() + ".deleteSeller Start!");
         SellerDto SellerDto = new SellerDto();
 
-        SellerDto.setSellerId(requestSellerInfo.getSellerId());
+        String sellerId = tokenUtil.getUserIdByToken(headers);
+
+        SellerDto.setSellerId(sellerId);
         SellerDto.setSellerPassword(requestSellerInfo.getSellerPassword());
         sellerService.deleteSeller(SellerDto);
 

@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#117] feature : 리뷰 정보 가공">
-      <change afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SalesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-13__5_57__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-13__5_57__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__8_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__8_58__Changes_.xml" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#137] refactor : python date 수정">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__11_24__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__11_24__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__4_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__4_08__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__11_24__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__11_24__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/SalesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/SalesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/ISalesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/ISalesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/SalesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/SalesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApiGateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ApiGateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConfigService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiscoveryService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DiscoveryService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlaskService/prophet.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SellerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/#117" />
+        <entry key="$PROJECT_DIR$" value="feature/#137" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,12 +68,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feature/#137" />
-                    <option name="lastUsedInstant" value="1655177369" />
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1655264827" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1655173481" />
+                    <option name="branchName" value="feature/#137" />
+                    <option name="lastUsedInstant" value="1655259952" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -182,7 +185,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.DiscoveryServiceApplication">
     <configuration name="SellerService | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/SellerService.http" requestIdentifier="#1" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -228,6 +231,11 @@
     </configuration>
     <configuration name="ItemServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="itemservice" />
+      <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+        <option name="credential" />
+        <option name="region" />
+        <option name="useCurrentConnection" value="false" />
+      </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.itemservice.ItemServiceApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
@@ -259,6 +267,8 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="HTTP Request.SellerService | #1" />
+      <item itemvalue="HTTP Request.UserService | #1" />
       <item itemvalue="Spring Boot.ApiGatewayApplication" />
       <item itemvalue="Spring Boot.ItemServiceApplication" />
       <item itemvalue="Spring Boot.UserServiceApplication" />
@@ -266,13 +276,14 @@
       <item itemvalue="Spring Boot.OrderServiceApplication" />
       <item itemvalue="Spring Boot.SellerServiceApplication" />
       <item itemvalue="Spring Boot.ConfigServiceApplication" />
-      <item itemvalue="HTTP Request.SellerService | #1" />
-      <item itemvalue="HTTP Request.UserService | #1" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="HTTP Request.UserService | #1" />
         <item itemvalue="HTTP Request.SellerService | #1" />
+        <item itemvalue="HTTP Request.UserService | #1" />
+        <item itemvalue="HTTP Request.SellerService | #1" />
+        <item itemvalue="HTTP Request.UserService | #1" />
       </list>
     </recent_temporary>
   </component>
@@ -321,21 +332,8 @@
       <workItem from="1654932297624" duration="2385000" />
       <workItem from="1655027313945" duration="6485000" />
       <workItem from="1655106873338" duration="3270000" />
-      <workItem from="1655164653622" duration="10057000" />
-    </task>
-    <task id="LOCAL-00041" summary="[#88] feature : API Test">
-      <created>1653314925002</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1653314925002</updated>
-    </task>
-    <task id="LOCAL-00042" summary="[#88] feature : API Test">
-      <created>1653315014304</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1653315014304</updated>
+      <workItem from="1655164653622" duration="18334000" />
+      <workItem from="1655255613961" duration="6936000" />
     </task>
     <task id="LOCAL-00043" summary="[#88] feature : 사업자 번호 유효성 검사">
       <created>1653316281795</created>
@@ -666,7 +664,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655173395212</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="[#137] feature : 매출 정보 조회">
+      <created>1655178318823</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1655178318823</updated>
+    </task>
+    <task id="LOCAL-00091" summary="[#137] refactor : python date 수정">
+      <created>1655264755697</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1655264755697</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -714,8 +726,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#78] feature : Add Spring Cloud Config" />
-    <MESSAGE value="[#78] feature : Add Actuator" />
     <MESSAGE value="[#78] feature : Test RabbitMQ" />
     <MESSAGE value="Maven" />
     <MESSAGE value="UserService - Test" />
@@ -739,6 +749,8 @@
     <MESSAGE value="[#117] feature : 구독 정보 가공" />
     <MESSAGE value="[#117] fix : read_count_other 증가 변경" />
     <MESSAGE value="[#117] feature : 리뷰 정보 가공" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#117] feature : 리뷰 정보 가공" />
+    <MESSAGE value="[#137] feature : 매출 정보 조회" />
+    <MESSAGE value="[#137] refactor : python date 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#137] refactor : python date 수정" />
   </component>
 </project>
