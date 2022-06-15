@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,5 +44,29 @@ public class SalesService implements ISalesService {
         }
 
         return 1;
+    }
+
+    @Override
+    @Transactional
+    public List<SalesDto> findAllSalesDtoBySellerId(String sellerId) throws Exception {
+
+        List<SalesDto> salesDtoList = new LinkedList<>();
+        SellerEntity seller = sellerRepository.findBySellerId(sellerId);
+        if (seller != null) {
+            List<SalesEntity> salesEntityList = salesRepository.findAllBySeller(seller);
+
+            salesEntityList.forEach(salesEntity -> {
+                salesDtoList.add(SalesMapper.INSTANCE.salesEntityToSalesDto(salesEntity));
+            });
+
+            log.info(this.getClass().getName() + ".findAllSalesDtoBySellerId Start!");
+            return salesDtoList;
+        } else {
+
+            return salesDtoList;
+
+        }
+
+
     }
 }

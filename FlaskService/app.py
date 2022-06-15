@@ -26,10 +26,14 @@ def seller_value():
     ds = []
     y = []
     for value in value_list:
-        print("date : ", value.get("date"))
-        print("value : ", value.get("value"))
-        ds.append(pd.to_datetime(value.get("date")))
-        y.append(value.get("value"))
+        date = value.get("date")
+        y = value.get("value")
+
+        date = date[:4] + "-" + date[4:]
+        print("date : ", date)
+        print("y", y)
+        ds.append(pd.to_datetime(date))
+        y.append(y)
 
     s_ds = pd.Series(ds, name="ds")
     s_y = pd.Series(y, name="y")
