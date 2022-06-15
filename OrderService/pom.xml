@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.submarket</groupId>
     <artifactId>orderservice</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>OrderService</name>
     <description>OrderService</description>
     <properties>
