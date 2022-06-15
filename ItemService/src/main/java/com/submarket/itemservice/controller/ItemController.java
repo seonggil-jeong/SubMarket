@@ -26,8 +26,6 @@ public class ItemController {
     private final ItemService itemService;
     private final TokenUtil tokenUtil;
 
-    // TODO: 2022/05/16 로직 추가
-
     @PostMapping(value = "/items", consumes = MediaType.ALL_VALUE)
     public ResponseEntity<String> saveItem(@RequestHeader HttpHeaders headers, ItemDto itemDto) throws Exception {
         log.info(this.getClass().getName() + ".saveItem Start!");
