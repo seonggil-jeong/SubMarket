@@ -4,17 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#137] refactor : python date 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__11_24__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__11_24__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__4_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__4_08__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__11_24__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__11_24__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="token 사용 (deleteSeller)">
+      <change afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/config/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/IKafkaProducerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/KafkaProducerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ApiGateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ApiGateway/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ConfigService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DiscoveryService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DiscoveryService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FlaskService/prophet.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SellerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IKafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IKafkaConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/SellerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/service/impl/SellerService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -68,12 +68,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1655264827" />
+                    <option name="branchName" value="feature/#141" />
+                    <option name="lastUsedInstant" value="1655265204" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="feature/#137" />
-                    <option name="lastUsedInstant" value="1655259952" />
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1655264827" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -171,11 +171,11 @@
       <recent name="com.submarket.sellerservice.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.submarket.sellerservice.config" />
       <recent name="com.submarket.orderservice.config" />
       <recent name="com.submarket.itemservice.coinfig" />
       <recent name="com.submarket.orderservice.security" />
       <recent name="com.submarket.userservice.vo" />
-      <recent name="com.submarket.userservice.controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -186,12 +186,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.DiscoveryServiceApplication">
-    <configuration name="SellerService | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/SellerService.http" requestIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="UserService | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/UserService.http" requestIdentifier="#1" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -267,8 +261,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.SellerService | #1" />
-      <item itemvalue="HTTP Request.UserService | #1" />
       <item itemvalue="Spring Boot.ApiGatewayApplication" />
       <item itemvalue="Spring Boot.ItemServiceApplication" />
       <item itemvalue="Spring Boot.UserServiceApplication" />
@@ -279,8 +271,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.UserService | #1" />
-        <item itemvalue="HTTP Request.SellerService | #1" />
         <item itemvalue="HTTP Request.UserService | #1" />
         <item itemvalue="HTTP Request.SellerService | #1" />
         <item itemvalue="HTTP Request.UserService | #1" />
@@ -333,14 +323,7 @@
       <workItem from="1655027313945" duration="6485000" />
       <workItem from="1655106873338" duration="3270000" />
       <workItem from="1655164653622" duration="18334000" />
-      <workItem from="1655255613961" duration="6936000" />
-    </task>
-    <task id="LOCAL-00043" summary="[#88] feature : 사업자 번호 유효성 검사">
-      <created>1653316281795</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1653316281795</updated>
+      <workItem from="1655255613961" duration="7693000" />
     </task>
     <task id="LOCAL-00044" summary="[#94] refactor : GET: /group">
       <created>1653805487591</created>
@@ -678,7 +661,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655264755697</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="token 사용 (deleteSeller)">
+      <created>1655265177999</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1655265177999</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -726,7 +716,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#78] feature : Test RabbitMQ" />
     <MESSAGE value="Maven" />
     <MESSAGE value="UserService - Test" />
     <MESSAGE value="SellerService - Test" />
@@ -751,6 +740,7 @@
     <MESSAGE value="[#117] feature : 리뷰 정보 가공" />
     <MESSAGE value="[#137] feature : 매출 정보 조회" />
     <MESSAGE value="[#137] refactor : python date 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#137] refactor : python date 수정" />
+    <MESSAGE value="token 사용 (deleteSeller)" />
+    <option name="LAST_COMMIT_MESSAGE" value="token 사용 (deleteSeller)" />
   </component>
 </project>

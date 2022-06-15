@@ -3,6 +3,7 @@ package com.submarket.itemservice.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.submarket.itemservice.dto.ItemDto;
 import com.submarket.itemservice.jpa.ItemRepository;
 import com.submarket.itemservice.jpa.entity.ItemEntity;
 import com.submarket.itemservice.service.IKafkaConsumerService;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -80,4 +82,36 @@ public class KafkaConsumerService implements IKafkaConsumerService {
         log.info(this.getClass().getName() + ".cancelSub End!");
     }
 
+    @KafkaListener(topics = "seller")
+    @Override
+    @Transactional
+    public void offAllItemBySellerId(String kafkaMessage) throws Exception {
+        log.info(this.getClass().getName() + ".offAllItemBySellerId Start!");
+        Map<String, Object> map = new HashMap<>();
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            map = mapper.readValue(kafkaMessage, new TypeReference<Map<String, Object>>() {
+
+            });
+        } catch (JsonProcessingException exception) {
+            log.info("JsonProcessingException : " + exception);
+            exception.printStackTrace();
+        }
+
+        String sellerId = String.valueOf(map.get("sellerId"));
+
+        if (sellerId != null) {
+            List<ItemDto> itemDtoList = itemService.findItemBySellerId(sellerId);
+
+            for (ItemDto itemDto : itemDtoList) {
+                log.info("itemSeq : " + itemDto.getItemSeq());
+                itemService.offItem(itemDto);
+            }
+        }
+
+
+        log.info(this.getClass().getName() + ".offAllItemBySellerId End!");
+
+    }
 }
