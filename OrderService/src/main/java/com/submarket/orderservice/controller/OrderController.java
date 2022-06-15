@@ -29,12 +29,12 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.CREATED).body("주문 생성 완료");
     }
 
-    @GetMapping("/order/user")
-    public ResponseEntity<Map<String, Object>> findOrderInfoByUserId(@RequestBody OrderDto orderDto) throws Exception {
+    @GetMapping("/order/user/{userId}")
+    public ResponseEntity<Map<String, Object>> findOrderInfoByUserId(@PathVariable String  userId) throws Exception {
         log.info(this.getClass().getName() + ".findOrderInfoByUserId Start!");
         Map<String, Object> rMap = new HashMap<>();
 
-        List<OrderDto> orderDtoList = orderService.findAllOrderByUserId(orderDto.getUserId());
+        List<OrderDto> orderDtoList = orderService.findAllOrderByUserId(userId);
 
         rMap.put("response", orderDtoList);
 
@@ -45,14 +45,14 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(rMap);
     }
 
-    @GetMapping("/order/seller")
-    public ResponseEntity<Map<String, Object>> findOrderInfoBySellerId(@RequestBody OrderDto orderDto)
+    @GetMapping("/order/seller/{sellerId}")
+    public ResponseEntity<Map<String, Object>> findOrderInfoBySellerId(@PathVariable String sellerId)
         throws Exception {
         log.info(this.getClass().getName() + ".findOrderInfoBySellerId Start!");
 
         Map<String, Object> rMap = new HashMap<>();
 
-        List<OrderDto> orderDtoList = orderService.findAllOrderBySellerId(orderDto.getSellerId());
+        List<OrderDto> orderDtoList = orderService.findAllOrderBySellerId(sellerId);
 
         rMap.put("response", orderDtoList);
 
@@ -63,11 +63,11 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(rMap);
     }
 
-    @GetMapping("/order")
-    public ResponseEntity<Map<String, Object>> findOrderInfoByOrderId(@RequestBody OrderDto pOrderDto) throws Exception {
+    @GetMapping("/order/order/{orderId}")
+    public ResponseEntity<Map<String, Object>> findOrderInfoByOrderId(@PathVariable String orderId) throws Exception {
         Map<String, Object> rMap = new HashMap<>();
 
-        OrderDto orderDto = orderService.findOneOrderByOrderId(pOrderDto.getOrderId());
+        OrderDto orderDto = orderService.findOneOrderByOrderId(orderId);
 
         rMap.put("response", orderDto);
 
