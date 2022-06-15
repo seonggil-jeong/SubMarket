@@ -26,6 +26,7 @@ public class SellerService implements ISellerService {
     private final SellerRepository sellerRepository;
     private final SellerCheckService sellerCheckService;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final KafkaProducerService kafkaProducerService;
 
     /** 사업자 회원가입 */
     @Override
@@ -77,6 +78,9 @@ public class SellerService implements ISellerService {
         } else {
             throw new UsernameNotFoundException("비밀번호 불일치");
         }
+
+        // Kafka
+        kafkaProducerService.kafkaDeleteSeller(SellerDto);
 
 
         log.info(this.getClass().getName() + ".deleteSeller End!");
