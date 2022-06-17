@@ -53,7 +53,6 @@ public class S3Service implements IS3Service {
         } catch (IllegalArgumentException illegalArgumentException) {
             log.info("IllegalArgumentException : " + illegalArgumentException.getMessage());
             log.info("사진 저장 실패");
-            // TODO: 2022-06-03 Add None image in static Path
             rPath = "/";
 
         } catch (Exception exception) {
