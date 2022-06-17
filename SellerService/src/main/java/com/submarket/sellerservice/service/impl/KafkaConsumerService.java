@@ -52,7 +52,6 @@ public class KafkaConsumerService implements IKafkaConsumerService {
 
         salesService.saveSales(salesDto, sellerId);
 
-        // TODO: 2022/06/14 매출 정보 Update And Flask Service 호출
         log.info(this.getClass().getName() + ".getOrderInfoFromOrderService End!");
 
     }

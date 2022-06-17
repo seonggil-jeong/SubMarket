@@ -120,7 +120,6 @@ public class SellerController {
     @GetMapping("/sellers/find-id/{sellerEmail}")
     public ResponseEntity<String> findSellerId(@PathVariable String sellerEmail) throws Exception {
         log.info("-------------------- > " + this.getClass().getName() + "findSellerId Start!");
-        // TODO: 2022-05-23 이메일로 사용자 정보 찾기
         SellerDto sellerDto = new SellerDto();
 
         sellerDto.setSellerEmail(sellerEmail);

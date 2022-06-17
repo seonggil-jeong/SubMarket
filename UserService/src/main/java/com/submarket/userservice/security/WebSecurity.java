@@ -22,9 +22,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        // TODO: 2022/05/22 Gateway IP 로 수정
         http.authorizeRequests().antMatchers("/**")
-                .hasIpAddress("127.0.0.1") // IP
+                .hasIpAddress(env.getProperty("gateway.ip")) // IP
                 .and()
                 .addFilter(getAuthenticationFilter()); // Add Filter
 

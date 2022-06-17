@@ -30,7 +30,6 @@ public class RequestSellerInfo {
     @Email(message = "Email 형식이 아닙니다")
     private String sellerEmail;
 
-    // TODO: 2022/05/11 Front 주소 정보 API 사용
     @NotNull(message = "주소를 입력해주세요")
     private String sellerAddress;
     private String sellerAddress2;
