@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="OrderService Test">
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#144] hotfix : application.yml 수정">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-09__3_39__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-09_오후_3_39_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09__3_36__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09__9_30__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09_오전_9_30_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09_오후_3_36_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ApiGateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ApiGateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConfigService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiscoveryService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DiscoveryService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FlaskService/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,12 +65,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="release/v1.0.0" />
-                    <option name="lastUsedInstant" value="1655267163" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="feature/#141" />
-                    <option name="lastUsedInstant" value="1655265204" />
+                    <option name="branchName" value="hotfix/#144" />
+                    <option name="lastUsedInstant" value="1655425952" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
@@ -315,13 +313,7 @@
       <workItem from="1655106873338" duration="3270000" />
       <workItem from="1655164653622" duration="18334000" />
       <workItem from="1655255613961" duration="7693000" />
-    </task>
-    <task id="LOCAL-00047" summary="todo">
-      <created>1653806026892</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1653806026892</updated>
+      <workItem from="1655437390647" duration="5604000" />
     </task>
     <task id="LOCAL-00048" summary="refactor : 구독 수정">
       <created>1653806827536</created>
@@ -659,7 +651,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655271396740</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="[#144] hotfix : WebSecurity Gateway Ip 수정">
+      <created>1655426133353</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1655426133353</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,7 +706,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="OrderService - Test" />
     <MESSAGE value="ItemService - Test" />
     <MESSAGE value="v0.0.3 Test End&#10;&#10;UserService - Test&#10;&#10;SellerService - Test&#10;&#10;OrderService - Test&#10;&#10;ItemService - Test" />
     <MESSAGE value="[#95] feature : findOrderInfoByUserId" />
@@ -732,6 +730,7 @@
     <MESSAGE value="UserService Test" />
     <MESSAGE value="SellerService Test" />
     <MESSAGE value="OrderService Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="OrderService Test" />
+    <MESSAGE value="[#144] hotfix : WebSecurity Gateway Ip 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#144] hotfix : WebSecurity Gateway Ip 수정" />
   </component>
 </project>
