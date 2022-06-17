@@ -117,7 +117,6 @@ public class ItemService implements IItemService {
     @Override
     @Transactional
     public int offItem(ItemDto itemDto) throws Exception {
-        // TODO: 2022-05-16 상품 활성화 여부 확인
         int itemSeq = itemDto.getItemSeq();
 
         itemRepository.offItemStatus(itemSeq);
