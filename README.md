@@ -7,10 +7,11 @@
 > 2022.05 - 2022.06
 
 ### 적용 기술
+
+<div>
 <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white" />
 <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white" />
-<img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white" />
-<br/>
+<img src="https://img.shields.io/badge/Spring Security-6DB33F?style=for-the-badge&logo=Spring Security&logoColor=white" /><br/>
 <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=MariaDB&logoColor=white" />
 <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white" /><br/>
 <img src="https://img.shields.io/badge/RabbitMQ-FF6600?style=for-the-badge&logo=RabbitMQ&logoColor=white" />
@@ -19,8 +20,9 @@
 <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white"/>
 <img src="https://img.shields.io/badge/Microsoft Azure-0078D4?style=for-the-badge&logo=Microsoft Azure&logoColor=white"/>
 <img src="https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=Google Cloud&logoColor=white"/><br/>
-
-> _Other : JWT, JPA, Load Balancer(Eureka), Gateway(Spring Cloud Gateway), REST-API, JSP_
+<div/>
+   
+> _**Other : JWT, JPA, Load Balancer(Eureka), Gateway(Spring Cloud Gateway), REST-API, JSP**_
 ### Summary
 
 ![Summary](https://user-images.githubusercontent.com/63443366/175762264-d15dfadd-e097-4dd9-8294-c86e65a15691.png)
