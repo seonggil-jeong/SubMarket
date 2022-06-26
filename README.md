@@ -22,7 +22,7 @@
 <img src="https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=Google Cloud&logoColor=white"/><br/>
 <div/>
    
-> _**Other : JWT, JPA, Load Balancer(Eureka), Gateway(Spring Cloud Gateway), REST-API, JSP**_
+> _**Other : JWT, JPA, Load Balancer(Eureka), Gateway(Spring Cloud Gateway), REST-API, JSP, Spring Cloud Config**_
 ### Summary
 
 ![Summary](https://user-images.githubusercontent.com/63443366/175762264-d15dfadd-e097-4dd9-8294-c86e65a15691.png)
