@@ -1,9 +1,6 @@
 package com.submarket.itemservice.jpa.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,7 +22,7 @@ public class CategoryEntity {
     private String categoryName;
 
     @OneToMany(mappedBy = "category")
-    List<ItemEntity> items = new ArrayList<>();
+    List<ItemEntity> items;
 
 
 

@@ -1,10 +1,7 @@
 package com.submarket.userservice.jpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
@@ -14,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "subInfo")
-@JsonIgnoreProperties({"user"})
+@ToString(exclude = "user")
 @Builder
 public class SubEntity {
 

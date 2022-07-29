@@ -2,6 +2,7 @@ package com.submarket.itemservice.jpa;
 
 import com.submarket.itemservice.jpa.entity.ItemEntity;
 import com.submarket.itemservice.jpa.entity.ItemReviewEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ItemReviewRepository extends CrudRepository<ItemReviewEntity, Integer> {
+public interface ItemReviewRepository extends JpaRepository<ItemReviewEntity, Integer> {
 
     @Override
     @Transactional

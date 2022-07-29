@@ -4,14 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#144] hotfix : application.yml 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-09__3_39__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-09_오후_3_39_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09__3_36__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09__9_30__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09_오전_9_30_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09_오후_3_36_[Changes]/shelved.patch" beforeDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="Update README.md">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-13__5_57__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-13_오후_5_57_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__11_24__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__4_08__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14_오전_11_24_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14_오후_4_08_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022_06_12_12_36_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022_06_12_12_36_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022_06_12_3_58_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022_06_12_3_58_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_06_12_3_59_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_06_12_3_59_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-13__9_16__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-13_오전_9_16_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__11_24__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__8_58__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14_오전_11_24_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14_오전_8_58_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_06_13_10_12_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_06_13_10_12_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/CategoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/CategoryEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemReviewEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemReviewEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/CategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/ItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/ItemMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/ItemReviewMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/ItemReviewMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/security/WebSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/BusinessIdApiDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/BusinessIdApiDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SalesEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SalesEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/mapper/SalesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/mapper/SalesMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/mapper/SellerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/mapper/SellerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/SubEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/SubEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/mapper/SubMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/mapper/SubMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,11 +70,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/#148" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="SOFT" />
+    <option name="RESET_MODE" value="HARD" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitRewordedCommitMessages">
@@ -65,12 +105,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="hotfix/#144" />
-                    <option name="lastUsedInstant" value="1655425952" />
+                    <option name="branchName" value="feature/#149" />
+                    <option name="lastUsedInstant" value="1658568781" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1655264827" />
+                    <option name="lastUsedInstant" value="1658564625" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/#148" />
+                    <option name="lastUsedInstant" value="1656839788" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -117,32 +161,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mongo&#10;mariadb" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelOrder2" value="2" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="RequestMappingsPanelWidth2" value="75" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ApiGateway/src/main/resources" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="bigdataide_conn_settings" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;bigdataide_conn_settings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;5b646f0c214ba49cf5bb548647ab23e0&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
+    ]
+  }
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -182,7 +224,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DiscoveryServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ItemServiceApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -199,7 +241,6 @@
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="apigateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.apigateway.ApiGatewayApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -207,7 +248,6 @@
     <configuration name="ConfigServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="configservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.configservice.ConfigServiceApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -215,20 +255,18 @@
     <configuration name="DiscoveryServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="discoveryservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.discoveryservice.DiscoveryServiceApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ItemServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="itemservice" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.itemservice.ItemServiceApplication" />
       <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
         <option name="credential" />
         <option name="region" />
         <option name="useCurrentConnection" value="false" />
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.itemservice.ItemServiceApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -236,7 +274,6 @@
     <configuration name="OrderServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="orderservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.orderservice.OrderServiceApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -251,7 +288,6 @@
     <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="userservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.userservice.UserServiceApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -314,6 +350,22 @@
       <workItem from="1655164653622" duration="18334000" />
       <workItem from="1655255613961" duration="7693000" />
       <workItem from="1655437390647" duration="5604000" />
+      <workItem from="1657191666894" duration="628000" />
+      <workItem from="1657442819457" duration="694000" />
+      <workItem from="1657446663696" duration="124000" />
+      <workItem from="1657447141620" duration="273000" />
+      <workItem from="1657450366946" duration="634000" />
+      <workItem from="1657868000087" duration="636000" />
+      <workItem from="1657869832319" duration="1473000" />
+      <workItem from="1658044299006" duration="1948000" />
+      <workItem from="1658048715701" duration="207000" />
+      <workItem from="1658050360665" duration="2044000" />
+      <workItem from="1658291926487" duration="145000" />
+      <workItem from="1658560695612" duration="663000" />
+      <workItem from="1658564056383" duration="572000" />
+      <workItem from="1658564660446" duration="5045000" />
+      <workItem from="1659077362304" duration="1521000" />
+      <workItem from="1659081308564" duration="450000" />
     </task>
     <task id="LOCAL-00048" summary="refactor : 구독 수정">
       <created>1653806827536</created>

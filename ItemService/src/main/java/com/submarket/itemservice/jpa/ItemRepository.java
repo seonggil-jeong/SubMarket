@@ -1,6 +1,7 @@
 package com.submarket.itemservice.jpa;
 
 import com.submarket.itemservice.jpa.entity.ItemEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,7 +14,7 @@ import java.util.Optional;
 
 @Repository
 @Transactional
-public interface ItemRepository extends CrudRepository<ItemEntity, Integer> {
+public interface ItemRepository extends JpaRepository<ItemEntity, Integer> {
     @Override
     @Transactional
     Optional<ItemEntity> findById(Integer integer);

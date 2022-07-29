@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@JsonIgnoreProperties({"seller"})
+@ToString(exclude={"seller"})
 public class SalesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
