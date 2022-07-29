@@ -5,6 +5,7 @@ import com.submarket.itemservice.jpa.entity.ItemReviewEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+
 @Mapper
 public interface ItemReviewMapper {
     ItemReviewMapper INSTANCE = Mappers.getMapper(ItemReviewMapper.class);

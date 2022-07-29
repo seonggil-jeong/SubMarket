@@ -12,13 +12,9 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface SellerMapper {
     SellerMapper INSTANCE = Mappers.getMapper(SellerMapper.class);
-
     @Mapping(source = "sellerEncPassword", target = "sellerPassword")
     SellerEntity SellerDtoToSellerEntity(SellerDto SellerDto);
-
     SellerDto sellerEntityToSellerDto(SellerEntity sellEntity);
-
     SellerDto requestSellerInfoToSellerDto(RequestSellerInfo requestSellerInfo);
-
     ResponseSellerInfo SellerDtoToResponseSellerInfo(SellerDto SellerDto);
 }

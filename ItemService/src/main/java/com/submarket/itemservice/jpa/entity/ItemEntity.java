@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "itemInfo")
-@JsonIgnoreProperties({"category", "reviews"})
+@ToString(exclude={"category"})
 @Setter
 public class ItemEntity {
     @Id
