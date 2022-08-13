@@ -57,3 +57,6 @@
 * **사업자 탈퇴 시 판매 중인 상품 비활성화**
   * 판매자가 탈퇴한다면 판매자가 판매중이였던 상품 비활성화
   * https://github.com/JeongSeonggil/SubMarketWithGit/issues/141
+  
+## ERD
+![image](https://user-images.githubusercontent.com/63443366/184500117-3e225474-5937-4399-8c10-ab70110219e3.png)
