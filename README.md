@@ -23,6 +23,13 @@
 </div>
    
 > _**Other : JWT, JPA, Load Balancer(Eureka), Gateway(Spring Cloud Gateway), REST-API, JSP, Spring Cloud Config**_
+<br/>
+<br/>
+
+https://user-images.githubusercontent.com/63443366/186517339-aa4913a6-1abe-4379-97b9-59f6e19896d8.mp4
+
+<br/>
+
 ### Summary
 
 ![Summary](https://user-images.githubusercontent.com/63443366/175762264-d15dfadd-e097-4dd9-8294-c86e65a15691.png)
