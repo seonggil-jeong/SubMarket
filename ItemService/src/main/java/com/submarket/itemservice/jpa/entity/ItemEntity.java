@@ -3,6 +3,8 @@ package com.submarket.itemservice.jpa.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,9 +14,12 @@ import java.util.List;
 @Getter
 @Builder
 @Entity
-@Table(name = "itemInfo")
+@Table(name = "ITEM")
 @ToString(exclude={"category"})
 @Setter
+@DynamicInsert
+@DynamicUpdate
+@Cacheable
 public class ItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,8 +1,12 @@
 package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.ItemReviewDto;
-import com.submarket.itemservice.service.impl.ItemReviewCheckService;
-import com.submarket.itemservice.service.impl.ItemReviewService;
+import com.submarket.itemservice.exception.ItemReviewException;
+import com.submarket.itemservice.exception.result.ItemReviewExceptionResult;
+import com.submarket.itemservice.service.ItemReviewCheckService;
+import com.submarket.itemservice.service.ItemReviewService;
+import com.submarket.itemservice.service.impl.ItemReviewCheckServiceImpl;
+import com.submarket.itemservice.service.impl.ItemReviewServiceImpl;
 import com.submarket.itemservice.util.CmmUtil;
 import com.submarket.itemservice.util.DateUtil;
 import com.submarket.itemservice.util.TokenUtil;
@@ -24,92 +28,80 @@ import java.util.Map;
 public class ItemReviewController {
     private final ItemReviewService itemReviewService;
     private final TokenUtil tokenUtil;
-    private final ItemReviewCheckService itemReviewCheckService;
+    private final ItemReviewCheckService itemReviewCheckServiceImpl;
 
     @PostMapping("/item/{itemSeq}/review")
     public ResponseEntity<String> saveReview(@RequestHeader HttpHeaders headers,
                                              @RequestBody ItemReviewDto itemReviewDto, @PathVariable int itemSeq) throws Exception {
         log.info(this.getClass().getName() + ".saveReview Start!");
-        String userId = CmmUtil.nvl(tokenUtil.getUserIdByToken(headers));
-        itemReviewDto.setUserId(userId);
+        final String userIdByToken = CmmUtil.nvl(tokenUtil.getUserIdByToken(headers));
         itemReviewDto.setReviewDate(DateUtil.getDateTime("yyyyMMdd"));
 
-        if (itemReviewDto.equals(null)) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("리뷰 정보를 입력해주세요");
+        if (itemReviewDto == null) {
+            throw new ItemReviewException(ItemReviewExceptionResult.ITEM_REVIEW_IS_NULL);
         }
-        if (itemReviewCheckService.canCreateReview(itemReviewDto, itemSeq)) {
-            int res = itemReviewService.saveReview(itemReviewDto, itemSeq);
+
+        if (itemReviewCheckServiceImpl.canCreateReview(ItemReviewDto.builder() // 리뷰 생성 로직 Check
+                .userId(userIdByToken)
+                .reviewDate(DateUtil.getDateTime("yyyyMMdd")).build(), itemSeq)) {
+
+            itemReviewService.saveReview(itemReviewDto, itemSeq);
 
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("이미 작성한 리뷰가 있습니다");
+            throw new ItemReviewException(ItemReviewExceptionResult.ITEM_REVIEW_ALREADY_CREATED);
         }
 
-
-        log.info(this.getClass().getName() + ".saveReview End!");
+        log.debug(this.getClass().getName() + ".saveReview End!");
 
         return ResponseEntity.status(HttpStatus.CREATED).body("리뷰 작성 완료");
     }
 
     @PostMapping("/item/review/{reviewSeq}/modify")
     public ResponseEntity<String> modifyItemReview(@RequestBody ItemReviewDto itemReviewDto, @PathVariable int reviewSeq)
-        throws Exception {
-        log.info(this.getClass().getName() + ".modifyItemReview Start!");
-
-        itemReviewDto.setReviewSeq(reviewSeq);
-        int res = itemReviewService.modifyReview(itemReviewDto);
+            throws Exception {
+        log.debug(this.getClass().getName() + ".modifyItemReview Start!");
 
 
-        log.info(this.getClass().getName() + ".modifyItemReview End!");
+        itemReviewService.modifyReview(ItemReviewDto.builder().reviewSeq(reviewSeq).build());
+
+
+        log.debug(this.getClass().getName() + ".modifyItemReview End!");
 
         return ResponseEntity.status(HttpStatus.OK).body("리뷰 변경 완료");
     }
 
     @PostMapping("/item/review/{reviewSeq}/delete")
     public ResponseEntity<String> deleteItemReview(@PathVariable int reviewSeq) throws Exception {
-        log.info(this.getClass().getName() + ".deleteReview Start!");
+        log.debug(this.getClass().getName() + ".deleteReview Start!");
 
-        ItemReviewDto itemReviewDto = new ItemReviewDto();
-        itemReviewDto.setReviewSeq(reviewSeq);
+        itemReviewService.deleteReview(ItemReviewDto.builder().reviewSeq(reviewSeq).build());
 
-        itemReviewService.deleteReview(itemReviewDto);
-
-        log.info(this.getClass().getName() + ".deleteReview End!");
+        log.debug(this.getClass().getName() + ".deleteReview End!");
 
         return ResponseEntity.status(HttpStatus.OK).body("리뷰 삭제 완료");
     }
 
     @GetMapping("/item/{itemSeq}/review")
     public ResponseEntity<Map<String, Object>> findItemReviewInItem(@PathVariable int itemSeq) throws Exception {
-        log.info(this.getClass().getName() + "findItemReviewInItem Start!");
+        log.debug(this.getClass().getName() + "findItemReviewInItem Start!");
+        log.debug(this.getClass().getName() + "findItemReviewInItem End!");
 
-        Map<String, Object> rMap = new HashMap<>();
-
-        List<ItemReviewDto> itemReviewDtoList = itemReviewService.findAllReviewInItem(itemSeq);
-
-
-        rMap.put("response", itemReviewDtoList);
-
-        log.info(this.getClass().getName() + "findItemReviewInItem End!");
-
-        return ResponseEntity.ok().body(rMap);
+        return ResponseEntity.ok().body(new HashMap<String, Object>(){
+            {
+                put("response", itemReviewService.findAllReviewInItem(itemSeq));
+            }
+        });
     }
 
     @GetMapping("/item/review")
     public ResponseEntity<Map<String, Object>> findReviewByUserId(@RequestHeader HttpHeaders headers) throws Exception {
-        String userId = CmmUtil.nvl(tokenUtil.getUserIdByToken(headers));
+        final String userIdByToken = CmmUtil.nvl(tokenUtil.getUserIdByToken(headers));
 
-        Map<String, Object> rMap = new HashMap<>();
-
-        List<ItemReviewDto> itemReviewDtoList = itemReviewService.findAllReviewByUserId(userId);
-
-        if (itemReviewDtoList == null) {
-            itemReviewDtoList = new LinkedList<ItemReviewDto>();
-        }
-
-        rMap.put("response", itemReviewDtoList);
-
-
-        return ResponseEntity.ok().body(rMap);
+        return ResponseEntity.ok().body(new HashMap<String, Object>(){
+            {
+                put("response", itemReviewService.findAllReviewByUserId(userIdByToken));
+            }
+        });
     }
 
 }

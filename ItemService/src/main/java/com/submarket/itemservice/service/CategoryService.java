@@ -4,7 +4,7 @@ import com.submarket.itemservice.dto.CategoryDto;
 
 import java.util.List;
 
-public interface ICategoryService {
+public interface CategoryService {
 
     CategoryDto findCategory(CategoryDto categoryDto) throws Exception;
 

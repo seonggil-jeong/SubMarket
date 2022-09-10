@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.submarket.itemservice.dto.ItemDto;
 import com.submarket.itemservice.jpa.ItemRepository;
 import com.submarket.itemservice.jpa.entity.ItemEntity;
-import com.submarket.itemservice.service.IKafkaConsumerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -21,8 +20,8 @@ import java.util.Optional;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class KafkaConsumerService implements IKafkaConsumerService {
-    private final ItemService itemService;
+public class KafkaConsumerServiceImpl implements com.submarket.itemservice.service.KafkaConsumerService {
+    private final ItemServiceImpl itemService;
     private final ItemRepository itemRepository;
     /**
      * if there is new Topic --> update DB or something
@@ -52,7 +51,7 @@ public class KafkaConsumerService implements IKafkaConsumerService {
         Optional<ItemEntity> itemEntityOptional = itemRepository.findById(itemSeq);
         if (itemEntityOptional.isPresent()) {
             itemRepository.reduceItemCount(itemSeq);
-            itemService.upCountCustom(itemSeq, userAge, 30); // 구독 시 ReadCount += 30
+            itemService.upReadCount(itemSeq, userAge, 30); // 구독 시 ReadCount += 30
         }
     }
 

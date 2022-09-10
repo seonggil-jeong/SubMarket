@@ -2,13 +2,17 @@ package com.submarket.itemservice.service.impl;
 
 import com.submarket.itemservice.dto.CategoryDto;
 import com.submarket.itemservice.dto.ItemDto;
+import com.submarket.itemservice.exception.ItemException;
+import com.submarket.itemservice.exception.result.ItemExceptionResult;
 import com.submarket.itemservice.jpa.CategoryRepository;
 import com.submarket.itemservice.jpa.ItemRepository;
 import com.submarket.itemservice.jpa.entity.CategoryEntity;
 import com.submarket.itemservice.jpa.entity.ItemEntity;
 import com.submarket.itemservice.mapper.CategoryMapper;
 import com.submarket.itemservice.mapper.ItemMapper;
-import com.submarket.itemservice.service.IItemService;
+import com.submarket.itemservice.service.CategoryService;
+import com.submarket.itemservice.service.ItemService;
+import com.submarket.itemservice.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
@@ -20,24 +24,27 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.submarket.itemservice.constants.S3Constants.IMAGE_FOLDER_PATH;
+
 @Slf4j
 @RequiredArgsConstructor
-@Service("ItemService")
-public class ItemService implements IItemService {
+@Service
+public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
-    private final CategoryService categoryService;
-    private final S3Service s3Service;
+    private final CategoryService categoryServiceImpl;
+    private final S3Service s3ServiceImpl;
     private final CategoryRepository categoryRepository;
 
     @Override
-    @Transactional
-    public int saveItem(ItemDto itemDto) throws Exception {
+    @Transactional(rollbackOn = ItemException.class)
+    public void saveItem(ItemDto itemDto) throws Exception {
         log.info(this.getClass().getName() + ".saveItem Start");
 
-        CategoryDto categoryDto = new CategoryDto();
-        categoryDto.setCategorySeq(itemDto.getCategorySeq());
 
-        CategoryDto rDto = categoryService.findCategory(categoryDto);
+        CategoryDto rDto = categoryServiceImpl.findCategory(CategoryDto.builder()
+                .categorySeq(itemDto.getCategorySeq()).build());
+
+
         String subImagePath = "/";
 
         log.info("categoryName : " + rDto.getCategoryName());
@@ -45,21 +52,17 @@ public class ItemService implements IItemService {
 
         itemDto.setCategory(categoryEntity);
 
-        itemDto.setItemStatus(1);
-        itemDto.setReadCount20(0);
-        itemDto.setReadCount30(0);
-        itemDto.setReadCount40(0);
-        itemDto.setReadCountOther(0);
+        itemDto = setReadCountDefaultInItemDto(itemDto);
 
         log.info("MainImageSize : " + itemDto.getMainImage().getSize());
 
 
         // 상품 이미지 등록 S3 Service (File, dirName) return : S3 Image Path
         /** Main Image 는 항상 NotNull */
-        String mainImagePath = s3Service.uploadImageInS3(itemDto.getMainImage(), "images");
+        final String mainImagePath = s3ServiceImpl.uploadImageInS3(itemDto.getMainImage(), IMAGE_FOLDER_PATH);
 
         if (itemDto.getSubImage() != null) {
-        subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
+            subImagePath = s3ServiceImpl.uploadImageInS3(itemDto.getSubImage(), IMAGE_FOLDER_PATH);
         }
 
         itemDto.setSubImagePath(subImagePath);
@@ -72,13 +75,20 @@ public class ItemService implements IItemService {
         itemRepository.save(itemEntity);
 
 
-
         log.info(this.getClass().getName() + ".saveItem End");
-        return 1;
+    }
+
+    private ItemDto setReadCountDefaultInItemDto(final ItemDto itemDto) {
+        itemDto.setItemStatus(1);
+        itemDto.setReadCount20(0);
+        itemDto.setReadCount30(0);
+        itemDto.setReadCount40(0);
+        itemDto.setReadCountOther(0);
+
+        return itemDto;
     }
 
     @Override
-    @Transactional
     public ItemDto findItemInfo(ItemDto itemDto) throws Exception {
         log.info(this.getClass().getName() + "findItemInfo Start!");
 
@@ -88,14 +98,11 @@ public class ItemService implements IItemService {
 
         Optional<ItemEntity> itemEntityOptional = itemRepository.findById(itemSeq);
 
-        ItemDto rDto = ItemMapper.INSTANCE.itemEntityToItemDto(itemEntityOptional.get());
-
-        if (rDto == null) {
-            throw new RuntimeException("상품 정보를 찾을 수 없습니다");
-        }
-
         log.info(this.getClass().getName() + ".findItemInfo End!");
-        return rDto;
+
+
+        return ItemMapper.INSTANCE.itemEntityToItemDto(itemEntityOptional.orElseThrow(
+                () -> new ItemException(ItemExceptionResult.ITEM_NOT_FOUND)));
     }
 
     @Override
@@ -115,7 +122,7 @@ public class ItemService implements IItemService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackOn = Exception.class)
     public int offItem(ItemDto itemDto) throws Exception {
         int itemSeq = itemDto.getItemSeq();
 
@@ -124,7 +131,7 @@ public class ItemService implements IItemService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackOn = Exception.class)
     public int onItem(ItemDto itemDto) throws Exception {
         int itemSeq = itemDto.getItemSeq();
 
@@ -133,37 +140,36 @@ public class ItemService implements IItemService {
     }
 
     @Override
-    @Transactional
-    public int modifyItem(ItemDto itemDto) throws Exception {
+    @Transactional(rollbackOn = Exception.class)
+    public void modifyItem(final ItemDto itemDtoReq) throws Exception {
         log.info(this.getClass().getName() + ".modifyItem Start!");
-        int itemSeq = itemDto.getItemSeq();
+        int itemSeq = itemDtoReq.getItemSeq();
 
-        Optional<ItemEntity> itemEntityOptional = itemRepository.findById(itemSeq);
-        ItemEntity itemEntity = itemEntityOptional.get();
+        ItemEntity itemEntity = itemRepository.findById(itemSeq)
+                .orElseThrow(() -> new ItemException(ItemExceptionResult.ITEM_NOT_FOUND));
 
 
-        if (itemDto.getMainImage() != null) {
-            String mainImagePath = s3Service.uploadImageInS3(itemDto.getMainImage(), "images");
+        if (itemDtoReq.getMainImage() != null) {
+            String mainImagePath = s3ServiceImpl.uploadImageInS3(itemDtoReq.getMainImage(), "images");
             itemEntity.setMainImagePath(mainImagePath);
         }
 
-        if (itemDto.getSubImage() != null) {
-            String subImagePath = s3Service.uploadImageInS3(itemDto.getSubImage(), "images");
+        if (itemDtoReq.getSubImage() != null) {
+            String subImagePath = s3ServiceImpl.uploadImageInS3(itemDtoReq.getSubImage(), "images");
             itemEntity.setSubImagePath(subImagePath);
         }
 
-        Optional<CategoryEntity> category = categoryRepository.findById(itemDto.getCategorySeq());
+        Optional<CategoryEntity> category = categoryRepository.findById(itemDtoReq.getCategorySeq());
 
-        itemEntity.setItemTitle(itemDto.getItemTitle());
-        itemEntity.setItemPrice(itemDto.getItemPrice());
-        itemEntity.setItemCount(itemDto.getItemCount());
-        itemEntity.setItemContents(itemDto.getItemContents());
+        itemEntity.setItemTitle(itemDtoReq.getItemTitle());
+        itemEntity.setItemPrice(itemDtoReq.getItemPrice());
+        itemEntity.setItemCount(itemDtoReq.getItemCount());
+        itemEntity.setItemContents(itemDtoReq.getItemContents());
         itemEntity.setCategory(category.get());
 
         itemRepository.save(itemEntity);
 
         log.info(this.getClass().getName() + ".modifyItem End!");
-        return 1;
     }
 
     @Override
@@ -200,10 +206,23 @@ public class ItemService implements IItemService {
         }
     }
 
+
+    /**
+     * upReadCount
+     *
+     * @param itemSeq
+     * @param userAge ** @param readValue -> 해당 값 만큼 readCount 증가 or 1++
+     * @throws Exception
+     */
+
+
     @Override
     @Transactional
     @Async
-    public void upCount(int itemSeq, int userAge) throws Exception {
+    public void upReadCount(int itemSeq, int userAge) throws Exception {
+
+        checkIsItemByItemSeq(itemSeq);
+
         // 조회수 증가
         int cUserAge = 0;
         cUserAge += userAge;
@@ -225,8 +244,10 @@ public class ItemService implements IItemService {
     @Override
     @Transactional
     @Async
-    public void upCountCustom(int itemSeq, int userAge, int readValue) throws Exception {
+    public void upReadCount(int itemSeq, int userAge, int readValue) throws Exception {
         log.info(this.getClass().getName() + "upCountCustom Start!");
+
+        checkIsItemByItemSeq(itemSeq);
 
         if (userAge > 0 && userAge <= 29) {
             itemRepository.increaseCustomReadCount20(itemSeq, readValue);
@@ -241,6 +262,12 @@ public class ItemService implements IItemService {
 
 
         log.info(this.getClass().getName() + "upCountCustom End!");
+
+    }
+
+    private ItemEntity checkIsItemByItemSeq(final int itemSeq) {
+
+        return itemRepository.findById(itemSeq).orElseThrow(() -> new ItemException(ItemExceptionResult.ITEM_NOT_FOUND));
 
     }
 }

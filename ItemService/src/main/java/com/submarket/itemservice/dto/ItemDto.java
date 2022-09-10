@@ -3,6 +3,7 @@ package com.submarket.itemservice.dto;
 import com.submarket.itemservice.jpa.entity.CategoryEntity;
 import com.submarket.itemservice.jpa.entity.ItemReviewEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ItemDto {
     private int itemSeq;
     private String sellerId;

@@ -1,7 +1,7 @@
 package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.ItemDto;
-import com.submarket.itemservice.service.impl.ItemService;
+import com.submarket.itemservice.service.impl.ItemServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ import java.util.*;
 @Slf4j
 @RequiredArgsConstructor
 public class ReadCountController {
-    private final ItemService itemService;
+    private final ItemServiceImpl itemService;
 
 
     @GetMapping("/item/read/{age}")
@@ -55,7 +55,7 @@ public class ReadCountController {
     @GetMapping("/item/{itemSeq}/countUp/{userAge}")
     public ResponseEntity<String> itemCountUp(@PathVariable int itemSeq, @PathVariable int userAge) throws Exception {
         log.info(this.getClass().getName() + ".itemCountUp Start");
-        itemService.upCount(itemSeq, userAge);
+        itemService.upReadCount(itemSeq, userAge);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("UpCount");
     }
