@@ -1,7 +1,7 @@
 package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.CategoryDto;
-import com.submarket.itemservice.service.impl.CategoryService;
+import com.submarket.itemservice.service.impl.CategoryServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +17,14 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 public class CategoryController {
-    private final CategoryService categoryService;
+    private final CategoryServiceImpl categoryServiceImpl;
 
     @GetMapping("/category")
     public ResponseEntity<Map<String, Object>> findAllCategory() throws Exception {
         log.info(this.getClass().getName() + ">findAllCategory Start!");
         Map<String, Object> rMap = new HashMap<>();
 
-        List<CategoryDto> categoryDtoList = categoryService.findAllCategory();
+        List<CategoryDto> categoryDtoList = categoryServiceImpl.findAllCategory();
 
         // Front  를 위해 Return Type 튜닝
 
@@ -41,14 +41,8 @@ public class CategoryController {
         log.info(this.getClass().getName() + ".findItemInfoByCategorySeq Start!");
 
         log.info("categorySeq : " + categorySeq);
-        CategoryDto pDto = new CategoryDto();
-        pDto.setCategorySeq(categorySeq);
 
-        CategoryDto categoryDto = categoryService.findCategory(pDto);
-
-        log.info("categoryName : " + categoryDto.getCategoryName());
-
-        log.info(this.getClass().getName() + ".findItemInfoByCategorySeq End!");
-        return ResponseEntity.ok().body(categoryDto);
+        return ResponseEntity.ok().body(categoryServiceImpl.findCategory(
+                CategoryDto.builder().categorySeq(categorySeq).build()));
     }
 }

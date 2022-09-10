@@ -11,7 +11,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "categoryInfo")
+@Table(name = "CATEGORY")
+@Cacheable
 public class CategoryEntity {
 
     @Id

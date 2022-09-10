@@ -4,54 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="Update README.md">
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#149] feature : JPA update">
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/CategoryException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/ItemException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/ItemReviewException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/ItemServiceExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/result/CategoryExceptionResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/result/ItemExceptionResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/result/ItemReviewExceptionResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/resources/ehcache.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-13__5_57__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-13_오후_5_57_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__11_24__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14__4_08__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14_오전_11_24_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-14_오후_4_08_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022_06_12_12_36_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022_06_12_12_36_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022_06_12_3_58_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022_06_12_3_58_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_06_12_3_59_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2022_06_12_3_59_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-13__9_16__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-13_오전_9_16_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__11_24__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14__8_58__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14_오전_11_24_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-14_오전_8_58_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_06_13_10_12_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_06_13_10_12_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/ItemServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/ItemServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/SellerItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/SellerItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/CategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/CategoryDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/CategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemReviewRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/CategoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/CategoryEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemReviewEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemReviewEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/CategoryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/ItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/ItemMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/ItemReviewMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/mapper/ItemReviewMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/security/WebSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/BusinessIdApiDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/BusinessIdApiDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SalesEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/jpa/entity/SalesEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/mapper/SalesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/mapper/SalesMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/mapper/SellerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/mapper/SellerMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/SubEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/SubEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/mapper/SubMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/mapper/SubMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/ICategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IItemReviewCheckService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/ItemReviewCheckService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IItemReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/ItemReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/ItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IKafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/KafkaConsumerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IKafkaProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/KafkaProducerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IS3Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/S3Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemReviewCheckService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemReviewCheckServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemReviewServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaProducerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/S3Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/S3ServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/SchedulerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/SchedulerServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +57,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -105,16 +101,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="feature/#148" />
+                    <option name="lastUsedInstant" value="1662796662" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="feature/#149" />
                     <option name="lastUsedInstant" value="1658568781" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
                     <option name="lastUsedInstant" value="1658564625" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="feature/#148" />
-                    <option name="lastUsedInstant" value="1656839788" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -161,30 +157,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;bigdataide_conn_settings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;5b646f0c214ba49cf5bb548647ab23e0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelOrder2": "2",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RequestMappingsPanelWidth2": "75",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "bigdataide_conn_settings",
+    "spring.configuration.checksum": "5b646f0c214ba49cf5bb548647ab23e0"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mariadb&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -210,11 +208,11 @@
       <recent name="com.submarket.sellerservice.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.submarket.itemservice.exception" />
       <recent name="com.submarket.sellerservice.config" />
       <recent name="com.submarket.orderservice.config" />
       <recent name="com.submarket.itemservice.coinfig" />
       <recent name="com.submarket.orderservice.security" />
-      <recent name="com.submarket.userservice.vo" />
     </key>
   </component>
   <component name="RunDashboard">
