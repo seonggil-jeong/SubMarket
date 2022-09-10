@@ -1,20 +1,17 @@
 package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.ItemDto;
-import com.submarket.itemservice.service.impl.ItemService;
-import com.submarket.itemservice.service.impl.S3Service;
+import com.submarket.itemservice.service.impl.ItemServiceImpl;
 import com.submarket.itemservice.util.CmmUtil;
 import com.submarket.itemservice.util.TokenUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +20,7 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 public class ItemController {
-    private final ItemService itemService;
+    private final ItemServiceImpl itemService;
     private final TokenUtil tokenUtil;
 
     @PostMapping(value = "/items", consumes = MediaType.ALL_VALUE)
@@ -36,11 +33,7 @@ public class ItemController {
         if (itemDto == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("상품 정보 오류");
         }
-        int res = itemService.saveItem(itemDto);
-
-        if (res == 0) {
-            ResponseEntity.status(500).body("ServerError");
-        }
+        itemService.saveItem(itemDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("상품 등록 완료");
     }
@@ -104,7 +97,7 @@ public class ItemController {
     public void upCount(@PathVariable int itemSeq, @RequestBody Map<String, Object> request) throws Exception {
         int userAge = Integer.parseInt(String.valueOf(request.get("userAge")));
         log.info(this.getClass().getName() + ".upCount Start!");
-        itemService.upCount(itemSeq, userAge);
+        itemService.upReadCount(itemSeq, userAge);
 
         log.info(this.getClass().getName() + ".upCount End!");
     }

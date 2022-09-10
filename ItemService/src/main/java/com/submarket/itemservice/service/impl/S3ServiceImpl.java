@@ -3,7 +3,6 @@ package com.submarket.itemservice.service.impl;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.submarket.itemservice.service.IS3Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +20,7 @@ import java.util.UUID;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class S3Service implements IS3Service {
+public class S3ServiceImpl implements com.submarket.itemservice.service.S3Service {
 
     private final AmazonS3Client amazonS3Client;
     private final Environment env;

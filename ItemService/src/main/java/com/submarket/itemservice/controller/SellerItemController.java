@@ -1,7 +1,7 @@
 package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.ItemDto;
-import com.submarket.itemservice.service.impl.ItemService;
+import com.submarket.itemservice.service.impl.ItemServiceImpl;
 import com.submarket.itemservice.util.TokenUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 public class SellerItemController {
-    private final ItemService itemService;
+    private final ItemServiceImpl itemService;
     private final TokenUtil tokenUtil;
 
 

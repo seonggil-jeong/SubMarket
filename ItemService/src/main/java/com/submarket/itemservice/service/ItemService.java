@@ -4,8 +4,8 @@ import com.submarket.itemservice.dto.ItemDto;
 
 import java.util.List;
 
-public interface IItemService {
-    int saveItem(ItemDto itemDto) throws Exception;
+public interface ItemService {
+    void saveItem(ItemDto itemDto) throws Exception;
 
     ItemDto findItemInfo(ItemDto itemDto) throws Exception;
 
@@ -15,13 +15,13 @@ public interface IItemService {
 
     int onItem(ItemDto itemDto) throws Exception;
 
-    int modifyItem(ItemDto itemDto) throws Exception;
+    void modifyItem(ItemDto itemDto) throws Exception;
 
     List<ItemDto> findItemBySellerId(String sellerId) throws Exception;
 
-    void upCount(int itemSeq, int userAge) throws Exception;
+    void upReadCount(int itemSeq, int userAge) throws Exception;
 
-    void upCountCustom(int itemSeq, int userAge, int readValue) throws Exception;
+    void upReadCount(int itemSeq, int userAge, int readValue) throws Exception;
 
 
 
