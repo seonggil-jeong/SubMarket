@@ -11,8 +11,9 @@ import javax.persistence.*;
 @Getter
 @Builder
 @Entity
-@Table(name = "itemReviewInfo")
+@Table(name = "ITEM_REVIEW")
 @ToString(exclude={"item"})
+@Cacheable
 public class ItemReviewEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

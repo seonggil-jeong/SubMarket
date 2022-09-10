@@ -2,12 +2,15 @@ package com.submarket.itemservice.service.impl;
 
 import com.submarket.itemservice.dto.ItemDto;
 import com.submarket.itemservice.dto.ItemReviewDto;
+import com.submarket.itemservice.exception.ItemException;
+import com.submarket.itemservice.exception.result.ItemExceptionResult;
 import com.submarket.itemservice.jpa.ItemReviewRepository;
 import com.submarket.itemservice.jpa.entity.ItemEntity;
 import com.submarket.itemservice.jpa.entity.ItemReviewEntity;
 import com.submarket.itemservice.mapper.ItemMapper;
 import com.submarket.itemservice.mapper.ItemReviewMapper;
-import com.submarket.itemservice.service.IItemReviewService;
+import com.submarket.itemservice.service.ItemReviewService;
+import com.submarket.itemservice.service.ItemService;
 import com.submarket.itemservice.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,102 +20,98 @@ import javax.transaction.Transactional;
 import java.util.LinkedList;
 import java.util.List;
 
-@Service(value = "ItemReviewService")
+@Service
 @Slf4j
 @RequiredArgsConstructor
-public class ItemReviewService implements IItemReviewService {
+public class ItemReviewServiceImpl implements ItemReviewService {
     private final ItemReviewRepository itemReviewRepository;
     private final ItemService itemService;
 
     @Override
-    public int saveReview(ItemReviewDto itemReviewDto, int itemSeq) throws Exception {
-        log.info(this.getClass().getName() + ".saveReview Start!");
-        ItemDto itemDto = new ItemDto();
-        itemDto.setItemSeq(itemSeq);
+    @Transactional(rollbackOn = Exception.class)
+    public void saveReview(ItemReviewDto itemReviewDto, int itemSeq) throws Exception {
+        log.debug(this.getClass().getName() + ".saveReview Start!");
 
         int userAge = Integer.parseInt(itemReviewDto.getUserAge());
 
-        ItemDto items = itemService.findItemInfo(itemDto);
+        ItemDto items = itemService.findItemInfo(ItemDto.builder().itemSeq(itemSeq).build());
         ItemEntity itemEntity = ItemMapper.INSTANCE.itemDtoToItemEntity(items);
         itemReviewDto.setItem(itemEntity);
-        // 리뷰 생성 로직
 
-        ItemReviewEntity itemReviewEntity;
-        itemReviewEntity = ItemReviewMapper.INSTANCE.itemReviewDtoToItemEntity(itemReviewDto);
 
-        itemService.upCountCustom(itemSeq, userAge, itemReviewDto.getReviewStar()); // readCount += Review Star
+        itemService.upReadCount(itemSeq, userAge, itemReviewDto.getReviewStar()); // readCount += Review Star
 
-        itemReviewRepository.save(itemReviewEntity);
-
+        itemReviewRepository.save(ItemReviewMapper.INSTANCE.itemReviewDtoToItemEntity(itemReviewDto));
 
         log.info(this.getClass().getName() + ".saveReview End!");
-        return 1;
+
     }
 
     @Override
-    public int modifyReview(ItemReviewDto itemReviewDto) throws Exception {
+    @Transactional(rollbackOn = Exception.class)
+    public void modifyReview(ItemReviewDto itemReviewDto) throws Exception {
         log.info(this.getClass().getName() + ".modifyReview Start!");
 
-        int reviewSeq = itemReviewDto.getReviewSeq();
-        String reviewContents = itemReviewDto.getReviewContents();
-        String reviewDate = itemReviewDto.getReviewDate();
-        int reviewStar = itemReviewDto.getReviewStar();
-
-
-        itemReviewRepository.modifyItemReview(reviewContents, reviewDate, reviewStar, reviewSeq);
+        itemReviewRepository.modifyItemReview(itemReviewDto.getReviewContents(),
+                itemReviewDto.getReviewDate(),
+                itemReviewDto.getReviewStar(),
+                itemReviewDto.getReviewSeq());
 
         log.info(this.getClass().getName() + ".modifyReview End!");
-        return 1;
+
     }
 
     @Override
-    public int deleteReview(ItemReviewDto itemReviewDto) throws Exception {
+    @Transactional(rollbackOn = Exception.class)
+    public void deleteReview(ItemReviewDto itemReviewDto) throws Exception {
         log.info(this.getClass().getName() + ".deleteReview Start!");
 
         itemReviewRepository.deleteById(itemReviewDto.getReviewSeq());
 
         log.info(this.getClass().getName() + ".deleteReview End!");
-        return 0;
     }
 
     @Override
-    @Transactional
-    public List<ItemReviewDto> findAllReviewInItem(int itemSeq) throws Exception {
+    public List<ItemReviewDto> findAllReviewInItem(final int itemSeq) throws Exception {
 
-        ItemDto itemDto = new ItemDto();
-        itemDto.setItemSeq(itemSeq);
-        ItemDto rDto = itemService.findItemInfo(itemDto);
+        ItemDto rDto = itemService.findItemInfo(ItemDto.builder().itemSeq(itemSeq).build());
 
         if (rDto == null) {
-            throw new RuntimeException("상품 정보가 없습니다");
+            throw new ItemException(ItemExceptionResult.ITEM_NOT_FOUND);
         }
 
-        List<ItemReviewDto> reviewDtoList = new LinkedList();
+        List<ItemReviewDto> reviewDtoList = new LinkedList<>();
 
         ItemEntity itemEntity = ItemMapper.INSTANCE.itemDtoToItemEntity(rDto);
-        List<ItemReviewEntity> itemReviewEntityList = itemReviewRepository.findByItem(itemEntity);
+        List<ItemReviewEntity> result = itemReviewRepository.findByItem(itemEntity);
 
-        itemReviewEntityList.forEach(itemReviewEntity -> {
+        result.forEach(itemReviewEntity -> {
             reviewDtoList.add(ItemReviewMapper.INSTANCE.itemReviewEntityToItemDto(itemReviewEntity));
         });
+
+
         return reviewDtoList;
     }
 
     @Override
-    @Transactional
     public List<ItemReviewDto> findAllReviewByUserId(String userId) throws Exception {
         log.info(this.getClass().getName() + ".findAllReviewByUserId Start!");
+
         List<ItemReviewDto> itemReviewDtoList = new LinkedList<>();
 
-        List<ItemReviewEntity> itemReviewEntityList = new LinkedList<>();
 
-        itemReviewEntityList = itemReviewRepository.findAllByUserId(CmmUtil.nvl(userId));
+        List<ItemReviewEntity> result = itemReviewRepository.findAllByUserId(CmmUtil.nvl(userId));
 
-        itemReviewEntityList.forEach(e -> {
+        if (result.isEmpty()) {
+            return new LinkedList<ItemReviewDto>();
+        }
+
+        result.forEach(e -> {
             itemReviewDtoList.add(ItemReviewMapper.INSTANCE.itemReviewEntityToItemDto(e));
         });
 
         log.info(this.getClass().getName() + ".findAllReviewByUserId End!");
+
         return itemReviewDtoList;
     }
 }

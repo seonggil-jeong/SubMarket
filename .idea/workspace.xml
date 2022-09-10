@@ -4,42 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#149] feature : JPA update">
-      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/CategoryException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/ErrorResponse.java" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#148] feature : CategoryInfo Cache &amp;&amp; refactor">
       <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/ItemException.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/ItemReviewException.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/ItemServiceExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/result/CategoryExceptionResult.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/result/ItemExceptionResult.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/exception/result/ItemReviewExceptionResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ItemService/src/main/resources/ehcache.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/ItemServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/ItemServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemReviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/SellerItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/SellerItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/CategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/CategoryDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/ItemReviewRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/CategoryEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/CategoryEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemReviewEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/jpa/entity/ItemReviewEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/ICategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/CategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IItemReviewCheckService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/ItemReviewCheckService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IItemReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/ItemReviewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/ItemService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IKafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/KafkaConsumerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IKafkaProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/KafkaProducerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/IS3Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/S3Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/CategoryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemReviewCheckService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemReviewCheckServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemReviewServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/ItemServiceImpl.java" afterDir="false" />
@@ -47,6 +36,7 @@
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaProducerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/S3Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/S3ServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/SchedulerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/SchedulerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/util/TokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/util/TokenUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -364,13 +354,6 @@
       <workItem from="1658564660446" duration="5045000" />
       <workItem from="1659077362304" duration="1521000" />
       <workItem from="1659081308564" duration="450000" />
-    </task>
-    <task id="LOCAL-00048" summary="refactor : 구독 수정">
-      <created>1653806827536</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1653806827536</updated>
     </task>
     <task id="LOCAL-00049" summary="[#97] feature : 사용자 정보 조회">
       <created>1653808048032</created>
@@ -708,7 +691,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655426133353</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="[#148] feature : CategoryInfo Cache &amp;&amp; refactor">
+      <created>1662802764810</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1662802764811</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -756,7 +746,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ItemService - Test" />
     <MESSAGE value="v0.0.3 Test End&#10;&#10;UserService - Test&#10;&#10;SellerService - Test&#10;&#10;OrderService - Test&#10;&#10;ItemService - Test" />
     <MESSAGE value="[#95] feature : findOrderInfoByUserId" />
     <MESSAGE value="[#95] feature : findOrderInfoBySellerId" />
@@ -781,6 +770,7 @@
     <MESSAGE value="SellerService Test" />
     <MESSAGE value="OrderService Test" />
     <MESSAGE value="[#144] hotfix : WebSecurity Gateway Ip 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#144] hotfix : WebSecurity Gateway Ip 수정" />
+    <MESSAGE value="[#148] feature : CategoryInfo Cache &amp;&amp; refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#148] feature : CategoryInfo Cache &amp;&amp; refactor" />
   </component>
 </project>

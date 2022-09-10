@@ -24,6 +24,6 @@ public class TokenUtil {
 
         log.info("getUserId End");
 
-        return userId;
+        return String.valueOf(userId);
     }
 }
