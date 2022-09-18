@@ -1,1 +1,0 @@
-seller-service, port(local.server.port) : 58989, port(server.port) : 0, token secret : subMarket, token expiration time : 8640000000
