@@ -3,7 +3,7 @@ package com.submarket.userservice.controller;
 import com.submarket.userservice.dto.SubDto;
 import com.submarket.userservice.jpa.entity.SubEntity;
 import com.submarket.userservice.mapper.SubMapper;
-import com.submarket.userservice.service.impl.SubService;
+import com.submarket.userservice.service.impl.SubServiceImpl;
 import com.submarket.userservice.util.TokenUtil;
 import com.submarket.userservice.vo.RequestSub;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ import java.util.*;
 @Slf4j
 @RequiredArgsConstructor
 public class SubController {
-    private final SubService subService;
+    private final SubServiceImpl subServiceImpl;
     private final TokenUtil tokenUtil;
 
     @GetMapping("/sub")
@@ -34,7 +34,7 @@ public class SubController {
 
         SubDto subDto = new SubDto();
         subDto.setUserId(userId);
-        List<SubEntity> subEntityList = subService.findAllSub(subDto);
+        List<SubEntity> subEntityList = subServiceImpl.findAllSub(subDto);
 
         List<SubDto> subDtoList = new ArrayList<>();
 
@@ -57,7 +57,7 @@ public class SubController {
 
         pDto.setSubSeq(subSeq);
 
-        SubDto subDto = subService.findOneSub(pDto);
+        SubDto subDto = subServiceImpl.findOneSub(pDto);
 
         if (subDto == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
@@ -79,7 +79,7 @@ public class SubController {
         subDto.setUserId(userId);
 
 
-        int res = subService.createNewSub(subDto);
+        int res = subServiceImpl.createNewSub(subDto);
 
         if (res == 2) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("중복된 구독");
@@ -102,7 +102,7 @@ public class SubController {
 
         subDto.setSubSeq(requestSub.getSubSeq());
 
-        int res = subService.cancelSub(subDto);
+        int res = subServiceImpl.cancelSub(subDto);
 
 
         log.info(this.getClass().getName() + "cancel Sub End!");
@@ -119,7 +119,7 @@ public class SubController {
         SubDto subDto = new SubDto();
         subDto.setSubSeq(requestSub.getSubSeq());
 
-        int res = subService.updateSub(subDto);
+        int res = subServiceImpl.updateSub(subDto);
 
         if (res != 1) {
             return ResponseEntity.ok("갱신 실패");
@@ -138,7 +138,7 @@ public class SubController {
         List<Integer> itemSeqList = new LinkedList<>();
         itemSeqList = (List<Integer>) request.get("itemSeqList");
 
-        int count = subService.findSubCount(itemSeqList);
+        int count = subServiceImpl.findSubCount(itemSeqList);
 
         return ResponseEntity.status(HttpStatus.OK).body(count);
     }
@@ -147,7 +147,7 @@ public class SubController {
     public ResponseEntity<Integer> findOneSubCount(@PathVariable int itemSeq) throws Exception {
         log.info(this.getClass().getName() + "findOneSubCount Start!");
 
-        int count = subService.findOneSubCount(itemSeq);
+        int count = subServiceImpl.findOneSubCount(itemSeq);
 
         log.info(this.getClass().getName() + "findOneSubCount End!");
 

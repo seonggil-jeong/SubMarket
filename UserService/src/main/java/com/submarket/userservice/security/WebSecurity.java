@@ -1,6 +1,6 @@
 package com.submarket.userservice.security;
 
-import com.submarket.userservice.service.impl.UserService;
+import com.submarket.userservice.service.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurity extends WebSecurityConfigurerAdapter {
-    private final UserService userService;
+    private final UserServiceImpl userServiceImpl;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final Environment env;
 
@@ -32,7 +32,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     private AuthenticationFilter getAuthenticationFilter() throws Exception {
         AuthenticationFilter authenticationFilter =
-                new AuthenticationFilter(authenticationManager(), userService, env);
+                new AuthenticationFilter(authenticationManager(), userServiceImpl, env);
 
         return authenticationFilter;
     }
@@ -40,6 +40,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     // Check Password
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
+        auth.userDetailsService(userServiceImpl).passwordEncoder(bCryptPasswordEncoder);
     }
 }

@@ -2,7 +2,7 @@ package com.submarket.userservice.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.submarket.userservice.dto.UserDto;
-import com.submarket.userservice.service.impl.UserService;
+import com.submarket.userservice.service.impl.UserServiceImpl;
 import com.submarket.userservice.vo.RequestLogin;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -25,13 +25,13 @@ import java.util.Date;
 
 @Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
     private Environment env;
 
     public AuthenticationFilter(AuthenticationManager authenticationManager,
-                                UserService userService, Environment env) {
+                                UserServiceImpl userServiceImpl, Environment env) {
         super.setAuthenticationManager(authenticationManager);
-        this.userService = userService;
+        this.userServiceImpl = userServiceImpl;
         this.env = env;
     }
     @Override
@@ -58,7 +58,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                                             FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
         String userId = ((User)authResult.getPrincipal()).getUsername();
-        UserDto userDetails = userService.getUserDetailsByUserId(userId);
+        UserDto userDetails = userServiceImpl.getUserDetailsByUserId(userId);
 
 
         String token = Jwts.builder()
