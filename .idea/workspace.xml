@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#154] feature : Resilience4j &amp; Zipkin">
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="fix : kafka">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/LikeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/LikeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/SubEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/SubEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/service/impl/KafkaConsumerServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature/#154" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,12 +61,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feature/#154" />
-                    <option name="lastUsedInstant" value="1663665200" />
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1663673968" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1655264827" />
+                    <option name="branchName" value="feature/#154" />
+                    <option name="lastUsedInstant" value="1663665200" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -178,7 +176,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ItemServiceApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -310,14 +308,7 @@
       <workItem from="1663498239272" duration="83000" />
       <workItem from="1663498496151" duration="86000" />
       <workItem from="1663498589308" duration="364000" />
-      <workItem from="1663664962473" duration="8741000" />
-    </task>
-    <task id="LOCAL-00054" summary="[#106] refactor : saveReview">
-      <created>1654081615001</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1654081615001</updated>
+      <workItem from="1663664962473" duration="9477000" />
     </task>
     <task id="LOCAL-00055" summary="[#107] feature : 사용자 Token으로 리뷰 조회">
       <created>1654093665374</created>
@@ -655,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663672884586</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="fix : kafka">
+      <created>1663673932945</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1663673932945</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -703,7 +701,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#95] feature : findOrderInfoBySellerId" />
     <MESSAGE value="[#95] feature : findOrderInfoByOrderId" />
     <MESSAGE value="[#21] bugfix : 중복 구독 (createNewSub)" />
     <MESSAGE value="bugfix : findItemInfoByCategorySeq" />
@@ -728,6 +725,7 @@
     <MESSAGE value=".gitignore" />
     <MESSAGE value="[#154] feature : Resilience4j" />
     <MESSAGE value="[#154] feature : Resilience4j &amp; Zipkin" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#154] feature : Resilience4j &amp; Zipkin" />
+    <MESSAGE value="fix : kafka" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix : kafka" />
   </component>
 </project>

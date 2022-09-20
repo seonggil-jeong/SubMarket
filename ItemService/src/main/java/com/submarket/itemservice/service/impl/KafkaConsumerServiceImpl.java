@@ -48,6 +48,8 @@ public class KafkaConsumerServiceImpl implements com.submarket.itemservice.servi
         int itemSeq = Integer.parseInt(String.valueOf(map.get("itemSeq")));
         int userAge = Integer.parseInt(String.valueOf(map.get("userAge")));
 
+        log.info("itemSeq : " + itemSeq);
+
         Optional<ItemEntity> itemEntityOptional = itemRepository.findById(itemSeq);
         if (itemEntityOptional.isPresent()) {
             itemRepository.reduceItemCount(itemSeq);
