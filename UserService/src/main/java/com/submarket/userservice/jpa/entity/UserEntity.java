@@ -48,5 +48,8 @@ public class UserEntity {
     private String userAddress2;
 
     @OneToMany(mappedBy = "user")
-    private List<SubEntity> subEntityList = new ArrayList<>();
+    private List<SubEntity> subEntityList;
+
+    @OneToMany(mappedBy = "user")
+    private List<LikeEntity> likeEntityList;
 }

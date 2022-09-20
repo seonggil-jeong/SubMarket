@@ -1,5 +1,6 @@
 package com.submarket.userservice.exception;
 
+import com.submarket.userservice.exception.result.ItemExceptionResult;
 import com.submarket.userservice.exception.result.UserExceptionResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,19 @@ public class UserServiceExceptionHandler extends ResponseEntityExceptionHandler 
 
     }
 
+    @ExceptionHandler(ItemException.class)
+    public ResponseEntity<ErrorResponse> handleItemException(final ItemException exception) {
+        log.warn("ItemException occur : ", exception);
+        return this.makeErrorResponseEntity(exception.getExceptionResult());
+
+    }
+
     private ResponseEntity<ErrorResponse> makeErrorResponseEntity(final UserExceptionResult exceptionResult) {
+        return ResponseEntity.status(exceptionResult.getStatus())
+                .body(new ErrorResponse(exceptionResult.name(), exceptionResult.getMessage()));
+    }
+
+    private ResponseEntity<ErrorResponse> makeErrorResponseEntity(final ItemExceptionResult exceptionResult) {
         return ResponseEntity.status(exceptionResult.getStatus())
                 .body(new ErrorResponse(exceptionResult.name(), exceptionResult.getMessage()));
     }

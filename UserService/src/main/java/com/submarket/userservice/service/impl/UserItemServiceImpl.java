@@ -1,7 +1,12 @@
 package com.submarket.userservice.service.impl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.submarket.userservice.client.ItemServiceClient;
+import com.submarket.userservice.dto.ItemDto;
 import com.submarket.userservice.dto.LikeDto;
+import com.submarket.userservice.exception.ItemException;
 import com.submarket.userservice.exception.UserException;
+import com.submarket.userservice.exception.result.ItemExceptionResult;
 import com.submarket.userservice.exception.result.UserExceptionResult;
 import com.submarket.userservice.jpa.LikeRepository;
 import com.submarket.userservice.jpa.UserRepository;
@@ -11,9 +16,12 @@ import com.submarket.userservice.service.KafkaProducerService;
 import com.submarket.userservice.service.UserItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -23,6 +31,9 @@ public class UserItemServiceImpl implements UserItemService {
     private final LikeRepository likeRepository;
     private final UserRepository userRepository;
     private final KafkaProducerService kafkaProducerService;
+    private final ItemServiceClient itemServiceClient;
+
+    private final CircuitBreakerFactory circuitBreakerFactory;
 
 
     /**
@@ -39,10 +50,25 @@ public class UserItemServiceImpl implements UserItemService {
         log.debug("item Liked Start!");
         Optional<UserEntity> user = Optional.of(userRepository.findByUserId(userId));
 
-        // select Item from Like where user AND itemSeq
+        // 상품 유효성 검사
+        log.info("Before call checking item");
+
+        CircuitBreaker circuitBreaker = circuitBreakerFactory.create("itemCircuit");
+        ItemDto itemDto = circuitBreaker.run(() -> itemServiceClient.isItem(itemSeq),
+                throwable -> ItemDto.builder().itemSeq(-1).build());
+
+        log.info("After call checking item");
+        log.info("itemSeq : " + itemDto.getItemSeq());
+
+
+        if (itemDto.getItemSeq() < 0) {
+            throw new ItemException(ItemExceptionResult.NOT_MATCHED_ITEM_SEQ);
+        }
+
         Optional<LikeEntity> result = likeRepository.findByUserAndItemSeq(user
                         .orElseThrow(() -> new UserException(UserExceptionResult.USER_NOT_FOUNT))
                 , itemSeq);
+
 
         if (result.isPresent()) { // 있을 경우 삭제
 

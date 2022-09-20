@@ -9,14 +9,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Like")
+@Table(name = "likeInfo")
 @ToString(exclude = "user")
 @Builder
 public class LikeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long likeSeq;
+    private Integer likeSeq;
 
     @Column(nullable = false)
     private int itemSeq;

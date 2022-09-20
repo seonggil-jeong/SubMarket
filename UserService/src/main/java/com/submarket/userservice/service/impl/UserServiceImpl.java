@@ -4,6 +4,7 @@ import com.submarket.userservice.dto.UserDto;
 import com.submarket.userservice.jpa.UserRepository;
 import com.submarket.userservice.jpa.entity.UserEntity;
 import com.submarket.userservice.mapper.UserMapper;
+import com.submarket.userservice.service.UserService;
 import com.submarket.userservice.util.CmmUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,11 +21,12 @@ import java.util.ArrayList;
 @Service("UserService")
 @Slf4j
 @RequiredArgsConstructor
-public class UserServiceImpl implements com.submarket.userservice.service.UserService {
+public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final UserCheckServiceImpl userCheckServiceImpl;
     private final MailServiceImpl mailServiceImpl;
+
 
     //####################################### 회원가입 #######################################//
     @Override
@@ -34,6 +36,7 @@ public class UserServiceImpl implements com.submarket.userservice.service.UserSe
 
         boolean checkId = userCheckServiceImpl.checkUserByUserId(pDTO.getUserId());
         boolean checkEmail = userCheckServiceImpl.checkUserByUserEmail(pDTO.getUserEmail());
+
 
         if (checkId && checkEmail) { /** ID or Email 에서 중복확인 완료 실행 가능 */ // 둘 다 0이 넘어와야지만 아래 코드 실행
             pDTO.setUserStatus(1); // 사용자 활성화 / (이메일 체크 후 활성화 로직 추가)
