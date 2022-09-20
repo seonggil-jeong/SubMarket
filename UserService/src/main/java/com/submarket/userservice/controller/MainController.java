@@ -1,8 +1,10 @@
 package com.submarket.userservice.controller;
 
 import com.submarket.userservice.dto.UserDto;
+import com.submarket.userservice.jpa.LikeRepository;
 import com.submarket.userservice.jpa.SubRepository;
 import com.submarket.userservice.jpa.UserRepository;
+import com.submarket.userservice.jpa.entity.LikeEntity;
 import com.submarket.userservice.service.impl.KafkaProducerServiceImpl;
 import com.submarket.userservice.service.impl.MailServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ public class MainController {
     private final UserRepository userRepository;
     private final SubRepository subRepository;
     private final KafkaProducerServiceImpl kafkaProducerServiceImpl;
+    private final LikeRepository likeRepository;
 
 
     @GetMapping("/health")
@@ -37,6 +40,8 @@ public class MainController {
     @GetMapping("/test")
     @Transactional
     public UserDto test() throws Exception {
+        likeRepository.save(LikeEntity.builder()
+                .user(userRepository.findByUserId("userId")).itemSeq(1).build());
 
         return null;
     }

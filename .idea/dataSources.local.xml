@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="IU-213.6777.52">
-    <data-source name="MariaDB" uuid="e107340e-e3a2-4e8a-b1c9-5cfadd50a5ce">
-      <database-info product="MariaDB" version="10.6.7-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.7.3" dbms="MARIADB" exact-version="10.6.7" exact-driver-version="2.7">
+  <component name="dataSourceStorageLocal" created-in="IU-222.3739.54">
+    <data-source name="MariaDB" uuid="b8323119-0b04-4ef9-9da1-aaf3c90d0d6e">
+      <database-info product="MariaDB" version="10.6.8-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="3.0.7" dbms="MARIADB" exact-version="10.6.8" exact-driver-version="3.0">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>

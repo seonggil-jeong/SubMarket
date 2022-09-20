@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#144] hotfix : application.yml 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-09__3_39__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2022-06-09_오후_3_39_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09__3_36__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09__9_30__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09_오전_9_30_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022-06-09_오후_3_36_[Changes]/shelved.patch" beforeDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#154] feature : Resilience4j &amp; Zipkin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/LikeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/LikeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/SubEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/SubEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/UserEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +19,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -65,8 +63,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="hotfix/#144" />
-                    <option name="lastUsedInstant" value="1655425952" />
+                    <option name="branchName" value="feature/#154" />
+                    <option name="lastUsedInstant" value="1663665200" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
@@ -117,32 +115,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="mongo&#10;mariadb" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelOrder2" value="2" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="RequestMappingsPanelWidth2" value="75" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ApiGateway/src/main/resources" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="bigdataide_conn_settings" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelOrder2": "2",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RequestMappingsPanelWidth2": "75",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.customizations",
+    "spring.configuration.checksum": "fa9d58182679917588973c10a900d3d3"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
+    ]
+  }
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -168,11 +164,11 @@
       <recent name="com.submarket.sellerservice.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.submarket.sellerservice.config" />
-      <recent name="com.submarket.orderservice.config" />
       <recent name="com.submarket.itemservice.coinfig" />
-      <recent name="com.submarket.orderservice.security" />
-      <recent name="com.submarket.userservice.vo" />
+      <recent name="com.submarket.sellerservice.config" />
+      <recent name="com.submarket.userservice.jpa.entity" />
+      <recent name="com.submarket.userservice.dto" />
+      <recent name="com.submarket.orderservice.config" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -182,7 +178,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DiscoveryServiceApplication">
+  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -199,7 +195,6 @@
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="apigateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.apigateway.ApiGatewayApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -207,7 +202,6 @@
     <configuration name="ConfigServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="configservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.configservice.ConfigServiceApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -215,20 +209,18 @@
     <configuration name="DiscoveryServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="discoveryservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.discoveryservice.DiscoveryServiceApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ItemServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="itemservice" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.itemservice.ItemServiceApplication" />
       <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
         <option name="credential" />
         <option name="region" />
         <option name="useCurrentConnection" value="false" />
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.itemservice.ItemServiceApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -236,7 +228,6 @@
     <configuration name="OrderServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="orderservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.orderservice.OrderServiceApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -251,7 +242,6 @@
     <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="userservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.submarket.userservice.UserServiceApplication" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -314,48 +304,13 @@
       <workItem from="1655164653622" duration="18334000" />
       <workItem from="1655255613961" duration="7693000" />
       <workItem from="1655437390647" duration="5604000" />
-    </task>
-    <task id="LOCAL-00048" summary="refactor : 구독 수정">
-      <created>1653806827536</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1653806827536</updated>
-    </task>
-    <task id="LOCAL-00049" summary="[#97] feature : 사용자 정보 조회">
-      <created>1653808048032</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1653808048032</updated>
-    </task>
-    <task id="LOCAL-00050" summary="[#96] feature : 사업자 정보 조회">
-      <created>1653808978939</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1653808978939</updated>
-    </task>
-    <task id="LOCAL-00051" summary="[#106] refactor : 구독 정보 조회 returnType 변경">
-      <created>1654075977074</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1654075977075</updated>
-    </task>
-    <task id="LOCAL-00052" summary="[#106] refactor : itemService Add Security">
-      <created>1654080599477</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1654080599477</updated>
-    </task>
-    <task id="LOCAL-00053" summary="[#106] refactor : orderService Add Security">
-      <created>1654080711127</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1654080711128</updated>
+      <workItem from="1663497799527" duration="6000" />
+      <workItem from="1663497813541" duration="323000" />
+      <workItem from="1663498147922" duration="61000" />
+      <workItem from="1663498239272" duration="83000" />
+      <workItem from="1663498496151" duration="86000" />
+      <workItem from="1663498589308" duration="364000" />
+      <workItem from="1663664962473" duration="8741000" />
     </task>
     <task id="LOCAL-00054" summary="[#106] refactor : saveReview">
       <created>1654081615001</created>
@@ -658,7 +613,49 @@
       <option name="project" value="LOCAL" />
       <updated>1655426133353</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary=".gitignore">
+      <created>1663497945730</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1663497945730</updated>
+    </task>
+    <task id="LOCAL-00098" summary=".gitignore">
+      <created>1663498719231</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1663498719231</updated>
+    </task>
+    <task id="LOCAL-00099" summary=".gitignore">
+      <created>1663498735217</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1663498735217</updated>
+    </task>
+    <task id="LOCAL-00100" summary=".gitignore">
+      <created>1663498897013</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1663498897013</updated>
+    </task>
+    <task id="LOCAL-00101" summary="[#154] [#95] feature : Resilience4j">
+      <created>1663671416922</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1663671416923</updated>
+    </task>
+    <task id="LOCAL-00102" summary="[#154] feature : Resilience4j &amp; Zipkin">
+      <created>1663672884586</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1663672884586</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -706,9 +703,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="ItemService - Test" />
-    <MESSAGE value="v0.0.3 Test End&#10;&#10;UserService - Test&#10;&#10;SellerService - Test&#10;&#10;OrderService - Test&#10;&#10;ItemService - Test" />
-    <MESSAGE value="[#95] feature : findOrderInfoByUserId" />
     <MESSAGE value="[#95] feature : findOrderInfoBySellerId" />
     <MESSAGE value="[#95] feature : findOrderInfoByOrderId" />
     <MESSAGE value="[#21] bugfix : 중복 구독 (createNewSub)" />
@@ -731,6 +725,9 @@
     <MESSAGE value="SellerService Test" />
     <MESSAGE value="OrderService Test" />
     <MESSAGE value="[#144] hotfix : WebSecurity Gateway Ip 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#144] hotfix : WebSecurity Gateway Ip 수정" />
+    <MESSAGE value=".gitignore" />
+    <MESSAGE value="[#154] feature : Resilience4j" />
+    <MESSAGE value="[#154] feature : Resilience4j &amp; Zipkin" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#154] feature : Resilience4j &amp; Zipkin" />
   </component>
 </project>

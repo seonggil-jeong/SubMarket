@@ -1,5 +1,6 @@
 package com.submarket.userservice.jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -47,6 +49,11 @@ public class UserEntity {
     @Column(length = 80)
     private String userAddress2;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user")
-    private List<SubEntity> subEntityList = new ArrayList<>();
+    private List<SubEntity> subEntityList;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user")
+    private List<LikeEntity> likeEntityList;
 }

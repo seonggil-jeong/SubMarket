@@ -23,7 +23,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/**")
-                .hasIpAddress(env.getProperty("gateway.ip")) // IP
+                .hasIpAddress("127.0.0.1") // IP
                 .and()
                 .addFilter(getAuthenticationFilter()); // Add Filter
 
