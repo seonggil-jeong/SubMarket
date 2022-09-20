@@ -1,5 +1,6 @@
 package com.submarket.userservice.jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
@@ -28,6 +29,7 @@ public class SubEntity {
     @Column(nullable = false)
     private int subCount;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JsonIgnore
     private UserEntity user;

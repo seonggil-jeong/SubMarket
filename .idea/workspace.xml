@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#154] feature : Resilience4j">
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#154] feature : Resilience4j &amp; Zipkin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/UserItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/UserItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/LikeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/LikeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/SubEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/SubEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/entity/UserEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,11 +164,11 @@
       <recent name="com.submarket.sellerservice.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.submarket.itemservice.coinfig" />
+      <recent name="com.submarket.sellerservice.config" />
       <recent name="com.submarket.userservice.jpa.entity" />
       <recent name="com.submarket.userservice.dto" />
-      <recent name="com.submarket.sellerservice.config" />
       <recent name="com.submarket.orderservice.config" />
-      <recent name="com.submarket.itemservice.coinfig" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -312,14 +310,7 @@
       <workItem from="1663498239272" duration="83000" />
       <workItem from="1663498496151" duration="86000" />
       <workItem from="1663498589308" duration="364000" />
-      <workItem from="1663664962473" duration="7473000" />
-    </task>
-    <task id="LOCAL-00053" summary="[#106] refactor : orderService Add Security">
-      <created>1654080711127</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1654080711128</updated>
+      <workItem from="1663664962473" duration="8741000" />
     </task>
     <task id="LOCAL-00054" summary="[#106] refactor : saveReview">
       <created>1654081615001</created>
@@ -657,7 +648,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663671416923</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="[#154] feature : Resilience4j &amp; Zipkin">
+      <created>1663672884586</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1663672884586</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -705,7 +703,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#95] feature : findOrderInfoByUserId" />
     <MESSAGE value="[#95] feature : findOrderInfoBySellerId" />
     <MESSAGE value="[#95] feature : findOrderInfoByOrderId" />
     <MESSAGE value="[#21] bugfix : 중복 구독 (createNewSub)" />
@@ -730,6 +727,7 @@
     <MESSAGE value="[#144] hotfix : WebSecurity Gateway Ip 수정" />
     <MESSAGE value=".gitignore" />
     <MESSAGE value="[#154] feature : Resilience4j" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#154] feature : Resilience4j" />
+    <MESSAGE value="[#154] feature : Resilience4j &amp; Zipkin" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#154] feature : Resilience4j &amp; Zipkin" />
   </component>
 </project>
