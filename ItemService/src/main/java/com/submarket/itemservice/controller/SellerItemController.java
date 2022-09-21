@@ -3,6 +3,7 @@ package com.submarket.itemservice.controller;
 import com.submarket.itemservice.dto.ItemDto;
 import com.submarket.itemservice.service.impl.ItemServiceImpl;
 import com.submarket.itemservice.util.TokenUtil;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -25,6 +26,7 @@ public class SellerItemController {
 
 
     @GetMapping("/item/seller")
+    @Timed(value = "seller.item.findById", longTask = true)
     public ResponseEntity<Map<String, Object>> findItemInfoBySellerId(@RequestHeader HttpHeaders headers) throws Exception {
         log.info(this.getClass().getName() + "findItemInfoBySellerId Start!");
         String sellerId = tokenUtil.getUserIdByToken(headers);

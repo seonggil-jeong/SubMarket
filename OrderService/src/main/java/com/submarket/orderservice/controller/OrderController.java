@@ -2,6 +2,7 @@ package com.submarket.orderservice.controller;
 
 import com.submarket.orderservice.dto.OrderDto;
 import com.submarket.orderservice.service.impl.OrderService;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ public class OrderController {
 
 
     @PostMapping("/order")
+    @Timed(value = "order.save", longTask = true)
     public ResponseEntity<String> insertOrder(@RequestBody OrderDto orderDto) throws Exception {
         log.info(this.getClass().getName() + ".insertOrder Start!");
 
@@ -30,6 +32,7 @@ public class OrderController {
     }
 
     @GetMapping("/order/user/{userId}")
+    @Timed(value = "user.order.findById", longTask = true)
     public ResponseEntity<Map<String, Object>> findOrderInfoByUserId(@PathVariable String  userId) throws Exception {
         log.info(this.getClass().getName() + ".findOrderInfoByUserId Start!");
         Map<String, Object> rMap = new HashMap<>();
@@ -46,6 +49,7 @@ public class OrderController {
     }
 
     @GetMapping("/order/seller/{sellerId}")
+    @Timed(value = "seller.order.findById", longTask = true)
     public ResponseEntity<Map<String, Object>> findOrderInfoBySellerId(@PathVariable String sellerId)
         throws Exception {
         log.info(this.getClass().getName() + ".findOrderInfoBySellerId Start!");
@@ -64,6 +68,7 @@ public class OrderController {
     }
 
     @GetMapping("/order/order/{orderId}")
+    @Timed(value = "order.findById", longTask = true)
     public ResponseEntity<Map<String, Object>> findOrderInfoByOrderId(@PathVariable String orderId) throws Exception {
         Map<String, Object> rMap = new HashMap<>();
 

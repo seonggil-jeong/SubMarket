@@ -12,6 +12,7 @@ import com.submarket.userservice.vo.ItemLikedReq;
 import com.submarket.userservice.vo.RequestChangePassword;
 import com.submarket.userservice.vo.RequestUser;
 import com.submarket.userservice.vo.ResponseUser;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
@@ -38,6 +39,7 @@ public class UserController {
      * <---------------------->회원가입</---------------------->
      */
     @PostMapping("/users")
+    @Timed(value = "user.createUser", longTask = true)
     public ResponseEntity<String> createUser(@RequestBody RequestUser requestUser) throws Exception {
         log.info("-------------->  " + this.getClass().getName() + ".createUser Start!");
         int res = 0;
@@ -61,6 +63,7 @@ public class UserController {
     }
 
     @GetMapping("/user")
+    @Timed(value = "user.getUser", longTask = true)
     public ResponseEntity<ResponseUser> getUserInfo(@RequestHeader HttpHeaders headers) throws Exception {
         log.info(this.getClass().getName() + "getUserInfo Start!");
         // 사용자 토큰을 사용하여 사용자 정보 조회
@@ -82,6 +85,7 @@ public class UserController {
      * <------------------------>아이디 중복 확인</------------------------>
      */
     @GetMapping("/users/check-id/{userId}")
+    @Timed(value = "user.check.id", longTask = true)
     public ResponseEntity<String> checkUserById(@PathVariable String userId) throws Exception {
         log.info("-------------------- > " + this.getClass().getName() + "checkId Start!");
         boolean checkId = userCheckServiceImpl.checkUserByUserId(userId);
@@ -98,6 +102,7 @@ public class UserController {
      * <------------------------>이메일 중복 확인</------------------------>
      */
     @GetMapping("/users/check-email/{userEmail}")
+    @Timed(value = "user.check.email", longTask = true)
     public ResponseEntity<String> checkUserByEmail(@PathVariable String userEmail) throws Exception {
         log.info("-------------------- > " + this.getClass().getSimpleName() + "checkEmail Start!");
         boolean checkEmail = userCheckServiceImpl.checkUserByUserEmail(userEmail);
@@ -117,6 +122,7 @@ public class UserController {
      * 만약 Email 이 같다면 아이디 정보 일부를 제공
      */
     @GetMapping("/users/find-id/{userEmail}")
+    @Timed(value = "user.find.id", longTask = true)
     public ResponseEntity<String> findUserId(@PathVariable String userEmail) throws Exception {
         log.info("-------------------- > " + this.getClass().getName() + "findUserId Start!");
         UserDto rDTO = userServiceImpl.getUserInfoByUserEmail(userEmail);
@@ -135,6 +141,7 @@ public class UserController {
      * <------------------------>비밀번호 변경</------------------------>
      */
     @PostMapping("/users/changePassword")
+    @Timed(value = "user.change.password", longTask = true)
     public ResponseEntity<String> changePassword(@RequestHeader HttpHeaders headers,
                                                  @RequestBody RequestChangePassword request) throws Exception {
         String userId = tokenUtil.getUserIdByToken(headers);
@@ -154,6 +161,7 @@ public class UserController {
     }
 
     @PostMapping("/user/modify")
+    @Timed(value = "user.change.userInfo", longTask = true)
     public ResponseEntity<String> modifyUserInfo(@RequestHeader HttpHeaders headers, @RequestBody UserDto body)
             throws Exception {
         log.info(this.getClass().getName() + ".modifyUserInfo Start!");
@@ -171,6 +179,7 @@ public class UserController {
     }
 
     @PostMapping("/user/fix/find-password")
+    @Timed(value = "user.find.password", longTask = true)
     public ResponseEntity<String> findPassword(@RequestBody UserDto userDto) throws Exception {
         log.info(this.getClass().getName() + ".findPassword Start");
         String userId = CmmUtil.nvl(userDto.getUserId());
@@ -201,6 +210,7 @@ public class UserController {
     }
 
     @PostMapping("/user/delete")
+    @Timed(value = "user.deleteUser", longTask = true)
     public ResponseEntity<String> deleteUser(@RequestHeader HttpHeaders headers, @RequestBody RequestUser requestUser) throws Exception {
         /**
          * 비밀번호가 일치한다면
@@ -231,6 +241,7 @@ public class UserController {
      */
 
     @PostMapping("/user/item/liked")
+    @Timed(value = "user.like", longTask = true)
     public ResponseEntity<String> itemLiked(@RequestHeader final HttpHeaders headers,
                                             @RequestBody @Validated final ItemLikedReq request) throws Exception {
 

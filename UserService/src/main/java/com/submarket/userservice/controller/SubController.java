@@ -6,6 +6,7 @@ import com.submarket.userservice.mapper.SubMapper;
 import com.submarket.userservice.service.impl.SubServiceImpl;
 import com.submarket.userservice.util.TokenUtil;
 import com.submarket.userservice.vo.RequestSub;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -24,6 +25,7 @@ public class SubController {
     private final TokenUtil tokenUtil;
 
     @GetMapping("/sub")
+    @Timed(value = "user.sub.findAllSub", longTask = true)
     public ResponseEntity<Map<String, Object>> findAllSub(@RequestHeader HttpHeaders headers) throws Exception {
         log.info(this.getClass().getName() + ".findSub Start!");
 
@@ -51,6 +53,7 @@ public class SubController {
     }
 
     @GetMapping("/sub/{subSeq}")
+    @Timed(value = "user.sub.findOneSub", longTask = true)
     public ResponseEntity<SubDto> findOneSub(@PathVariable int subSeq) throws Exception {
         log.info(this.getClass().getName() + ".findOneSub Start!");
         SubDto pDto = new SubDto();
@@ -70,6 +73,7 @@ public class SubController {
     }
 
     @PostMapping("/sub")
+    @Timed(value = "user.sub.createSub", longTask = true)
     public ResponseEntity<String> createNewSub(@RequestHeader HttpHeaders headers,
                                                @RequestBody SubDto subDto) throws Exception{
         log.info(this.getClass().getName() + ".createNewSub Start!");
@@ -95,6 +99,7 @@ public class SubController {
     }
 
     @PostMapping("/sub/delete")
+    @Timed(value = "user.sub.deleteSub", longTask = true)
     public String cancelSub(@RequestBody RequestSub requestSub) throws Exception {
         log.info(this.getClass().getName() + "cancel Sub Start!");
 
@@ -114,6 +119,7 @@ public class SubController {
     }
 
     @PostMapping("/sub/update")
+    @Timed(value = "user.sub.updateUsb", longTask = true)
     public ResponseEntity<String> updateSub(@RequestBody RequestSub requestSub) throws Exception {
         log.info(this.getClass().getName() + ".updateSub Start!");
         SubDto subDto = new SubDto();
@@ -132,6 +138,7 @@ public class SubController {
     }
 
     @GetMapping("/seller/sub")
+    @Timed(value = "seller.sub.findSubCount", longTask = true)
     public ResponseEntity<Integer> findSubCount(@RequestBody Map<String, Object> request)  throws Exception {
         // Seller 가 보유하고 있는 상품의 SeqList 를 넘겨주면 총 구독 수를 표시
         log.info(this.getClass().getName() + "findSubCount");
@@ -144,6 +151,7 @@ public class SubController {
     }
 
     @GetMapping("/seller/sub/{itemSeq}")
+    @Timed(value = "seller.sub.findOneSub", longTask = true)
     public ResponseEntity<Integer> findOneSubCount(@PathVariable int itemSeq) throws Exception {
         log.info(this.getClass().getName() + "findOneSubCount Start!");
 

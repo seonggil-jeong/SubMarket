@@ -7,6 +7,7 @@ import com.submarket.userservice.jpa.UserRepository;
 import com.submarket.userservice.jpa.entity.LikeEntity;
 import com.submarket.userservice.service.impl.KafkaProducerServiceImpl;
 import com.submarket.userservice.service.impl.MailServiceImpl;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
@@ -28,6 +29,8 @@ public class MainController {
 
 
     @GetMapping("/health")
+    // logging {name}
+    @Timed(value = "user.health", longTask = true)
     public String health() {
         log.info("UserService On");
         return env.getProperty("spring.application.name")
@@ -35,14 +38,5 @@ public class MainController {
                 + ", port(server.port) : " + env.getProperty("server.port")
                 + ", token secret : " + env.getProperty("token.secret")
                 + ", token expiration time : " + env.getProperty("token.expiration_time");
-    }
-
-    @GetMapping("/test")
-    @Transactional
-    public UserDto test() throws Exception {
-        likeRepository.save(LikeEntity.builder()
-                .user(userRepository.findByUserId("userId")).itemSeq(1).build());
-
-        return null;
     }
 }

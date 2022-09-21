@@ -8,6 +8,7 @@ import com.submarket.sellerservice.util.TokenUtil;
 import com.submarket.sellerservice.vo.RequestChangePassword;
 import com.submarket.sellerservice.vo.RequestSellerInfo;
 import com.submarket.sellerservice.vo.ResponseSellerInfo;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
@@ -31,6 +32,7 @@ public class SellerController {
 
 
     @GetMapping("/seller")
+    @Timed(value = "seller.findById", longTask = true)
     public ResponseEntity<ResponseSellerInfo> getSellerInfo(@RequestHeader HttpHeaders headers) throws Exception {
         log.info(this.getClass().getName() + ".getSellerInfo Start!");
         SellerDto pDto = new SellerDto();
@@ -56,6 +58,7 @@ public class SellerController {
     }
 
     @PostMapping("/sellers")
+    @Timed(value = "seller.save", longTask = true)
     public ResponseEntity<String> createSeller(@RequestBody RequestSellerInfo sellerInfo) throws Exception {
         log.info(this.getClass().getName() + ".createSeller Start!");
 
@@ -76,6 +79,7 @@ public class SellerController {
     }
 
     @PostMapping("/sellers/modify")
+    @Timed(value = "seller.modify", longTask = true)
     public ResponseEntity<String> modifySellerInfo(@RequestBody  SellerDto sellerDto,
                                                    @RequestHeader HttpHeaders headers) throws Exception {
         log.info(this.getClass().getName() + ".modifySellerInfo Start!");
@@ -96,6 +100,7 @@ public class SellerController {
     }
 
     @PostMapping("/sellers/drop")
+    @Timed(value = "seller.drop", longTask = true)
     public ResponseEntity<String> deleteSeller(@RequestHeader HttpHeaders headers,
                                                @RequestBody RequestSellerInfo requestSellerInfo) throws Exception {
         log.info(this.getClass().getName() + ".deleteSeller Start!");
@@ -118,6 +123,7 @@ public class SellerController {
      * 만약 Email 이 같다면 아이디 정보 일부를 제공
      */
     @GetMapping("/sellers/find-id/{sellerEmail}")
+    @Timed(value = "seller.find.id", longTask = true)
     public ResponseEntity<String> findSellerId(@PathVariable String sellerEmail) throws Exception {
         log.info("-------------------- > " + this.getClass().getName() + "findSellerId Start!");
         SellerDto sellerDto = new SellerDto();
@@ -136,6 +142,7 @@ public class SellerController {
     }
 
     @PatchMapping("/sellers/change-password")
+    @Timed(value = "seller.change.password", longTask = true)
     public ResponseEntity<String> changePassword(@RequestHeader HttpHeaders headers, @RequestBody RequestChangePassword
             requestChangePassword) throws Exception {
         log.info(this.getClass().getName() + ".changePassword Start!");
@@ -157,6 +164,7 @@ public class SellerController {
 
     // 사업자 번호 유효성 검사
     @GetMapping("/seller/business/{businessId}")
+    @Timed(value = "seller.check.businessId", longTask = true)
     public ResponseEntity<Map<String, Object>> checkBusinessId(@PathVariable String businessId) throws Exception {
         log.info(this.getClass().getName() + ".checkBusinessId Start!");
 
