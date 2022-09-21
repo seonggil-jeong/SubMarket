@@ -2,6 +2,7 @@ package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.CategoryDto;
 import com.submarket.itemservice.service.impl.CategoryServiceImpl;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ public class CategoryController {
     private final CategoryServiceImpl categoryServiceImpl;
 
     @GetMapping("/category")
+    @Timed(value = "category.findAll", longTask = true)
     public ResponseEntity<Map<String, Object>> findAllCategory() throws Exception {
         log.info(this.getClass().getName() + ">findAllCategory Start!");
         Map<String, Object> rMap = new HashMap<>();
@@ -37,6 +39,7 @@ public class CategoryController {
     }
 
     @GetMapping("/category/{categorySeq}")
+    @Timed(value = "item.find.category", longTask = true)
     public ResponseEntity<CategoryDto> findItemInfoByCategorySeq(@PathVariable int categorySeq) throws Exception {
         log.info(this.getClass().getName() + ".findItemInfoByCategorySeq Start!");
 

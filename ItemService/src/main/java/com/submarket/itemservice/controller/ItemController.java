@@ -4,6 +4,7 @@ import com.submarket.itemservice.dto.ItemDto;
 import com.submarket.itemservice.service.impl.ItemServiceImpl;
 import com.submarket.itemservice.util.CmmUtil;
 import com.submarket.itemservice.util.TokenUtil;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -24,6 +25,7 @@ public class ItemController {
     private final TokenUtil tokenUtil;
 
     @PostMapping(value = "/items", consumes = MediaType.ALL_VALUE)
+    @Timed(value = "item.save", longTask = true)
     public ResponseEntity<String> saveItem(@RequestHeader HttpHeaders headers, ItemDto itemDto) throws Exception {
         log.info(this.getClass().getName() + ".saveItem Start!");
 
@@ -39,6 +41,7 @@ public class ItemController {
     }
 
     @GetMapping("/items")
+    @Timed(value = "item.findAll", longTask = true)
     public ResponseEntity<Map<String, Object>> findAllItem() throws Exception {
         log.info(this.getClass().getName() + ".findAllItem Start");
         Map<String, Object> rMap = new HashMap<>();
@@ -52,6 +55,7 @@ public class ItemController {
     }
 
     @GetMapping("/items/{itemSeq}")
+    @Timed(value = "item.findOne", longTask = true)
     public ResponseEntity<ItemDto> findOneItem(@PathVariable int itemSeq) throws Exception {
         log.info(this.getClass().getName() + ".findOneItem Start! (itemSeq : " + itemSeq + ")");
 
@@ -66,6 +70,7 @@ public class ItemController {
     }
 
     @PostMapping("/items/{itemSeq}/off")
+    @Timed(value = "item.off", longTask = true)
     public ResponseEntity<String> offItem(@PathVariable int itemSeq) throws Exception {
         ItemDto itemDto = new ItemDto();
         itemDto.setItemSeq(itemSeq);
@@ -75,6 +80,7 @@ public class ItemController {
     }
 
     @PostMapping("/items/{itemSeq}/on")
+    @Timed(value = "item.on", longTask = true)
     public ResponseEntity<String> onItem(@PathVariable int itemSeq) throws Exception {
         ItemDto itemDto = new ItemDto();
         itemDto.setItemSeq(itemSeq);
@@ -84,6 +90,7 @@ public class ItemController {
     }
 
     @PostMapping(value = "/items/modify/{itemSeq}", consumes = MediaType.ALL_VALUE)
+    @Timed(value = "item.modify", longTask = true)
     public ResponseEntity<String> modifyItem(ItemDto itemDto, @PathVariable int itemSeq) throws Exception {
         log.info(this.getClass().getName() + ".modifyItem Start!");
         itemDto.setItemSeq(itemSeq);
@@ -94,6 +101,7 @@ public class ItemController {
     }
 
     @PostMapping("/items/{itemSeq}/up")
+    @Timed(value = "item.count.up", longTask = true)
     public void upCount(@PathVariable int itemSeq, @RequestBody Map<String, Object> request) throws Exception {
         int userAge = Integer.parseInt(String.valueOf(request.get("userAge")));
         log.info(this.getClass().getName() + ".upCount Start!");

@@ -2,6 +2,7 @@ package com.submarket.itemservice.controller;
 
 import com.submarket.itemservice.dto.ItemDto;
 import com.submarket.itemservice.service.impl.ItemServiceImpl;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ public class ReadCountController {
 
 
     @GetMapping("/item/read/{age}")
+    @Timed(value = "item.item.sort.readCount", longTask = true)
     public ResponseEntity<Map<String, Object>> findItemInfoByReadCount(@PathVariable int age) throws Exception {
         log.info(this.getClass().getName() + ".");
         Map<String, Object> rMap = new HashMap<>();
@@ -53,6 +55,7 @@ public class ReadCountController {
     }
 
     @GetMapping("/item/{itemSeq}/countUp/{userAge}")
+    @Timed(value = "item.count.up.age", longTask = true)
     public ResponseEntity<String> itemCountUp(@PathVariable int itemSeq, @PathVariable int userAge) throws Exception {
         log.info(this.getClass().getName() + ".itemCountUp Start");
         itemService.upReadCount(itemSeq, userAge);

@@ -10,6 +10,7 @@ import com.submarket.itemservice.service.impl.ItemReviewServiceImpl;
 import com.submarket.itemservice.util.CmmUtil;
 import com.submarket.itemservice.util.DateUtil;
 import com.submarket.itemservice.util.TokenUtil;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -31,6 +32,7 @@ public class ItemReviewController {
     private final ItemReviewCheckService itemReviewCheckServiceImpl;
 
     @PostMapping("/item/{itemSeq}/review")
+    @Timed(value = "item.review.save", longTask = true)
     public ResponseEntity<String> saveReview(@RequestHeader HttpHeaders headers,
                                              @RequestBody ItemReviewDto itemReviewDto, @PathVariable int itemSeq) throws Exception {
         log.info(this.getClass().getName() + ".saveReview Start!");
@@ -57,6 +59,7 @@ public class ItemReviewController {
     }
 
     @PostMapping("/item/review/{reviewSeq}/modify")
+    @Timed(value = "item.review.modify", longTask = true)
     public ResponseEntity<String> modifyItemReview(@RequestBody ItemReviewDto itemReviewDto, @PathVariable int reviewSeq)
             throws Exception {
         log.debug(this.getClass().getName() + ".modifyItemReview Start!");
@@ -71,6 +74,7 @@ public class ItemReviewController {
     }
 
     @PostMapping("/item/review/{reviewSeq}/delete")
+    @Timed(value = "item.review.delete", longTask = true)
     public ResponseEntity<String> deleteItemReview(@PathVariable int reviewSeq) throws Exception {
         log.debug(this.getClass().getName() + ".deleteReview Start!");
 
@@ -82,6 +86,7 @@ public class ItemReviewController {
     }
 
     @GetMapping("/item/{itemSeq}/review")
+    @Timed(value = "item.review.findReviewInfo", longTask = true)
     public ResponseEntity<Map<String, Object>> findItemReviewInItem(@PathVariable int itemSeq) throws Exception {
         log.debug(this.getClass().getName() + "findItemReviewInItem Start!");
         log.debug(this.getClass().getName() + "findItemReviewInItem End!");
@@ -94,6 +99,7 @@ public class ItemReviewController {
     }
 
     @GetMapping("/item/review")
+    @Timed(value = "user.item.review.find", longTask = true)
     public ResponseEntity<Map<String, Object>> findReviewByUserId(@RequestHeader HttpHeaders headers) throws Exception {
         final String userIdByToken = CmmUtil.nvl(tokenUtil.getUserIdByToken(headers));
 
