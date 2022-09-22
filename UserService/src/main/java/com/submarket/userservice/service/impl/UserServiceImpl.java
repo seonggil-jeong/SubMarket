@@ -1,6 +1,8 @@
 package com.submarket.userservice.service.impl;
 
 import com.submarket.userservice.dto.UserDto;
+import com.submarket.userservice.exception.UserException;
+import com.submarket.userservice.exception.result.UserExceptionResult;
 import com.submarket.userservice.jpa.UserRepository;
 import com.submarket.userservice.jpa.entity.UserEntity;
 import com.submarket.userservice.mapper.UserMapper;
@@ -127,7 +129,7 @@ public class UserServiceImpl implements UserService {
             // 비밀번호가 일치한다면
             userRepository.deleteUserInfo(userDto.getUserId());
         } else {
-            throw new RuntimeException("사용자 비밀번호가 일치하지 않습니다");
+            throw new UserException(UserExceptionResult.USER_PASSWORD_NOT_MATCHED);
         }
 
 
