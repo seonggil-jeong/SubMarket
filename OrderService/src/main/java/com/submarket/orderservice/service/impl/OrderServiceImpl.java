@@ -2,9 +2,8 @@ package com.submarket.orderservice.service.impl;
 
 import com.submarket.orderservice.dto.OrderDto;
 import com.submarket.orderservice.mapper.impl.OrderMapper;
-import com.submarket.orderservice.service.IOrderService;
+import com.submarket.orderservice.service.OrderService;
 import com.submarket.orderservice.util.DateUtil;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ import java.util.UUID;
 @Slf4j
 @Service(value = "OrderService")
 @RequiredArgsConstructor
-public class OrderService implements IOrderService {
+public class OrderServiceImpl implements OrderService {
     private final OrderMapper orderMapper;
 
     @Override

@@ -4,13 +4,12 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.submarket.orderservice.dto.OrderDto;
-import com.submarket.orderservice.service.IKafkaConsumerService;
+import com.submarket.orderservice.service.KafkaConsumerService;
 import com.submarket.orderservice.util.CmmUtil;
 import com.submarket.orderservice.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -19,9 +18,9 @@ import java.util.Map;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class KafkaConsumerService implements IKafkaConsumerService {
-    private final OrderService orderService;
-    private final KafkaProducerService kafkaProducerService;
+public class KafkaConsumerServiceImpl implements KafkaConsumerService {
+    private final OrderServiceImpl orderServiceImpl;
+    private final KafkaProducerServiceImpl kafkaProducerServiceImpl;
 
     @KafkaListener(topics = "sub")
     @Override
@@ -48,7 +47,7 @@ public class KafkaConsumerService implements IKafkaConsumerService {
         orderDto.setUserAddress(String.valueOf(map.get("userAddress")));
         orderDto.setUserAddress2(CmmUtil.nvl(String.valueOf(map.get("userAddress2"))));
 
-        orderService.insertOrder(orderDto);
+        orderServiceImpl.insertOrder(orderDto);
 
         log.info(this.getClass().getName() + ".kafkaCreateOrder Start!");
     }
@@ -76,10 +75,10 @@ public class KafkaConsumerService implements IKafkaConsumerService {
         OrderDto orderDto = new OrderDto();
         orderDto.setItemSeq(itemSeq);
 
-        int totalPrice = orderService.totalPriceByItemSeq(orderDto, itemPrice);
+        int totalPrice = orderServiceImpl.totalPriceByItemSeq(orderDto, itemPrice);
         String date = DateUtil.getDateTime("yyyyMM");
 
-        kafkaProducerService.kafkaSendPriceToSellerService(totalPrice, date, sellerId);
+        kafkaProducerServiceImpl.kafkaSendPriceToSellerService(totalPrice, date, sellerId);
 
 
         log.info(this.getClass().getName() + ".kafkaGetItemInfoFromItemService End!");
