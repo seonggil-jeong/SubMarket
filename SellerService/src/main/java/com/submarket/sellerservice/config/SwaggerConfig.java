@@ -1,4 +1,4 @@
-package com.submarket.userservice.config;
+package com.submarket.sellerservice.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -15,7 +15,7 @@ public class SwaggerConfig {
     @Bean
     public GroupedOpenApi publicApi() {
         return GroupedOpenApi.builder()
-                .group("UserServiceAPI")
+                .group("SellerServiceAPI")
                 .pathsToMatch("/**")
                 .addOpenApiCustomiser(buildSecurityOpenApi()) // JWT Setting Config
                 .build();
@@ -39,6 +39,6 @@ public class SwaggerConfig {
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
                 .info(new Info().title("SubMarket - USER-SERVICE API")
-                        .description("SubMarket UserService API 명세서").version("v2.0.0"));
+                        .description("SubMarket SellerService 명세서").version("v2.0.0"));
     }
 }

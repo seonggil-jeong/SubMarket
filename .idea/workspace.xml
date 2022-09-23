@@ -4,21 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#151] feature : Swagger in UserService">
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/config/SwaggerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/vo/OrderRequest.java" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="Commit">
+      <change afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiscoveryService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DiscoveryService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/dto/OrderDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/IKafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/KafkaConsumerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/IKafkaProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/KafkaProducerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaConsumerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaProducerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/KafkaProducerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/test/java/com/submarket/orderservice/OrderServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/test/java/com/submarket/orderservice/OrderServiceImplApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SalesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SellerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SellerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/security/WebSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestChangePassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestSellerInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestSellerInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/security/WebSecurity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +32,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -141,7 +144,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.27471265&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;bigdataide_conn_settings&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;b9a7970c2902b48ff1e793a804d5e365&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -175,11 +178,11 @@
       <recent name="com.submarket.sellerservice.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.submarket.sellerservice.config" />
+      <recent name="com.submarket.orderservice.client" />
       <recent name="com.submarket.orderservice.config" />
       <recent name="com.submarket.userservice.exception.result" />
       <recent name="com.submarket.userservice.exception" />
-      <recent name="com.submarket.itemservice.coinfig" />
-      <recent name="com.submarket.sellerservice.config" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -189,7 +192,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.OrderServiceApplication">
+  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -321,14 +324,9 @@
       <workItem from="1663852552524" duration="4611000" />
       <workItem from="1663857188134" duration="2909000" />
       <workItem from="1663860108964" duration="5604000" />
-      <workItem from="1663928577789" duration="1676000" />
-    </task>
-    <task id="LOCAL-00057" summary="[#106] refactor : itemService/review">
-      <created>1654094945644</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1654094945644</updated>
+      <workItem from="1663928577789" duration="8306000" />
+      <workItem from="1663943643077" duration="5150000" />
+      <workItem from="1663954693804" duration="391000" />
     </task>
     <task id="LOCAL-00058" summary="[#106] refactor : itemService/item">
       <created>1654095308994</created>
@@ -666,7 +664,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663865701639</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="[#151] feature : Swagger in OrderService">
+      <created>1663930457773</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1663930457773</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -714,7 +719,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[#129] feature : 상품 주문 시 수량 감소" />
     <MESSAGE value="[#129] feature : 상품 주문 시 주문 생성" />
     <MESSAGE value="[#129] fix : JPA 수정" />
     <MESSAGE value="fix : Kafka 수정" />
@@ -739,6 +743,7 @@
     <MESSAGE value="fix : itemJPA" />
     <MESSAGE value="[#151] feature : Swagger UserService" />
     <MESSAGE value="[#151] feature : Swagger in UserService" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#151] feature : Swagger in UserService" />
+    <MESSAGE value="[#151] feature : Swagger in OrderService" />
+    <option name="LAST_COMMIT_MESSAGE" value="[#151] feature : Swagger in OrderService" />
   </component>
 </project>
