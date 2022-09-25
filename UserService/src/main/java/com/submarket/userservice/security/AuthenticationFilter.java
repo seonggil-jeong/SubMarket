@@ -2,8 +2,9 @@ package com.submarket.userservice.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.submarket.userservice.dto.UserDto;
+import com.submarket.userservice.service.UserService;
 import com.submarket.userservice.service.impl.UserServiceImpl;
-import com.submarket.userservice.vo.RequestLogin;
+import com.submarket.userservice.vo.LoginRequest;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
@@ -25,20 +26,20 @@ import java.util.Date;
 
 @Slf4j
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
     private Environment env;
 
     public AuthenticationFilter(AuthenticationManager authenticationManager,
-                                UserServiceImpl userServiceImpl, Environment env) {
+                                UserServiceImpl userService, Environment env) {
         super.setAuthenticationManager(authenticationManager);
-        this.userServiceImpl = userServiceImpl;
+        this.userService = userService;
         this.env = env;
     }
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
         try {
-            RequestLogin creds = new ObjectMapper().readValue(request.getInputStream(), RequestLogin.class);
+            LoginRequest creds = new ObjectMapper().readValue(request.getInputStream(), LoginRequest.class);
 
             return getAuthenticationManager().authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -58,7 +59,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                                             FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
         String userId = ((User)authResult.getPrincipal()).getUsername();
-        UserDto userDetails = userServiceImpl.getUserDetailsByUserId(userId);
+        UserDto userDetails = userService.getUserDetailsByUserId(userId);
 
 
         String token = Jwts.builder()

@@ -2,7 +2,7 @@ package com.submarket.orderservice.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.submarket.orderservice.service.IKafkaProducerService;
+import com.submarket.orderservice.service.KafkaProducerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -14,7 +14,7 @@ import java.util.Map;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class KafkaProducerService implements IKafkaProducerService {
+public class KafkaProducerServiceImpl implements KafkaProducerService {
 
     private final KafkaTemplate kafkaTemplate;
 

@@ -2,20 +2,25 @@ package com.submarket.userservice.controller;
 
 import com.submarket.userservice.dto.UserDto;
 import com.submarket.userservice.mapper.UserMapper;
+import com.submarket.userservice.service.UserCheckService;
 import com.submarket.userservice.service.UserItemService;
+import com.submarket.userservice.service.UserService;
 import com.submarket.userservice.service.impl.MailServiceImpl;
 import com.submarket.userservice.service.impl.UserCheckServiceImpl;
 import com.submarket.userservice.service.impl.UserServiceImpl;
 import com.submarket.userservice.util.CmmUtil;
 import com.submarket.userservice.util.TokenUtil;
-import com.submarket.userservice.vo.ItemLikedReq;
-import com.submarket.userservice.vo.RequestChangePassword;
-import com.submarket.userservice.vo.RequestUser;
-import com.submarket.userservice.vo.ResponseUser;
+import com.submarket.userservice.vo.ItemLikedRequest;
+import com.submarket.userservice.vo.ChangePasswordRequest;
+import com.submarket.userservice.vo.UserRequest;
+import com.submarket.userservice.vo.UserResponse;
 import io.micrometer.core.annotation.Timed;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +32,11 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "사용자 API", description = "사용자 API")
+@RequestMapping("/user-service")
 public class UserController {
-    private final UserServiceImpl userServiceImpl;
-    private final UserCheckServiceImpl userCheckServiceImpl;
+    private final UserService userServiceImpl;
+    private final UserCheckService userCheckServiceImpl;
     private final TokenUtil tokenUtil;
     private final MailServiceImpl mailServiceImpl;
 
@@ -38,18 +45,23 @@ public class UserController {
     /**
      * <---------------------->회원가입</---------------------->
      */
+    @Operation(summary = "사용자 회원가입", description = "사용자 회원가입 (인증 X)", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "사용자 회원가입 성공"),
+            @ApiResponse(responseCode = "409", description = "사용자 아이디 또는 이메일 중복 발생")
+    })
     @PostMapping("/users")
     @Timed(value = "user.createUser", longTask = true)
-    public ResponseEntity<String> createUser(@RequestBody RequestUser requestUser) throws Exception {
+    public ResponseEntity<String> createUser(@RequestBody UserRequest userRequest) throws Exception {
         log.info("-------------->  " + this.getClass().getName() + ".createUser Start!");
         int res = 0;
 
-        if (!userCheckServiceImpl.checkUserByUserId(requestUser.getUserId())) {
+        if (!userCheckServiceImpl.checkUserByUserId(userRequest.getUserId())) {
             // 아이디 중복
             return ResponseEntity.status(HttpStatus.CONFLICT).body("중복된 아이디 입니다.");
         }
 
-        UserDto pDTO = UserMapper.INSTANCE.RequestUserToUserDto(requestUser);
+        UserDto pDTO = UserMapper.INSTANCE.RequestUserToUserDto(userRequest);
 
         res = userServiceImpl.createUser(pDTO);
 
@@ -62,9 +74,13 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body("회원가입 성공");
     }
 
-    @GetMapping("/user")
+    @Operation(summary = "사용자 정보 조회", description = "토큰 정보를 사용하여 사용자 정보 조회", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "사용자 정보 조회 성공")
+    })
+    @GetMapping("/users")
     @Timed(value = "user.getUser", longTask = true)
-    public ResponseEntity<ResponseUser> getUserInfo(@RequestHeader HttpHeaders headers) throws Exception {
+    public ResponseEntity<UserResponse> getUserInfo(@RequestHeader HttpHeaders headers) throws Exception {
         log.info(this.getClass().getName() + "getUserInfo Start!");
         // 사용자 토큰을 사용하여 사용자 정보 조회
         String userId = tokenUtil.getUserIdByToken(headers);
@@ -75,12 +91,16 @@ public class UserController {
 
         UserDto userDto = userServiceImpl.getUserInfoByUserId(userId);
 
-        ResponseUser responseUser = UserMapper.INSTANCE.UserDtoToResponseUser(userDto);
+        UserResponse userResponse = UserMapper.INSTANCE.UserDtoToResponseUser(userDto);
 
         log.info(this.getClass().getName() + "getUserInfo End!");
-        return ResponseEntity.ok().body(responseUser);
+        return ResponseEntity.ok().body(userResponse);
     }
-
+    @Operation(summary = "사용자 아이디 중복 확인", description = "회원가입 전 사용자 아이디 중복 확인", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "사용 가능한 아이디"),
+            @ApiResponse(responseCode = "409", description = "중복된 아이디")
+    })
     /**
      * <------------------------>아이디 중복 확인</------------------------>
      */
@@ -98,6 +118,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CONFLICT).body("아이디 중복 입니다");
     }
 
+    @Operation(summary = "사용자 이메일 중복 확인", description = "회원가입 전 사용자 이메일 중복 확인", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "사용 가능한 이메일"),
+            @ApiResponse(responseCode = "409", description = "중복된 이메일")
+    })
     /**
      * <------------------------>이메일 중복 확인</------------------------>
      */
@@ -121,6 +146,11 @@ public class UserController {
      * <------------------------>아이디 찾기 with UserEmail </------------------------>
      * 만약 Email 이 같다면 아이디 정보 일부를 제공
      */
+    @Operation(summary = "사용자 아이디 찾기", description = "Email을 기반으로 사용자 아이디 찾기", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "사용 가능한 아이디"),
+            @ApiResponse(responseCode = "404", description = "사용자 정보를 찾을 수 없음")
+    })
     @GetMapping("/users/find-id/{userEmail}")
     @Timed(value = "user.find.id", longTask = true)
     public ResponseEntity<String> findUserId(@PathVariable String userEmail) throws Exception {
@@ -140,10 +170,15 @@ public class UserController {
     /**
      * <------------------------>비밀번호 변경</------------------------>
      */
+    @Operation(summary = "사용자 비밀번호 변경", description = "이전 비밀번호 일치 시 비밀번호 변경", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "비밀번호 변경 성공"),
+            @ApiResponse(responseCode = "400", description = "이전 비밀번호가 일치하지 않습니다")
+    })
     @PostMapping("/users/changePassword")
     @Timed(value = "user.change.password", longTask = true)
     public ResponseEntity<String> changePassword(@RequestHeader HttpHeaders headers,
-                                                 @RequestBody RequestChangePassword request) throws Exception {
+                                                 @RequestBody ChangePasswordRequest request) throws Exception {
         String userId = tokenUtil.getUserIdByToken(headers);
 
         log.info("userId : " + userId);
@@ -160,7 +195,12 @@ public class UserController {
 
     }
 
-    @PostMapping("/user/modify")
+    @Operation(summary = "사용자 정보 변경", description = "사용자 정보를 변경", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "사용자 정보 변경 성공"),
+            @ApiResponse(responseCode = "400", description = "사용자 정보 변경 실패")
+    })
+    @PostMapping("/users/modify")
     @Timed(value = "user.change.userInfo", longTask = true)
     public ResponseEntity<String> modifyUserInfo(@RequestHeader HttpHeaders headers, @RequestBody UserDto body)
             throws Exception {
@@ -178,7 +218,14 @@ public class UserController {
         }
     }
 
-    @PostMapping("/user/fix/find-password")
+
+    @Operation(summary = "사용자 비밀번호 찾기", description = "인증 후 사용자 임시 비밀번호를 Mail로 전송", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Email 로 임시 비밀번호 전송 성공"),
+            @ApiResponse(responseCode = "400", description = "이메일 정보가 일치하지 않음"),
+            @ApiResponse(responseCode = "400", description = "아이디로 사용자 정보를 찾을 수 없음")
+    })
+    @PostMapping("/users/fix/find-password")
     @Timed(value = "user.find.password", longTask = true)
     public ResponseEntity<String> findPassword(@RequestBody UserDto userDto) throws Exception {
         log.info(this.getClass().getName() + ".findPassword Start");
@@ -209,9 +256,16 @@ public class UserController {
         return ResponseEntity.ok().body(userEmail + "로 임시 비밀번호를 발송 했습니다");
     }
 
-    @PostMapping("/user/delete")
+
+    @Operation(summary = "사용자 삭제 (비활성화)", description = "인증 후 사용자 정보를 비활성화", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "사용자 정보 비활성화 (탈퇴) 성공"),
+            @ApiResponse(responseCode = "400", description = "이메일 정보가 일치하지 않음"),
+            @ApiResponse(responseCode = "400", description = "사용자 비밀번호가 일치하지 않음")
+    })
+    @PostMapping("/users/delete")
     @Timed(value = "user.deleteUser", longTask = true)
-    public ResponseEntity<String> deleteUser(@RequestHeader HttpHeaders headers, @RequestBody RequestUser requestUser) throws Exception {
+    public ResponseEntity<String> deleteUser(@RequestHeader HttpHeaders headers, @RequestBody UserRequest userRequest) throws Exception {
         /**
          * 비밀번호가 일치한다면
          * 사용자 Status 0으로 변경
@@ -221,7 +275,7 @@ public class UserController {
         // GetUserId from Token
         String userId = tokenUtil.getUserIdByToken(headers);
         UserDto pDto = new UserDto();
-        pDto.setUserPassword(requestUser.getUserPassword());
+        pDto.setUserPassword(userRequest.getUserPassword());
         pDto.setUserId(userId);
 
         userServiceImpl.deleteUser(pDto);
@@ -239,17 +293,38 @@ public class UserController {
      * @return String 결과
      * @throws Exception
      */
-
-    @PostMapping("/user/item/liked")
+    @Operation(summary = "사용자 상품 좋아요", description = "사용자 상품 좋아요", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "상품 좋아요 성공"),
+            @ApiResponse(responseCode = "200", description = "이미 좋아요를 누른 상태라면, 좋아요 취소"),
+            @ApiResponse(responseCode = "400", description = "상품 번호와 일치하는 상품 정보가 없음")
+    })
+    @PostMapping("/users/items/liked")
     @Timed(value = "user.like", longTask = true)
     public ResponseEntity<String> itemLiked(@RequestHeader final HttpHeaders headers,
-                                            @RequestBody @Validated final ItemLikedReq request) throws Exception {
+                                            @RequestBody @Validated final ItemLikedRequest request) throws Exception {
 
         final String userId = tokenUtil.getUserIdByToken(headers);
 
         log.debug("userId : " + userId);
 
         return ResponseEntity.ok().body(userItemService.itemLikedOrDelete(userId, request.getItemSeq()));
+    }
+
+    @Operation(summary = "사용자 상품 좋아요 확인", description = "사용자 상품 좋아요 유무 확인", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "사용자 상품 좋아요 유무 확인 성공")
+    })
+    @GetMapping("/users/items/liked")
+    @Timed(value = "user.like", longTask = true)
+    public ResponseEntity<Integer> isItemLiked(@RequestHeader final  HttpHeaders headers,
+                                               @RequestBody @Validated final ItemLikedRequest request) throws Exception {
+        final String userId = tokenUtil.getUserIdByToken(headers);
+        final int result = userItemService.likedItemByUserId(userId, request.getItemSeq());
+
+
+        return ResponseEntity.ok().body(result);
+
     }
 
 }

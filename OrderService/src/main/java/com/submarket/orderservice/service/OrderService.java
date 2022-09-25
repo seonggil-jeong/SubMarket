@@ -4,7 +4,7 @@ import com.submarket.orderservice.dto.OrderDto;
 
 import java.util.List;
 
-public interface IOrderService {
+public interface OrderService {
 
     int insertOrder(OrderDto orderDto) throws Exception;
 

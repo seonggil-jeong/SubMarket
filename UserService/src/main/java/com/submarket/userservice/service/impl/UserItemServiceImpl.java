@@ -90,4 +90,24 @@ public class UserItemServiceImpl implements UserItemService {
             return "좋아요 성공";
         }
     }
+
+    /**
+     * 상품 좋아요 유무를 확인
+     * @param userId 사용자 아이디
+     * @param itemSeq 상품 번호
+     * @return 1, 0
+     * @throws Exception
+     */
+    @Override
+    public int likedItemByUserId(String userId, int itemSeq) throws Exception {
+        log.info(this.getClass().getName() + ".likedItemByUserId Start!");
+
+        UserEntity user = userRepository.findByUserId(userId);
+
+        Optional<LikeEntity> result = likeRepository.findByUserAndItemSeq(user, itemSeq);
+
+        log.info(this.getClass().getName() + ".likedItemByUserId End!");
+        // 일치하는 정보가 있을 경우 1 상품 좋아요 유 , Else 0 좋아요 무
+        return result.isPresent() ? 1 : 0;
+    }
 }

@@ -12,4 +12,5 @@ public interface LikeRepository extends CrudRepository<LikeEntity, Integer> {
 
 
     Optional<LikeEntity> findByUserAndItemSeq(UserEntity user, int itemSeq);
+
 }

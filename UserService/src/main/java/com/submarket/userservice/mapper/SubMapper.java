@@ -2,7 +2,6 @@ package com.submarket.userservice.mapper;
 
 import com.submarket.userservice.dto.SubDto;
 import com.submarket.userservice.jpa.entity.SubEntity;
-import com.submarket.userservice.vo.ResponseSub;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

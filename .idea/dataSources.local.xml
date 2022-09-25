@@ -7,11 +7,11 @@
         <identifier-quote-string>`</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
       <user-name>admin</user-name>
       <schema-mapping>
         <introspection-scope>
           <node kind="schema">
+            <name qname="@" />
             <name qname="ITEM" />
             <name qname="SELLER" />
             <name qname="USER" />

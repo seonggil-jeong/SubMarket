@@ -1,5 +1,6 @@
 package com.submarket.userservice.vo;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +12,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ItemLikedReq {
+@Schema(description = "Request - 상품 정보 좋아요 요청")
+public class ItemLikedRequest {
     @NotNull
+    @Schema(required = true, description = "상품 번호", example = "1")
     private Integer itemSeq;
 }

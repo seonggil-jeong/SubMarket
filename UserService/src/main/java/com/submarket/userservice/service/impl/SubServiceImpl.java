@@ -1,6 +1,8 @@
 package com.submarket.userservice.service.impl;
 
 import com.submarket.userservice.dto.SubDto;
+import com.submarket.userservice.exception.SubException;
+import com.submarket.userservice.exception.result.SubExceptionResult;
 import com.submarket.userservice.jpa.SubRepository;
 import com.submarket.userservice.jpa.UserRepository;
 import com.submarket.userservice.jpa.entity.SubEntity;
@@ -54,7 +56,7 @@ public class SubServiceImpl implements com.submarket.userservice.service.SubServ
 
 
     @Override // 구독 상세 조회
-    @Transactional
+    @Transactional(rollbackOn = Exception.class)
     public SubDto findOneSub(SubDto subDto) throws Exception {
         log.info(this.getClass().getName() + "findOne Sub Start!");
         int subSeq = subDto.getSubSeq();
@@ -69,7 +71,7 @@ public class SubServiceImpl implements com.submarket.userservice.service.SubServ
         log.info("subCount : " + subEntity.getSubCount());
 
         if (subEntity == null) {
-            throw new RuntimeException("SubEntity Null");
+            throw new SubException(SubExceptionResult.CAN_NOT_FOUND_SUB_INFO);
         }
         pDto = SubMapper.INSTANCE.subEntityToSubDto(subEntity);
 
