@@ -1,5 +1,6 @@
 package com.submarket.itemservice.service.impl;
 
+import com.submarket.itemservice.client.UserServiceClient;
 import com.submarket.itemservice.dto.CategoryDto;
 import com.submarket.itemservice.dto.ItemDto;
 import com.submarket.itemservice.exception.ItemException;
@@ -15,6 +16,8 @@ import com.submarket.itemservice.service.ItemService;
 import com.submarket.itemservice.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;

@@ -299,7 +299,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "이미 좋아요를 누른 상태라면, 좋아요 취소"),
             @ApiResponse(responseCode = "400", description = "상품 번호와 일치하는 상품 정보가 없음")
     })
-    @PostMapping("/users/item/liked")
+    @PostMapping("/users/items/liked")
     @Timed(value = "user.like", longTask = true)
     public ResponseEntity<String> itemLiked(@RequestHeader final HttpHeaders headers,
                                             @RequestBody @Validated final ItemLikedRequest request) throws Exception {
@@ -309,6 +309,22 @@ public class UserController {
         log.debug("userId : " + userId);
 
         return ResponseEntity.ok().body(userItemService.itemLikedOrDelete(userId, request.getItemSeq()));
+    }
+
+    @Operation(summary = "사용자 상품 좋아요 확인", description = "사용자 상품 좋아요 유무 확인", tags = {"user"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "사용자 상품 좋아요 유무 확인 성공")
+    })
+    @GetMapping("/users/items/liked")
+    @Timed(value = "user.like", longTask = true)
+    public ResponseEntity<Integer> isItemLiked(@RequestHeader final  HttpHeaders headers,
+                                               @RequestBody @Validated final ItemLikedRequest request) throws Exception {
+        final String userId = tokenUtil.getUserIdByToken(headers);
+        final int result = userItemService.likedItemByUserId(userId, request.getItemSeq());
+
+
+        return ResponseEntity.ok().body(result);
+
     }
 
 }
