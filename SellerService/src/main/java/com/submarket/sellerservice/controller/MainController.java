@@ -25,7 +25,6 @@ import java.util.*;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "Health API", description = "서버 상태 확인")
-@RequestMapping("/seller-service")
 public class MainController {
     private final Environment env;
 

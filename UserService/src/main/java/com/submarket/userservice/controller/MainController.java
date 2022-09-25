@@ -25,7 +25,6 @@ import javax.transaction.Transactional;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "Health API", description = "서버 상태 확인")
-@RequestMapping("/user-service")
 public class MainController {
     private final Environment env;
 

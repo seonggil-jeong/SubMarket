@@ -23,7 +23,6 @@ import java.util.Map;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "Category API", description = "상품 Category 정보 API")
-@RequestMapping("/item-service")
 public class CategoryController {
     private final CategoryService categoryService;
 

@@ -30,7 +30,6 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 @Tag(name = "Item API", description = "상품 정보 API")
-@RequestMapping("/item-service")
 public class ItemController {
     private final ItemService itemService;
     private final TokenUtil tokenUtil;
@@ -105,7 +104,7 @@ public class ItemController {
 
         ResponseEntity<Integer> circuitResult =
                 circuitBreaker.run(() -> userServiceClient.isLikedByUserId
-                                (headers, ItemLikedRequest.builder().itemSeq(itemSeq).build()),
+                                (itemSeq, headers),
                         throwable -> ResponseEntity.ok().body(0));
 
         log.info("circuit End");

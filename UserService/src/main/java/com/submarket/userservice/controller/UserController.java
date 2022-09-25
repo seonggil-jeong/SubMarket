@@ -33,7 +33,6 @@ import java.util.UUID;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "사용자 API", description = "사용자 API")
-@RequestMapping("/user-service")
 public class UserController {
     private final UserService userServiceImpl;
     private final UserCheckService userCheckServiceImpl;
@@ -315,12 +314,18 @@ public class UserController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "사용자 상품 좋아요 유무 확인 성공")
     })
-    @GetMapping("/users/items/liked")
+    @GetMapping("/users/items/{itemSeq}/liked")
     @Timed(value = "user.like", longTask = true)
-    public ResponseEntity<Integer> isItemLiked(@RequestHeader final  HttpHeaders headers,
-                                               @RequestBody @Validated final ItemLikedRequest request) throws Exception {
+    public ResponseEntity<Integer> isItemLiked(@PathVariable int itemSeq, @RequestHeader final  HttpHeaders headers) throws Exception {
+        log.info("isItemLiked Start!");
+
+        log.info("테스트 로그 사용자 상품 좋아요 확인하기");
         final String userId = tokenUtil.getUserIdByToken(headers);
-        final int result = userItemService.likedItemByUserId(userId, request.getItemSeq());
+        final int result = userItemService.likedItemByUserId(userId, itemSeq);
+
+        log.info("result : " + result);
+
+        log.info("isItemLiked Start! ");
 
 
         return ResponseEntity.ok().body(result);

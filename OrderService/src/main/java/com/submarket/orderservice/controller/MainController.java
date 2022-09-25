@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RequiredArgsConstructor
 @Tag(name = "Health API", description = "Service Health Check EndPoint")
-@RequestMapping("/order-service")
 public class MainController {
     private final Environment env;
 

@@ -4,9 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#151] feature : Swagger in ItemService">
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="itemService">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/security/WebSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/client/UserServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/client/UserServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/SellerItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/SellerItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SalesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/client/ItemServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/client/ItemServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/SubController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/SubController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +74,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="feature/#161" />
+                    <option name="lastUsedInstant" value="1664104026" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
                     <option name="lastUsedInstant" value="1664102618" />
@@ -177,7 +195,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DiscoveryServiceApplication">
+  <component name="RunManager" selected="Spring Boot.ItemServiceApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -312,14 +330,9 @@
       <workItem from="1663928577789" duration="8306000" />
       <workItem from="1663943643077" duration="5150000" />
       <workItem from="1663954693804" duration="456000" />
-      <workItem from="1664097870451" duration="5095000" />
-    </task>
-    <task id="LOCAL-00061" summary="[#91] refactor : 상품 등록 시 이미지 추가">
-      <created>1654326603286</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1654326603286</updated>
+      <workItem from="1664097870451" duration="7921000" />
+      <workItem from="1664105917891" duration="6000" />
+      <workItem from="1664109570547" duration="2264000" />
     </task>
     <task id="LOCAL-00062" summary="[#105] feature : Seller가 등록한 모든 상품 조회">
       <created>1654327661985</created>
@@ -657,7 +670,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664102533681</updated>
     </task>
-    <option name="localTasksCounter" value="110" />
+    <task id="LOCAL-00110" summary="itemService">
+      <created>1664103094950</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1664103094950</updated>
+    </task>
+    <option name="localTasksCounter" value="111" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -705,7 +725,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix : Kafka 수정" />
     <MESSAGE value="fix : Kafka 상품 주문 취소 시 수량 증가" />
     <MESSAGE value="return Type" />
     <MESSAGE value="월 매출 조회" />
@@ -730,6 +749,7 @@
     <MESSAGE value="[#151] feature : Swagger in OrderService" />
     <MESSAGE value="[#151] feature : Swagger in SellerService" />
     <MESSAGE value="[#151] feature : Swagger in ItemService" />
-    <option name="LAST_COMMIT_MESSAGE" value="[#151] feature : Swagger in ItemService" />
+    <MESSAGE value="itemService" />
+    <option name="LAST_COMMIT_MESSAGE" value="itemService" />
   </component>
 </project>
