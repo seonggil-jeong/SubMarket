@@ -26,7 +26,6 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 @Tag(name = "Item Seller API", description = "판매자가 자신의 상품 정보를 관리하는 API")
-@RequestMapping("/item-service")
 public class SellerItemController {
     private final ItemServiceImpl itemService;
     private final TokenUtil tokenUtil;

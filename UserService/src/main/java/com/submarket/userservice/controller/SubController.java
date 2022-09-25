@@ -26,7 +26,6 @@ import java.util.*;
 @Slf4j
 @RequiredArgsConstructor
 @Tag(name = "구독 API", description = "구독 관련 API")
-@RequestMapping("/user-service")
 public class SubController {
     private final SubService subServiceImpl;
     private final TokenUtil tokenUtil;

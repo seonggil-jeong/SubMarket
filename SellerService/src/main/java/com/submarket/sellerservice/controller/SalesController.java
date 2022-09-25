@@ -25,7 +25,6 @@ import java.util.Map;
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/seller-service")
 @Tag(name = "판매자 매출 정보 API", description = "사용자 매출 정보 관련 APi")
 public class SalesController {
     private final SalesService salesService;

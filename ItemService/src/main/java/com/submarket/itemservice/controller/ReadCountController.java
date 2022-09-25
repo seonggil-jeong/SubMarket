@@ -18,7 +18,6 @@ import java.util.*;
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/item-service")
 @Tag(name = "Item ReadCount API", description = "상품 조회 수 관련 API")
 public class ReadCountController {
     private final ItemServiceImpl itemService;

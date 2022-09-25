@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
 
-@FeignClient(name = "item-service")
+@FeignClient(name = "ITEM-SERVICE")
 public interface ItemServiceClient {
     @GetMapping("/items/{itemSeq}") // 상품이 확인
     ItemDto isItem(@PathVariable int itemSeq);
