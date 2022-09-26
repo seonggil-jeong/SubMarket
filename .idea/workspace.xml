@@ -4,23 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="itemService">
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#161] fix : FeignClient">
+      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/vo/ItemInfoResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/ItemInfoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConfigService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigService/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/client/UserServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/client/UserServiceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ReadCountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/SellerItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/SellerItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SalesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/controller/SalesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/CategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/CategoryDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/vo/ItemLikedRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/vo/ItemLikedRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/vo/OrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/vo/OrderRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/SalesDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/SalesDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/security/WebSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestChangePassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestSellerInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestSellerInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/client/ItemServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/client/ItemServiceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/SubController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/SubController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/dto/ItemDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/LikeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/LikeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/UserItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/UserItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/UserItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/UserItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/ChangePasswordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/ChangePasswordRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/ItemLikedRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/ItemLikedRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/SubRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/SubRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/UserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/UserRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +45,8 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,16 +88,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="feature/#161" />
-                    <option name="lastUsedInstant" value="1664104026" />
+                    <option name="branchName" value="feature/#163" />
+                    <option name="lastUsedInstant" value="1664191896" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="release/v2.0.0" />
+                    <option name="lastUsedInstant" value="1664112469" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="develop" />
                     <option name="lastUsedInstant" value="1664102618" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="feature/#151" />
-                    <option name="lastUsedInstant" value="1663816274" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -181,11 +194,11 @@
       <recent name="com.submarket.sellerservice.controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.submarket.userservice.vo" />
       <recent name="com.submarket.itemservice.vo" />
       <recent name="com.submarket.itemservice.coinfig" />
       <recent name="com.submarket.sellerservice.config" />
       <recent name="com.submarket.orderservice.client" />
-      <recent name="com.submarket.orderservice.config" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -333,6 +346,17 @@
       <workItem from="1664097870451" duration="7921000" />
       <workItem from="1664105917891" duration="6000" />
       <workItem from="1664109570547" duration="2264000" />
+      <workItem from="1664115625868" duration="3220000" />
+      <workItem from="1664119118764" duration="268000" />
+      <workItem from="1664120063727" duration="1632000" />
+      <workItem from="1664122068240" duration="3452000" />
+      <workItem from="1664125749466" duration="1536000" />
+      <workItem from="1664176714503" duration="4489000" />
+      <workItem from="1664181248402" duration="90000" />
+      <workItem from="1664184594568" duration="477000" />
+      <workItem from="1664186807546" duration="178000" />
+      <workItem from="1664187045870" duration="17000" />
+      <workItem from="1664188080435" duration="7868000" />
     </task>
     <task id="LOCAL-00062" summary="[#105] feature : Seller가 등록한 모든 상품 조회">
       <created>1654327661985</created>

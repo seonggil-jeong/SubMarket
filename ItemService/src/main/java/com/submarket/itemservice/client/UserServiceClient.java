@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface UserServiceClient {
 
     // Gateway 를 통과하지 않고 내부 통신으로 이동하기 때문에 "/user-service" 가 필요하지 않음
-    @GetMapping("/users/items/{itemSeq}/liked")
-    ResponseEntity<Integer> isLikedByUserId(@PathVariable int itemSeq, @RequestHeader final  HttpHeaders headers);
+    @GetMapping("/users/{userId}/items/{itemSeq}/liked")
+    ResponseEntity<Integer> isLikedByUserId(@PathVariable int itemSeq, @PathVariable String userId);
 }

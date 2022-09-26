@@ -14,13 +14,17 @@ import com.submarket.userservice.jpa.entity.LikeEntity;
 import com.submarket.userservice.jpa.entity.UserEntity;
 import com.submarket.userservice.service.KafkaProducerService;
 import com.submarket.userservice.service.UserItemService;
+import com.submarket.userservice.vo.ItemInfoResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -54,14 +58,14 @@ public class UserItemServiceImpl implements UserItemService {
         log.info("Before call checking item");
 
         CircuitBreaker circuitBreaker = circuitBreakerFactory.create("itemCircuit");
-        ItemDto itemDto = circuitBreaker.run(() -> itemServiceClient.isItem(itemSeq),
+        ItemDto itemDto = circuitBreaker.run(() -> itemServiceClient.isItem(itemSeq).getBody(),
                 throwable -> ItemDto.builder().itemSeq(-1).build());
 
         log.info("After call checking item");
         log.info("itemSeq : " + itemDto.getItemSeq());
 
 
-        if (itemDto.getItemSeq() < 0) {
+        if (itemDto == null) {
             throw new ItemException(ItemExceptionResult.NOT_MATCHED_ITEM_SEQ);
         }
 
@@ -93,7 +97,8 @@ public class UserItemServiceImpl implements UserItemService {
 
     /**
      * 상품 좋아요 유무를 확인
-     * @param userId 사용자 아이디
+     *
+     * @param userId  사용자 아이디
      * @param itemSeq 상품 번호
      * @return 1, 0
      * @throws Exception
@@ -109,5 +114,39 @@ public class UserItemServiceImpl implements UserItemService {
         log.info(this.getClass().getName() + ".likedItemByUserId End!");
         // 일치하는 정보가 있을 경우 1 상품 좋아요 유 , Else 0 좋아요 무
         return result.isPresent() ? 1 : 0;
+    }
+
+
+    /**
+     * 사용자가 좋아요한 상품 목록 조회
+     *
+     * @param userId 사용자 아이디
+     * @return 좋아요한 상품 목록
+     * @throws Exception
+     */
+    @Override
+    public List<ItemDto> findAllLikedItems(String userId) throws Exception {
+        log.info("Service Start!");
+
+        List<ItemDto> result = new LinkedList<>();
+        UserEntity user = userRepository.findByUserId(userId);
+        if (user == null) { // 사용자 정보를 찾을 수 없음
+            throw new UserException(UserExceptionResult.USER_NOT_FOUNT);
+        }
+
+        CircuitBreaker circuitBreaker = circuitBreakerFactory.create("findItemInfo");
+        Optional<List<LikeEntity>> likeEntities = likeRepository.findAllByUser(user);
+
+        if (likeEntities.isPresent()) { // 값이 있다면 상품 정보 조회 시작
+            likeEntities.get().forEach(likeEntity -> {
+                ItemInfoResponse response = circuitBreaker.run(() -> itemServiceClient.findOneItem(likeEntity.getItemSeq()).getBody(),
+                        throwable -> new ItemInfoResponse());
+
+                result.add(new ObjectMapper().convertValue(response, ItemDto.class));
+            });
+        }
+
+        log.info("Service End!");
+        return result;
     }
 }

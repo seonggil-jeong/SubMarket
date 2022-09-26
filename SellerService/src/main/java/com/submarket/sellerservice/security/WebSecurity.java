@@ -21,9 +21,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-//                .antMatchers("/seller-service/**", "/actuator/**").hasIpAddress("127.0.0.1") // IP
-                .antMatchers("/**").permitAll()
+        http.csrf().disable();
+        http.authorizeRequests().antMatchers("/**").permitAll()
                 .and()
                 .addFilter(getAuthenticationFilter()); // Add Filter
 

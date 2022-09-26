@@ -6,6 +6,7 @@ import com.submarket.itemservice.service.ItemService;
 import com.submarket.itemservice.service.impl.ItemServiceImpl;
 import com.submarket.itemservice.util.CmmUtil;
 import com.submarket.itemservice.util.TokenUtil;
+import com.submarket.itemservice.vo.ItemInfoResponse;
 import com.submarket.itemservice.vo.ItemLikedRequest;
 import io.micrometer.core.annotation.Timed;
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -104,7 +106,7 @@ public class ItemController {
 
         ResponseEntity<Integer> circuitResult =
                 circuitBreaker.run(() -> userServiceClient.isLikedByUserId
-                                (itemSeq, headers),
+                                (itemSeq, tokenUtil.getUserIdByToken(headers)),
                         throwable -> ResponseEntity.ok().body(0));
 
         log.info("circuit End");
@@ -175,5 +177,34 @@ public class ItemController {
         itemService.upReadCount(itemSeq, userAge);
 
         log.info(this.getClass().getName() + ".upCount End!");
+    }
+
+
+    @GetMapping("/circuit/items/{itemSeq}")
+    @Timed(value = "item.findOne", longTask = true)
+    public ResponseEntity<ItemInfoResponse> circuitFindOneItem(@RequestHeader HttpHeaders headers,
+                                                            @PathVariable int itemSeq) throws Exception {
+
+        ItemDto pDto = new ItemDto();
+        pDto.setItemSeq(itemSeq);
+
+        // 상품 정보 가져오기
+        ItemDto result = itemService.findItemInfo(pDto);
+        return ResponseEntity.ok().body(ItemInfoResponse.builder()
+                .itemSeq(result.getItemSeq())
+                .itemPrice(result.getItemPrice())
+                .itemStatus(result.getItemStatus())
+                .itemContents(result.getItemContents())
+                .itemTitle(result.getItemTitle())
+                .sellerId(result.getSellerId())
+                .itemCount(result.getItemCount())
+                .categorySeq(result.getCategorySeq())
+                .readCount20(result.getReadCount20())
+                .readCount30(result.getReadCount30())
+                .readCount40(result.getReadCount40())
+                .readCountOther(result.getReadCountOther())
+                .mainImagePath(result.getMainImagePath())
+                .subImagePath(result.getSubImagePath()).build()
+        );
     }
 }
