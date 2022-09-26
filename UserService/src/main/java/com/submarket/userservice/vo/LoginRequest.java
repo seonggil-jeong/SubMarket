@@ -10,13 +10,8 @@ import javax.validation.constraints.NotNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "Request - 로그인 요청 (token 생성)")
 public class LoginRequest {
-    @NotNull
-    @Schema(required = true, description = "사용자 아이디", example = "userId")
     private String userId;
 
-    @NotNull
-    @Schema(required = true, description = "사용자 비밀번호", example = "userPassword")
     private String userPassword;
 }

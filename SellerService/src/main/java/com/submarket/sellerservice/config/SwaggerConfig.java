@@ -38,7 +38,7 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI springShopOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("SubMarket - USER-SERVICE API")
+                .info(new Info().title("SubMarket - SELLER-SERVICE API")
                         .description("SubMarket SellerService 명세서").version("v2.0.0"));
     }
 }

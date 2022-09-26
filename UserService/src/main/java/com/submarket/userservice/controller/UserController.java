@@ -1,5 +1,6 @@
 package com.submarket.userservice.controller;
 
+import com.submarket.userservice.dto.ItemDto;
 import com.submarket.userservice.dto.UserDto;
 import com.submarket.userservice.mapper.UserMapper;
 import com.submarket.userservice.service.UserCheckService;
@@ -27,6 +28,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Slf4j
@@ -314,13 +318,12 @@ public class UserController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "사용자 상품 좋아요 유무 확인 성공")
     })
-    @GetMapping("/users/items/{itemSeq}/liked")
+    @GetMapping("/users/{userId}/items/{itemSeq}/liked")
     @Timed(value = "user.like", longTask = true)
-    public ResponseEntity<Integer> isItemLiked(@PathVariable int itemSeq, @RequestHeader final  HttpHeaders headers) throws Exception {
+    public ResponseEntity<Integer> isItemLiked(@PathVariable int itemSeq, @PathVariable String userId) throws Exception {
         log.info("isItemLiked Start!");
 
         log.info("테스트 로그 사용자 상품 좋아요 확인하기");
-        final String userId = tokenUtil.getUserIdByToken(headers);
         final int result = userItemService.likedItemByUserId(userId, itemSeq);
 
         log.info("result : " + result);
@@ -330,6 +333,30 @@ public class UserController {
 
         return ResponseEntity.ok().body(result);
 
+    }
+
+
+    @Operation(summary = "좋아요한 상품 목록 조회", description = "사용자가 좋아요한 상품 정보 조회", tags = {"user", "item"})
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "좋아요한 상품 목록 조회 성공")
+    })
+    @GetMapping("/users/items/liked")
+    public ResponseEntity<Map<String, Object>> findAllLikedItems(@RequestHeader final HttpHeaders headers) throws Exception {
+        log.info(this.getClass().getName() + ".findAllLikedItems Start!");
+
+        Map<String, Object> responseBody = new HashMap<>();
+
+
+        List<ItemDto> result = userItemService.findAllLikedItems(tokenUtil.getUserIdByToken(headers));
+
+        responseBody.put("userId", tokenUtil.getUserIdByToken(headers));
+        responseBody.put("response", result);
+
+
+        log.info(this.getClass().getName() + ".findAllLikedItems End!");
+
+
+        return ResponseEntity.ok().body(responseBody);
     }
 
 }

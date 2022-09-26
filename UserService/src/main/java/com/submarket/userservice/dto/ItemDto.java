@@ -28,7 +28,7 @@ public class ItemDto {
     private int userAge;
     private String mainImagePath; // DB에 저장되어 있는 이미지 정보
     private String subImagePath;
-
+    private int isUserLiked;
 
 
     private MultipartFile mainImage; // Front 에서 넘어온 이미지
