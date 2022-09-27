@@ -4,36 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="[#161] fix : FeignClient">
-      <change afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/vo/ItemInfoResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/ItemInfoResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="b22f5580-9f7b-48f1-99f1-eed60eff567b" name="Changes" comment="itemService">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConfigService/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigService/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/client/UserServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/client/UserServiceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/controller/ItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/CategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/CategoryDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/dto/ItemReviewDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/vo/ItemLikedRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ItemService/src/main/java/com/submarket/itemservice/vo/ItemLikedRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/vo/OrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/src/main/java/com/submarket/orderservice/vo/OrderRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/config/SwaggerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/SalesDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/dto/SalesDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/security/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/security/WebSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestChangePassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestChangePassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestSellerInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/SellerService/src/main/java/com/submarket/sellerservice/vo/RequestSellerInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/client/ItemServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/client/ItemServiceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/dto/ItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/dto/ItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/LikeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/jpa/LikeRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/UserItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/UserItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/UserItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/service/impl/UserItemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/ChangePasswordRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/ChangePasswordRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/ItemLikedRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/ItemLikedRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/SubRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/SubRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/UserRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/UserService/src/main/java/com/submarket/userservice/vo/UserRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/#151" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -145,7 +118,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
-    &quot;keyToString&quot;: {
+  &quot;keyToString&quot;: {
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
@@ -161,14 +134,14 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.27471265&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;bigdataide_conn_settings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;b9a7970c2902b48ff1e793a804d5e365&quot;
-    },
-    &quot;keyToStringList&quot;: {
+    &quot;spring.configuration.checksum&quot;: &quot;55d713c892641225afec483b23825626&quot;
+  },
+  &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
-    &quot;mariadb&quot;
+      &quot;mariadb&quot;
     ]
-    }
-    }</component>
+  }
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -208,7 +181,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.ApiGatewayApplication">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
@@ -357,6 +330,8 @@
       <workItem from="1664186807546" duration="178000" />
       <workItem from="1664187045870" duration="17000" />
       <workItem from="1664188080435" duration="7868000" />
+      <workItem from="1664249125213" duration="2585000" />
+      <workItem from="1664257122661" duration="1856000" />
     </task>
     <task id="LOCAL-00062" summary="[#105] feature : Seller가 등록한 모든 상품 조회">
       <created>1654327661985</created>

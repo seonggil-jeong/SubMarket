@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="IU-222.3739.54">
+  <component name="dataSourceStorageLocal" created-in="IU-221.5921.22">
     <data-source name="MariaDB" uuid="b8323119-0b04-4ef9-9da1-aaf3c90d0d6e">
       <database-info product="MariaDB" version="10.6.8-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="3.0.7" dbms="MARIADB" exact-version="10.6.8" exact-driver-version="3.0">
         <extra-name-characters>#@</extra-name-characters>
@@ -10,12 +10,7 @@
       <user-name>admin</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema">
-            <name qname="@" />
-            <name qname="ITEM" />
-            <name qname="SELLER" />
-            <name qname="USER" />
-          </node>
+          <node kind="schema" qname="SPM" />
         </introspection-scope>
       </schema-mapping>
     </data-source>
