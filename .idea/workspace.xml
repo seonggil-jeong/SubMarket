@@ -145,7 +145,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
+    &quot;keyToString&quot;: {
     &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelOrder2&quot;: &quot;2&quot;,
@@ -162,13 +162,13 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.27471265&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;bigdataide_conn_settings&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;b9a7970c2902b48ff1e793a804d5e365&quot;
-  },
-  &quot;keyToStringList&quot;: {
+    },
+    &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
-      &quot;mariadb&quot;
+    &quot;mariadb&quot;
     ]
-  }
-}</component>
+    }
+    }</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -208,7 +208,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ItemServiceApplication">
+  <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="SubMarketWithGit" />
       <method v="2">
