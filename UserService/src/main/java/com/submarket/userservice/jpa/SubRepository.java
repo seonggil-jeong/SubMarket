@@ -12,7 +12,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-@Transactional
 public interface SubRepository extends CrudRepository<SubEntity, Integer> {
 
     // 구독 갱신 (Count += 1, Date 변경)

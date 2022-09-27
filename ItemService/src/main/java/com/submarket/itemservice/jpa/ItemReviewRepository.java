@@ -2,6 +2,7 @@ package com.submarket.itemservice.jpa;
 
 import com.submarket.itemservice.jpa.entity.ItemEntity;
 import com.submarket.itemservice.jpa.entity.ItemReviewEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ItemReviewRepository extends CrudRepository<ItemReviewEntity, Integer> {
+public interface ItemReviewRepository extends JpaRepository<ItemReviewEntity, Integer> {
 
     @Override
     @Transactional
@@ -28,8 +29,8 @@ public interface ItemReviewRepository extends CrudRepository<ItemReviewEntity, I
     @Transactional
     List<ItemReviewEntity> findAllByUserId(String userId);
     @Transactional
-    @Modifying
-    @Query(value = "UPDATE item_review_info SET review_contents = :reviewContents, review_date = :reviewDate, review_star = :reviewStar WHERE review_seq = :reviewSeq", nativeQuery = true)
+    @Modifying(clearAutomatically = true)
+    @Query(value = "UPDATE ITEM_REVIEW SET reviewContents = :reviewContents, reviewDate = :reviewDate, reviewStar = :reviewStar WHERE reviewSeq = :reviewSeq", nativeQuery = true)
     void modifyItemReview(@Param("reviewContents") String reviewContents, @Param("reviewDate") String reviewDate, @Param("reviewStar") int reviewStar, @Param("reviewSeq") int reviewSeq);
 
 }

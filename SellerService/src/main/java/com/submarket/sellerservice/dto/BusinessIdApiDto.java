@@ -9,5 +9,6 @@ import java.util.Map;
 public class BusinessIdApiDto {
     private int request_cnt;
     private String status_code;
+
     private List<Map<String, Object>> data;
 }

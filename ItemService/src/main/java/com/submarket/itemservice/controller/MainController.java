@@ -1,22 +1,12 @@
 package com.submarket.itemservice.controller;
 
-import com.submarket.itemservice.dto.ItemDto;
-import com.submarket.itemservice.jpa.CategoryRepository;
-import com.submarket.itemservice.jpa.ItemRepository;
-import com.submarket.itemservice.jpa.ItemReviewRepository;
-import com.submarket.itemservice.service.impl.ItemService;
-import com.submarket.itemservice.service.impl.S3Service;
-import com.submarket.itemservice.service.impl.SchedulerService;
+import com.submarket.itemservice.service.impl.SchedulerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 @RestController
 @Slf4j
@@ -24,12 +14,7 @@ import java.io.IOException;
 public class MainController {
 
     private final Environment env;
-    private final CategoryRepository categoryRepository;
-    private final ItemService itemService;
-    private final ItemRepository itemRepository;
-    private final ItemReviewRepository itemReviewRepository;
-    private final S3Service s3Service;
-    private final SchedulerService schedulerService;
+    private final SchedulerServiceImpl schedulerServiceImpl;
 
     @GetMapping("/health")
     public String health() {
@@ -43,7 +28,7 @@ public class MainController {
 
     @GetMapping("/test")
     public void test() throws Exception{
-        schedulerService.createSellerTotalSales();
+        schedulerServiceImpl.createSellerTotalSales();
     }
 
 }

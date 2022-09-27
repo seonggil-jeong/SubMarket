@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -16,4 +17,6 @@ public class SalesDto {
     private int value;
 
     private SellerEntity seller;
+
+    private List<SalesDto> response;
 }

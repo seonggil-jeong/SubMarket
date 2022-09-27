@@ -9,9 +9,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface SalesMapper {
     SalesMapper INSTANCE = Mappers.getMapper(SalesMapper.class);
-
-    SalesEntity salesDtoToSalesEntity(SalesDto salesDto);
-
     @Mapping(target = "seller", ignore = true)
     SalesDto salesEntityToSalesDto(SalesEntity salesEntity);
+    SalesEntity salesDtoToSalesEntity(SalesDto salesDto);
 }

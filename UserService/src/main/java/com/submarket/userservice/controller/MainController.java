@@ -1,34 +1,43 @@
 package com.submarket.userservice.controller;
 
-import com.submarket.userservice.dto.SubDto;
 import com.submarket.userservice.dto.UserDto;
+import com.submarket.userservice.jpa.LikeRepository;
 import com.submarket.userservice.jpa.SubRepository;
 import com.submarket.userservice.jpa.UserRepository;
-import com.submarket.userservice.jpa.entity.UserEntity;
-import com.submarket.userservice.mapper.UserMapper;
-import com.submarket.userservice.service.impl.KafkaProducerService;
-import com.submarket.userservice.service.impl.MailService;
+import com.submarket.userservice.jpa.entity.LikeEntity;
+import com.submarket.userservice.service.impl.KafkaProducerServiceImpl;
+import com.submarket.userservice.service.impl.MailServiceImpl;
+import io.micrometer.core.annotation.Timed;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
 
 @Slf4j
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "Health API", description = "서버 상태 확인")
 public class MainController {
     private final Environment env;
-    private final MailService mailService;
-    private final UserRepository userRepository;
-    private final SubRepository subRepository;
-    private final KafkaProducerService kafkaProducerService;
 
 
+    @Operation(summary = "상태 확인", description = "인증 정보 없이 접근할 수 있는 EndPoint")
+    @ApiResponses({
+            @ApiResponse(responseCode = "503", description = "Eureka 서버에 미 등록"),
+            @ApiResponse(responseCode = "401", description = "Token 인증 실패"),
+            @ApiResponse(responseCode = "403", description = "Spring Security 인증 실패")
+
+    })
     @GetMapping("/health")
+    @Timed(value = "user.health", longTask = true)
     public String health() {
         log.info("UserService On");
         return env.getProperty("spring.application.name")
@@ -36,12 +45,5 @@ public class MainController {
                 + ", port(server.port) : " + env.getProperty("server.port")
                 + ", token secret : " + env.getProperty("token.secret")
                 + ", token expiration time : " + env.getProperty("token.expiration_time");
-    }
-
-    @GetMapping("/test")
-    @Transactional
-    public UserDto test() throws Exception {
-
-        return null;
     }
 }
